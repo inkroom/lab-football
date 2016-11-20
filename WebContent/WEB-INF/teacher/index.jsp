@@ -37,7 +37,9 @@
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <strong class="font-bold">在线考试系统</strong>
+                                        <span class="font-bold" style="font-size:13px;">教师端</span>
                                     </span>
+                                    
                                 </span>
                             </a>
                         </div>
@@ -52,7 +54,11 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
+<<<<<<< HEAD
                                 <a class="J_menuItem" href="teacherEditQuestionLib">编辑现有题库</a>
+=======
+                                <a class="J_menuItem" href="teacherGetQuestionLibList">编辑现有题库</a>
+>>>>>>> 39a62f519a82e0a4809e03700e32a7fd10a7a652
                             </li>
                             <li>
                                 <a class="J_menuItem" href="teacherEditExam">编辑现有考试</a>

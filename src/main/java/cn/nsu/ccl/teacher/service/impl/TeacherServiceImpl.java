@@ -38,7 +38,7 @@ public class TeacherServiceImpl implements TeacherService {
 		for(int i = 0; i < listMap.size();i++){
 			TeacherEntity teacher = new TeacherEntity();
 			Map<String, Object> map = listMap.get(i);
-			teacher.setId(map.get("teacherUsername").toString());
+			teacher.setEmail(map.get("teacherUsername").toString());
 			teacher.setPassword(map.get("teacherPassword").toString());
 			teacher.setDepartment(map.get("departId").toString());
 			teacher.setName(map.get("teacherName").toString());
@@ -58,7 +58,7 @@ public class TeacherServiceImpl implements TeacherService {
 		ArrayList<TeacherEntity> teacherEntities = this.getTeachers();
 		for(int i = 0; i < teacherEntities.size();i++){
 			TeacherEntity teacher = teacherEntities.get(i);
-			if (teacher.getId().equals(name)&&teacher.getPassword().equals(password)) {
+			if (teacher.getEmail().equals(name)&&teacher.getPassword().equals(password)) {
 				return true;
 			}
 		}
