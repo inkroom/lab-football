@@ -46,7 +46,14 @@ public class TeacherServiceImpl implements TeacherService {
 		}
 		return teacherEntities;
 	}
-	
+	/**
+	 * 
+	 * <p>覆盖的login函数，完成教师登录逻辑</p>
+	 * @param name
+	 * @param password
+	 * @return
+	 * @see cn.nsu.ccl.teacher.service.TeacherService#login(java.lang.String, java.lang.String)
+	 */
 	public boolean login(String name, String password) {
 		ArrayList<TeacherEntity> teacherEntities = this.getTeachers();
 		for(int i = 0; i < teacherEntities.size();i++){
@@ -57,6 +64,5 @@ public class TeacherServiceImpl implements TeacherService {
 		}
 		return false;
 	}
-	
 
 }

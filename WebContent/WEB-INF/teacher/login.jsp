@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <input type="password" class="form-control" id="teacherPassword" placeholder="密码" required="">
                 </div>
-                <a href="javascript:void(0)" onclick="login()" class="btn btn-primary btn-rounded btn-block">登录</a>
+                <a href="javascript:void(0)" onclick="login()" class="btn btn-primary btn-rounded btn-block btn btn-w-m btn-success">登录</a>
                 <br/>
                 <p id="message" style="text-align:center;color:red"></p>
         </div>

@@ -66,7 +66,7 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="teacherDownloadExamDemo">下载题库模版</a>
+                                <a class="J_menuItem" href="javascript:void(0);" onclick="downloadExamDemo()">下载题库模版</a>
                             </li>
                             <li>
                                 <a class="J_menuItem" href="teacherCreateExam">导入题库数据</a>
@@ -104,7 +104,9 @@
         </div>
         <!--右侧部分结束-->
     </div>
-
+<div style="text-align:center;">
+<p>&copy;成都东软学院</p>
+</div>
     <!-- 全局js -->
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
@@ -118,8 +120,11 @@
 
     <!-- 第三方插件 -->
     <script src="js/plugins/pace/pace.min.js"></script>
-<div style="text-align:center;">
-<p>&copy;成都东软学院</p>
-</div>
+    <script type="text/javascript">
+    function downloadExamDemo(){
+    	console.log("123");
+    	window.open("teacherDownloadExamDemo");
+    }
+    </script>
 </body>
 </html>

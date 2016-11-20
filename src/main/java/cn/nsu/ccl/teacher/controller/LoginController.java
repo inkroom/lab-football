@@ -10,13 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import cn.nsu.ccl.teacher.service.impl.TeacherServiceImpl;
+import cn.nsu.ccl.teacher.service.ServiceManager;
 import net.sf.json.JSONObject;
 
 @Controller
 public class LoginController {
 	@Autowired
-	private TeacherServiceImpl teacherService;
+	private ServiceManager service;
 
 	@RequestMapping(value="teacher")
 	public String toLogin(){
@@ -25,7 +25,7 @@ public class LoginController {
 	@RequestMapping(value="teacherLogin",method=RequestMethod.POST)
 	public void login(String teacherName,String teacherPassword,HttpServletResponse response){
 		JSONObject jsonObject = new JSONObject();
-		if (teacherService.login(teacherName, teacherPassword)) {
+		if (service.getTeacherService().login(teacherName, teacherPassword)) {
 			jsonObject.put("state", "success");
 		}else{
 			jsonObject.put("state", "fail");

@@ -1,13 +1,20 @@
 package cn.nsu.ccl.teacher.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.RowSet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import cn.nsu.ccl.teacher.dao.TeacherDao;
+import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
+import cn.nsu.ccl.teacher.entity.QuestionListEntity;
+import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 
 /**
  * 
@@ -17,13 +24,26 @@ import cn.nsu.ccl.teacher.dao.TeacherDao;
  * 联系方式：admin@baofeidyz.com 
  *
  */
+
+
 @Repository
 public class TeacherDaoImpl implements TeacherDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	/**
+	 * <p>getTeachers方法的描述</p>
+	 * @Title: TeacherDaoImpl的getTeachers方法
+	 * @Description: 查询教师信息
+	 * @author 2213974854@qq.com
+	 * @date 2016年11月18日 下午3:32:58
+	 * @return
+	 */
 	public List<Map<String, Object>> getTeachers() {
 		String SQL = "select * from Teacher";
 		return jdbcTemplate.queryForList(SQL);
 	}
+
+
 
 }
