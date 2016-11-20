@@ -2,11 +2,11 @@ package cn.nsu.ccl.teacher.entity;
 
 /**
  * 
- * 描述：教师属性类
- * 开发人员：暴沸
- * 开发时间： 2016年11月17日 下午4:03:44
- * 联系方式：admin@baofeidyz.com 
- *
+ * <p>TeacherEntity类的描述</p>
+ * @ClassName: TeacherEntity
+ * @Description: 教师属性实体类
+ * @author 暴沸 baofeidyz@foxmail.com
+ * @date 2016年11月20日 下午5:52:45
  */
 public class TeacherEntity {
 

@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * <p>MarkDao类的描述</p>
  * @ClassName: MarkDao
- * @Description: TODO(这里用一句话描述这个类的作用)
+ * @Description: 学生成绩的数据的操作的接口
  * @author: 蒋玖宏
  * @email:2213974854@qq.com
  * @date 2016年11月19日 下午4:43:23

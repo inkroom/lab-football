@@ -13,7 +13,7 @@ package cn.nsu.ccl.teacher.entity;
 /**
  * <p>AnswerEntity类的描述</p>
  * @ClassName: AnswerEntity
- * @Description: 每一道题的属性
+ * @Description: 考生提交的答案的实体类
  * @author: 蒋玖宏
  * @email:2213974854@qq.com
  * @date 2016年11月18日 下午4:22:13

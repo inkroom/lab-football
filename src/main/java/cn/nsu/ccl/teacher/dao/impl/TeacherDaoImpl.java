@@ -1,20 +1,14 @@
 package cn.nsu.ccl.teacher.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.sql.RowSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import cn.nsu.ccl.teacher.dao.TeacherDao;
-import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
-import cn.nsu.ccl.teacher.entity.QuestionListEntity;
-import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 
 /**
  * 
@@ -24,7 +18,6 @@ import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
  * 联系方式：admin@baofeidyz.com 
  *
  */
-
 
 @Repository
 public class TeacherDaoImpl implements TeacherDao {

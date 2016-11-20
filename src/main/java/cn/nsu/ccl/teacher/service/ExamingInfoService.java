@@ -12,7 +12,7 @@ import cn.nsu.ccl.teacher.entity.ExamingInfoEntity;
  * 联系方式：admin@baofeidyz.com
  * 创建时间：2016年8月30日 上午8:35:32
  */
-public interface ExamTakingInfoService {
+public interface ExamingInfoService {
 	
 	/**
 	 * 

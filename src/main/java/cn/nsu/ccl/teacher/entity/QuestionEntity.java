@@ -13,12 +13,12 @@ package cn.nsu.ccl.teacher.entity;
 /**
  * <p>Question类的描述</p>
  * @ClassName: Question
- * @Description: TODO(这里用一句话描述这个类的作用)
+ * @Description: 题库具体题目的实体类（即：每一个题库中的每一道题的实体类）
  * @author: 蒋玖宏
  * @email:2213974854@qq.com
  * @date 2016年11月19日 下午4:01:32
  */
-public class ExamEntity {
+public class QuestionEntity {
 	private int libraryId;//题库编号
 
 	private String questionId;//问题编号

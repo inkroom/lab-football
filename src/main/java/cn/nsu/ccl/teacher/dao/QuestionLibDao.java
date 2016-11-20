@@ -14,10 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.tomcat.jni.Library;
-
-import cn.nsu.ccl.teacher.entity.Question;
-import cn.nsu.ccl.teacher.entity.QuestionListEntity;
+import cn.nsu.ccl.teacher.entity.QuestionEntity;
 
 /**
  * <p>QuestionListDao类的描述</p>
@@ -47,7 +44,7 @@ public interface QuestionLibDao {
 	/**
 	 * <p>addQuestionList方法的描述</p>
 	 * @Title: QuestionListDao的addQuestionList方法
-	 * @Description: 根据题库名字和教师ID创建题库
+	 * @Description: 根据题库名字和教师ID创建题库列表信息
 	 * @author: 蒋玖宏
 	 * @author 2213974854@qq.com
 	 * @date 2016年11月19日 下午3:08:37
@@ -85,7 +82,7 @@ public interface QuestionLibDao {
 	/**
 	 * <p>addQuestion方法的描述</p>
 	 * @Title: QuestionLibDao的addQuestion方法
-	 * @Description:将题目集合添加到题库中
+	 * @Description:将题目集合添加到题库中（操作题库中的题目集合）
 	 * @author: 蒋玖宏
 	 * @author 2213974854@qq.com
 	 * @date 2016年11月19日 下午4:24:04
@@ -94,6 +91,6 @@ public interface QuestionLibDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean addQuestion(ArrayList<Question> questionList,int questionLibId) throws Exception;
+	public boolean addQuestion(ArrayList<QuestionEntity> questionList,int questionLibId) throws Exception;
 	
 }

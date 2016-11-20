@@ -13,6 +13,10 @@ package cn.nsu.ccl.teacher.dao.impl;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Repository;
+
 import cn.nsu.ccl.comm.Envirment.ComEnviorment;
 import cn.nsu.ccl.teacher.dao.StudentDao;
 import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
@@ -25,6 +29,7 @@ import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
  * @email:2213974854@qq.com
  * @date 2016年11月18日 下午4:40:01
  */
+@Repository
 public class StudentDaoImpl extends ComEnviorment implements StudentDao {
 
 	/**

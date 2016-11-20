@@ -14,10 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.nsu.ccl.teacher.dao.impl.ExamDaoImpl;
-import cn.nsu.ccl.teacher.dao.impl.QuestionLibDaoImpl;
 import cn.nsu.ccl.teacher.dao.impl.StudentDaoImpl;
 import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
-import cn.nsu.ccl.teacher.entity.QuestionListEntity;
 import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 import cn.nsu.ccl.teacher.service.ExamService;
 

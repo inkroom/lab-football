@@ -13,7 +13,7 @@ package cn.nsu.ccl.teacher.entity;
 /**
  * <p>QuestionListEntity类的描述</p>
  * @ClassName: QuestionListEntity
- * @Description: TODO(题库实体类)
+ * @Description: 题库列表实体类
  * @author: 蒋玖宏
  * @email:2213974854@qq.com
  * @date 2016年11月18日 下午3:16:07

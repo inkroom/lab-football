@@ -13,7 +13,7 @@ package cn.nsu.ccl.teacher.entity;
 /**
  * <p>StudentInfoEntity类的描述</p>
  * @ClassName: StudentInfoEntity
- * @Description: TODO(学生属性类)
+ * @Description: 学生属性实体类
  * @author: 蒋玖宏
  * @email:2213974854@qq.com
  * @date 2016年11月18日 下午3:15:37

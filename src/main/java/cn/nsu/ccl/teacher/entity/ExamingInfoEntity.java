@@ -13,7 +13,7 @@ package cn.nsu.ccl.teacher.entity;
 /**
  * <p>Examing类的描述</p>
  * @ClassName: Examing
- * @Description: TODO(这里用一句话描述这个类的作用)
+ * @Description: 考试状态实体类
  * @author: 蒋玖宏
  * @email:2213974854@qq.com
  * @date 2016年11月19日 下午12:05:35

@@ -13,7 +13,7 @@ package cn.nsu.ccl.teacher.entity;
 /**
  * <p>ExamInfoEntity类的描述</p>
  * @ClassName: ExamInfoEntity
- * @Description: TODO(试卷实体类)
+ * @Description: 试卷实体类
  * @author: 蒋玖宏
  * @email:2213974854@qq.com
  * @date 2016年11月18日 下午3:15:00

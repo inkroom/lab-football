@@ -3,11 +3,6 @@ package cn.nsu.ccl.teacher.dao;
 import java.util.List;
 import java.util.Map;
 
-import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
-import cn.nsu.ccl.teacher.entity.QuestionListEntity;
-import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
-
-import java.util.ArrayList;
 /**
  * 
  * 描述：与数据库之间关于教师属性类的实现接口

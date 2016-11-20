@@ -5,9 +5,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
-import cn.nsu.ccl.teacher.entity.QuestionListEntity;
 import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 
+/**
+ * 
+ * <p>考试的增删查改的实现</p>
+ * @ClassName: ExamService
+ * @Description: TODO
+ * @author 暴沸 baofeidyz@foxmail.com
+ * @date 2016年11月20日 下午5:41:46
+ */
 public interface ExamService {
 	
 	//生成考生信息模版

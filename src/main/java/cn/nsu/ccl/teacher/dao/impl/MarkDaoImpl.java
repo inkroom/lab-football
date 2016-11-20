@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import cn.nsu.ccl.comm.Envirment.ComEnviorment;
 import cn.nsu.ccl.teacher.dao.MarkDao;
 
@@ -25,6 +27,7 @@ import cn.nsu.ccl.teacher.dao.MarkDao;
  * @email:2213974854@qq.com
  * @date 2016年11月19日 下午4:52:33
  */
+@Repository
 public class MarkDaoImpl extends ComEnviorment implements MarkDao {
 
 	/**

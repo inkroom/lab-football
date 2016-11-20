@@ -3,7 +3,15 @@ package cn.nsu.ccl.teacher.service;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public interface StudentGradeService {
+/**
+ * 
+ * <p>实现对学生成绩信息的各项操作</p>
+ * @ClassName: MarkService
+ * @Description: TODO
+ * @author 暴沸 baofeidyz@foxmail.com
+ * @date 2016年11月20日 下午5:43:57
+ */
+public interface MarkService {
  
 	/**
 	 * 

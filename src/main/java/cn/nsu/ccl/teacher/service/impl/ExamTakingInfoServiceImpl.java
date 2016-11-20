@@ -12,7 +12,7 @@ import cn.nsu.ccl.teacher.dao.impl.ExamDaoImpl;
 import cn.nsu.ccl.teacher.dao.impl.StudentDaoImpl;
 import cn.nsu.ccl.teacher.entity.ExamingInfoEntity;
 import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
-import cn.nsu.ccl.teacher.service.ExamTakingInfoService;
+import cn.nsu.ccl.teacher.service.ExamingInfoService;
 
 
 /**
@@ -24,7 +24,7 @@ import cn.nsu.ccl.teacher.service.ExamTakingInfoService;
  * 创建时间：2016年8月30日 上午8:37:00
  */
 @Service
-public class ExamTakingInfoServiceImpl implements ExamTakingInfoService {
+public class ExamTakingInfoServiceImpl implements ExamingInfoService {
 	
 	@Autowired
 	private ExamDaoImpl examDao;

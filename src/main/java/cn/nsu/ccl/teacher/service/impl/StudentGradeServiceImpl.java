@@ -18,12 +18,12 @@ import org.springframework.stereotype.Service;
 import cn.nsu.ccl.teacher.dao.impl.MarkDaoImpl;
 import cn.nsu.ccl.teacher.entity.AnswerEntity;
 import cn.nsu.ccl.teacher.entity.MarkEntity;
-import cn.nsu.ccl.teacher.service.StudentGradeService;
+import cn.nsu.ccl.teacher.service.MarkService;
 
 
 
 @Service
-public class StudentGradeServiceImpl implements StudentGradeService{
+public class StudentGradeServiceImpl implements MarkService{
 	
 	@Autowired
 	private MarkDaoImpl markDao;

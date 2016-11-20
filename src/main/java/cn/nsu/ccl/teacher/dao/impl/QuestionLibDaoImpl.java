@@ -14,9 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import cn.nsu.ccl.comm.Envirment.ComEnviorment;
 import cn.nsu.ccl.teacher.dao.QuestionLibDao;
-import cn.nsu.ccl.teacher.entity.Question;
+import cn.nsu.ccl.teacher.entity.QuestionEntity;
 
 /**
  * <p>QuestionListDaoImpl类的描述</p>
@@ -26,6 +28,7 @@ import cn.nsu.ccl.teacher.entity.Question;
  * @email:2213974854@qq.com
  * @date 2016年11月18日 下午4:49:40
  */
+@Repository
 public class QuestionLibDaoImpl extends ComEnviorment implements QuestionLibDao {
 
 	
@@ -102,10 +105,10 @@ public class QuestionLibDaoImpl extends ComEnviorment implements QuestionLibDao 
 	 * @see cn.nsu.ccl.teacher.dao.QuestionLibDao#addQuestion(java.util.ArrayList, int)
 	 */
 	@Override
-	public boolean addQuestion(ArrayList<Question> questionList, int questionLibId) throws Exception {
+	public boolean addQuestion(ArrayList<QuestionEntity> questionList, int questionLibId) throws Exception {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < questionList.size(); i++) {
-			Question question= questionList.get(i);
+			QuestionEntity question= questionList.get(i);
 			String sql=GET_SQL(new String[]{
 					(i+1)+"", 							//题号
 					questionLibId+"",					//题库编号
