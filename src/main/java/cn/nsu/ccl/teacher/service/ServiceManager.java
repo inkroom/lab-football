@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.nsu.ccl.teacher.service.impl.ExamServiceImpl;
-import cn.nsu.ccl.teacher.service.impl.ExamTakingInfoServiceImpl;
+import cn.nsu.ccl.teacher.service.impl.ExamingServiceImpl;
 import cn.nsu.ccl.teacher.service.impl.StudentGradeServiceImpl;
 import cn.nsu.ccl.teacher.service.impl.TeacherServiceImpl;
 
@@ -32,7 +32,7 @@ public class ServiceManager {
 	@Autowired
 	private ExamServiceImpl examService;
 	@Autowired
-	private ExamTakingInfoServiceImpl examTakingInfoService;
+	private ExamingServiceImpl examingService;
 	@Autowired
 	private StudentGradeServiceImpl serviceImpl;
 	
@@ -65,18 +65,18 @@ public class ServiceManager {
 		this.examService = examService;
 	}
 	/**
-	 * <p>examTakingInfoService的get函数</p>
-	 * @return 返回 examTakingInfoService 的值
+	 * <p>examingService的get函数</p>
+	 * @return 返回 examingService 的值
 	 */
-	public ExamTakingInfoServiceImpl getExamTakingInfoService() {
-		return examTakingInfoService;
+	public ExamingServiceImpl getExamingService() {
+		return examingService;
 	}
 	/**
-	 * <p>examTakingInfoService的set函数</p>
-	 * @param examTakingInfoService 要设置的值
+	 * <p>examingService的set函数</p>
+	 * @param examingService 要设置的值
 	 */
-	public void setExamTakingInfoService(ExamTakingInfoServiceImpl examTakingInfoService) {
-		this.examTakingInfoService = examTakingInfoService;
+	public void setExamingService(ExamingServiceImpl examingService) {
+		this.examingService = examingService;
 	}
 	/**
 	 * <p>serviceImpl的get函数</p>

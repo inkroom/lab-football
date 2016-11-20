@@ -57,7 +57,7 @@ public interface ExamDao {
      * @param e
 	 * @return
 	 */
-	public boolean editExamInfo( ExamInfoEntity e) throws Exception;
+	public boolean updateExamInfo( ExamInfoEntity e) throws Exception;
 	/**
 	 * <p>deleExamInfo方法的描述</p>
 	 * @Title: ExamDao的deleExamInfo方法
@@ -81,7 +81,7 @@ public interface ExamDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Map<String, Object>> getExamState(int examId) throws Exception;
+	public List<Map<String, Object>> getExaming(int examId) throws Exception;
 	/**
 	 * <p>updateToken方法的描述</p>
 	 * @Title: ExamDao的updateToken方法

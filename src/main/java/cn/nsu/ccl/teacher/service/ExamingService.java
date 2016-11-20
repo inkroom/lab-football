@@ -12,7 +12,7 @@ import cn.nsu.ccl.teacher.entity.ExamingInfoEntity;
  * 联系方式：admin@baofeidyz.com
  * 创建时间：2016年8月30日 上午8:35:32
  */
-public interface ExamingInfoService {
+public interface ExamingService {
 	
 	/**
 	 * 
@@ -25,7 +25,7 @@ public interface ExamingInfoService {
 	 * 创建时间：2016年8月30日 下午7:52:31
 	 * @return
 	 */
-	public ArrayList<ExamingInfoEntity> getExamTokingInfo(int examId);
+	public ArrayList<ExamingInfoEntity> getExaming(int examId);
 	/**
 	 * 
 	 * 描述：生成并返回一个教师口令Token
@@ -38,7 +38,6 @@ public interface ExamingInfoService {
 	 * @return
 	 */
 	public String createToken(String teacherId,int examId);
-	
 	/**
 	 * 
 	 * 描述：存储备注

@@ -9,7 +9,7 @@ import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 
 /**
  * 
- * <p>考试的增删查改的实现</p>
+ * <p>考试试卷的增删查改的实现</p>
  * @ClassName: ExamService
  * @Description: TODO
  * @author 暴沸 baofeidyz@foxmail.com
@@ -23,7 +23,7 @@ public interface ExamService {
 	public  boolean addExamInfo(ExamInfoEntity examInfo);
 	//将上传的学生信息模版转为ArrayList
 	public  ArrayList<StudentInfoEntity> excelToList(String URL) throws IOException;
-	//获取考试信息
+	//获取全部的考试信息
 	public  ArrayList<ExamInfoEntity> getExamInfo(String teacherId);		
 	public  boolean deleteExamInfo(int examId);
 //	public ArrayList <QuestionListEntity> getQuestionList();

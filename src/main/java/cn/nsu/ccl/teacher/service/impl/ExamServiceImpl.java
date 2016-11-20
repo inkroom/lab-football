@@ -87,7 +87,6 @@ public class ExamServiceImpl implements ExamService{
 	 * 添加考试信息
 	 */
 	public boolean addExamInfo(ExamInfoEntity examInfo) {
-		
 		try {
 			return examInfoDao.addExamInfo(examInfo);
 		} catch (Exception e) {

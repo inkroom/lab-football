@@ -12,7 +12,7 @@ import cn.nsu.ccl.teacher.dao.impl.ExamDaoImpl;
 import cn.nsu.ccl.teacher.dao.impl.StudentDaoImpl;
 import cn.nsu.ccl.teacher.entity.ExamingInfoEntity;
 import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
-import cn.nsu.ccl.teacher.service.ExamingInfoService;
+import cn.nsu.ccl.teacher.service.ExamingService;
 
 
 /**
@@ -24,7 +24,7 @@ import cn.nsu.ccl.teacher.service.ExamingInfoService;
  * 创建时间：2016年8月30日 上午8:37:00
  */
 @Service
-public class ExamTakingInfoServiceImpl implements ExamingInfoService {
+public class ExamingServiceImpl implements ExamingService {
 	
 	@Autowired
 	private ExamDaoImpl examDao;
@@ -47,15 +47,46 @@ public class ExamTakingInfoServiceImpl implements ExamingInfoService {
 			return list;
 	}
 	
+
 	/**
-	 * 设置是否缺考信息，并且 获取考试状态信息-by暴沸
+	 * 
+	 * <p>覆盖的getExaming函数--获取不带考试缺考状态的考试状态信息</p>
+	 * @param examid
+	 * @return
+	 * @see cn.nsu.ccl.teacher.service.ExamingService#getExaming(int)
 	 */
-	public ArrayList<ExamingInfoEntity> getExamTokingInfo(int examId) {
-		
+	public ArrayList<ExamingInfoEntity> getExaming(int examid){
+		List<Map<String, Object>> listMap = examDao.getExaming(examid);
+		ArrayList<ExamingInfoEntity> list = new ArrayList<ExamingInfoEntity>();
+		for (int i = 0; i < listMap.size(); i++) {
+			ExamingInfoEntity examTakingInfo = new ExamingInfoEntity();
+			Map<String, Object> map = listMap.get(i);
+			examTakingInfo.setStudentNumber(map.get("studentId").toString());
+			examTakingInfo.setStudentName(map.get("studentName").toString());
+			examTakingInfo.setState(map.get("studentStatus").toString());
+			examTakingInfo.setBrowserInfo(map.get("browser").toString());
+			examTakingInfo.setIp(map.get("ipAddr").toString());
+			examTakingInfo.setNote(map.get("remark")+"");
+			list.add(examTakingInfo);
+		}
+		return list;
+	}
+	
+	/**
+	 * 
+	 * <p>setQuekao方法的描述</p>
+	 * @Title: ExamingServiceImpl的setQuekao方法
+	 * @Description: 获取带有缺考标记的考试状态信息
+	 * @author 暴沸 baofeidyz@foxmail.com
+	 * @date 2016年11月20日 下午7:10:27
+	 * @param examId
+	 * @return
+	 */
+	public ArrayList<ExamingInfoEntity> setQuekao(int examId) {
 		//用于保存新的考试信息
 		ArrayList<ExamingInfoEntity> newExamTakingList = new ArrayList<>();
-		
-		ArrayList<ExamingInfoEntity> examTakingInfoList = examDao.getExamTakingInfo(examId);
+		//根据考试id获取该堂考试的考试状态信息
+		ArrayList<ExamingInfoEntity> examTakingInfoList = this.getExaming(examId);
 		ArrayList<StudentInfoEntity> studentList = this.getStudentInfo(examId);
 		if (!examTakingInfoList.isEmpty()&&!studentList.isEmpty()) {
 			//将应参加的学生信息存入
@@ -103,9 +134,9 @@ public class ExamTakingInfoServiceImpl implements ExamingInfoService {
 	 */
 	public String createToken(String teacherId,int examId) {
 		String token = this.RandomString(6);
-		//将token存入数据库
-		if(examDao.updateToken(token, examId)==true)
+		if(examDao.updateToken(token, examId)==true){
 			return token;
+		}
 		return null;
 	}
 	
@@ -133,7 +164,13 @@ public class ExamTakingInfoServiceImpl implements ExamingInfoService {
 	}
 
 	/**
-	 * 存储备注信息
+	 * 
+	 * <p>实现在考试状态信息存储学生备注信息的功能</p>
+	 * @param note
+	 * @param studentNumber
+	 * @param examId
+	 * @return
+	 * @see cn.nsu.ccl.teacher.service.ExamingService#setNote(java.lang.String, java.lang.String, int)
 	 */
 	public boolean setNote(String note, String studentNumber, int examId) {
 		

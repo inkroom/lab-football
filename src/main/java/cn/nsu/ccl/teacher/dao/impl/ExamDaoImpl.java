@@ -37,66 +37,60 @@ public class ExamDaoImpl extends ComEnviorment implements ExamDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	/**
-	 * <p>覆盖的getExamInfo函数</p>
+	 * 
+	 * <p>覆盖的getExamInfo函数-获取全部的考试信息</p>
 	 * @return
 	 * @see cn.nsu.ccl.teacher.dao.ExamDao#getExamInfo()
 	 */
 	public List<Map<String, Object>> getExamInfo() {
 		String sql= "call getExamInfo()";
-		return jt.queryForList(sql);
+		return jdbcTemplate.queryForList(sql);
 	}
 
 	/**
-	 * <p>覆盖的deleExamInfo函数</p>
+	 * <p>覆盖的deleExamInfo函数--通过考试id删除考试信息</p>
 	 * @return
-	 * @throws Exception 
 	 * @see cn.nsu.ccl.teacher.dao.ExamDao#deleExamInfo()
 	 */
-	@Override
-	public boolean deleteExamInfo(int examId) throws Exception {
-		// TODO Auto-generated method stub
-		String sql=GET_SQL(new String[]{examId+""}, "call deleteExamInfo(?)");
-		return jt.update(sql)==1;
+	public boolean deleteExamInfo(int examId){
+		String sql = "call deleteExamInfo(?)";
+		return jdbcTemplate.update(sql,examId)==1;
 	}
 
 	/**
-	 * <p>覆盖的addExamInfo函数</p>
+	 * <p>覆盖的addExamInfo函数-添加一个考试信息</p>
 	 * @return
 	 * @throws Exception 
 	 * @see cn.nsu.ccl.teacher.dao.ExamDao#addExamInfo()
 	 */
-	@Override
-	public boolean addExamInfo(ExamInfoEntity e) throws Exception {
-		// TODO Auto-generated method stub
-		
-			String sql= GET_SQL(new String[]{
-					e.getExamName(), 				//考试名字
-					e.getTeacherId(),				//教师编号
-					e.getQuestionListNumber()+"",	//题库编号（由数据库自动生成）
-					e.getChoiceNumber(),			//选择题个数
-					e.getMultiputeChoiceNumber(),	//多选题个数
-					e.getJudgeNumber(),				//判断题个数
-					e.getChoiceScore(),				//选择题分数
-					e.getJudgeScore(),				//判断题分数
-					e.getMultiputeChoiceScore(),	//多选题分数
-					e.getStartTime(),				//考试开始时间
-					e.getEndTime()},				//考试结束时间
-					"call setExamInfo('?','?','?','?','?','?','?','?','?','?','?')");
-					return jt.update(sql)==1;
+	public boolean addExamInfo(ExamInfoEntity e){
+		String sql = "call setExamInfo('?','?','?','?','?','?','?','?','?','?','?')";
+		int i = jdbcTemplate.update(sql,
+				e.getExamName(), 				//考试名字
+				e.getTeacherId(),				//教师编号
+				e.getQuestionListNumber()+"",	//题库编号（由数据库自动生成）
+				e.getChoiceNumber(),			//选择题个数
+				e.getMultiputeChoiceNumber(),	//多选题个数
+				e.getJudgeNumber(),				//判断题个数
+				e.getChoiceScore(),				//选择题分数
+				e.getJudgeScore(),				//判断题分数
+				e.getMultiputeChoiceScore(),	//多选题分数
+				e.getStartTime(),				//考试开始时间
+				e.getEndTime()				//考试结束时间
+				);
+		return i==1;
 	}
 
 
 
 
 	/**
-	 * <p>覆盖的editExamInfo函数</p>
+	 * <p>覆盖的editExamInfo函数--修改（更新）考试信息</p>
 	 * @param examId
 	 * @return
 	 * @see cn.nsu.ccl.teacher.dao.ExamDao#editExamInfo(int)
 	 */
-	@Override
-	public boolean editExamInfo(ExamInfoEntity e) throws Exception{
-		// TODO Auto-generated method stub
+	public boolean updateExamInfo(ExamInfoEntity e) throws Exception{
 		String sql= GET_SQL(new String[]{
 				e.getExamName(), 				//考试名字
 				e.getTeacherId(),				//教师编号
@@ -110,45 +104,37 @@ public class ExamDaoImpl extends ComEnviorment implements ExamDao {
 				e.getStartTime(),				//考试开始时间
 				e.getEndTime()},				//考试结束时间
 		 "call editExamInfo('?','?','?','?','?','?','?','?','?','?','?')");
-		return jt.update(sql)==1;
+		return jdbcTemplate.update(sql)==1;
 	}
 
 	/**
-	 * <p>覆盖的getExamState函数</p>
+	 * <p>覆盖的getExamState函数--通过考试id获取考试状态信息数据</p>
 	 * @param examId
 	 * @return
 	 * @throws Exception
 	 * @see cn.nsu.ccl.teacher.dao.ExamDao#getExamState(int)
 	 */
-	@Override
-	public List<Map<String, Object>> getExamState(int examId) throws Exception {
-		// TODO Auto-generated method stub
-		String sql = GET_SQL(new String[]{examId+""}, "call getExamInfo_Student(?)");
-		return jt.queryForList(sql);
+	public List<Map<String, Object>> getExaming(int examId){
+		String sql = "call getExamInfo_Student(?)";
+		return jdbcTemplate.queryForList(sql,examId);
 	
 	}
 
 	/**
-	 * <p>覆盖的updateToken函数</p>
+	 * <p>覆盖的updateToken函数--</p>
 	 * @param token
 	 * @param examId
 	 * @return
 	 * @throws Exception
 	 * @see cn.nsu.ccl.teacher.dao.ExamDao#updateToken(java.lang.String, int)
 	 */
-	@Override
 	public boolean updateToken(String token, int examId){
-		String sql = null;
-		try {
-			sql = GET_SQL(new String[]{examId+"",token}, "call setKeyword(?,?)");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return jt.update(sql)==1;
+		String sql = "call setKeyword(?,?)";
+		return jdbcTemplate.update(sql,examId,token)==1;
 	}
 
 	/**
-	 * <p>覆盖的updateNote函数</p>
+	 * <p>覆盖的updateNote函数--修改（更新在考试状态表中的学生的备注信息）</p>
 	 * @param note
 	 * @param studentNumber
 	 * @param examId
@@ -156,37 +142,23 @@ public class ExamDaoImpl extends ComEnviorment implements ExamDao {
 	 * @throws Exception
 	 * @see cn.nsu.ccl.teacher.dao.ExamDao#updateNote(java.lang.String, java.lang.String, int)
 	 */
-	@Override
 	public boolean updateNote(String note, String studentNumber, int examId){
-		String sql = null;
-		try {
-			sql = GET_SQL(new String[]{examId+"", studentNumber,note},"call updateRemark(?,?,?)");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return jt.update(sql)==1;
+		String sql = "call updateRemark(?,?,?)";
+		return jdbcTemplate.update(sql,examId,studentNumber,note)==1;
 	}
 	
 	/**
-	 * 获取考试状态信息
+	 * 
+	 * <p>getExamTakingInfo方法的描述</p>
+	 * @Title: ExamDaoImpl的getExamTakingInfo方法
+	 * @Description: 根据考试id获取所有的考试状态信息
+	 * @author 暴沸 baofeidyz@foxmail.com
+	 * @date 2016年11月20日 下午6:59:58
+	 * @param examId
+	 * @return
 	 */
-	public ArrayList<ExamingInfoEntity> getExamTakingInfo(int examId) {
-		List<Map<String, Object>> listMap = null;
-		ArrayList<ExamingInfoEntity> list = new ArrayList<ExamingInfoEntity>();
-		listMap = jdbcTemplate.queryForList("{call getExamInfo_Student(?)}",new Object[]{examId});
-		for (int i = 0; i < listMap.size(); i++) {
-			ExamingInfoEntity examTakingInfo = new ExamingInfoEntity();
-			Map<String, Object> map = listMap.get(i);
-			examTakingInfo.setStudentNumber(map.get("studentId").toString());
-			examTakingInfo.setStudentName(map.get("studentName").toString());
-			examTakingInfo.setState(map.get("studentStatus").toString());
-			examTakingInfo.setBrowserInfo(map.get("browser").toString());
-			examTakingInfo.setIp(map.get("ipAddr").toString());
-			examTakingInfo.setNote(map.get("remark")+"");
-			list.add(examTakingInfo);
-		}
-		return list;
-	
+	public List<Map<String, Object>> getExamingInfo(int examId) {
+		return jdbcTemplate.queryForList("{call getExamInfo_Student(?)}",new Object[]{examId});
 	}
 
 	
