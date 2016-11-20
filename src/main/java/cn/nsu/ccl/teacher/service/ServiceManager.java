@@ -35,6 +35,7 @@ public class ServiceManager {
 	private ExamingServiceImpl examingService;
 	@Autowired
 	private MarkServiceImpl serviceImpl;
+
 	
 	/**
 	 * <p>teacherService的get函数</p>
