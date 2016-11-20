@@ -23,7 +23,7 @@ import cn.nsu.ccl.teacher.service.MarkService;
 
 
 @Service
-public class StudentGradeServiceImpl implements MarkService{
+public class MarkServiceImpl implements MarkService{
 	
 	@Autowired
 	private MarkDaoImpl markDao;

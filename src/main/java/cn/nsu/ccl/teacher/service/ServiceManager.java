@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import cn.nsu.ccl.teacher.service.impl.ExamServiceImpl;
 import cn.nsu.ccl.teacher.service.impl.ExamingServiceImpl;
-import cn.nsu.ccl.teacher.service.impl.StudentGradeServiceImpl;
+import cn.nsu.ccl.teacher.service.impl.MarkServiceImpl;
 import cn.nsu.ccl.teacher.service.impl.TeacherServiceImpl;
 
 /**
@@ -34,7 +34,7 @@ public class ServiceManager {
 	@Autowired
 	private ExamingServiceImpl examingService;
 	@Autowired
-	private StudentGradeServiceImpl serviceImpl;
+	private MarkServiceImpl serviceImpl;
 	
 	/**
 	 * <p>teacherService的get函数</p>
@@ -82,14 +82,14 @@ public class ServiceManager {
 	 * <p>serviceImpl的get函数</p>
 	 * @return 返回 serviceImpl 的值
 	 */
-	public StudentGradeServiceImpl getServiceImpl() {
+	public MarkServiceImpl getServiceImpl() {
 		return serviceImpl;
 	}
 	/**
 	 * <p>serviceImpl的set函数</p>
 	 * @param serviceImpl 要设置的值
 	 */
-	public void setServiceImpl(StudentGradeServiceImpl serviceImpl) {
+	public void setServiceImpl(MarkServiceImpl serviceImpl) {
 		this.serviceImpl = serviceImpl;
 	}
 	
