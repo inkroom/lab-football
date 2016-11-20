@@ -52,10 +52,10 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="teacherExam">编辑现有题库</a>
+                                <a class="J_menuItem" href="teacherEditQuestionLib">编辑现有题库</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="teacherExamination">编辑现有考试</a>
+                                <a class="J_menuItem" href="teacherEditExam">编辑现有考试</a>
                             </li>
                         </ul>
                     </li>
@@ -69,15 +69,15 @@
                                 <a class="J_menuItem" href="javascript:void(0);" onclick="downloadExamDemo()">下载题库模版</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="teacherCreateExam">导入题库数据</a>
+                                <a class="J_menuItem" href="teacherCreateQuestionLib">导入题库数据</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="teacherCreateExamination">创建考试信息</a>
+                                <a class="J_menuItem" href="teacherCreateExam">创建考试信息</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="teacherStartExamination">
+                        <a href="teacherStartExam">
                             <span class="nav-label">开始考试</span>
                         </a>
                     </li>
@@ -86,7 +86,7 @@
                         <span class="ng-scope">成绩管理</span>
                     </li>
                     <li>
-                        <a href="teacherShowExaminationScore"><span class="nav-label">查看成绩</span></a>
+                        <a href="teacherShowMark"><span class="nav-label">查看成绩</span></a>
                     </li>
                     </ul>
                     </div>
@@ -123,7 +123,7 @@
     <script type="text/javascript">
     function downloadExamDemo(){
     	console.log("123");
-    	window.open("teacherDownloadExamDemo");
+    	window.open("downloadQuestionLibDemo");
     }
     </script>
 </body>

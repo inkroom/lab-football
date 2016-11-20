@@ -37,7 +37,7 @@ public class ExamManagerController {
 	 * @date 2016年11月20日 下午4:47:48
 	 * @return
 	 */
-	@RequestMapping(value="teacherCreateExamination",method=RequestMethod.POST)
+	@RequestMapping(value="teacherCreateExamination")
 	public String toCreateExam(){
 		return "teacher/createExamInfo";
 	}
