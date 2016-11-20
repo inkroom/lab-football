@@ -34,7 +34,7 @@ public class ServiceManager {
 	@Autowired
 	private ExamingServiceImpl examingService;
 	@Autowired
-	private MarkServiceImpl serviceImpl;
+	private MarkServiceImpl markServiceImpl;
 	
 	/**
 	 * <p>teacherService的get函数</p>
@@ -79,18 +79,17 @@ public class ServiceManager {
 		this.examingService = examingService;
 	}
 	/**
-	 * <p>serviceImpl的get函数</p>
-	 * @return 返回 serviceImpl 的值
+	 * <p>markServiceImpl的get函数</p>
+	 * @return 返回 markServiceImpl 的值
 	 */
-	public MarkServiceImpl getServiceImpl() {
-		return serviceImpl;
+	public MarkServiceImpl getMarkServiceImpl() {
+		return markServiceImpl;
 	}
 	/**
-	 * <p>serviceImpl的set函数</p>
-	 * @param serviceImpl 要设置的值
+	 * <p>markServiceImpl的set函数</p>
+	 * @param markServiceImpl 要设置的值
 	 */
-	public void setServiceImpl(MarkServiceImpl serviceImpl) {
-		this.serviceImpl = serviceImpl;
+	public void setMarkServiceImpl(MarkServiceImpl markServiceImpl) {
+		this.markServiceImpl = markServiceImpl;
 	}
-	
 }

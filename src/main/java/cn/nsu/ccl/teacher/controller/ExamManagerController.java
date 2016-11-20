@@ -9,6 +9,8 @@
  */
 package cn.nsu.ccl.teacher.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,9 +39,11 @@ public class ExamManagerController {
 	 * @date 2016年11月20日 下午4:47:48
 	 * @return
 	 */
-	@RequestMapping(value="teacherCreateExamination")
-	public String toCreateExam(){
-		return "teacher/createExamInfo";
+	@RequestMapping(value="teacherCreateExam")
+	public String toCreateExam(HttpSession session){
+		//获取已经登录的教师姓名
+		String teacherName = (String)session.getAttribute("teacherName");
+		return "teacher/exam/createExamInfo";
 	}
 	
 	

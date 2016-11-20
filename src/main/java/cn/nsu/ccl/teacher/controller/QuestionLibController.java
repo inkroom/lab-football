@@ -73,7 +73,7 @@ public class QuestionLibController {
 	 * @date 2016年11月19日 下午2:01:47
 	 * @return
 	 */
-	@RequestMapping(value="teacherCreateExam")
+	@RequestMapping(value="teacherCreateQuestionLib")
 	public String toCreatExam(){
 		return "teacher/questionLib/createQuestionLib";
 	}
