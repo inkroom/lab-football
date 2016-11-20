@@ -10,7 +10,7 @@ package cn.nsu.ccl.teacher.entity;
  */
 public class TeacherEntity {
 
-	//教师登录帐号，唯一识别ID
+	//教师登录帐号，唯一识别ID,邮箱帐号
 	private String id;
 	//教师登录密码
 	private String password;

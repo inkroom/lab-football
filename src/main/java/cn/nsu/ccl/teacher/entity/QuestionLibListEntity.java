@@ -18,7 +18,7 @@ package cn.nsu.ccl.teacher.entity;
  * @email:2213974854@qq.com
  * @date 2016年11月18日 下午3:16:07
  */
-public class QuestionListEntity {
+public class QuestionLibListEntity {
 	private int libraryId;					//题库编号
 	private String libraryName;				//题库名字
 	private String choiceNumber;			//单选题个数

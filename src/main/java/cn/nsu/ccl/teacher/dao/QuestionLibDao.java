@@ -39,7 +39,7 @@ public interface QuestionLibDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Map<String, Object>> getQuestionlib(int teacherId) throws Exception;
+	public List<Map<String, Object>> getQuestionLibList() throws Exception;
 	
 	/**
 	 * <p>addQuestionList方法的描述</p>
