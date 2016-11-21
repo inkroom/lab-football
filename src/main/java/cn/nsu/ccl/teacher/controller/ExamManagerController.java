@@ -11,6 +11,7 @@ package cn.nsu.ccl.teacher.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +44,15 @@ public class ExamManagerController {
 	 * @return
 	 */
 	@RequestMapping(value="teacherCreateExam")
-	public String toCreateExam(HttpSession session){
+	public String toCreateExam(HttpServletRequest request,HttpSession session){
 		//获取已经登录的教师姓名
-		String teacherName = (String)session.getAttribute("teacherName");
+		String teacherEmail = (String)session.getAttribute("teacherEmail");
+		System.out.println("teacherEmail="+teacherEmail);
 		//获取题库列表信息
-		ArrayList<QuestionLibListEntity> questionLibList = service.get
+		ArrayList<QuestionLibListEntity> questionLibList = service.getQuestionLibService().getQuestionLibListByTeacherEmail(teacherEmail);
+		System.out.println(questionLibList.size());
+		//将题库信息存到请求request中
+		request.setAttribute("questionLibList", questionLibList);
 		return "teacher/exam/createExamInfo";
 	}
 	

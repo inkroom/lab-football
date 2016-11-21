@@ -42,8 +42,8 @@ public class LoginController {
 		if (service.getTeacherService().login(teacherName, teacherPassword)) {
 			//存入session一个登录成功信息
 			session.setAttribute("state", "success");
-			//将教师姓名存入session
-			session.setAttribute("teacherName", teacherName);
+			//将教师邮箱存入session
+			session.setAttribute("teacherEmail", teacherName);
 			//登录成功则在jsonObject中存入state表示登录成功，并传回前端表示登录成功
 			jsonObject.put("state", "success");
 		}else{

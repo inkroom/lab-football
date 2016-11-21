@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.nsu.ccl.teacher.dao.impl.QuestionLibDaoImpl;
 import cn.nsu.ccl.teacher.entity.QuestionEntity;
@@ -27,6 +28,7 @@ import cn.nsu.ccl.teacher.service.QestionLibService;
  * @author 暴沸 baofeidyz@foxmail.com
  * @date 2016年11月20日 下午8:02:56
  */
+@Service
 public class QuestionLibServiceImpl implements QestionLibService {
 	@Autowired
 	private QuestionLibDaoImpl questionLibDao;

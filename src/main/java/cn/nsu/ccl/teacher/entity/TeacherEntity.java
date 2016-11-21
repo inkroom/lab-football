@@ -10,21 +10,10 @@ package cn.nsu.ccl.teacher.entity;
  */
 public class TeacherEntity {
 
-<<<<<<< HEAD
-	//教师登录帐号，唯一识别ID,邮箱帐号
-	private String id;
-=======
 	//教师登录帐号，唯一识别ID,教师用邮箱作为唯一标识
 	private String email;
->>>>>>> 39a62f519a82e0a4809e03700e32a7fd10a7a652
 	//教师登录密码
 	private String password;
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	//教师所属系部
 	private String department;
 	//教师真实姓名
@@ -47,5 +36,11 @@ public class TeacherEntity {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
