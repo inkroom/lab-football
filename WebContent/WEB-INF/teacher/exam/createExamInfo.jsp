@@ -217,8 +217,6 @@
                 "width": "90%",
                 "height": "100%"
             });
-
-
         });
 
         function fnClickAddRow() {
@@ -359,11 +357,12 @@
                     if(request.status===200){
                         //使用JSON.parse方法格式化返回的json数据
                         var data = JSON.parse(request.responseText);
+                        console.log(data);
+                        console.log(data.state);
                     }
                 }
             }
-        };
-
+        }
     </script>
     
     

@@ -10,7 +10,6 @@
  */
 package cn.nsu.ccl.teacher.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Repository;
 import cn.nsu.ccl.comm.Envirment.ComEnviorment;
 import cn.nsu.ccl.teacher.dao.ExamDao;
 import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
-import cn.nsu.ccl.teacher.entity.ExamingInfoEntity;
 
 /**
  * <p>ExamDaoImpl类的描述</p>
@@ -64,19 +62,37 @@ public class ExamDaoImpl extends ComEnviorment implements ExamDao {
 	 * @see cn.nsu.ccl.teacher.dao.ExamDao#addExamInfo()
 	 */
 	public boolean addExamInfo(ExamInfoEntity e){
-		String sql = "call setExamInfo('?','?','?','?','?','?','?','?','?','?','?')";
+		String sql = "insert into Exam( libraryId,teacherUsername,examName,keyword,"
+				+ "startTime,endTime,sChoice,mChoice,tofQuestion,"
+				+ "sScore,mScore,tofScore)values (?,?,?,?,?,?,?,?,?,?,?,?)";
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("题库id="+e.getQuestionListNumber());
+		System.out.println("考试名字="+e.getExamName());
+		System.out.println("考试开始时间="+e.getStartTime());
+		System.out.println("考试结束时间="+e.getEndTime());
+		System.out.println("选择题个数="+e.getChoiceNumber());
+		System.out.println("多选题个数="+e.getMultiputeChoiceNumber());
+		System.out.println("判断题个数="+e.getJudgeNumber());
+		System.out.println("单选题分数="+e.getChoiceScore());
+		System.out.println("多选题分数="+e.getMultiputeChoiceScore());
+		System.out.println("判断题分数="+e.getJudgeScore());
+		System.out.println("教师邮箱="+e.getTeacherId());
 		int i = jdbcTemplate.update(sql,
-				e.getExamName(), 				//考试名字
-				e.getTeacherId(),				//教师编号
 				e.getQuestionListNumber()+"",	//题库编号（由数据库自动生成）
+				e.getTeacherId(),				//教师邮箱帐号
+				e.getExamName(), 				//考试名字
+				"这是一个keyword的初始值#@%……￥GEY%Y~`.",//keyword的初始值
+				e.getStartTime(),				//考试开始时间
+				e.getEndTime(),					//考试结束时间
 				e.getChoiceNumber(),			//选择题个数
 				e.getMultiputeChoiceNumber(),	//多选题个数
 				e.getJudgeNumber(),				//判断题个数
-				e.getChoiceScore(),				//选择题分数
-				e.getJudgeScore(),				//判断题分数
-				e.getMultiputeChoiceScore(),	//多选题分数
-				e.getStartTime(),				//考试开始时间
-				e.getEndTime()				//考试结束时间
+				e.getChoiceScore(),				//单选题分数
+				e.getMultiputeChoiceScore(), 	//多选题分数
+				e.getJudgeScore()				//判断题分数
 				);
 		return i==1;
 	}

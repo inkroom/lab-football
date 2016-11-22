@@ -9,17 +9,19 @@
  */
 package cn.nsu.ccl.teacher.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.xmlbeans.impl.xb.xsdschema.impl.PublicImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
 import cn.nsu.ccl.teacher.entity.QuestionLibListEntity;
 import cn.nsu.ccl.teacher.service.ServiceManager;
 import net.sf.json.JSONObject;
@@ -39,6 +41,8 @@ public class ExamManagerController {
 	private HttpSession session;
 	@Autowired
 	private HttpServletRequest request;
+	@Autowired
+	private HttpServletResponse response;
 	
 	/**
 	 * 
@@ -64,21 +68,49 @@ public class ExamManagerController {
 			String examStartTime,String examEndTime,
 			String danNum,String danScore,
 			String duoNum,String duoScore,
-			String pNum,String pScore){
+			String pNum,String pScore,HttpServletResponse response){
 		//新建一个JsonObject对象，用于存储返回给前台界面的信息
 		JSONObject jsonObject = new JSONObject();
 		//创建一个考试信息的对象
-		System.out.println("题库id："+libraryId);
-		System.out.println("考试名字:"+examName);
-		System.out.println("开始时间："+examStartTime);
-		System.out.println("结束时间："+examEndTime);
-		System.out.println("单选题个数："+danNum);
-		System.out.println("单选题分数："+danScore);
-		System.out.println("多选题个数："+duoNum);
-		System.out.println("多选题分数："+duoScore);
-		System.out.println("判断题个数:"+pNum);
-		System.out.println("判断题分数"+pScore);
-	}
+		ExamInfoEntity examInfoEntity = new ExamInfoEntity();
+		//添加老师邮箱属性信息
+		examInfoEntity.setTeacherId((String)session.getAttribute("teacherEmail"));
+		//添加题库id属性信息
+		examInfoEntity.setQuestionListNumber(libraryId);
+		//添加考试名称属性信息
+		examInfoEntity.setExamName(examName);
+		//添加考试开始时间属性信息
+		examInfoEntity.setStartTime(examStartTime);
+		//添加考试结束时间属性信息
+		examInfoEntity.setEndTime(examEndTime);
+		//添加单选题个数属性信息
+		examInfoEntity.setChoiceNumber(danNum);
+		//添加单选题分数属性信息
+		examInfoEntity.setChoiceScore(duoScore);
+		//添加多选题个数属性信息
+		examInfoEntity.setMultiputeChoiceNumber(duoNum);
+		//添加多选题分数属性信息
+		examInfoEntity.setMultiputeChoiceScore(duoScore);
+		//添加判断题个数属性信息
+		examInfoEntity.setJudgeNumber(pNum);
+		//添加判断题分数属性信息
+		examInfoEntity.setJudgeScore(pScore);
+		if (service.getExamService().addExamInfo(examInfoEntity)) {
+			jsonObject.put("state", "success");
+		}else{
+			jsonObject.put("state", "fail");
+		}
+		//设置返回的数据格式
+		response.setContentType("application/json");
+		//修改编码为UTF-8
+		response.setCharacterEncoding("UTF-8");
+		try {
+			System.out.println("发回成功或者失败的状态");
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+}
 	
 	
 	
