@@ -33,6 +33,8 @@ import cn.nsu.ccl.teacher.service.ServiceManager;
 public class ExamManagerController {
 	@Autowired
 	private ServiceManager service;
+	private HttpServletRequest request;
+	private HttpSession session;
 	
 	/**
 	 * 
@@ -44,8 +46,9 @@ public class ExamManagerController {
 	 * @return
 	 */
 	@RequestMapping(value="teacherCreateExam")
-	public String toCreateExam(HttpServletRequest request,HttpSession session){
+	public String toCreateExam(){
 		//获取已经登录的教师姓名
+	
 		String teacherEmail = (String)session.getAttribute("teacherEmail");
 		System.out.println("teacherEmail="+teacherEmail);
 		//获取题库列表信息
