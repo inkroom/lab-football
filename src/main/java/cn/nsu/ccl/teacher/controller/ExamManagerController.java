@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.impl.PublicImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.nsu.ccl.teacher.entity.QuestionLibListEntity;
 import cn.nsu.ccl.teacher.service.ServiceManager;
+import net.sf.json.JSONObject;
 
 /**
  * <p>ExamManagerController类的描述</p>
@@ -33,6 +35,10 @@ import cn.nsu.ccl.teacher.service.ServiceManager;
 public class ExamManagerController {
 	@Autowired
 	private ServiceManager service;
+	@Autowired
+	private HttpSession session;
+	@Autowired
+	private HttpServletRequest request;
 	
 	/**
 	 * 
@@ -44,16 +50,34 @@ public class ExamManagerController {
 	 * @return
 	 */
 	@RequestMapping(value="teacherCreateExam")
-	public String toCreateExam(HttpServletRequest request,HttpSession session){
+	public String toCreateExam(){
 		//获取已经登录的教师姓名
-		String teacherEmail = (String)session.getAttribute("teacherEmail");
-		System.out.println("teacherEmail="+teacherEmail);
+		String teacherEmail = (String) session.getAttribute("teacherEmail");
 		//获取题库列表信息
 		ArrayList<QuestionLibListEntity> questionLibList = service.getQuestionLibService().getQuestionLibListByTeacherEmail(teacherEmail);
-		System.out.println(questionLibList.size());
 		//将题库信息存到请求request中
 		request.setAttribute("questionLibList", questionLibList);
 		return "teacher/exam/createExamInfo";
+	}
+	@RequestMapping(value="teacherCreateExamDo",method=RequestMethod.POST)
+	public void createExam(int libraryId ,String examName,
+			String examStartTime,String examEndTime,
+			String danNum,String danScore,
+			String duoNum,String duoScore,
+			String pNum,String pScore){
+		//新建一个JsonObject对象，用于存储返回给前台界面的信息
+		JSONObject jsonObject = new JSONObject();
+		//创建一个考试信息的对象
+		System.out.println("题库id："+libraryId);
+		System.out.println("考试名字:"+examName);
+		System.out.println("开始时间："+examStartTime);
+		System.out.println("结束时间："+examEndTime);
+		System.out.println("单选题个数："+danNum);
+		System.out.println("单选题分数："+danScore);
+		System.out.println("多选题个数："+duoNum);
+		System.out.println("多选题分数："+duoScore);
+		System.out.println("判断题个数:"+pNum);
+		System.out.println("判断题分数"+pScore);
 	}
 	
 	
