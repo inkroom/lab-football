@@ -9,8 +9,10 @@
  */
 package cn.nsu.ccl.teacher.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,9 +22,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
 import cn.nsu.ccl.teacher.entity.QuestionLibListEntity;
+import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 import cn.nsu.ccl.teacher.service.ServiceManager;
 import net.sf.json.JSONObject;
 
@@ -41,8 +47,6 @@ public class ExamManagerController {
 	private HttpSession session;
 	@Autowired
 	private HttpServletRequest request;
-	@Autowired
-	private HttpServletResponse response;
 	
 	/**
 	 * 
@@ -110,7 +114,55 @@ public class ExamManagerController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-}
+	}
+	
+	@RequestMapping(value = "teacherUploadStudentExcel")  
+  public String upLoadFile(HttpServletRequest request) {  
+		String teacherEmail = (String) session.getAttribute("teacherEmail");
+		
+		String path = request.getServletContext().getRealPath("/")+"WEB-INF/teacher/";
+      // @RequestParam("file") MultipartFile file,  
+      CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(  
+              request.getSession().getServletContext());
+      // 判断 request 是否有文件上传,即多部分请求  
+      if (multipartResolver.isMultipart(request)) { 
+          // 转换成多部分request  
+          MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;  
+          // 取得request中的所有文件名  
+          Iterator<String> iter = multiRequest.getFileNames();  
+          while (iter.hasNext()) {  
+              // 取得上传文件  
+              MultipartFile f = multiRequest.getFile(iter.next());  
+              if (f != null) {  
+                  // 取得当前上传文件的文件名称  
+                  String myFileName = f.getOriginalFilename();  
+                  // 如果名称不为“”,说明该文件存在，否则说明该文件不存在  
+                  if (myFileName.trim() != "") {  
+                      // 定义上传路径  
+                      path =  path + myFileName;  
+                      File localFile = new File(path);  
+                      try {
+						f.transferTo(localFile);
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+					}  
+                  }  
+              }  
+          }
+          
+          //接收从excel转回的list集合
+  		ArrayList<StudentInfoEntity> list = service.getExamService().excelToList(path);
+  		for(int i = 0; i < list.size(); i++){
+  			StudentInfoEntity studentInfoEntity = list.get(i);
+  			System.out.println(studentInfoEntity.getStudentId());
+  			System.out.println(studentInfoEntity.getStudentName());
+  			if (!service.getExamService().addStudentInfo(studentInfoEntity,teacherEmail)) {
+  				return "";
+  			}
+  		}
+      }
+		return "examManager/views/uploadSuccess.jsp";  
+  } 
 	
 	
 	

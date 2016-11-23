@@ -41,7 +41,7 @@ public class ExamServiceImpl implements ExamService{
 	 * @return
 	 * @throws IOException 
 	 */
-	public ArrayList<StudentInfoEntity> excelToList(String URL) throws IOException {
+	public ArrayList<StudentInfoEntity> excelToList(String URL){
 		
 		
 		ArrayList<StudentInfoEntity> list = new ArrayList<>();
@@ -50,23 +50,34 @@ public class ExamServiceImpl implements ExamService{
 		File file = new File(URL);
 		//创建Excel，读取文件内容
 		@SuppressWarnings("resource")
-		XSSFWorkbook workbook = new XSSFWorkbook(FileUtils.openInputStream(file));
+		XSSFWorkbook workbook = null;
+		try {
+			workbook = new XSSFWorkbook(FileUtils.openInputStream(file));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		//读取默认第一个工作表sheet
 		XSSFSheet sheet = workbook.getSheetAt(0);
 		//获取sheet中最后一行行号
 		int lastRowNum = sheet.getLastRowNum();
-		for (int i = 1; i <= lastRowNum; i++) {
+		System.out.println("最后一行的行号为="+lastRowNum);
+		for (int i = 1; i <= lastRowNum-1; i++) {
 		
 			XSSFRow row = sheet.getRow(i);
 			//设置当前行最后单元格列号为2(为了避免因为我设置的提示而导致的错误)
-			int lastCellNum = 2;
+			int lastCellNum = 1;
 			//循环单元格列号
 			ArrayList<String> list2 = new ArrayList<>();
 			int index=0;
-			for (int j = 0; j < lastCellNum; j++) {
+			for (int j = 0; j <=lastCellNum; j++) {
 				XSSFCell cell = row.getCell(j);
+				System.out.println("j="+j);
 				if(index<lastCellNum){
-					list2.add(cell.getStringCellValue());
+					//不为空才保存到数据库
+					if (cell.getStringCellValue()!=null) {
+						System.out.println("--------------------保存数据到数据库了="+j);
+						list2.add(cell.getStringCellValue());
+					}
 				}
 			}
 			StudentInfoEntity studentInfoEntity = new StudentInfoEntity();
@@ -138,7 +149,6 @@ public class ExamServiceImpl implements ExamService{
 	 * @return
 	 */
 	public boolean addStudentInfo(StudentInfoEntity studentInfoEntity,String teacherId){
-		
 		try {
 			return studentDao.addStudentInfo(studentInfoEntity,teacherId);
 		} catch (Exception e) {

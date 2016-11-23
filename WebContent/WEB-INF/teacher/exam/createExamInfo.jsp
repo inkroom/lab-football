@@ -139,6 +139,22 @@
             </div>
         </div>
     </div>
+    <!-- 上传学生信息 -->
+        <div class="wrapper wrapper-content" id="uploadStudent" style="display:none">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="middle-box text-center animated fadeInRightBig">
+                    <h3 class="font-bold" id="studentMessage"></h3><br/>
+                    <div class="error-desc">
+                    <form action=teacherUploadStudentExcel method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" class="form-control" required="required"/><br/>
+                    <input type="submit" class="btn btn-primary btn-rounded btn-block btn btn-w-m btn-success" value="上传题库资料"/>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         <!-- 表单检测提示弹窗DIV -->
         <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -357,11 +373,22 @@
                     if(request.status===200){
                         //使用JSON.parse方法格式化返回的json数据
                         var data = JSON.parse(request.responseText);
-                        console.log(data);
-                        console.log(data.state);
+                        //创建成功
+                        if("success"===data.state){
+                        	//隐藏填写考试信息的div
+                        	document.getElementById("createExam").style.display="none";
+                        	//显示上传学生信息的div
+                        	document.getElementById("studentMessage").innerHTML="上传考生信息";
+                        	document.getElementById("uploadStudent").style.display="block";
+                        }else if("fail"===data.state){
+                        	//创建失败
+                        	document.getElementById("formName").innerHTML="提示";
+                    		document.getElementById("formContent").innerHTML="很遗憾，由于某种原因本次创建失败。";
+                    		$("#form").modal('show');
+                        }
                     }
                 }
-            }
+            };
         }
     </script>
     
