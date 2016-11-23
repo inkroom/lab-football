@@ -60,7 +60,6 @@ public class ExamServiceImpl implements ExamService{
 		XSSFSheet sheet = workbook.getSheetAt(0);
 		//获取sheet中最后一行行号
 		int lastRowNum = sheet.getLastRowNum();
-		System.out.println("最后一行的行号为="+lastRowNum);
 		for (int i = 1; i <= lastRowNum-1; i++) {
 		
 			XSSFRow row = sheet.getRow(i);
@@ -71,11 +70,9 @@ public class ExamServiceImpl implements ExamService{
 			int index=0;
 			for (int j = 0; j <=lastCellNum; j++) {
 				XSSFCell cell = row.getCell(j);
-				System.out.println("j="+j);
 				if(index<lastCellNum){
 					//不为空才保存到数据库
 					if (cell.getStringCellValue()!=null) {
-						System.out.println("--------------------保存数据到数据库了="+j);
 						list2.add(cell.getStringCellValue());
 					}
 				}
@@ -138,23 +135,29 @@ public class ExamServiceImpl implements ExamService{
 	
 	/**
 	 * 
-	 * 描述：存储考试信息中的学生信息
-	 * 方法名： addStudentInfo
-	 * 类名：ExamServiceImpl
-	 * 返回值类型：boolean
-	 * 开发者：暴沸
-	 * 联系方式：admin@baofeidyz.com
-	 * 创建时间：2016年9月1日 下午12:29:08
+	 * <p>addStudentInfo方法的描述---通过考试id存储该场考试的学生信息</p>
+	 * @Title: ExamServiceImpl的addStudentInfo方法
+	 * @Description: TODO
+	 * @author 暴沸 baofeidyz@foxmail.com
+	 * @date 2016年11月23日 下午2:37:04
 	 * @param studentInfoEntity
+	 * @param examId
 	 * @return
 	 */
-	public boolean addStudentInfo(StudentInfoEntity studentInfoEntity,String teacherId){
-		try {
-			return studentDao.addStudentInfo(studentInfoEntity,teacherId);
-		} catch (Exception e) {
-			e.printStackTrace();
+	public boolean addStudentInfo(StudentInfoEntity studentInfoEntity,String teacherEmail,String examName){
+		//声明一个变量
+		int examId = -1;
+		//根据教师邮箱获取考试信息
+		ArrayList<ExamInfoEntity> list = this.getExamInfo(teacherEmail);
+		for(int i = 0; i < list.size();i++){
+			//遍历集合，找到与传入的考试名字匹配的数据
+			ExamInfoEntity examInfoEntity = list.get(i);
+			if (examInfoEntity.getExamName().equals(examName)) {
+				examId = examInfoEntity.getExamId();
+			}
 		}
-		return false;
+		//调用dao层存储数据
+		return studentDao.addStudentInfo(studentInfoEntity,examId);
 	}
 	
 	/**

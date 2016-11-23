@@ -15,6 +15,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import cn.nsu.ccl.comm.Envirment.ComEnviorment;
@@ -31,7 +33,8 @@ import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
  */
 @Repository
 public class StudentDaoImpl extends ComEnviorment implements StudentDao {
-
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	/**
 	 * <p>覆盖的addStudentInfo函数</p>
 	 * @param studentInfo
@@ -41,13 +44,9 @@ public class StudentDaoImpl extends ComEnviorment implements StudentDao {
 	 * @see cn.nsu.ccl.teacher.dao.StudentDao#addStudentInfo(cn.nsu.ccl.teacher.entity.StudentInfoEntity, java.lang.String)
 	 */
 	@Override
-	public boolean addStudentInfo(StudentInfoEntity studentInfo, String teacherId) throws Exception {
-		// TODO Auto-generated method stub
-		String sql= GET_SQL(new String[]{studentInfo.getStudentId(), studentInfo.getStudentName(),teacherId},"call setStudentInfo(?,?,?)");
-		if (jt.update(sql)==1) {
-			return true;
-		}
-		return false;
+	public boolean addStudentInfo(StudentInfoEntity studentInfo, int examId){
+		String sql = "call setStudentInfo(?,?,?)";
+		return jdbcTemplate.update(sql,studentInfo.getStudentId(),studentInfo.getStudentName(),examId)==1;
 	}
 
 	/**

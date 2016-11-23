@@ -27,17 +27,6 @@ public interface ExamService {
 	public  ArrayList<ExamInfoEntity> getExamInfo(String teacherId);		
 	public  boolean deleteExamInfo(int examId);
 //	public ArrayList <QuestionListEntity> getQuestionList();
-	/**
-	 * 
-	 * 描述：存储考试信息中的学生信息
-	 * 方法名： addStudentInfo
-	 * 类名：ExamServiceImpl
-	 * 返回值类型：boolean
-	 * 开发者：暴沸
-	 * 联系方式：admin@baofeidyz.com
-	 * 创建时间：2016年9月1日 下午12:29:08
-	 * @param studentInfoEntity
-	 * @return
-	 */
-	public boolean addStudentInfo(StudentInfoEntity studentInfoEntity,String teacherId);
+	//添加考生信息
+	public boolean addStudentInfo(StudentInfoEntity studentInfoEntity,String teacherEmail,String examName);
 }

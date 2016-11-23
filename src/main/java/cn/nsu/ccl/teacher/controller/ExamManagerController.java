@@ -117,9 +117,8 @@ public class ExamManagerController {
 	}
 	
 	@RequestMapping(value = "teacherUploadStudentExcel")  
-  public String upLoadFile(HttpServletRequest request) {  
+  public String upLoadFile(HttpServletRequest request,String examName) {  
 		String teacherEmail = (String) session.getAttribute("teacherEmail");
-		
 		String path = request.getServletContext().getRealPath("/")+"WEB-INF/teacher/";
       // @RequestParam("file") MultipartFile file,  
       CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(  
@@ -154,14 +153,15 @@ public class ExamManagerController {
   		ArrayList<StudentInfoEntity> list = service.getExamService().excelToList(path);
   		for(int i = 0; i < list.size(); i++){
   			StudentInfoEntity studentInfoEntity = list.get(i);
-  			System.out.println(studentInfoEntity.getStudentId());
-  			System.out.println(studentInfoEntity.getStudentName());
-  			if (!service.getExamService().addStudentInfo(studentInfoEntity,teacherEmail)) {
-  				return "";
+  			//调用service将数据保存到数据库
+  			if (!service.getExamService().addStudentInfo(studentInfoEntity,teacherEmail,examName)) {
+  				//保存成功
+  				return "teacher/createExamInfoSuccess";
   			}
   		}
       }
-		return "examManager/views/uploadSuccess.jsp";  
+      	//保存失败
+		return "teacher/createExamInfoFail";  
   } 
 	
 	

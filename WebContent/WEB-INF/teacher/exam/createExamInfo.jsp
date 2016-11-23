@@ -147,6 +147,7 @@
                     <h3 class="font-bold" id="studentMessage"></h3><br/>
                     <div class="error-desc">
                     <form action=teacherUploadStudentExcel method="post" enctype="multipart/form-data">
+                    <input type="hidden" id="examNameInput" name="examName" value="">
                     <input type="file" name="file" class="form-control" required="required"/><br/>
                     <input type="submit" class="btn btn-primary btn-rounded btn-block btn btn-w-m btn-success" value="上传题库资料"/>
                     </form>
@@ -377,8 +378,12 @@
                         if("success"===data.state){
                         	//隐藏填写考试信息的div
                         	document.getElementById("createExam").style.display="none";
-                        	//显示上传学生信息的div
-                        	document.getElementById("studentMessage").innerHTML="上传考生信息";
+                        	//操作上传考生信息的div
+                        	//设置提示标题
+                        	document.getElementById("studentMessage").innerHTML="上传考生信息-"+examName;
+                        	//给input隐藏域的value赋值
+                        	$("#examNameInput").val(examName);
+                        	//显示上传考生信息的div
                         	document.getElementById("uploadStudent").style.display="block";
                         }else if("fail"===data.state){
                         	//创建失败

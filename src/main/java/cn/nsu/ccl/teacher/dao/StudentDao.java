@@ -36,7 +36,7 @@ public interface  StudentDao {
 	 * @param teacherId
 	 * @return
 	 */
-	public boolean addStudentInfo(StudentInfoEntity studentInfo,String teacherId) throws Exception;
+	public boolean addStudentInfo(StudentInfoEntity studentInfo, int examId);
 	/**
 	 * <p>getStudentInfo方法的描述</p>
 	 * @Title: StudentDao的getStudentInfo方法
