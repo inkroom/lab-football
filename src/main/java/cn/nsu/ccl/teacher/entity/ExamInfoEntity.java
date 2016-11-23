@@ -25,10 +25,10 @@ public class ExamInfoEntity {
 	private String studentNumber;			//学生学号                 
 	private String studentName;				//学生姓名
 	private int questionListNumber;			//题库编号（由数据库自动生成）
-	private String choiceNumber;			//选择题个数
+	private String choiceNumber;			//单选题个数
 	private String multiputeChoiceNumber;	//多选题个数
 	private String judgeNumber;				//判断题个数
-	private String choiceScore;				//选择题分数
+	private String choiceScore;				//单选题分数
 	private String judgeScore;				//判断题分数
 	private String multiputeChoiceScore;	//多选题分数
 	private String startTime;				//考试开始时间

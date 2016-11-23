@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title> - 数据表格</title>
+    <title>创建考试信息</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 

@@ -67,6 +67,25 @@ public class ExamManagerController {
 		request.setAttribute("questionLibList", questionLibList);
 		return "teacher/exam/createExamInfo";
 	}
+	/**
+	 * 
+	 * <p>createExam方法的描述--完成创建考试信息（不包括学生信息）</p>
+	 * @Title: ExamManagerController的createExam方法
+	 * @Description: TODO
+	 * @author 暴沸 baofeidyz@foxmail.com
+	 * @date 2016年11月23日 下午2:52:48
+	 * @param libraryId
+	 * @param examName
+	 * @param examStartTime
+	 * @param examEndTime
+	 * @param danNum
+	 * @param danScore
+	 * @param duoNum
+	 * @param duoScore
+	 * @param pNum
+	 * @param pScore
+	 * @param response
+	 */
 	@RequestMapping(value="teacherCreateExamDo",method=RequestMethod.POST)
 	public void createExam(int libraryId ,String examName,
 			String examStartTime,String examEndTime,
@@ -115,7 +134,17 @@ public class ExamManagerController {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * 
+	 * <p>upLoadFile方法的描述---上传考生信息表，并添加到对应的考试信息中</p>
+	 * @Title: ExamManagerController的upLoadFile方法
+	 * @Description: TODO
+	 * @author 暴沸 baofeidyz@foxmail.com
+	 * @date 2016年11月23日 下午2:53:16
+	 * @param request
+	 * @param examName
+	 * @return
+	 */
 	@RequestMapping(value = "teacherUploadStudentExcel")  
   public String upLoadFile(HttpServletRequest request,String examName) {  
 		String teacherEmail = (String) session.getAttribute("teacherEmail");
@@ -162,8 +191,16 @@ public class ExamManagerController {
       }
       	//保存失败
 		return "teacher/createExamInfoFail";  
-  } 
-	
+	} 
+	@RequestMapping(value="teacherEditExam")
+	public String toEditExamInfo(){
+		//从session获取教师邮箱帐号
+		String teacherEmail = (String) session.getAttribute("teacherEmail");
+		//通过教师邮箱帐号获取该教师所创建的考试信息列表
+		ArrayList<ExamInfoEntity> list = service.getExamService().getExamInfo(teacherEmail);
+		request.setAttribute("examInfoList", list);
+		return "teacher/exam/editExamInfo";
+	}
 	
 	
 }
