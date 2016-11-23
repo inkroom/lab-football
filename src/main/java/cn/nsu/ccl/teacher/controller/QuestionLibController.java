@@ -19,10 +19,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.nsu.ccl.teacher.entity.QuestionLibListEntity;
 import cn.nsu.ccl.teacher.service.ServiceManager;
+import net.sf.json.JSON;
+import net.sf.json.JSONObject;
 
 /**
  * 
@@ -37,12 +39,11 @@ public class QuestionLibController {
 	
 	@Autowired
 	private HttpServletRequest request;
-	@Autowired
-	private HttpServletResponse response;
+	
 	@Autowired
 	private ServiceManager service;
-	@Autowired
-	private HttpSession session;
+
+	
 	
 	/**
 	 * 
@@ -141,7 +142,7 @@ public class QuestionLibController {
 	 * @return
 	 */
 	@RequestMapping(value="teacherEditQuestionLib")
-	public String getQuestionLib(){
+	public String getQuestionLib(HttpSession session){
 		String teacherEmail = (String)session.getAttribute("teacherEmail");
 		System.out.println("teacherEmail="+teacherEmail);
 		//获取题库列表信息
@@ -151,21 +152,45 @@ public class QuestionLibController {
 		request.setAttribute("questionLibList", questionLibList);
 		return "teacher/questionLib/editLib";
 	}
+
 	/**
 	 * <p>deleteQuestionLib方法的描述</p>
 	 * @Title: QuestionLibController的deleteQuestionLib方法
 	 * @Description: 按照题库id删除题库,返回状态
 	 * @author 2213974854@qq.com
-	 * @date 2016年11月21日 下午8:02:53
-	 * @param libraryName
-	 * @return
+	 * @date 2016年11月23日 下午5:15:37
+	 * @param libraryNames
 	 */
-	@RequestMapping(value="teacherDeleteQuestionLib")
+	@RequestMapping(value="teacherDeleteQuestionLib",method=RequestMethod.POST)
 	
-	public String deleteQuestionLib(ArrayList< String> libraryNames){
-		System.out.println("222222222222222222");
+	public void deleteQuestionLib(ArrayList<String> libraryNames,HttpSession session,HttpServletResponse response){
+	
+	//测试字符串传入是否成功-----------------------------开始----------------------------------------
+	/*public void deleteQuestionLib(String  libraryNames,HttpSession session,HttpServletResponse response){
+		JSONObject jsonObject= new JSONObject();
+		jsonObject.put("state", "success");
+		System.out.println("libraryNames+"+libraryNames);
+		//设置返回的数据格式
+		response.setContentType("application/json");
+		//修改编码为UTF-8
+		response.setCharacterEncoding("UTF-8");
+		try {
+			response.getWriter().print(jsonObject.toString());
+			System.out.println("jsonObject.toString()==");
+			System.out.println(jsonObject.toString());
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//不能成功返回到页面request.readyState===1
+*/
+	//结束-----------------------------------------------------------------
+		
+		System.out.println(request.getAttribute("libraryNames"));
 		String teacherEmail = (String)session.getAttribute("teacherEmail");
+		System.out.println("libraryNames.size()="+libraryNames.size());
 		int count=0;
+		
 		for (int i = 0; i < libraryNames.size(); i++) {
 			
 			String libraryName= libraryNames.get(i);
@@ -177,11 +202,27 @@ public class QuestionLibController {
 		}
 		
 			System.out.println(String.format("成功删除%d条信息，失败%d条",count,libraryNames.size()-count));
-		
-			
-		return "false";
+			JSONObject jsonObject = new JSONObject();
+			if (libraryNames.size()==count) {
+				jsonObject.put("state", "success");
+			}
+			else jsonObject.put("state", "fail");
+			//设置返回的数据格式
+			response.setContentType("application/json");
+			//修改编码为UTF-8
+			response.setCharacterEncoding("UTF-8");
+			try {
+				response.getWriter().print(jsonObject.toString());
+				System.out.println("jsonObject.toString()==");
+				System.out.println(jsonObject.toString());
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
 	}
-	@RequestMapping(value = "teacherToCreatelib")
+	@RequestMapping(value = "teacherToCreatelib",method=RequestMethod.POST)
 	public String toAddlib(){
 		return "teacher/questionLib/createLib";
 	}
@@ -194,8 +235,8 @@ public class QuestionLibController {
 	 * @param questionLibName
 	 * @return
 	 */
-	@RequestMapping(value="teacherAddQuestionLib")
-	public String addQuestionLib(String questionLibName){
+	@RequestMapping(value="teacherAddQuestionLib",method=RequestMethod.POST)
+	public String addQuestionLib(String questionLibName,HttpSession session){
 		String teacherEmail = (String)session.getAttribute("teacherEmail");
 		if (service.getQuestionLibService().addQuestionLibList(questionLibName, teacherEmail)) {
 			
