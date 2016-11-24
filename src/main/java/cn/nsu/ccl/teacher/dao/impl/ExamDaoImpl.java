@@ -91,20 +91,36 @@ public class ExamDaoImpl extends ComEnviorment implements ExamDao {
 	 * @return
 	 * @see cn.nsu.ccl.teacher.dao.ExamDao#editExamInfo(int)
 	 */
-	public boolean updateExamInfo(ExamInfoEntity e){
-		String sql = "call editExamInfo('?','?','?','?','?','?','?','?','?','?','?')";
+	public boolean updateExamInfoByExamId(ExamInfoEntity e){
+		System.out.println("---------------------------dao层开始更新考试信息---------------------------");
+		System.out.println("考试开始时间："+e.getStartTime());
+		System.out.println("考试结束时间："+e.getEndTime());
+		System.out.println("单选题个数："+e.getChoiceNumber());
+		System.out.println("单选题分数："+e.getChoiceScore());
+		System.out.println("多选题个数："+e.getMultiputeChoiceNumber());
+		System.out.println("多选题分数："+e.getMultiputeChoiceScore());
+		System.out.println("判断题个数："+e.getJudgeNumber());
+		System.out.println("判断题分数："+e.getJudgeScore());
+		System.out.println("考试名字："+e.getExamName());
+		String sql = "update Exam set startTime = ?"
+				+ ",endTime = ?"
+				+ ",sChoice = ?"
+				+ ",sScore = ?"
+				+ ",mChoice = ?"
+				+ ",mScore = ?"
+				+ ",tofQuestion = ?"
+				+ ",tofScore = ?"
+				+ "where examId = ?";
 		return jdbcTemplate.update(sql,
-				e.getExamName(), 				//考试名字
-				e.getTeacherId(),				//教师编号
-				e.getQuestionListNumber()+"",	//题库编号（由数据库自动生成）
-				e.getChoiceNumber(),			//选择题个数
-				e.getMultiputeChoiceNumber(),	//多选题个数
-				e.getJudgeNumber(),				//判断题个数
-				e.getChoiceScore(),				//选择题分数
-				e.getJudgeScore(),				//判断题分数
-				e.getMultiputeChoiceScore(),	//多选题分数
 				e.getStartTime(),				//考试开始时间
-				e.getEndTime()				//考试结束时间
+				e.getEndTime(),					//考试结束时间
+				e.getChoiceNumber(),			//单选题个数
+				e.getChoiceScore(),				//单选题分数
+				e.getMultiputeChoiceNumber(),	//多选题个数
+				e.getMultiputeChoiceScore(),	//多选题分数
+				e.getJudgeNumber(),				//判断题个数
+				e.getJudgeScore(),				//判断题分数
+				e.getExamId()					//考试名称
 				)==1;
 	}
 

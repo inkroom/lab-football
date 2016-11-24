@@ -57,7 +57,7 @@ public interface ExamDao {
      * @param e
 	 * @return
 	 */
-	public boolean updateExamInfo( ExamInfoEntity e) throws Exception;
+	public boolean updateExamInfoByExamId( ExamInfoEntity e) throws Exception;
 	/**
 	 * <p>deleExamInfo方法的描述</p>
 	 * @Title: ExamDao的deleExamInfo方法

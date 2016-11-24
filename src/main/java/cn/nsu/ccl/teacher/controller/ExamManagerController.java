@@ -27,7 +27,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
-import cn.nsu.ccl.teacher.entity.ExamingInfoEntity;
 import cn.nsu.ccl.teacher.entity.QuestionLibListEntity;
 import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 import cn.nsu.ccl.teacher.service.ServiceManager;
@@ -265,11 +264,22 @@ public class ExamManagerController {
 	 * @return
 	 */
 	@RequestMapping(value="teacherEditExamDo",method=RequestMethod.POST)
-	public void editExamInfo(int examId,String danNum,String danScore,String duoNum,String duoScore,String pNum,String pScore,HttpServletResponse response){
+	public void editExamInfo(int examId,
+			String examStartTime,String examEndTime,
+			String danNum,String danScore,
+			String duoNum,String duoScore,
+			String pNum,String pScore,HttpServletResponse response){
+		System.out.println("----------------controller获取到的信息--------------------");
+		System.out.println("考试开始时间："+examStartTime);
+		System.out.println("考试结束时间："+examEndTime);
 		//实例化考试信息对象
 		ExamInfoEntity examInfo = new ExamInfoEntity();
 		//添加考试id信息
 		examInfo.setExamId(examId);
+		//添加考试开始时间
+		examInfo.setStartTime(examStartTime);
+		//添加考试结束时间
+		examInfo.setEndTime(examEndTime);
 		//添加单选题个数信息
 		examInfo.setChoiceNumber(danNum);
 		//添加单选题分数信息

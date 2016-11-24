@@ -218,7 +218,7 @@ public class ExamServiceImpl implements ExamService{
 	 * @see cn.nsu.ccl.teacher.service.ExamService#updateExamInfo(cn.nsu.ccl.teacher.entity.ExamInfoEntity)
 	 */
 	public boolean updateExamInfo(ExamInfoEntity examInfo) {
-		return examInfoDao.updateExamInfo(examInfo);
+		return examInfoDao.updateExamInfoByExamId(examInfo);
 	}
 
 
