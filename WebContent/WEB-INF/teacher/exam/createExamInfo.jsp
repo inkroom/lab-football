@@ -262,6 +262,7 @@
         	for(var i = 1;i < duoNum;i++){
         		$("#pNum").append("<option value='"+i+"'>"+i+"</option>");
         	}
+        	//动态添加考试名称
         	document.getElementById("questionLibName").innerHTML=name;
         	//隐藏选择题库的div
         	document.getElementById("choseQuestionLibList").style.display="none";

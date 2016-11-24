@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
+import cn.nsu.ccl.teacher.entity.ExamingInfoEntity;
 import cn.nsu.ccl.teacher.entity.QuestionLibListEntity;
 import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 import cn.nsu.ccl.teacher.service.ServiceManager;
@@ -226,9 +227,34 @@ public class ExamManagerController {
 		String teacherEmail = (String) session.getAttribute("teacherEmail");
 		//通过教师邮箱帐号获取该教师所创建的考试信息列表
 		ArrayList<ExamInfoEntity> list = service.getExamService().getExamInfoByTeacherEmail(teacherEmail);
+		//根据examid获取是否有考生信息
+		//1.遍历考试信息
+		//2.新建一个jsonArray用于存储所有的对应信息
+		JSONArray jsonArray = new JSONArray();
+		for(int i = 0; i < list.size();i++){
+			ExamInfoEntity entity = list.get(i);
+			//3.通过考试id获取该场考试是否有对应的考生信息
+			if (service.getExamService().isStudentInfoExistByExamId(entity.getExamId())) {
+				//存在考生信息
+				//4.新建一个jsonobject对象用于存储信息
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("examId", entity.getExamId());
+				jsonObject.put("state", "exist");
+				jsonArray.add(jsonObject);
+			}else{
+				//4.新建一个jsonobject对象用于存储信息
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("examId", entity.getExamId());
+				jsonObject.put("state", "null");
+				jsonArray.add(jsonObject);
+			}
+		}
+		System.out.println("这是controller中的jsonArray="+jsonArray.toString());
 		request.setAttribute("examInfoList", list);
+		request.setAttribute("jsonArray", jsonArray.toString());
 		return "teacher/exam/editExamInfo";
 	}
+	
 	/**
 	 * 
 	 * <p>editExamInfo方法的描述--实现教师修改考试信息</p>

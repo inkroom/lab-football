@@ -220,6 +220,28 @@ public class ExamServiceImpl implements ExamService{
 	public boolean updateExamInfo(ExamInfoEntity examInfo) {
 		return examInfoDao.updateExamInfo(examInfo);
 	}
+
+
+
+
+	/**
+	 * <p>覆盖的isStudentInfoExistByExamId函数
+	 * 通过考试id去判断该场考试是否有考生信息
+	 * </p>
+	 * @param examId
+	 * @return
+	 * @see cn.nsu.ccl.teacher.service.ExamService#isStudentInfoExistByExamId(int)
+	 */
+	public boolean isStudentInfoExistByExamId(int examId) {
+		//通过考试id（examId）去获取该场考试的学生信息
+		List<Map<String, Object>> listMap = studentDao.getStudentInfo(examId);
+		//如果listMap.size()等于0则代表该场考试没有考生信息
+		System.out.println("isStudentInfoExistByExamId.size="+listMap.size());
+		if (listMap.size()==0) {
+			return false;
+		}
+		return true;
+	}
 	
 }
 

@@ -28,4 +28,6 @@ public interface ExamService {
 	public boolean updateExamInfo(ExamInfoEntity examInfo);
 	//添加考生信息
 	public boolean addStudentInfo(StudentInfoEntity studentInfoEntity,String teacherEmail,String examName);
+	//通过考试id去检测该场考试是否存在对应的考试信息
+	public boolean isStudentInfoExistByExamId(int examId);
 }

@@ -46,6 +46,7 @@
                                     <th>考试名称</th>
                                     <th>开始时间</th>
                                     <th>结束时间</th>
+                                    <th>考生信息</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -60,10 +61,13 @@
                                     <td>${exam.examName }</td>
                                     <td>${exam.startTime }</td>
                                     <td>${exam.endTime }</td>
-                                	<td><a href="javascipt:void(0);" onclick="editExam(<%=examInfoEntity.getExamId()%>,'<%=examInfoEntity.getExamName()%>')">编辑</a>
-                                	|&nbsp;&nbsp;<a href="javascipt:void(0);" 
-                                	onclick="deleteExam(<%=examInfoEntity.getExamId()%>)">删除</a>
-                                	</td>
+                                    <td>
+                                    <span id="notClick<%=examInfoEntity.getExamId() %>" style="display:none">已有考生信息</span>
+                                    <a href="javascript:void(0);"  onclick="addStudent('<%=examInfoEntity.getExamName()%>')" style="display:block" id="click<%=examInfoEntity.getExamId() %>">导入考生信息</a>
+                                    </td>
+                                	<td>
+                                	<a href="javascript:void(0);" onclick="editExam(<%=examInfoEntity.getExamId()%>,'<%=examInfoEntity.getExamName()%>')">编辑</a>
+                                	|&nbsp;&nbsp;<a href="javascipt:void(0);" onclick="deleteExam(<%=examInfoEntity.getExamId()%>)">删除</a>
                                 </tr>
                                 <%} %>
                             </tbody>
@@ -171,6 +175,23 @@
             </div>
         </div>
     </div>
+        <!-- 上传学生信息 -->
+        <div class="wrapper wrapper-content" id="uploadStudent" style="display:none">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="middle-box text-center animated fadeInRightBig">
+                    <h3 class="font-bold" id="studentMessage"></h3><br/>
+                    <div class="error-desc">
+                    <form action=teacherUploadStudentExcel method="post" enctype="multipart/form-data">
+                    <input type="hidden" id="examNameInput" name="examName" value="">
+                    <input type="file" name="file" class="form-control" required="required"/><br/>
+                    <input type="submit" class="btn btn-primary btn-rounded btn-block btn btn-w-m btn-success" value="上传题库资料"/>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- 全局js -->
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
@@ -195,6 +216,7 @@
     	var examIdQ = -1;
     	//保存考试名称
     	var examNameQ = "";
+    	
         $(document).ready(function () {
             $('.dataTables-example').dataTable();
 
@@ -228,6 +250,32 @@
                 "New row"]);
 
         }
+        //动态设置添加考生标签
+        var readJson = JSON.parse('<%=request.getAttribute("jsonArray")%>');
+        console.log(readJson);
+    	for(var p in readJson){
+    		//如果有考生信息，就隐藏到带点击事件的标签，显示不带点击事件的标签
+    		if(readJson[p].state==="exist"){
+    			//显示不带点击时间的标签
+    			//找到带点击事件的id并隐藏
+    			var click = "click"+readJson[p].examId;
+    			document.getElementById(click).style.display="none";
+    			//找到不带点击时间的id并显示
+    			var notClick = "notClick"+readJson[p].examId;
+    			document.getElementById(notClick).style.display="block";
+    		}
+    		//如果不存在考生信息，就隐藏不带点击时间的标签，显示带点击时间的标签
+    		if(readJson[p].state==="null"){
+    			//显示带点击时间的标签
+    			//找到不带点击时间的id并隐藏
+    			var notClick = "notClick"+readJson[p].examId;
+    			document.getElementById(notClick).style.display="none";
+    			//找到带点击时间的id并显示
+    			var click = "click"+readJson[p].examId;
+    			console.log("id="+click);
+    			document.getElementById(click).style.display = "block";
+    		}
+    	}
         function editExam(examId,examName){
         	console.log(examId);
         	console.log(examName);
@@ -400,8 +448,18 @@
                         }
                     }
                 }
-            };
+            }
       	}
+        function addStudent(examName){
+        	//隐藏考试信息列表
+        	document.getElementById("showExamList").style.display="none";
+        	//设置提示标题
+        	document.getElementById("studentMessage").innerHTML="上传考生信息-"+examName;
+        	//给input隐藏域的value赋值
+        	$("#examNameInput").val(examName);
+        	//显示上传学生数据div
+        	document.getElementById("uploadStudent").style.display="block";
+        }
     </script>
     
 

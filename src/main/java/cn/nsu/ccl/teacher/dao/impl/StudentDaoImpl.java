@@ -13,13 +13,10 @@ package cn.nsu.ccl.teacher.dao.impl;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import cn.nsu.ccl.comm.Envirment.ComEnviorment;
 import cn.nsu.ccl.teacher.dao.StudentDao;
 import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 
@@ -32,7 +29,7 @@ import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
  * @date 2016年11月18日 下午4:40:01
  */
 @Repository
-public class StudentDaoImpl extends ComEnviorment implements StudentDao {
+public class StudentDaoImpl implements StudentDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	/**
@@ -59,13 +56,8 @@ public class StudentDaoImpl extends ComEnviorment implements StudentDao {
 	 */
 	@Override
 	public List<Map<String, Object>> getStudentInfo(int examId) {
-		String sql = null;
-		try {
-			sql = GET_SQL(new String[]{examId+""}, "call getStudentInfo(?)");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return jt.queryForList(sql);
+		String sql = "call getStudentInfo(?)";
+		return jdbcTemplate.queryForList(sql,examId);
 	}
 
 }
