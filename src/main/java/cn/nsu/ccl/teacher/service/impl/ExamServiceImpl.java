@@ -42,61 +42,39 @@ public class ExamServiceImpl implements ExamService{
 	 * @throws IOException 
 	 */
 	public ArrayList<StudentInfoEntity> excelToList(String URL){
-		System.out.println("a1");
 		
 		ArrayList<StudentInfoEntity> list = new ArrayList<>();
-		System.out.println("a2");
 		//需要解析的Excel文件
 		File file = new File(URL);
-		System.out.println("a3");
 		//创建Excel，读取文件内容
 		@SuppressWarnings("resource")
 		XSSFWorkbook workbook = null;
-		System.out.println("a4");
 		try {
-			System.out.println("a5");
 			workbook = new XSSFWorkbook(FileUtils.openInputStream(file));
 		} catch (IOException e) {
-			System.out.println("a51");
 			e.printStackTrace();
 		}
-		System.out.println("a6");
 		//读取默认第一个工作表sheet
 		XSSFSheet sheet = workbook.getSheetAt(0);
-		System.out.println("a7");
 		//获取sheet中最后一行行号
 		int lastRowNum = sheet.getLastRowNum();
-		System.out.println("a8");
 		for (int i = 1; i <= lastRowNum; i++) {
-			System.out.println("af1");
 			XSSFRow row = sheet.getRow(i);
 			//设置当前行最后单元格列号为2(为了避免因为我设置的提示而导致的错误)
 			int lastCellNum = 1;
-			System.out.println("af2");
 			//循环单元格列号
 			ArrayList<String> list2 = new ArrayList<>();
-			System.out.println("af3");
 			int index=0;
-			System.out.println("af4");
 			for (int j = 0; j <=lastCellNum; j++) {
-				System.out.println("aff5");
 				XSSFCell cell = row.getCell(j);
-				System.out.println("aff6");
 				if(index<lastCellNum){
-					System.out.println("aff7");
 					list2.add(cell.getStringCellValue());
-					System.out.println("aff8");
 				}
 			}
-			System.out.println("a9");
 			StudentInfoEntity studentInfoEntity = new StudentInfoEntity();
-			System.out.println("a10");
 			studentInfoEntity.setStudentName(list2.get(0));
-			System.out.println("a11");
 			studentInfoEntity.setStudentId(list2.get(1));
-			System.out.println("a12");
 			list.add(studentInfoEntity);
-			System.out.println("这是在service中的list.size()="+list.size());
 		}
 		return list;
 	}
@@ -179,10 +157,6 @@ public class ExamServiceImpl implements ExamService{
 	 * @return
 	 */
 	public boolean addStudentInfo(StudentInfoEntity studentInfoEntity,String teacherEmail,String examName){
-		System.out.println("service收到的教师邮箱为："+teacherEmail);
-		System.out.println("service收到的考试名称为:"+examName);
-		System.out.println("service收到的学生的学号信息为："+studentInfoEntity.getStudentId());
-		System.out.println("service收到的学生的姓名信息为："+studentInfoEntity.getStudentName());
 		//声明一个变量
 		int examId = -1;
 		//根据教师邮箱获取考试信息
@@ -192,7 +166,6 @@ public class ExamServiceImpl implements ExamService{
 			ExamInfoEntity examInfoEntity = list.get(i);
 			if (examInfoEntity.getExamName().equals(examName)) {
 				examId = examInfoEntity.getExamId();
-				System.out.println("service匹配到的考试id为:"+examId);
 			}
 		}
 		//调用dao层存储数据
@@ -236,7 +209,6 @@ public class ExamServiceImpl implements ExamService{
 		//通过考试id（examId）去获取该场考试的学生信息
 		List<Map<String, Object>> listMap = studentDao.getStudentInfo(examId);
 		//如果listMap.size()等于0则代表该场考试没有考生信息
-		System.out.println("isStudentInfoExistByExamId.size="+listMap.size());
 		if (listMap.size()==0) {
 			return false;
 		}

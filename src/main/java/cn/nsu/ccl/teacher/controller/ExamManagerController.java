@@ -135,7 +135,6 @@ public class ExamManagerController {
 		//修改编码为UTF-8
 		response.setCharacterEncoding("UTF-8");
 		try {
-			System.out.println("发回成功或者失败的状态");
 			response.getWriter().print(jsonObject.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -154,7 +153,6 @@ public class ExamManagerController {
 	 */
 	@RequestMapping(value = "teacherUploadStudentExcel")  
   public String upLoadFile(HttpServletRequest request,String examName) {  
-		System.out.println("1");
 		String teacherEmail = (String) session.getAttribute("teacherEmail");
 		String path = request.getServletContext().getRealPath("/")+"WEB-INF/teacher/";
     //用于存储保存状态
@@ -181,7 +179,6 @@ public class ExamManagerController {
                       File localFile = new File(path);  
                       try {
 						f.transferTo(localFile);
-						System.out.println("2");
 					} catch (IllegalStateException | IOException e) {
 						e.printStackTrace();
 					}  
@@ -190,22 +187,18 @@ public class ExamManagerController {
           }
           //接收从excel转回的list集合
   		ArrayList<StudentInfoEntity> list = service.getExamService().excelToList(path);
-  		System.out.println("list.size()="+list.size());
   		for(int i = 0; i < list.size(); i++){
-  			System.out.println(i);
   			StudentInfoEntity studentInfoEntity = list.get(i);
   			//调用service将数据保存到数据库
   			if (service.getExamService().addStudentInfo(studentInfoEntity,teacherEmail,examName)) {
   				//保存成功
   				state = true;
-  				System.out.println("赋值为true");
   				//复制为true了
   			}
   		}
       }
       	//创建成功
 		if (state) {
-			System.out.println("创建成功");
   			return "teacher/exam/createExamInfoSuccess";
 		}
       //默认返回 创建失败
@@ -248,7 +241,6 @@ public class ExamManagerController {
 				jsonArray.add(jsonObject);
 			}
 		}
-		System.out.println("这是controller中的jsonArray="+jsonArray.toString());
 		request.setAttribute("examInfoList", list);
 		request.setAttribute("jsonArray", jsonArray.toString());
 		return "teacher/exam/editExamInfo";
@@ -269,9 +261,6 @@ public class ExamManagerController {
 			String danNum,String danScore,
 			String duoNum,String duoScore,
 			String pNum,String pScore,HttpServletResponse response){
-		System.out.println("----------------controller获取到的信息--------------------");
-		System.out.println("考试开始时间："+examStartTime);
-		System.out.println("考试结束时间："+examEndTime);
 		//实例化考试信息对象
 		ExamInfoEntity examInfo = new ExamInfoEntity();
 		//添加考试id信息
@@ -308,7 +297,18 @@ public class ExamManagerController {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * 
+	 * <p>getQuestionLibListByExamId方法的描述
+	 * 通过考试id找到对应的题库信息，用于在修改考试信息时的题库显示功能
+	 * </p>
+	 * @Title: ExamManagerController的getQuestionLibListByExamId方法
+	 * @Description: TODO
+	 * @author 暴沸 baofeidyz@foxmail.com
+	 * @date 2016年11月24日 下午7:38:15
+	 * @param examId
+	 * @param response
+	 */
 	@RequestMapping(value="teacherGetExamInfoByExamId",method=RequestMethod.POST)
 	public void getQuestionLibListByExamId(int examId,HttpServletResponse response){
 		//初始化一个int型变量，存储题库id
@@ -324,10 +324,8 @@ public class ExamManagerController {
 		//遍历所有的考试信息，匹配与传入的考试id相等的数据，并获取到对应的题库id
 		for(int i = 0; i < examInfoEntities.size();i++){
 			ExamInfoEntity  examInfoEntity = examInfoEntities.get(i);
-			System.out.println("这是从数据库获取到的题库id="+examInfoEntity.getQuestionListNumber());
 			if(examInfoEntity.getExamId()==examId){
 				libraryId = examInfoEntity.getQuestionListNumber();
-				System.out.println("找到了对应的题库id="+libraryId);
 			}
 		}
 		//使用教师id获取对应的题库列表信息
@@ -337,10 +335,8 @@ public class ExamManagerController {
 			QuestionLibListEntity questionLibListEntity = questionLibListEntities.get(j);
 			//匹配与之前的题库id相同的数据
 			if (questionLibListEntity.getLibraryId()==libraryId) {
-				System.out.println("找到了对应的题库列表信息");
 				//将匹配的题库列表信息转存，准备返回给前台界面
 				qEntity = questionLibListEntity;
-				System.out.println("这是找到的题库列表信息的题库名字="+qEntity.getLibraryName());
 			}
 		}
 		//将找到的题库列表信息返回前台
@@ -349,6 +345,27 @@ public class ExamManagerController {
 		response.setContentType("application/json");
 		try {
 			response.getWriter().print(jsonArray.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@RequestMapping(value="teacherDeleteExamInfoByExamId",method=RequestMethod.POST)
+	public void deleteExamByExamId(int examId,HttpServletResponse response){
+		//新建一个jsonobject对象用于存储结果信息
+		JSONObject jsonObject = new JSONObject();
+		//执行删除考试信息的操作
+		if(service.getExamService().deleteExamInfoByExamId(examId)){
+			//删除成功
+			jsonObject.put("state", "success");
+		}else{
+			//删除失败
+			jsonObject.put("state", "fail");
+		}
+		//将处理结果返回到前端界面
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		try {
+			response.getWriter().print(jsonObject.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

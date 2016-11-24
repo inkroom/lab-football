@@ -35,7 +35,7 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>创建考试信息 <small>--请选择一个题库进行考试创建</small></h5>
+                        <h5>编辑考试信息 <small>--在这里可以查看和编辑您创建的考试信息</small></h5>
                     </div>
                     <div class="ibox-content">
 
@@ -459,6 +459,33 @@
         	$("#examNameInput").val(examName);
         	//显示上传学生数据div
         	document.getElementById("uploadStudent").style.display="block";
+        }
+        function deleteExam(examId){
+        	//使用XMLHttpRequest方法，实际上在上面的jquery中也是用的这个方法，只不过已经给我们封装好了
+            var request = new XMLHttpRequest();
+            //使用open方法填写参数，最后一个true表示使用使用异步提交，可以省略，默认值就是true
+            request.open("POST","teacherDeleteExamInfoByExamId?examId="+examId,true);
+            //发送ajax请求
+            request.send();
+            //监听请求的状态，主要有0 1 2 3 4 这几种，但是一边只会监听2 3 4 ，其中4表示成功
+            request.onreadystatechange = function(){
+                //判断只有当请求成功时才进行下一步
+                if(request.readyState===4){
+                //判断只有当网页的返回码为200 OK时才进行下一步
+                    if(request.status===200){
+                        //使用JSON.parse方法格式化返回的json数据
+                        var data = JSON.parse(request.responseText);
+                        //创建成功
+                        if("success"===data.state){
+                        	console.log("删除成功");
+                        	//刷新界面
+                        	location.reload(true);
+                        }else if("fail"===data.state){
+							console.log("删除失败");
+                        }
+                    }
+                }
+            }
         }
     </script>
     
