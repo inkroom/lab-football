@@ -385,6 +385,11 @@
                         	$("#examNameInput").val(examName);
                         	//显示上传考生信息的div
                         	document.getElementById("uploadStudent").style.display="block";
+                        }else if("exist"===data.state){
+                        	//考试名字重复
+                        	document.getElementById("formName").innerHTML="提示";
+                    		document.getElementById("formContent").innerHTML="考试名称已经存在，请重新设置考试名称或删除上一场考试";
+                    		$("#form").modal('show');
                         }else if("fail"===data.state){
                         	//创建失败
                         	document.getElementById("formName").innerHTML="提示";

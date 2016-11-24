@@ -36,17 +36,18 @@ public class StudentDaoImpl extends ComEnviorment implements StudentDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	/**
-	 * <p>覆盖的addStudentInfo函数</p>
+	 * <p>覆盖的addStudentInfo函数
+	 * 需要传入的参数有：examId（考试id），teacherEmail（教师邮箱）,studentInfoEntity（学生信息）
+	 * </p>
 	 * @param studentInfo
 	 * @param teacherId
 	 * @return
 	 * @throws Exception 
 	 * @see cn.nsu.ccl.teacher.dao.StudentDao#addStudentInfo(cn.nsu.ccl.teacher.entity.StudentInfoEntity, java.lang.String)
 	 */
-	@Override
-	public boolean addStudentInfo(StudentInfoEntity studentInfo, int examId){
-		String sql = "call setStudentInfo(?,?,?)";
-		return jdbcTemplate.update(sql,studentInfo.getStudentId(),studentInfo.getStudentName(),examId)==1;
+	public boolean addStudentInfo(int examId,String teacherEmail,StudentInfoEntity studentInfo){
+		String sql = "call setStudentInfo(?,?,?,?)";
+		return jdbcTemplate.update(sql,examId,teacherEmail,studentInfo.getStudentId(),studentInfo.getStudentName())==-1;
 	}
 
 	/**

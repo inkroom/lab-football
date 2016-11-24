@@ -30,6 +30,7 @@ import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
 import cn.nsu.ccl.teacher.entity.QuestionLibListEntity;
 import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 import cn.nsu.ccl.teacher.service.ServiceManager;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
@@ -118,9 +119,15 @@ public class ExamManagerController {
 		examInfoEntity.setJudgeNumber(pNum);
 		//添加判断题分数属性信息
 		examInfoEntity.setJudgeScore(pScore);
-		if (service.getExamService().addExamInfo(examInfoEntity)) {
+		//调用service存储考试信息，返回1代表成功创建，0代表创建失败，-1代表该考试名称已经存在
+		int state = service.getExamService().addExamInfo(examInfoEntity);
+		if (state==1) {
 			jsonObject.put("state", "success");
-		}else{
+		}
+		if (state==-1) {
+			jsonObject.put("state", "exist");
+		}
+		if (state==0) {
 			jsonObject.put("state", "fail");
 		}
 		//设置返回的数据格式
@@ -147,8 +154,11 @@ public class ExamManagerController {
 	 */
 	@RequestMapping(value = "teacherUploadStudentExcel")  
   public String upLoadFile(HttpServletRequest request,String examName) {  
+		System.out.println("1");
 		String teacherEmail = (String) session.getAttribute("teacherEmail");
 		String path = request.getServletContext().getRealPath("/")+"WEB-INF/teacher/";
+    //用于存储保存状态
+    boolean state = false;
       // @RequestParam("file") MultipartFile file,  
       CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(  
               request.getSession().getServletContext());
@@ -171,36 +181,143 @@ public class ExamManagerController {
                       File localFile = new File(path);  
                       try {
 						f.transferTo(localFile);
+						System.out.println("2");
 					} catch (IllegalStateException | IOException e) {
 						e.printStackTrace();
 					}  
                   }  
               }  
           }
-          
           //接收从excel转回的list集合
   		ArrayList<StudentInfoEntity> list = service.getExamService().excelToList(path);
+  		System.out.println("list.size()="+list.size());
   		for(int i = 0; i < list.size(); i++){
+  			System.out.println(i);
   			StudentInfoEntity studentInfoEntity = list.get(i);
   			//调用service将数据保存到数据库
-  			if (!service.getExamService().addStudentInfo(studentInfoEntity,teacherEmail,examName)) {
+  			if (service.getExamService().addStudentInfo(studentInfoEntity,teacherEmail,examName)) {
   				//保存成功
-  				return "teacher/createExamInfoSuccess";
+  				state = true;
+  				System.out.println("赋值为true");
+  				//复制为true了
   			}
   		}
       }
-      	//保存失败
-		return "teacher/createExamInfoFail";  
+      	//创建成功
+		if (state) {
+			System.out.println("创建成功");
+  			return "teacher/exam/createExamInfoSuccess";
+		}
+      //默认返回 创建失败
+      return "teacher/exam/createExamInfoFail";
 	} 
+	/**
+	 * 
+	 * <p>toEditExamInfo方法的描述-跳转到修改考试信息界面</p>
+	 * @Title: ExamManagerController的toEditExamInfo方法
+	 * @Description: TODO
+	 * @author 暴沸 baofeidyz@foxmail.com
+	 * @date 2016年11月23日 下午7:13:39
+	 * @return
+	 */
 	@RequestMapping(value="teacherEditExam")
 	public String toEditExamInfo(){
 		//从session获取教师邮箱帐号
 		String teacherEmail = (String) session.getAttribute("teacherEmail");
 		//通过教师邮箱帐号获取该教师所创建的考试信息列表
-		ArrayList<ExamInfoEntity> list = service.getExamService().getExamInfo(teacherEmail);
+		ArrayList<ExamInfoEntity> list = service.getExamService().getExamInfoByTeacherEmail(teacherEmail);
 		request.setAttribute("examInfoList", list);
 		return "teacher/exam/editExamInfo";
 	}
+	/**
+	 * 
+	 * <p>editExamInfo方法的描述--实现教师修改考试信息</p>
+	 * @Title: ExamManagerController的editExamInfo方法
+	 * @Description: TODO
+	 * @author 暴沸 baofeidyz@foxmail.com
+	 * @date 2016年11月24日 上午9:21:48
+	 * @return
+	 */
+	@RequestMapping(value="teacherEditExamDo",method=RequestMethod.POST)
+	public void editExamInfo(int examId,String danNum,String danScore,String duoNum,String duoScore,String pNum,String pScore,HttpServletResponse response){
+		//实例化考试信息对象
+		ExamInfoEntity examInfo = new ExamInfoEntity();
+		//添加考试id信息
+		examInfo.setExamId(examId);
+		//添加单选题个数信息
+		examInfo.setChoiceNumber(danNum);
+		//添加单选题分数信息
+		examInfo.setChoiceScore(danScore);
+		//添加多选题个数信息
+		examInfo.setMultiputeChoiceNumber(duoNum);
+		//添加多选题分数信息
+		examInfo.setMultiputeChoiceScore(duoScore);
+		//添加判断题个数信息
+		examInfo.setJudgeNumber(pNum);
+		//添加判断题分数信息
+		examInfo.setJudgeScore(pScore);
+		//实例化一个jsonobject对象用于存储状态信息
+		JSONObject jsonObject = new JSONObject();
+		//调用service更新考试信息数据
+		if (service.getExamService().updateExamInfo(examInfo)) {
+			jsonObject.put("state", "success");
+		}else{
+			jsonObject.put("state", "fail");
+		}
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping(value="teacherGetExamInfoByExamId",method=RequestMethod.POST)
+	public void getQuestionLibListByExamId(int examId,HttpServletResponse response){
+		//初始化一个int型变量，存储题库id
+		int libraryId = -1;
+		//初始化一个题库列表信息，用于返回值
+		QuestionLibListEntity qEntity = new QuestionLibListEntity();
+		//新建一个JSONArray对象，用于存储返回的信息
+		JSONArray jsonArray = new JSONArray();
+		//获取在会话中的教师邮箱信息
+		String teacherEmail = (String) session.getAttribute("teacherEmail");
+		//获取该教师所有的考试信息
+		ArrayList<ExamInfoEntity> examInfoEntities = service.getExamService().getExamInfoByTeacherEmail(teacherEmail);
+		//遍历所有的考试信息，匹配与传入的考试id相等的数据，并获取到对应的题库id
+		for(int i = 0; i < examInfoEntities.size();i++){
+			ExamInfoEntity  examInfoEntity = examInfoEntities.get(i);
+			System.out.println("这是从数据库获取到的题库id="+examInfoEntity.getQuestionListNumber());
+			if(examInfoEntity.getExamId()==examId){
+				libraryId = examInfoEntity.getQuestionListNumber();
+				System.out.println("找到了对应的题库id="+libraryId);
+			}
+		}
+		//使用教师id获取对应的题库列表信息
+		ArrayList<QuestionLibListEntity> questionLibListEntities = service.getQuestionLibService().getQuestionLibListByTeacherEmail(teacherEmail);
+		//遍历题库信息找到与之前的题库id相同的题库列表信息
+		for(int j = 0; j < questionLibListEntities.size();j++){
+			QuestionLibListEntity questionLibListEntity = questionLibListEntities.get(j);
+			//匹配与之前的题库id相同的数据
+			if (questionLibListEntity.getLibraryId()==libraryId) {
+				System.out.println("找到了对应的题库列表信息");
+				//将匹配的题库列表信息转存，准备返回给前台界面
+				qEntity = questionLibListEntity;
+				System.out.println("这是找到的题库列表信息的题库名字="+qEntity.getLibraryName());
+			}
+		}
+		//将找到的题库列表信息返回前台
+		jsonArray.add(qEntity);
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		try {
+			response.getWriter().print(jsonArray.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	
 }
