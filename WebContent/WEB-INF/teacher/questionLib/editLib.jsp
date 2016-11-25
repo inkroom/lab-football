@@ -37,10 +37,10 @@
                     <div class="ibox-title">
                         <h5>题库信息 <small></small></h5>
                         <div class="ibox-tools">
-                        	 
+                        	
                         	 <a class="J_menuItem" href="teacherToCreatelib"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" title="添加">添加</span></a>
                         	 <a class="J_menuItem" href="javascript:void(0);" onclick="deleteLib()" ><span class="glyphicon glyphicon-minus-sign" aria-hidden="true" title="删除">删除</span></a>
-                        
+                        	
                         </div>
                     </div>
                     <div class="ibox-content">
@@ -207,7 +207,7 @@
             						alert("删除失败")
             					}
                     			
-                    		}
+                      		}
                     		
                     	}
                     	else
@@ -236,7 +236,7 @@
             type:"POST",
             //设定提交的url，这里只能选择本地的，如果需要调用其他域的资源，请google解决跨域问题
            // url:"teacherDeleteQuestionLib?libraryNames="+"我是要传给后台的字符串",//$("input[name='selectFlag']:checkbox").val(),//-----修改按类查找为按name值查找
-           url:"teacherDeleteQuestionLib?libraryNames="+"我是传给后台的字符串",
+           url:"teacherDeleteQuestionLib?libraryNames="+getSelected(),
         		   //设定后台返回的格式，一般都是直接使用json，这一句不能少，否则当后台返回数据时，不会调用success方法
             dataType:"json",
             //当后台成功返回数据时调用该方法，data参数表示被jquery中的ajax格式化的json数据（实际上在非jquery的ajax中需要我们手动格式化，纯JS的方法我也写在了注释里面。jquery中格式json数据的方法是parse）
@@ -262,6 +262,21 @@
 /*     });
 });
      */    } 
+          
+          function getSelected(){
+        	  var str="";
+        	  var i = 0;
+              $("input[name='selectFlag']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox
+              	 i++;
+                          if (document.getElementById("id"+i).checked) { //判断是否选中    
+                              //array.push($(this).val()); //将选中的值 添加到 array中  
+                              str+=$(this).val()+",";//拼接字符串，以逗号分隔  
+                              //alert($(this).val());  
+                          }  
+           })  
+          }
+      
+        
     </script>
 
     

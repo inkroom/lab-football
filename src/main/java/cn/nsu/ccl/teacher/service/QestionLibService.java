@@ -9,8 +9,10 @@
  */
 package cn.nsu.ccl.teacher.service;
 
+import java.io.File;
 import java.util.ArrayList;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import cn.nsu.ccl.teacher.entity.QuestionEntity;
 import cn.nsu.ccl.teacher.entity.QuestionLibListEntity;
@@ -110,5 +112,31 @@ public interface QestionLibService {
 	 */
 	public ArrayList<QuestionLibListEntity> getQuestionLibListByTeacherEmail(String teacherEmail);
 	
+	
+	public interface UploadService {
+		/**
+		 * 功能：根据上传的文件创建临时文件
+		 * 方法名：upload
+		 * 返回值：File
+		 * 开发人员：墨盒
+		 * 邮箱：m18942819324@163.com
+		 * 创建时间：2016-8-25
+		 * @param CommonsMultipartFile file
+		 * @return
+		 */
+		public File upload(CommonsMultipartFile file,String path);
+		/**
+		 * 功能：删除临时文件
+		 * 方法名：upload
+		 * 返回值：File
+		 * 开发人员：墨盒
+		 * 邮箱：m18942819324@163.com
+		 * 创建时间：2016-8-25
+		 * @param File file 临时文件
+		 * @return
+		 */
+		public void delete(File file);
+	}
+
 	
 }

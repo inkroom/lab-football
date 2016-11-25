@@ -17,6 +17,7 @@ import cn.nsu.ccl.teacher.service.impl.ExamServiceImpl;
 import cn.nsu.ccl.teacher.service.impl.ExamingServiceImpl;
 import cn.nsu.ccl.teacher.service.impl.MarkServiceImpl;
 import cn.nsu.ccl.teacher.service.impl.QuestionLibServiceImpl;
+import cn.nsu.ccl.teacher.service.impl.QuestionServiceImpl;
 import cn.nsu.ccl.teacher.service.impl.TeacherServiceImpl;
 
 /**
@@ -38,6 +39,16 @@ public class ServiceManager {
 	private MarkServiceImpl markServiceImpl;
 	@Autowired
 	private QuestionLibServiceImpl questionLibService;
+	@Autowired
+	private QuestionServiceImpl questionService;
+	
+
+	public QuestionServiceImpl getQuestionService() {
+		return questionService;
+	}
+	public void setQuestionService(QuestionServiceImpl questionService) {
+		this.questionService = questionService;
+	}
 	/**
 	 * <p>teacherService的get函数</p>
 	 * @return 返回 teacherService 的值

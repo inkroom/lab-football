@@ -20,6 +20,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import com.mysql.fabric.Server;
 
 import cn.nsu.ccl.teacher.entity.QuestionLibListEntity;
 import cn.nsu.ccl.teacher.service.ServiceManager;
@@ -30,7 +34,7 @@ import net.sf.json.JSONObject;
  * 
  * <p>ExamController类的描述</p>
  * @ClassName: ExamController
- * @Description: 下载模板，上传题库，页面跳转
+ * @Description: 下载模板，上传题库，页面跳转,创建题库
  * @author 暴沸 baofeidyz@foxmail.com
  * @date 2016年11月19日 下午1:58:27
  */
@@ -77,39 +81,32 @@ public class QuestionLibController {
 	    return null;
 	}
 	/**
-	 * 
-	 * <p>toCreatExam方法的描述</p>
-	 * @Title: ExamController的toCreatExam方法
-	 * @Description: TODO跳转到教师创建题库信息界面
-	 * @author 暴沸 baofeidyz@foxmail.com
-	 * @date 2016年11月19日 下午2:01:47
-	 * @return
-	 */
-	@RequestMapping(value="teacherCreateQuestionLib")
-	public String toCreatExam(){
-		return "teacher/questionLib/createQuestionLib";
-	}
-//	/**
-//	 * 
-//	 * <p>createExam方法的描述</p>
-//	 * @Title: ExamController的createExam方法
-//	 * @Description: TODO实现创建题库的操作
-//	 * @author 暴沸 baofeidyz@foxmail.com
-//	 * @date 2016年11月19日 下午5:04:03
-//	 * @param file
-//	 * @param session
-//	 */
-//	@RequestMapping(value="teacherCreateExamDo",method=RequestMethod.POST)
-//	public void createExam(@RequestParam("file") CommonsMultipartFile file,String examName,HttpSession session){
-//		//调用service上传到文件，并返回路径
-//		String filePath = service.getExamService().updateExamExcel(file,session);
-//		//验证文件是否按照要求进行编写
-//		if (service.getExamService().checkExamExcel(filePath)) {
-//			//将数据存储到数据库
-//			
-//		}
-//	}
-	/*@RequestMapping("eacherEditQuestionLib")
+ 	 * 
+ 	 * <p>createExam方法的描述</p>
+ 	 * @Title: QuestionLibController的addQuestionLib方法
+ 	 * @Description: TODO实现创建题库的操作
+ 	 * @author 暴沸 baofeidyz@foxmail.com
+ 	 * @date 2016年11月19日 下午5:04:03
+ 	 * @param file
+ 	 * @param session
+ 	 */
+ 	@RequestMapping(value="teacherAddquestionToLib",method=RequestMethod.POST)
+ 	public void addQuestion(@RequestParam("file") CommonsMultipartFile file,String questionLibName,HttpSession session){
+ 		 String teacherEmail = (String)session.getAttribute("teacherEmail");
+ 		 int questionLibId=service.getQuestionLibService().getQuestionLibId(questionLibName, teacherEmail);
+ 		// 调用service上传到文件，并返回路径
+ 	/*	String filePath = service.getQuestionService().upload(file, session);
+ 		// 验证文件是否按照要求进行编写
+ 		File qFile=(File)file;
+ 		if (service.getQuestionService().checkExcel(file)) {
+			
+		}
+ 		if (service.getQuestionService().checkExamExcel(filePath)) {
+ 		// 将数据存储到数据库
+ 			service.getQuestionService().submit(, teacherEmail);
+ 		}*/
+ 	}
+	/*@RequestMapping("teacherEditQuestionLib")
 	public String questionIndex(String questionLibName) throws Exception {
 		String teacherEmail = (String) request.getSession().getAttribute("teacher");
 		if (teacherEmail == null) {
@@ -162,9 +159,40 @@ public class QuestionLibController {
 	 * @param libraryNames
 	 */
 	@RequestMapping(value="teacherDeleteQuestionLib",method=RequestMethod.POST)
+	//传入拼接成功的字符串
 	
-	public void deleteQuestionLib(ArrayList<String> libraryNames,HttpSession session,HttpServletResponse response){
+	public void deleteQuestionLib(String str,HttpSession session,HttpServletResponse response){
+		//获取现在登陆的老师id
+		String teacherEmail = (String)session.getAttribute("teacherEmail");
+		//分割字符串
+		String[] libraryNames =str.split(",");
+		int count = 0;
+		for (int i = 0; i < libraryNames.length; i++) {
+			if (service.getQuestionLibService().deleteQuestionLibList(libraryNames[i],teacherEmail)) {
+				count++;//记录删除成功的信息条数
+			}
+		}
+		System.out.println(String.format("成功删除%d条信息，失败%d条",count,libraryNames.length-count));
+		JSONObject jsonObject = new JSONObject();
+		if (libraryNames.length==count) {//判断是否全部成功删除
+			jsonObject.put("state", "success");
+		}
+		else jsonObject.put("state", "fail");
+		//设置返回的数据格式
+		response.setContentType("application/json");
+		//修改编码为UTF-8
+		response.setCharacterEncoding("UTF-8");
+		try {
+			response.getWriter().print(jsonObject.toString());
+			System.out.println("jsonObject.toString()==");
+			System.out.println(jsonObject.toString());
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
+		
 	//测试字符串传入是否成功-----------------------------开始----------------------------------------
 	/*public void deleteQuestionLib(String  libraryNames,HttpSession session,HttpServletResponse response){
 		JSONObject jsonObject= new JSONObject();
@@ -185,7 +213,7 @@ public class QuestionLibController {
 		}//不能成功返回到页面request.readyState===1
 */
 	//结束-----------------------------------------------------------------
-		
+	/*	
 		System.out.println(request.getAttribute("libraryNames"));
 		String teacherEmail = (String)session.getAttribute("teacherEmail");
 		System.out.println("libraryNames.size()="+libraryNames.size());
@@ -219,31 +247,61 @@ public class QuestionLibController {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 	
 	}
-	@RequestMapping(value = "teacherToCreatelib",method=RequestMethod.POST)
+	/**
+	 * <p>toAddlib方法的描述</p>
+	 * @Title: QuestionLibController的toAddlib方法
+	 * @Description: 跳转到增加题库界面
+	 * @author: 蒋玖宏
+	 * @author 2213974854@qq.com
+	 * @date 2016年11月25日 下午2:39:45
+	 * @return
+	 */
+	@RequestMapping(value = "teacherToCreatelib")
 	public String toAddlib(){
 		return "teacher/questionLib/createLib";
 	}
 	/**
 	 * <p>addQuestionLib方法的描述</p>
 	 * @Title: QuestionLibController的addQuestionLib方法
-	 * @Description: 添加题库
+	 * @Description: 教师创建题库
 	 * @author 2213974854@qq.com
 	 * @date 2016年11月22日 下午4:54:29
 	 * @param questionLibName
 	 * @return
 	 */
 	@RequestMapping(value="teacherAddQuestionLib",method=RequestMethod.POST)
-	public String addQuestionLib(String questionLibName,HttpSession session){
+	public int  addQuestionLib(String questionLibName,String file,HttpServletResponse response,HttpSession session){
+		System.out.println("questionLibName"+questionLibName);
+		System.out.println("file"+file);
 		String teacherEmail = (String)session.getAttribute("teacherEmail");
+		JSONObject jsonObject = new JSONObject();
+		//判断同名教师下面是否存在同名题库
+		if (service.getQuestionLibService().getQuestionLibId(questionLibName, teacherEmail)==0) {
+			jsonObject.put("state", "error");
+			return -1;
+		};
+		//根据题库名称和教师id创建题库;
 		if (service.getQuestionLibService().addQuestionLibList(questionLibName, teacherEmail)) {
 			
-			return "success";
+			jsonObject.put("state", "success");
 		}
+		else
+		jsonObject.put("state", "fail");
+		//设置返回的数据格式
+				response.setContentType("application/json");
+				//修改编码为UTF-8
+				response.setCharacterEncoding("UTF-8");
+				try {
+					//将json数据传回前端
+					response.getWriter().print(jsonObject.toString());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+        return 0;
 		
-		return "false";
 	}
 
 }
