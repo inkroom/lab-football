@@ -9,6 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.util.SystemOutLogger;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.mysql.fabric.Server;
@@ -91,20 +93,43 @@ public class QuestionLibController {
  	 * @param session
  	 */
  	@RequestMapping(value="teacherAddquestionToLib",method=RequestMethod.POST)
- 	public void addQuestion(@RequestParam("file") CommonsMultipartFile file,String questionLibName,HttpSession session){
+ 	public String addQuestion(@RequestParam("file") CommonsMultipartFile file,String questionLibName,HttpSession session,HttpServletResponse response){
  		 String teacherEmail = (String)session.getAttribute("teacherEmail");
- 		 int questionLibId=service.getQuestionLibService().getQuestionLibId(questionLibName, teacherEmail);
- 		// 调用service上传到文件，并返回路径
- 	/*	String filePath = service.getQuestionService().upload(file, session);
- 		// 验证文件是否按照要求进行编写
- 		File qFile=(File)file;
- 		if (service.getQuestionService().checkExcel(file)) {
-			
+		JSONObject jsonObject = new JSONObject();
+		//判断同名教师下面是否存在同名题库
+		if (service.getQuestionLibService().getQuestionLibId(questionLibName, teacherEmail)==-1) {
+			jsonObject.put("state", "error");
+			return "teacher/questionLib/result";
+		};
+		//根据题库名称和教师id创建题库;
+		if (service.getQuestionLibService().addQuestionLibList(questionLibName, teacherEmail)) {
+			 int questionLibId=service.getQuestionLibService().getQuestionLibId(questionLibName, teacherEmail);
+		 		// 调用service上传到文件，并返回路径
+		 		/*String filePath = service.getQuestionService().upload(file, session);
+		 		// 验证文件是否按照要求进行编写
+		 		File qFile=(File)file;
+		 		if (service.getQuestionService().checkExcel(file)) {
+					
+				}
+		 		if (service.getQuestionService().checkExamExcel(filePath)) {
+		 		// 将数据存储到数据库
+		 			service.getQuestionService().submit(, teacherEmail);
+		 		}*/
+			jsonObject.put("state", "success");
 		}
- 		if (service.getQuestionService().checkExamExcel(filePath)) {
- 		// 将数据存储到数据库
- 			service.getQuestionService().submit(, teacherEmail);
- 		}*/
+		else
+		jsonObject.put("state", "fail");
+		//设置返回的数据格式
+				response.setContentType("application/json");
+				//修改编码为UTF-8
+				response.setCharacterEncoding("UTF-8");
+				try {
+					//将json数据传回前端
+					response.getWriter().print(jsonObject.toString());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+ 	return "teacher/questionLib/result";
  	}
 	/*@RequestMapping("teacherEditQuestionLib")
 	public String questionIndex(String questionLibName) throws Exception {
@@ -159,9 +184,9 @@ public class QuestionLibController {
 	 * @param libraryNames
 	 */
 	@RequestMapping(value="teacherDeleteQuestionLib",method=RequestMethod.POST)
+	@ResponseBody
 	//传入拼接成功的字符串
-	
-	public void deleteQuestionLib(String str,HttpSession session,HttpServletResponse response){
+	public String deleteQuestionLib(String str,HttpSession session,HttpServletResponse response){
 		//获取现在登陆的老师id
 		String teacherEmail = (String)session.getAttribute("teacherEmail");
 		//分割字符串
@@ -178,21 +203,21 @@ public class QuestionLibController {
 			jsonObject.put("state", "success");
 		}
 		else jsonObject.put("state", "fail");
-		//设置返回的数据格式
-		response.setContentType("application/json");
-		//修改编码为UTF-8
-		response.setCharacterEncoding("UTF-8");
-		try {
-			response.getWriter().print(jsonObject.toString());
-			System.out.println("jsonObject.toString()==");
-			System.out.println(jsonObject.toString());
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		//设置返回的数据格式
+//		response.setContentType("application/json");
+//		//修改编码为UTF-8
+//		response.setCharacterEncoding("UTF-8");
+//		try {
+//			response.getWriter().print(jsonObject.toString());
+//			System.out.println("jsonObject.toString()==");
+//			System.out.println(jsonObject.toString());
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	
-		
+		return jsonObject.toString();
 	//测试字符串传入是否成功-----------------------------开始----------------------------------------
 	/*public void deleteQuestionLib(String  libraryNames,HttpSession session,HttpServletResponse response){
 		JSONObject jsonObject= new JSONObject();
@@ -263,45 +288,6 @@ public class QuestionLibController {
 	public String toAddlib(){
 		return "teacher/questionLib/createLib";
 	}
-	/**
-	 * <p>addQuestionLib方法的描述</p>
-	 * @Title: QuestionLibController的addQuestionLib方法
-	 * @Description: 教师创建题库
-	 * @author 2213974854@qq.com
-	 * @date 2016年11月22日 下午4:54:29
-	 * @param questionLibName
-	 * @return
-	 */
-	@RequestMapping(value="teacherAddQuestionLib",method=RequestMethod.POST)
-	public int  addQuestionLib(String questionLibName,String file,HttpServletResponse response,HttpSession session){
-		System.out.println("questionLibName"+questionLibName);
-		System.out.println("file"+file);
-		String teacherEmail = (String)session.getAttribute("teacherEmail");
-		JSONObject jsonObject = new JSONObject();
-		//判断同名教师下面是否存在同名题库
-		if (service.getQuestionLibService().getQuestionLibId(questionLibName, teacherEmail)==0) {
-			jsonObject.put("state", "error");
-			return -1;
-		};
-		//根据题库名称和教师id创建题库;
-		if (service.getQuestionLibService().addQuestionLibList(questionLibName, teacherEmail)) {
-			
-			jsonObject.put("state", "success");
-		}
-		else
-		jsonObject.put("state", "fail");
-		//设置返回的数据格式
-				response.setContentType("application/json");
-				//修改编码为UTF-8
-				response.setCharacterEncoding("UTF-8");
-				try {
-					//将json数据传回前端
-					response.getWriter().print(jsonObject.toString());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-        return 0;
-		
-	}
+
 
 }

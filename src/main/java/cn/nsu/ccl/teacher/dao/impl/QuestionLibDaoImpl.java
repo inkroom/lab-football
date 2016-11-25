@@ -144,6 +144,9 @@ public class QuestionLibDaoImpl extends ComEnviorment implements QuestionLibDao 
 	public int getQuestionLibId(String questionLibName,String teacherEmail) {
 		String sql = "select * from QuestionMapping where libraryName = ? and teacherUsername = ?";
 		List<Map<String, Object>> listMap = jdbcTemplate.queryForList(sql,questionLibName,teacherEmail);
+		if (listMap.size()==0) {
+			return -1;
+		}
 		Map map = listMap.get(0);
 		return Integer.parseInt(map.get("libraryId").toString());
 	}

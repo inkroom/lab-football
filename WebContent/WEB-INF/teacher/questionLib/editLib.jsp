@@ -153,75 +153,8 @@
                 "New row"]);
 
         }
-        $(function(){
-        	
-        	
-        });
-        //纯js提交数据到后台-------------------------------
-       /*  function deleteLib() {  
-        	var truthBeTold = window.confirm("该操作不可逆，确认要删除么？"); 
-        	
-        	if (truthBeTold) { 
-        		var array = new Array(); //用于保存 选中的那一条数据的ID   
-                var flag; //判断是否一个未选  
-                var i=1;
-                 
-                $("input[name='selectFlag']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox 
-                	
-                	console.log(document.getElementById("id"+i).checked);
-                			 
-                            if (document.getElementById("id"+i).checked) { //判断是否选中    
-                                flag = true; //只要有一个被选择 设置为 true 
-                               
-                            } 
-                            i++;
-                        })  
-                if (flag) {  
-                	i=0;
-                    $("input[name='selectFlag']:checkbox").each(function() { //遍历所有的name为selectFlag的 checkbox  
-                    	 i++;
-                    	
-                                if (document.getElementById("id"+i).checked) { //判断是否选中    
-                                	
-                                    array.push($(this).val()); //将选中的值 添加到 array中  
-                                    //str+=$(this).val()+",";
-                                    alert($(this).val());  
-                                }  
-                            })  
-                    //将要集体删除的数据 传递给action处理   
-                   // window.self.location = "teacherDeleteQuestionLib?libraryNames=" + array;  
-                            var request = new XMLHttpRequest();
-                            var text="蔡洁是个大傻瓜";
-                    request.open("POST","teacherDeleteQuestionLib?libraryNames="+text,true);
-                    request.send();
-                    request.onreadystate=new function(){
-                    	alert("request.readyState="+request.readyState);
-                    	if(request.readyState===4){
-                    		if(request.status===200||request.status===306){
-                    			var data = JSON.parse(request.responseTxt);
-                    			if("success"===data.state){
-            						alert("删除成功");
-            					}
-                    		
-                    			if("fail"===data.state){
-            						alert("删除失败")
-            					}
-                    			
-                      		}
-                    		
-                    	}
-                    	else
-                    		
-                    }
-                } else {  
-                    alert("请至少选择一个题库");  
-                }  
-        	} 
-           */
-           //----request.readyState="+request.readyState===1------------------------------------------------
-          /*  $(document).ready(function(){
-    //监听id为class的select控件的改变动作，当这个控件所选中的控件改变时会出发这个function
-    $("#class").change(function(){  */
+      
+      
         //调用jquery中的ajax
         function deleteLib(){
     	var list = $('[name=ids]').length;
@@ -236,21 +169,23 @@
             type:"POST",
             //设定提交的url，这里只能选择本地的，如果需要调用其他域的资源，请google解决跨域问题
            // url:"teacherDeleteQuestionLib?libraryNames="+"我是要传给后台的字符串",//$("input[name='selectFlag']:checkbox").val(),//-----修改按类查找为按name值查找
-           url:"teacherDeleteQuestionLib?libraryNames="+getSelected(),
+           url:"teacherDeleteQuestionLib",
+        		   data:{
+        			   "str": getSelected()},
+        		   
         		   //设定后台返回的格式，一般都是直接使用json，这一句不能少，否则当后台返回数据时，不会调用success方法
             dataType:"json",
             //当后台成功返回数据时调用该方法，data参数表示被jquery中的ajax格式化的json数据（实际上在非jquery的ajax中需要我们手动格式化，纯JS的方法我也写在了注释里面。jquery中格式json数据的方法是parse）
             success:function(data){
-               /*  //清空id为name的select控件
-                $("#name").empty();
-                //给id为那么的select控件添加一个选项
-                $("#name").append("<option>请选择姓名</option>");
-                //循环遍历整个data（JSON数据），并给id为name的select控件添加option选项
-                $.each(data,function(i,n){
-                    $("#name").append("<option>"+data[i].name+"</option>"); 
-                    
-                });*/
-                alert("传回成功");
+
+    			if("success"===data.state){
+    				removeRow();
+					alert("删除成功");
+				}
+    		
+    			if("fail"===data.state){
+					alert("删除失败")
+				}
             },
             //当返回数据不成功时的操作
             error:function(jqXHR,XMLResponse){
@@ -273,8 +208,18 @@
                               str+=$(this).val()+",";//拼接字符串，以逗号分隔  
                               //alert($(this).val());  
                           }  
-           })  
+           })
+           return str;
           }
+          function removeRow(){  
+        	   
+        	    $("input[name='selectFlag']:checked").each(function() { // 遍历选中的checkbox
+    	            n = $(this).parents("tr").index();  // 获取checkbox所在行的顺序
+    	            document.getElementsByTagName('tbody')[0].deleteRow(n);
+    	       //     $(".table table-striped table-bordered table-hover dataTables-example").find("tr:eq("+n+")").remove();
+    	            alert("執行");
+    	        });
+        	};
       
         
     </script>
