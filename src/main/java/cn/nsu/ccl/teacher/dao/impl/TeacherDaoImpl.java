@@ -37,6 +37,11 @@ public class TeacherDaoImpl implements TeacherDao {
 		return jdbcTemplate.queryForList(SQL);
 	}
 
+	public boolean updatePassword(String teacherEmail,String newPassword){
+		System.out.println("dao="+newPassword);
+		String sql = "update Teacher set teacherPassword = ? where teacherUsername = ?";
+		return jdbcTemplate.update(sql,newPassword,teacherEmail)==1;
+	}
 
 
 }

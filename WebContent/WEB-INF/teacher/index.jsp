@@ -126,11 +126,11 @@
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user"></i>
+                                <i class="fa fa-user"></i>&nbsp;<%=session.getAttribute("teacherEmail")%>
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
-                                    <a href="">
+                                    <a class="J_menuItem" href="teacherChangePassword" >
                                          <i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;修改密码
                                     </a>
                                 </li>
@@ -151,6 +151,30 @@
         </div>
         <!--右侧部分结束-->
     </div>
+            <!-- 密码修改弹出框 -->
+        <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" >密码修改-<%=session.getAttribute("teacherEmail") %></h4>
+                </div>
+                <div class="modal-body">
+                	<p>请输入原密码：</p>
+                	<input id="oldPasswd" type="password" class="form-control" /><br/>
+                	<p>请输入新密码：</p>
+                	<input id="newPasswd1" type="password" class="form-control" /><br/>
+                	<p>请确认新密码：</p>
+                	<input id="newPasswd2" type="password" class="form-control" /><br/>
+                	<p id="formContent"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" onclick="changePasswdSubmit('<%=session.getAttribute("teacherEmail")%>')" class="btn btn-default" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <div style="text-align:center;">
 <p>&copy;成都东软学院</p>
 </div>
@@ -169,12 +193,11 @@
     <script src="js/plugins/pace/pace.min.js"></script>
     <script type="text/javascript">
     function downloadExamDemo(){
-    	console.log("123");
     	window.open("teacherDownloadQuestionLibDemo");
-    }
+    };
     function downloadStudentDemo(){
     	window.open("teacherDownloadStudentDemo");
-    }
+    };
     </script>
 </body>
 </html>

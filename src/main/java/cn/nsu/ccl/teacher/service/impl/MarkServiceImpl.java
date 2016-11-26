@@ -15,10 +15,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.nsu.ccl.teacher.dao.impl.ExamDaoImpl;
 import cn.nsu.ccl.teacher.dao.impl.MarkDaoImpl;
 import cn.nsu.ccl.teacher.entity.AnswerEntity;
-import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
 import cn.nsu.ccl.teacher.entity.MarkEntity;
 import cn.nsu.ccl.teacher.service.MarkService;
 

@@ -71,9 +71,38 @@ public class LoginController {
 		return "teacher/welcome";
 	}
 	@RequestMapping(value="teacherExit")
-	public void singOut(HttpSession session){
+	public String singOut(HttpSession session){
 		//结束会话
 		session.invalidate();
+		return "redirect:teacher";
+	}
+	@RequestMapping(value="teacherChangePassword")
+	public String toChangePassword(){
+		return "teacher/changePassword";
+	}
+	@RequestMapping(value="teacherChangePasswordDo",method=RequestMethod.POST)
+	public void changePassword(String oldPasswd,String newPasswd,HttpSession session,HttpServletResponse response){
+		
+		System.out.println("controller="+newPasswd);
+		//获取教师登录信息（教师邮箱帐号）
+		String teacherEmail = (String) session.getAttribute("teacherEmail");
+		//新建一个jsonobject存储信息
+		JSONObject jsonObject = new JSONObject();
+		//调用对应的service方法修改密码
+		if (service.getTeacherService().updatePassword(teacherEmail, oldPasswd, newPasswd)) {
+			jsonObject.put("state","success");
+			//并且销毁会话信息
+			session.invalidate();
+		}else{
+			jsonObject.put("state", "fail");
+		}
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		try {
+			response.getWriter().print(jsonObject.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

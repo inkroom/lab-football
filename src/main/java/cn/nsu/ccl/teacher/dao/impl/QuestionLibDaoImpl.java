@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import cn.nsu.ccl.comm.Envirment.ComEnviorment;
 import cn.nsu.ccl.teacher.dao.QuestionLibDao;
 import cn.nsu.ccl.teacher.entity.QuestionEntity;
 
@@ -31,7 +30,7 @@ import cn.nsu.ccl.teacher.entity.QuestionEntity;
  * @date 2016年11月18日 下午4:49:40
  */
 @Repository
-public class QuestionLibDaoImpl extends ComEnviorment implements QuestionLibDao {
+public class QuestionLibDaoImpl implements QuestionLibDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -147,8 +146,7 @@ public class QuestionLibDaoImpl extends ComEnviorment implements QuestionLibDao 
 		if (listMap.size()==0) {
 			return -1;
 		}
-		Map map = listMap.get(0);
-		return Integer.parseInt(map.get("libraryId").toString());
+		return Integer.parseInt(listMap.get(0).get("libraryId").toString());
 	}
 	
 	/**

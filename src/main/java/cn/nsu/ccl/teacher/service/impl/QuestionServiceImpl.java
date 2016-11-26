@@ -5,7 +5,6 @@ package cn.nsu.ccl.teacher.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.servlet.http.HttpSession;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,13 +21,10 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import cn.nsu.ccl.comm.Envirment.JsonEnviorment;
 
-import cn.nsu.ccl.teacher.dao.QuestionLibDao;
 import cn.nsu.ccl.teacher.entity.QuestionEntity;
 import cn.nsu.ccl.teacher.service.QuestionService;
 
@@ -46,7 +42,7 @@ import cn.nsu.ccl.teacher.service.QuestionService;
  */
 
 @Service
-public class QuestionServiceImpl extends JsonEnviorment implements QuestionService {
+public class QuestionServiceImpl  implements QuestionService {
 	/**
 	 * <p>checkExamExcel方法的描述</p>
 	 * @Title: QuestionLibServiceImpl的checkExamExcel方法
@@ -57,10 +53,8 @@ public class QuestionServiceImpl extends JsonEnviorment implements QuestionServi
 	 * @return
 	 */
 	public boolean checkExamExcel(String filePath) {
-		// TODO Auto-generated method stub
 		return false;
 	}
-	
 	/**
 	 * 功能：根据上传的文件创建临时文件
 	 * 方法名：upload
@@ -295,7 +289,6 @@ public class QuestionServiceImpl extends JsonEnviorment implements QuestionServi
 	 */
 	@Override
 	public boolean submit(String json, int questionLibId) throws Exception {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

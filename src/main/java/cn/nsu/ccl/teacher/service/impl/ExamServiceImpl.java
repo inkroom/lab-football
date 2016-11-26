@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -14,7 +13,6 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import cn.nsu.ccl.teacher.dao.impl.ExamDaoImpl;
 import cn.nsu.ccl.teacher.dao.impl.StudentDaoImpl;
@@ -50,7 +48,6 @@ public class ExamServiceImpl implements ExamService{
 		//需要解析的Excel文件
 		File file = new File(URL);
 		//创建Excel，读取文件内容
-		@SuppressWarnings("resource")
 		XSSFWorkbook workbook = null;
 		try {
 			workbook = new XSSFWorkbook(FileUtils.openInputStream(file));
@@ -143,9 +140,8 @@ public class ExamServiceImpl implements ExamService{
 					list2.add(examInfo);
 				}
 			}
-				return list2;
 		}
-		return null;
+		return list2;
 	}
 	
 	/**

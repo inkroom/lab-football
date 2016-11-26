@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import cn.nsu.ccl.comm.Envirment.ComEnviorment;
 import cn.nsu.ccl.teacher.dao.ExamDao;
 import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
 
@@ -30,7 +29,7 @@ import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
  * @date 2016年11月18日 下午4:47:03
  */
 @Repository
-public class ExamDaoImpl extends ComEnviorment implements ExamDao {
+public class ExamDaoImpl implements ExamDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
