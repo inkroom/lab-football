@@ -38,6 +38,8 @@ public class ServiceManager {
 	private MarkServiceImpl markServiceImpl;
 	@Autowired
 	private QuestionLibServiceImpl questionLibService;
+	
+
 	/**
 	 * <p>teacherService的get函数</p>
 	 * @return 返回 teacherService 的值

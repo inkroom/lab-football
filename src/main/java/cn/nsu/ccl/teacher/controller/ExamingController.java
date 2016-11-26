@@ -47,48 +47,36 @@ public class ExamingController {
 	
 	@RequestMapping(value="teacherStartExam")
 	public String toStatrExam(){
-		//1.获取会话seesion中的教师邮箱
-		String teacherEmail = (String) session.getAttribute("teacherEmail");
-		//2.通过教师邮箱获取考试列表信息
-		ArrayList<ExamInfoEntity> list = service.getExamService().getExamInfoByTeacherEmail(teacherEmail);
-		//3.将获取到的考试信息存放于请求request中
-		request.setAttribute("examList", list);
-		//4.跳转到examing/choseExam.jsp
-		return "teacher/examing/choseExam";
-	}
-	@RequestMapping(value="teacherStatrExamShowExamList")
-	public String getExamList(){
 		//从session获取教师邮箱帐号
-		String teacherEmail = (String) session.getAttribute("teacherEmail");
-		//通过教师邮箱帐号获取该教师所创建的考试信息列表
-		ArrayList<ExamInfoEntity> list = service.getExamService().getExamInfoByTeacherEmail(teacherEmail);
-		//根据examid获取是否有考生信息
-		//1.遍历考试信息
-		//2.新建一个jsonArray用于存储所有的对应信息
-		JSONArray jsonArray = new JSONArray();
-		for(int i = 0; i < list.size();i++){
-			ExamInfoEntity entity = list.get(i);
-			//3.通过考试id获取该场考试是否有对应的考生信息
-			if (service.getExamService().isStudentInfoExistByExamId(entity.getExamId())) {
-				//存在考生信息
-				//4.新建一个jsonobject对象用于存储信息
-				JSONObject jsonObject = new JSONObject();
-				jsonObject.put("examId", entity.getExamId());
-				jsonObject.put("state", "exist");
-				jsonArray.add(jsonObject);
-			}else{
-				//4.新建一个jsonobject对象用于存储信息
-				JSONObject jsonObject = new JSONObject();
-				jsonObject.put("examId", entity.getExamId());
-				jsonObject.put("state", "null");
-				jsonArray.add(jsonObject);
-			}
-		}
-		request.setAttribute("examInfoList", list);
-		request.setAttribute("jsonArray", jsonArray.toString());
-		return "teacher/examing/examList";
+				String teacherEmail = (String) session.getAttribute("teacherEmail");
+				//通过教师邮箱帐号获取该教师所创建的考试信息列表
+				ArrayList<ExamInfoEntity> list = service.getExamService().getExamInfoByTeacherEmail(teacherEmail);
+				//根据examid获取是否有考生信息
+				//1.遍历考试信息
+				//2.新建一个jsonArray用于存储所有的对应信息
+				JSONArray jsonArray = new JSONArray();
+				for(int i = 0; i < list.size();i++){
+					ExamInfoEntity entity = list.get(i);
+					//3.通过考试id获取该场考试是否有对应的考生信息
+					if (service.getExamService().isStudentInfoExistByExamId(entity.getExamId())) {
+						//存在考生信息
+						//4.新建一个jsonobject对象用于存储信息
+						JSONObject jsonObject = new JSONObject();
+						jsonObject.put("examId", entity.getExamId());
+						jsonObject.put("state", "exist");
+						jsonArray.add(jsonObject);
+					}else{
+						//4.新建一个jsonobject对象用于存储信息
+						JSONObject jsonObject = new JSONObject();
+						jsonObject.put("examId", entity.getExamId());
+						jsonObject.put("state", "null");
+						jsonArray.add(jsonObject);
+					}
+				}
+				request.setAttribute("examInfoList", list);
+				request.setAttribute("jsonArray", jsonArray.toString());
+				return "teacher/examing/examList";
 	}
-	
 	@RequestMapping(value="teacherStartExamDo")
 	public String startExam(int examId){
 		//1.通过传入的考试id获取该场考试信息

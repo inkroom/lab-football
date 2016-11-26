@@ -70,5 +70,11 @@ public class LoginController {
 	public String welcome(){
 		return "teacher/welcome";
 	}
+	@RequestMapping(value="teacherExit")
+	public void singOut(HttpSession session){
+		//结束会话
+		session.invalidate();
+	}
+	
 	
 }

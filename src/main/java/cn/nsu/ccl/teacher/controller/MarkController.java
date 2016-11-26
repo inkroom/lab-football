@@ -28,10 +28,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mysql.fabric.xmlrpc.base.Data;
 
 import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
-import cn.nsu.ccl.teacher.entity.MarkEntity;
 import cn.nsu.ccl.teacher.service.ServiceManager;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -53,10 +51,6 @@ public class MarkController {
 	private HttpServletRequest request;
 	
 	@RequestMapping(value="teacherShowMark")
-	public String toShowMark(){
-		return "teacher/mark/showMark";
-	}
-	@RequestMapping(value="teacherShowMarkList")
 	public String toShowMarkList(){
 		//1.获取会话seesion中的教师邮箱
 		String teacherEmail = (String) session.getAttribute("teacherEmail");

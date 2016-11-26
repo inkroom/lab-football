@@ -29,10 +29,12 @@
                     <h3 class="font-bold">欢迎使用在线考试系统-教师端</h3><br/>
                     
                     <div class="error-desc">
-                    <form action="teacherCreateExamDo" method="post" enctype="multipart/form-data">
-                    <input type="text" name="examName" placeholder="请输入题库名" class="form-control" required="required"/><br/>
-                    <input type="file" name="file" class="form-control" required="required"/><br/>
-                    <input type="submit" class="btn btn-primary btn-rounded btn-block btn btn-w-m btn-success" value="上传题库资料"/>
+                    <form action="teacherAddquestionToLib" method="post" enctype="multipart/form-data">
+                    <input type="text" name="questionLibName" placeholder="请输入题库名" class="form-control" required="required" /><br/>
+                  <!--  只显示excel文件 -->
+                    <input type="file" name="file" class="form-control" required="required" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/><br/>
+                   <!--  <a href="javascript:void(0)" onclick="submit()" class="btn btn-primary btn-rounded btn-block btn btn-w-m btn-success" >上传题库资料</a> -->
+                    <input type = "submit", class="btn btn-primary btn-rounded btn-block btn btn-w-m btn-success"/> 上传题库资料
                     </form>
                     </div>
                 </div>
@@ -45,6 +47,8 @@
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
 
     <!-- 自定义js -->
-    <script src="js/content.js?v=1.0.0"></script>
+
+    
+    
 </body>
 </html>
