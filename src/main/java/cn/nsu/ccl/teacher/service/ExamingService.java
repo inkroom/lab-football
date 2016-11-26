@@ -26,6 +26,9 @@ public interface ExamingService {
 	 * @return
 	 */
 	public ArrayList<ExamingInfoEntity> getExaming(int examId);
+	
+	
+	
 	/**
 	 * 
 	 * 描述：生成并返回一个教师口令Token

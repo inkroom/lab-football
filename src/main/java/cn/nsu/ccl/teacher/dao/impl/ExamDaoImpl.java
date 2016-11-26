@@ -137,7 +137,7 @@ public class ExamDaoImpl extends ComEnviorment implements ExamDao {
 	 */
 	public boolean updateToken(String token, int examId){
 		String sql = "call setKeyword(?,?)";
-		return jdbcTemplate.update(sql,examId,token)==1;
+		return jdbcTemplate.update(sql,token,examId)==1;
 	}
 
 	/**

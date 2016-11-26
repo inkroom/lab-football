@@ -64,7 +64,6 @@ public class ExamingServiceImpl implements ExamingService {
 			examTakingInfo.setStudentNumber(map.get("studentId").toString());
 			examTakingInfo.setStudentName(map.get("studentName").toString());
 			examTakingInfo.setState(map.get("studentStatus").toString());
-			examTakingInfo.setBrowserInfo(map.get("browser").toString());
 			examTakingInfo.setIp(map.get("ipAddr").toString());
 			examTakingInfo.setNote(map.get("remark")+"");
 			list.add(examTakingInfo);

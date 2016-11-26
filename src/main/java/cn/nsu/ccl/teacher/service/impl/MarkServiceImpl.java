@@ -15,8 +15,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.nsu.ccl.teacher.dao.impl.ExamDaoImpl;
 import cn.nsu.ccl.teacher.dao.impl.MarkDaoImpl;
 import cn.nsu.ccl.teacher.entity.AnswerEntity;
+import cn.nsu.ccl.teacher.entity.ExamInfoEntity;
 import cn.nsu.ccl.teacher.entity.MarkEntity;
 import cn.nsu.ccl.teacher.service.MarkService;
 
@@ -27,6 +29,7 @@ public class MarkServiceImpl implements MarkService{
 	
 	@Autowired
 	private MarkDaoImpl markDao;
+	
 	
 	private ArrayList<MarkEntity> getMarkList(int examId){
 		List<Map<String, Object>> listMap = markDao.getStudentGrade(examId);
@@ -47,20 +50,22 @@ public class MarkServiceImpl implements MarkService{
 	private ArrayList<AnswerEntity> getAnsers(int examId){
 		ArrayList<AnswerEntity> list = new ArrayList<>();
 		List<Map<String, Object>> listMap = markDao.getAnswer(examId);
-		//遍历listMap
-		for(int i = 0; i < listMap.size(); i++){
-			//解析listMap
-			Map<String, Object> map = listMap.get(i);
-				//实例化实体，并获取详情
-				AnswerEntity answerEntity = new AnswerEntity();
-				answerEntity.setStudentNumber(map.get("studentId").toString());
-				answerEntity.setState(Integer.parseInt(map.get("studentStatus").toString()));
-				answerEntity.setTrueAnswer(map.get("answerReal").toString());
-				answerEntity.setStudentAnswer(map.get("answerStudent").toString());
-				answerEntity.setScore(map.get("score").toString());
-				answerEntity.setEachType(map.get("eachType").toString());
-				//将对象存于list集合中
-				list.add(answerEntity);
+		if(listMap!=null){
+			//遍历listMap
+			for(int i = 0; i < listMap.size(); i++){
+				//解析listMap
+				Map<String, Object> map = listMap.get(i);
+					//实例化实体，并获取详情
+					AnswerEntity answerEntity = new AnswerEntity();
+					answerEntity.setStudentNumber(map.get("studentId").toString());
+					answerEntity.setState(Integer.parseInt(map.get("studentStatus").toString()));
+					answerEntity.setTrueAnswer(map.get("answerReal").toString());
+					answerEntity.setStudentAnswer(map.get("answerStudent").toString());
+					answerEntity.setScore(map.get("score").toString());
+					answerEntity.setEachType(map.get("eachType").toString());
+					//将对象存于list集合中
+					list.add(answerEntity);
+			}
 		}
 		return list;
 	}
@@ -71,7 +76,7 @@ public class MarkServiceImpl implements MarkService{
 	 * @throws IOException 
 	 * 
 	 */
-	public String downloadGrade(int examId,String contextPath,String examName) throws IOException {
+	public String downloadGrade(int examId,String contextPath,String examName){
 		
 		//从数据库中获取到的该考试所有考生的成绩的结果集
 		ArrayList<MarkEntity> list = this.getMarkList(examId);
@@ -110,11 +115,16 @@ public class MarkServiceImpl implements MarkService{
 		//创建一个文件
 		String path = contextPath+"/"+examName+".xlsx";
 		File file = new File(path);
-		file.createNewFile();
 		//将Excel内容存盘
-		FileOutputStream stream = FileUtils.openOutputStream(file);
-		workbook.write(stream);
-		stream.close();
+		FileOutputStream stream;
+		try {
+			file.createNewFile();
+			stream = FileUtils.openOutputStream(file);
+			workbook.write(stream);
+			stream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return path;
 	}
 
@@ -165,7 +175,7 @@ public class MarkServiceImpl implements MarkService{
 	/**
 	 * 计算考生成绩并返回文件路径
 	 */
-	public String getScoreExcel(int examId,String contextPath,String examName) throws IOException{
+	public String getScoreExcel(int examId,String contextPath,String examName){
 		//Excel文件存放路径
 		String path = null;
 		//判断是否已经下载成绩
