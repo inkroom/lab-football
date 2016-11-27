@@ -63,8 +63,8 @@ public class QuestionLibDaoImpl implements QuestionLibDao {
 	 * @throws Exception
 	 */
 	public boolean addQuestionLib(String questionLibName, String teacherId){
-		String sql = "call createLibrary('?','?')";
-		return jdbcTemplate.update(sql,teacherId,questionLibName)==1;
+		String sql = "insert into QuestionMapping (libraryName,teacherUsername) values(?,?)";
+		return jdbcTemplate.update(sql,questionLibName,teacherId)==1;
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class QuestionLibDaoImpl implements QuestionLibDao {
 	 * @throws Exception
 	 */
 	public boolean addQuestion(ArrayList<QuestionEntity> questionList, int questionLibId){
-		String sql ="call insertQuestion('?',?,'?','?','?','?')";
+		String sql = "INSERT INTO QuestionList(questionId,libraryId,question,choice,answer,types) VALUES(?,?,?,?,?,?)";
 		int j =-1;
 		for (int i = 0; i < questionList.size(); i++) {
 			QuestionEntity question= questionList.get(i);

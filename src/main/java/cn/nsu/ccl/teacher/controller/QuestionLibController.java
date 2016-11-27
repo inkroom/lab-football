@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,9 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-
+import cn.nsu.ccl.teacher.entity.QuestionEntity;
 import cn.nsu.ccl.teacher.entity.QuestionLibListEntity;
 import cn.nsu.ccl.teacher.service.ServiceManager;
 import net.sf.json.JSONObject;
@@ -56,30 +60,27 @@ public class QuestionLibController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value="teacherDownloadQuestionLibDemo")
-    public ResponseEntity<byte[]> downloadExamDemo(HttpSession session){
-    	System.out.println("teacherDownloadQuestionLibDemo");
-        String path = session.getServletContext().getRealPath("/")+"WEB-INF/teacher/exam/examDemo.xlsx";
-        System.out.println(path);
-        File file = new File(path);
-        HttpHeaders headers = new HttpHeaders();
-        String fileName = null;
-        try {
-        	//强制转码，避免下载文件名无法使用中文
-        	fileName  = new String("在线考试系统题库模版.xlsx".getBytes("utf-8"), "iso-8859-1");
-        } catch (UnsupportedEncodingException e1) {
-            e1.printStackTrace();
-        }
-        headers.setContentDispositionFormData("attachment", fileName);
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        try {
-        	System.out.println("之前");
-        	return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
-        } catch (IOException e) {
-        	System.out.println("fuck");
-        }
-        return null;
-    }
+	@RequestMapping(value="downloadQuestionLibDemo")
+	public ResponseEntity<byte[]> downloadExamDemo(HttpSession session){
+		String path = session.getServletContext().getRealPath("/")+"WEB-INF/teacher/examDemo.xlsx";
+		File file = new File(path);
+	    HttpHeaders headers = new HttpHeaders();
+	    String fileName = null;
+	    try {
+	    	//强制转码，避免下载文件名无法使用中文
+	    	fileName  = new String("在线考试系统题库模版.xlsx".getBytes("utf-8"), "iso-8859-1");
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
+	    headers.setContentDispositionFormData("attachment", fileName);
+	    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+	    try {
+	        return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+	    } catch (IOException e) {
+	    	
+	    }
+	    return null;
+	}
 	/**
  	 * 
  	 * <p>createExam方法的描述</p>
@@ -91,68 +92,75 @@ public class QuestionLibController {
  	 * @param session
  	 */
  	@RequestMapping(value="teacherAddquestionToLib",method=RequestMethod.POST)
- 	public String addQuestion(@RequestParam("file") CommonsMultipartFile file,String questionLibName,HttpSession session,HttpServletResponse response){
- 		 String teacherEmail = (String)session.getAttribute("teacherEmail");
-		JSONObject jsonObject = new JSONObject();
-		//判断同名教师下面是否存在同名题库
-		if (service.getQuestionLibService().getQuestionLibId(questionLibName, teacherEmail)==-1) {
-			jsonObject.put("state", "error");
+ 	public String addQuestion(@RequestParam("file") CommonsMultipartFile file,String questionLibName,HttpSession session,HttpServletResponse response,HttpServletRequest request){
+ 		//获取教师登录信息，教师邮箱帐号
+ 		String teacherEmail = (String)session.getAttribute("teacherEmail");
+		//判断同名教师下面是否存在同名题库，若存在则直接返回提示
+		if (service.getQuestionLibService().getQuestionLibId(questionLibName, teacherEmail)!=-1) {
+			System.out.println("2");
+			request.setAttribute("state", "创建失败，题库名称已存在。");
 			return "teacher/questionLib/result";
 		};
-		//根据题库名称和教师id创建题库;
-		if (service.getQuestionLibService().addQuestionLibList(questionLibName, teacherEmail)) {
-			 int questionLibId=service.getQuestionLibService().getQuestionLibId(questionLibName, teacherEmail);
-		 		// 调用service上传到文件，并返回路径
-		 		/*String filePath = service.getQuestionService().upload(file, session);
-		 		// 验证文件是否按照要求进行编写
-		 		File qFile=(File)file;
-		 		if (service.getQuestionService().checkExcel(file)) {
-					
-				}
-		 		if (service.getQuestionService().checkExamExcel(filePath)) {
-		 		// 将数据存储到数据库
-		 			service.getQuestionService().submit(, teacherEmail);
-		 		}*/
-			jsonObject.put("state", "success");
+		
+		System.out.println("3");
+		//接收上传的题库文件
+		//保存文件的路径
+		//保存最后excel文件转成集合
+		ArrayList<QuestionEntity> list = new ArrayList<>();
+		String path = request.getServletContext().getRealPath("/")+"WEB-INF/teacher/questionLib/";
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+	      // 判断 request 是否有文件上传,即多部分请求  
+	      if (multipartResolver.isMultipart(request)) { 
+	          // 转换成多部分request  
+	          MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;  
+	          // 取得request中的所有文件名  
+	          Iterator<String> iter = multiRequest.getFileNames();  
+	          while (iter.hasNext()) {  
+	              // 取得上传文件  
+	              MultipartFile f = multiRequest.getFile(iter.next());  
+	              if (f != null) {  
+	                  // 取得当前上传文件的文件名称  
+	                  String myFileName = f.getOriginalFilename();  
+	                  // 如果名称不为“”,说明该文件存在，否则说明该文件不存在  
+	                  if (myFileName.trim() != "") {  
+	                      // 定义上传路径  
+	                      path =  path + myFileName;  
+	                      File localFile = new File(path);  
+	                      try {
+							f.transferTo(localFile);
+						} catch (IllegalStateException | IOException e) {
+							e.printStackTrace();
+						}  
+	                  }  
+	              }  
+	          }
+	          //检查上传的文件是否合法
+	          if (service.getQuestionLibService().checkExcel(path)) {
+	        	  //文件合法则开始转换成集合数据
+		          //获取上传的文件的集合
+	        	  System.out.println("5");
+		          list = service.getQuestionLibService().getQuestionLibListByExcel(path);
+		          System.out.println("6");
+	          }
+
+	      }
+	      System.out.println("6.1");
+		//根据题库名称和教师id在题库列表信息表中创建题库的列表信息;
+		System.out.println("这是在controll中获取到的题库集合的大小="+list.size());
+ 		if(service.getQuestionLibService().addQuestions(questionLibName, teacherEmail, list)){
+ 			System.out.println("8");
+ 			request.setAttribute("state", "创建成功，您可以在左侧继续您的操作。");
+		}else{
+			System.out.println("9");
+			request.setAttribute("state", "很遗憾，本次创建失败！");
 		}
-		else
-		jsonObject.put("state", "fail");
 		//设置返回的数据格式
-				response.setContentType("application/json");
-				//修改编码为UTF-8
-				response.setCharacterEncoding("UTF-8");
-				try {
-					//将json数据传回前端
-					response.getWriter().print(jsonObject.toString());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
- 	return "teacher/questionLib/result";
+		response.setContentType("application/json");
+		//修改编码为UTF-8
+		response.setCharacterEncoding("UTF-8");
+		return "teacher/questionLib/result";
  	}
-	/*@RequestMapping("teacherEditQuestionLib")
-	public String questionIndex(String questionLibName) throws Exception {
-		String teacherEmail = (String) request.getSession().getAttribute("teacher");
-		if (teacherEmail == null) {
-			return "redirect:questionLib/login.do";
-		}
-		//获取该教师创建的题库列表
-		ArrayList<QuestionLibListEntity> questionLibList = service.getQuestionLibService().getQuestionLibListByTeacherEmail(teacherEmail);
-		request.setAttribute("questionLibList", questionLibList);
-		if ((Boolean) request.getSession().getAttribute("checkResult") == Boolean.FALSE) {//文件不合格
-			request.setAttribute("checkResult", request.getSession().getAttribute("checkResult"));
-			request.getSession().removeAttribute("checkResult");
-		} else if (request.getSession().getAttribute("filePath") != null) {//确保是重定向
-			//将 session 中的数据放到 request 中
-			request.setAttribute("questionList", request.getSession().getAttribute("questionList"));
-			request.setAttribute("questionLibName", request.getSession().getAttribute("questionLibName"));
-			request.setAttribute("filePath", request.getSession().getAttribute("filePath"));
-			//删除 session 中的数据
-			request.getSession().removeAttribute("questionList");
-			request.getSession().removeAttribute("questionLibName");
-			request.getSession().removeAttribute("filePath");
-		}
-		return "questionLib/views/questionLibIndex.jsp";
-	}*/
+	
 	/**
 	 * <p>getQuestionLib方法的描述</p>
 	 * @Title: QuestionLibController的getQuestionLib方法
@@ -201,77 +209,7 @@ public class QuestionLibController {
 			jsonObject.put("state", "success");
 		}
 		else jsonObject.put("state", "fail");
-//		//设置返回的数据格式
-//		response.setContentType("application/json");
-//		//修改编码为UTF-8
-//		response.setCharacterEncoding("UTF-8");
-//		try {
-//			response.getWriter().print(jsonObject.toString());
-//			System.out.println("jsonObject.toString()==");
-//			System.out.println(jsonObject.toString());
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-	
 		return jsonObject.toString();
-	//测试字符串传入是否成功-----------------------------开始----------------------------------------
-	/*public void deleteQuestionLib(String  libraryNames,HttpSession session,HttpServletResponse response){
-		JSONObject jsonObject= new JSONObject();
-		jsonObject.put("state", "success");
-		System.out.println("libraryNames+"+libraryNames);
-		//设置返回的数据格式
-		response.setContentType("application/json");
-		//修改编码为UTF-8
-		response.setCharacterEncoding("UTF-8");
-		try {
-			response.getWriter().print(jsonObject.toString());
-			System.out.println("jsonObject.toString()==");
-			System.out.println(jsonObject.toString());
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}//不能成功返回到页面request.readyState===1
-*/
-	//结束-----------------------------------------------------------------
-	/*	
-		System.out.println(request.getAttribute("libraryNames"));
-		String teacherEmail = (String)session.getAttribute("teacherEmail");
-		System.out.println("libraryNames.size()="+libraryNames.size());
-		int count=0;
-		
-		for (int i = 0; i < libraryNames.size(); i++) {
-			
-			String libraryName= libraryNames.get(i);
-			if (service.getQuestionLibService().deleteQuestionLibList(libraryName,teacherEmail)) {
-				count++;
-			}
-			
-			
-		}
-		
-			System.out.println(String.format("成功删除%d条信息，失败%d条",count,libraryNames.size()-count));
-			JSONObject jsonObject = new JSONObject();
-			if (libraryNames.size()==count) {
-				jsonObject.put("state", "success");
-			}
-			else jsonObject.put("state", "fail");
-			//设置返回的数据格式
-			response.setContentType("application/json");
-			//修改编码为UTF-8
-			response.setCharacterEncoding("UTF-8");
-			try {
-				response.getWriter().print(jsonObject.toString());
-				System.out.println("jsonObject.toString()==");
-				System.out.println(jsonObject.toString());
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
-	
 	}
 	/**
 	 * <p>toAddlib方法的描述</p>

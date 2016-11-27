@@ -28,7 +28,7 @@
 
 
     <div class="middle-box text-center animated fadeInDown">
-        <h2 id="message">创建失败</h2>
+        <h4 id="message">${state }</h4>
         
 
        
@@ -38,22 +38,6 @@
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
 <script type="text/javascript">
-document.ready=function(){
-	var request = new XMLHttpRequest();
-	request.onreadystatechange = function(){
-		var data = JSON.parse(request.responseText);
-		if("success"===data.state){
-			document.getElementById("message").innerHTML="创建成功";
-		}
-		if("fail"===data.state){
-			document.getElementById("message").innerHTML="创建失败";
-		}
-		if("error"===data.state){
-			document.getElementById("message").innerHTML="题库重名";
-		}
-	}
-}
-
 </script>
     
     

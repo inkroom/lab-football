@@ -157,10 +157,6 @@
       
         //调用jquery中的ajax
         function deleteLib(){
-    	var list = $('[name=ids]').length;
-
-    	alert("changdu "+list);
-    
     	$.ajax({
     
         
@@ -217,7 +213,6 @@
     	            n = $(this).parents("tr").index();  // 获取checkbox所在行的顺序
     	            document.getElementsByTagName('tbody')[0].deleteRow(n);
     	       //     $(".table table-striped table-bordered table-hover dataTables-example").find("tr:eq("+n+")").remove();
-    	            alert("執行");
     	        });
         	};
       

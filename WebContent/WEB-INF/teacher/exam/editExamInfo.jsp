@@ -37,7 +37,7 @@
                     <div class="ibox-title">
                         <h5>编辑考试信息 <small>--在这里可以查看和编辑您创建的考试信息</small></h5>
                         <div class="ibox-tools">
-                        	 <a class="J_menuItem" href="teacherCreateExam"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" title="创建考试">创建考试</span></a>
+                        	 <a class="J_menuItem" href="teacherCreateExam"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" title="创建考试">&nbsp;创建考试</span></a>
                         </div>
                     </div>
                     <div class="ibox-content">

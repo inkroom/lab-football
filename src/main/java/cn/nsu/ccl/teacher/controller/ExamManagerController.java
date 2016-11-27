@@ -158,7 +158,7 @@ public class ExamManagerController {
 	 * @return
 	 */
 	@RequestMapping(value = "teacherUploadStudentExcel")  
-  public String upLoadFile(HttpServletRequest request,String examName) {  
+	public String upLoadFile(HttpServletRequest request,String examName) {  
 		String teacherEmail = (String) session.getAttribute("teacherEmail");
 		String path = request.getServletContext().getRealPath("/")+"WEB-INF/teacher/";
     //用于存储保存状态

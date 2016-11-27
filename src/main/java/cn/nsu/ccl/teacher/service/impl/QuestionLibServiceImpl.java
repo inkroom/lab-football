@@ -10,13 +10,34 @@
 package cn.nsu.ccl.teacher.service.impl;
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.mysql.fabric.xmlrpc.base.Array;
 
 import cn.nsu.ccl.teacher.dao.impl.QuestionLibDaoImpl;
 import cn.nsu.ccl.teacher.entity.QuestionEntity;
@@ -69,9 +90,7 @@ public class QuestionLibServiceImpl implements QestionLibService {
 	 * @param questionEntities
 	 * @return
 	 */
-	public boolean addQuestions(String questionLibName,
-			String teacherId,
-			ArrayList<QuestionEntity> questionEntities) {
+	public boolean addQuestions(String questionLibName,String teacherId,ArrayList<QuestionEntity> questionEntities) {
 		//在题库列表中创建一个题库信息
 		if (this.addQuestionLibList(questionLibName, teacherId)) {
 			//在题库列表信息中获取题库的id
@@ -94,6 +113,7 @@ public class QuestionLibServiceImpl implements QestionLibService {
 	 * @return
 	 */
 	public boolean addQuestionLibList(String questionLibName, String teacherId) {
+		System.out.println("123");
 		return questionLibDao.addQuestionLib(questionLibName, teacherId);
 	}
 	
@@ -231,9 +251,174 @@ public class QuestionLibServiceImpl implements QestionLibService {
 		}
 		return newList;
 	}
-
-
-
-
+	//检查上传的题库模版是否符合要求
+	public boolean checkExcel(String filePath) {
+		File file = new File(filePath);
+		Workbook workBook = null;
+		try {
+			workBook = new HSSFWorkbook(new FileInputStream(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		} catch (OfficeXmlFileException e) {//2007版本以上
+			try {
+				workBook = new XSSFWorkbook(file);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+		if (workBook.getNumberOfSheets() < 3) {//工作表数目错误
+			return false;
+		}
+		return true;
+	}
 	
+	/**
+	 * 
+	 * <p>getQuestionLibListByExcel方法的描述
+	 * 将上传的excel文件解析成集合
+	 * </p>
+	 * @Title: QuestionLibServiceImpl的getQuestionLibListByExcel方法
+	 * @Description: TODO(这里用一句话描述这个方法的作用)
+	 * @author: 蒋玖宏
+	 * @author 2213974854@qq.com
+	 * @date 2016年11月27日 上午11:20:10
+	 * @param filePath
+	 * @return
+	 */
+	public ArrayList<QuestionEntity> getQuestionLibListByExcel(String filePath){
+		File file = new File(filePath);
+		Sheet sheet = null;// 工作表
+		Workbook workbook = null;
+		Cell cell = null;
+		try {
+			workbook = new HSSFWorkbook(new FileInputStream(file));
+		} catch (Exception e) {
+			// e.printStackTrace();
+			try {
+				workbook = new XSSFWorkbook(new FileInputStream(file));
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		// 创建excel，读取文件内容
+		ArrayList<QuestionEntity> questionList = new ArrayList<QuestionEntity>();
+		int num = 0;
+		// 循环3个sheet工作表
+		for (int s = 0; s < 3; s++) {
+			// 获取第工作表
+			sheet = workbook.getSheetAt(s);
+			// 读取默认第一个工作表
+			// 获取sheet中最后一行行号
+			int lastRowNum = sheet.getLastRowNum();
+			// 前两个sheet工作表
+			if (s != 2) {
+				for (int i = 2; i < lastRowNum + 1; i++) {
+					QuestionEntity question = new QuestionEntity();
+					Row row = sheet.getRow(i);
+					// 获取当前最后单元格列号
+					int lastCellNum = row.getLastCellNum();
+					// 题干
+					cell = row.getCell(0);
+					if (cell == null) {
+						continue;
+					}
+					cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+					question.setQuestionContent(cell.getStringCellValue());
+					// 备选答案
+					String temp = "";
+					for (int j = 1; j < lastCellNum - 1; j++) {
+						cell = row.getCell(j);
+						if (cell == null) {
+							continue;
+						}
+						cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+						if (j != lastCellNum - 2) {
+							temp += cell.getStringCellValue() + "##";
+						} else {
+							temp += cell.getStringCellValue();
+						}
+					}
+					question.setChoice(temp);
+
+					// 正确答案
+					cell = row.getCell(lastCellNum - 1);
+					if (cell == null) {
+						continue;
+					}
+					cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+					StringBuffer sb = new StringBuffer();
+					//获取正确答案选项
+					boolean flag = false;
+					String valued = cell.getStringCellValue();
+					for (int x = 0; x < valued.length(); x++) {
+						char tempAn = valued.toUpperCase().charAt(x);
+						int choiceIndex = tempAn - 'A' + 1;
+						Cell tempCell = row.getCell(choiceIndex);
+						if (tempCell == null) {
+							flag = true;
+							break;
+						}
+						tempCell.setCellType(HSSFCell.CELL_TYPE_STRING);
+						if (x != valued.length() - 1) {
+							sb.append(tempCell.getStringCellValue() + "##");
+						} else {
+							sb.append(tempCell.getStringCellValue());
+						}
+					}
+					if (flag) {//答案不合规范
+						continue;
+					}
+					question.setAnswer(sb.toString());
+					if (s == 0) {
+						question.setType("单选题");
+					} else {
+						question.setType("多选题");
+					}
+					// 编号
+					num++;
+					String nums = String.valueOf(num);
+					question.setQuestionId(nums);
+					questionList.add(question);
+				}
+			} else { // 第三个sheet工作表，判断题表
+				for (int i = 2; i < lastRowNum + 1; i++) {
+					QuestionEntity question = new QuestionEntity();
+					Row row = sheet.getRow(i);
+					// 题干
+					cell = row.getCell(0);
+					if (cell == null) {
+						continue;
+					}
+					cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+					String value = cell.getStringCellValue();
+					question.setQuestionContent(value);
+
+					// 答案
+					cell = row.getCell(1);
+					if (cell == null) {
+						continue;
+					}
+					cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+					String answer = cell.getStringCellValue();
+					//答案不合规范
+					if("对".equals(answer)||"错".equals(answer)){//正确答案必须是对或错其中之一
+						question.setAnswer(answer);
+						question.setType("判断题");
+						//将选项置为空
+						question.setChoice("对##错");
+						num++;
+						String nums = String.valueOf(num);
+						
+						question.setQuestionId(nums);
+						questionList.add(question);
+					}
+				}
+			}
+		}
+		return questionList;
+	}
 }
