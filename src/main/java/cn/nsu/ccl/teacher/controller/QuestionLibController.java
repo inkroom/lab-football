@@ -60,9 +60,9 @@ public class QuestionLibController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(value="downloadQuestionLibDemo")
+	@RequestMapping(value="teacherDownloadQuestionLibDemo")
 	public ResponseEntity<byte[]> downloadExamDemo(HttpSession session){
-		String path = session.getServletContext().getRealPath("/")+"WEB-INF/teacher/examDemo.xlsx";
+		String path = session.getServletContext().getRealPath("/")+"WEB-INF/teacher/exam/examDemo.xlsx";
 		File file = new File(path);
 	    HttpHeaders headers = new HttpHeaders();
 	    String fileName = null;
