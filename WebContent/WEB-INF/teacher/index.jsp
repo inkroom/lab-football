@@ -86,35 +86,21 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a class="J_menuItem" href="teacherStartExam">
                         	<i class="fa fa-play-circle-o"></i>
                         	<span class="nav-label">开始考试</span>
-                        	<span class="fa arrow"></span>
                         </a>
-                        <ul class="nav nav-third-level">
-                        	<li>
-                        <a class="J_menuItem" href="teacherStartExam">
-                            <span class="nav-label">选择考试</span>
-                        </a>
-                    		</li>
-                        </ul>
                     </li>
                     <li class="line dk"></li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                         <span class="ng-scope">成绩管理</span>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="teacherShowMark" class="J_menuItem">
                         <i class="fa fa-cloud-download"></i>
-                        <span class="nav-label">查看成绩</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                           <li>
-                        		<a href="teacherShowMark" class="J_menuItem">
-                        		<span class="nav-label">导出成绩</span></a>
-                    	   </li>
-                        </ul>
+                        <span class="nav-label">查看成绩</span></a>
                     </li>
-                    	</ul>
+                 </ul>
             </div>
         </nav>
         <!--右侧部分开始-->
@@ -150,30 +136,6 @@
             </div>
         </div>
         <!--右侧部分结束-->
-    </div>
-            <!-- 密码修改弹出框 -->
-        <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" >密码修改-<%=session.getAttribute("teacherEmail") %></h4>
-                </div>
-                <div class="modal-body">
-                	<p>请输入原密码：</p>
-                	<input id="oldPasswd" type="password" class="form-control" /><br/>
-                	<p>请输入新密码：</p>
-                	<input id="newPasswd1" type="password" class="form-control" /><br/>
-                	<p>请确认新密码：</p>
-                	<input id="newPasswd2" type="password" class="form-control" /><br/>
-                	<p id="formContent"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" onclick="changePasswdSubmit('<%=session.getAttribute("teacherEmail")%>')" class="btn btn-default" data-dismiss="modal">确定</button>
-                </div>
-            </div>
-        </div>
     </div>
 <div style="text-align:center;">
 <p>&copy;成都东软学院</p>
