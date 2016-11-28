@@ -58,6 +58,7 @@ public class ExamServiceImpl implements ExamService{
 		XSSFSheet sheet = workbook.getSheetAt(0);
 		//获取sheet中最后一行行号
 		int lastRowNum = sheet.getLastRowNum();
+		System.out.println("最后一行的行号为："+lastRowNum);
 		for (int i = 1; i <= lastRowNum; i++) {
 			XSSFRow row = sheet.getRow(i);
 			//设置当前行最后单元格列号为2(为了避免因为我设置的提示而导致的错误)
@@ -74,8 +75,10 @@ public class ExamServiceImpl implements ExamService{
 			StudentInfoEntity studentInfoEntity = new StudentInfoEntity();
 			studentInfoEntity.setStudentName(list2.get(0));
 			studentInfoEntity.setStudentId(list2.get(1));
-			list.add(studentInfoEntity);
+			System.out.println(studentInfoEntity.getStudentName()!=null&&studentInfoEntity.getStudentId()!=null);
+				list.add(studentInfoEntity);
 		}
+		System.out.println(list.size());
 		return list;
 	}
 

@@ -474,6 +474,8 @@
                         	location.reload(true);
                         }else if("fail"===data.state){
 							console.log("删除失败");
+							//刷新界面
+                        	location.reload(true);
                         }
                     }
                 }
