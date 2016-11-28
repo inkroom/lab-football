@@ -1,10 +1,12 @@
 /**
- * <p>ExamingController.java文件的详细描述</p>
- * @Title: ExamingController.java
+ * <p>ExamingController.java文件的详细描述:
+ * 实现与监考相关的相关操作
+ * </p>
+ * @Title: ExamManagerController.java
  * @Package cn.nsu.ccl.teacher.controller
  * @Description: TODO
  * @author 暴沸 baofeidyz@foxmail.com
- * @date 2016年11月25日 上午8:43:08
+ * @date 2016年11月20日 下午4:11:27
  * @version V1.0
  */
 package cn.nsu.ccl.teacher.controller;
@@ -28,12 +30,13 @@ import net.sf.json.JSONObject;
 
 /**
  * <p>ExamingController类的描述
- * 处理开始考试的Controller
+ *	实现与开始考试操作的相关功能
  * </p>
  * @ClassName: ExamingController
  * @Description: TODO
- * @author 暴沸 baofeidyz@foxmail.com
- * @date 2016年11月25日 上午8:43:08
+ * @author: 暴沸
+ * @email: baofeidyz@foxmail.com
+ * @date 2016年11月27日 下午8:48:19
  */
 @Controller
 public class ExamingController {
@@ -44,7 +47,18 @@ public class ExamingController {
 	@Autowired
 	private HttpServletRequest request;
 	
-	
+	/**
+	 * 
+	 * <p>toStatrExam方法的描述：
+	 * 实现展示考试信息列表，并可以点击进入考试
+	 * </p>
+	 * @Title: ExamingController的toStatrExam方法
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:07:44
+	 * @return
+	 */
 	@RequestMapping(value="teacherStartExam")
 	public String toStatrExam(){
 		//从session获取教师邮箱帐号
@@ -77,6 +91,19 @@ public class ExamingController {
 				request.setAttribute("jsonArray", jsonArray.toString());
 				return "teacher/examing/examList";
 	}
+	/**
+	 * 
+	 * <p>startExam方法的描述：
+	 * 从界面端传完一个考试id，然后按照这个考试id开始考试
+	 * </p>
+	 * @Title: ExamingController的startExam方法
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:07:53
+	 * @param examId
+	 * @return
+	 */
 	@RequestMapping(value="teacherStartExamDo")
 	public String startExam(int examId){
 		//1.通过传入的考试id获取该场考试信息
@@ -87,6 +114,20 @@ public class ExamingController {
 		request.setAttribute("examId", examId);
 		return "teacher/examing/examing";
 	}
+	
+	/**
+	 * 
+	 * <p>getTeacherToken方法的描述：
+	 * 实现教师获取教师口令的功能
+	 * </p>
+	 * @Title: ExamingController的getTeacherToken方法
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:08:01
+	 * @param examId
+	 * @param response
+	 */
 	@RequestMapping(value="teacherGetToken")
 	public void getTeacherToken(int examId,HttpServletResponse response){
 		//新建一个jsonobject对象用于存储教师口令

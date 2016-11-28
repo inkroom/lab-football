@@ -62,7 +62,7 @@
                                     <td>${exam.endTime }</td>
                                     <td>
                                     <span id="notClick<%=examInfoEntity.getExamId() %>" style="display:none">无考生信息</span>
-                                    <a href="javascript:void(0);"  onclick="startExam('<%=examInfoEntity.getExamId()%>')" style="display:block" id="click<%=examInfoEntity.getExamId() %>">开始考试</a>
+                                    <a href="javascript:void(0);"  onclick="startExam(<%=examInfoEntity.getExamId()%>)" style="display:block" id="click<%=examInfoEntity.getExamId() %>">开始考试</a>
                                     </td>
                                 </tr>
                                 <%} %>
@@ -136,12 +136,12 @@
     		//如果有考生信息，就隐藏到带点击事件的标签，显示不带点击事件的标签
     		if(readJson[p].state==="exist"){
     			//显示不带点击时间的标签
-    			//找到带点击事件的id并隐藏
+    			//找到带点击事件的id并显示
     			var click = "click"+readJson[p].examId;
-    			document.getElementById(click).style.display="none";
-    			//找到不带点击时间的id并显示
+    			document.getElementById(click).style.display="block";
+    			//找到不带点击事件的id并隐藏
     			var notClick = "notClick"+readJson[p].examId;
-    			document.getElementById(notClick).style.display="block";
+    			document.getElementById(notClick).style.display="none";
     		}
     		//如果不存在考生信息，就隐藏不带点击时间的标签，显示带点击时间的标签
     		if(readJson[p].state==="null"){

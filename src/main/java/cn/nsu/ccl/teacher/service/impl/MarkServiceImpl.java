@@ -69,10 +69,15 @@ public class MarkServiceImpl implements MarkService{
 	}
 	
 	/**
-	 * 从数据库中获取数据，并利用POS生成Excel文件
-	 * POI生成Excel文件
-	 * @throws IOException 
 	 * 
+	 * <p>覆盖的downloadGrade函数
+	 * 从数据库中获取考试成绩信息，并返回excel文件的文件路径
+	 * </p>
+	 * @param examId
+	 * @param contextPath
+	 * @param examName
+	 * @return
+	 * @see cn.nsu.ccl.teacher.service.MarkService#downloadGrade(int, java.lang.String, java.lang.String)
 	 */
 	public String downloadGrade(int examId,String contextPath,String examName){
 		
@@ -128,7 +133,13 @@ public class MarkServiceImpl implements MarkService{
 
 
 	/**
-	 * 计算学生成绩，并存入数据库
+	 * 
+	 * <p>覆盖的setStudentGrade函数
+	 * 计算学生成绩，并将结果返回到数据库中
+	 * </p>
+	 * @param examId
+	 * @return
+	 * @see cn.nsu.ccl.teacher.service.MarkService#setStudentGrade(int)
 	 */
 	public boolean setStudentGrade(int examId) {
 		//从数据库中获取学生和答案的相关信息
@@ -171,7 +182,15 @@ public class MarkServiceImpl implements MarkService{
 	}
 	
 	/**
-	 * 计算考生成绩并返回文件路径
+	 * 
+	 * <p>覆盖的getScoreExcel函数
+	 * 此方法主要针对于在controller中调用，实现获取学生成绩EXCEL文件的路径
+	 * </p>
+	 * @param examId
+	 * @param contextPath
+	 * @param examName
+	 * @return
+	 * @see cn.nsu.ccl.teacher.service.MarkService#getScoreExcel(int, java.lang.String, java.lang.String)
 	 */
 	public String getScoreExcel(int examId,String contextPath,String examName){
 		//Excel文件存放路径
@@ -197,7 +216,12 @@ public class MarkServiceImpl implements MarkService{
 	}
 
 	/**
-	 * 从成绩表中获取examId集合
+	 * 
+	 * <p>覆盖的getExamId函数
+	 * 从成绩表中获取考试id集合
+	 * </p>
+	 * @return
+	 * @see cn.nsu.ccl.teacher.service.MarkService#getExamId()
 	 */
 	public ArrayList<Integer> getExamId() {
 		

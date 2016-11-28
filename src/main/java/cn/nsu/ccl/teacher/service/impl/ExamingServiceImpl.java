@@ -31,7 +31,17 @@ public class ExamingServiceImpl implements ExamingService {
 	@Autowired
 	private StudentDaoImpl studentDao;
 	/**
-	 * 获取学生信息（考试信息表中）By暴沸
+	 * 
+	 * <p>getStudentInfo方法的描述
+	 * 通过考试id获取考生信息
+	 * </p>
+	 * @Title: ExamingServiceImpl的getStudentInfo方法
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午8:57:42
+	 * @param examId
+	 * @return
 	 */
 	private ArrayList<StudentInfoEntity> getStudentInfo(int examId){
 			List<Map<String, Object>> listMap = studentDao.getStudentInfo(examId);
@@ -64,7 +74,7 @@ public class ExamingServiceImpl implements ExamingService {
 			examTakingInfo.setStudentNumber(map.get("studentId").toString());
 			examTakingInfo.setStudentName(map.get("studentName").toString());
 			examTakingInfo.setState(map.get("studentStatus").toString());
-			examTakingInfo.setIp(map.get("ipAddr").toString());
+			examTakingInfo.setIp((String)map.get("ipAddr"));
 			examTakingInfo.setNote(map.get("remark")+"");
 			list.add(examTakingInfo);
 		}

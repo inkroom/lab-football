@@ -3,6 +3,7 @@ package cn.nsu.ccl.teacher.service;
 import java.util.ArrayList;
 
 import cn.nsu.ccl.teacher.entity.ExamingInfoEntity;
+import cn.nsu.ccl.teacher.entity.StudentInfoEntity;
 
 /**
  * 
@@ -13,6 +14,7 @@ import cn.nsu.ccl.teacher.entity.ExamingInfoEntity;
  * 创建时间：2016年8月30日 上午8:35:32
  */
 public interface ExamingService {
+	
 	
 	/**
 	 * 

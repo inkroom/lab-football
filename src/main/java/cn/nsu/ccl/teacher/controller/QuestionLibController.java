@@ -1,3 +1,14 @@
+/**
+ * <p>QuestionLibController.java文件的详细描述：
+ * 实现与题库管理员的相关操作
+ * </p>
+ * @Title: ExamManagerController.java
+ * @Package cn.nsu.ccl.teacher.controller
+ * @Description: TODO
+ * @author 暴沸 baofeidyz@foxmail.com
+ * @date 2016年11月20日 下午4:11:27
+ * @version V1.0
+ */
 package cn.nsu.ccl.teacher.controller;
 
 import java.io.File;
@@ -33,11 +44,14 @@ import net.sf.json.JSONObject;
 
 /**
  * 
- * <p>ExamController类的描述</p>
- * @ClassName: ExamController
- * @Description: 下载模板，上传题库，页面跳转,创建题库
- * @author 暴沸 baofeidyz@foxmail.com
- * @date 2016年11月19日 下午1:58:27
+ * <p>QuestionLibController类的描述：
+ * 实现与考试管理相关的下载模板，上传题库，页面跳转,创建题库等操作
+ * </p>
+ * @ClassName: QuestionLibController
+ * @Description: TODO
+ * @author: 暴沸
+ * @email: baofeidyz@foxmail.com
+ * @date 2016年11月27日 下午9:15:25
  */
 @Controller
 public class QuestionLibController {
@@ -52,11 +66,14 @@ public class QuestionLibController {
 	
 	/**
 	 * 
-	 * <p>downloadExamDemo方法的描述</p>
-	 * @Title: ExamController的downloadExamDemo方法
-	 * @Description:下载模板
-	 * @author 暴沸 baofeidyz@foxmail.com
-	 * @date 2016年11月19日 下午1:58:49
+	 * <p>downloadExamDemo方法的描述：
+	 * 下载题库模版
+	 * </p>
+	 * @Title: QuestionLibController的downloadExamDemo方法
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:15:46
 	 * @param session
 	 * @return
 	 */
@@ -81,28 +98,34 @@ public class QuestionLibController {
 	    }
 	    return null;
 	}
+	
 	/**
- 	 * 
- 	 * <p>createExam方法的描述</p>
- 	 * @Title: QuestionLibController的addQuestionLib方法
- 	 * @Description: TODO实现创建题库的操作
- 	 * @author 暴沸 baofeidyz@foxmail.com
- 	 * @date 2016年11月19日 下午5:04:03
- 	 * @param file
- 	 * @param session
- 	 */
+	 * 
+	 * <p>addQuestion方法的描述：
+	 * 实现创建题库的操作
+	 * </p>
+	 * @Title: QuestionLibController的addQuestion方法
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:16:12
+	 * @param file
+	 * @param questionLibName
+	 * @param session
+	 * @param response
+	 * @param request
+	 * @return
+	 */
  	@RequestMapping(value="teacherAddquestionToLib",method=RequestMethod.POST)
  	public String addQuestion(@RequestParam("file") CommonsMultipartFile file,String questionLibName,HttpSession session,HttpServletResponse response,HttpServletRequest request){
  		//获取教师登录信息，教师邮箱帐号
  		String teacherEmail = (String)session.getAttribute("teacherEmail");
 		//判断同名教师下面是否存在同名题库，若存在则直接返回提示
 		if (service.getQuestionLibService().getQuestionLibId(questionLibName, teacherEmail)!=-1) {
-			System.out.println("2");
-			request.setAttribute("state", "创建失败，题库名称已存在。");
+			request.setAttribute("state", "exist");
 			return "teacher/questionLib/result";
 		};
 		
-		System.out.println("3");
 		//接收上传的题库文件
 		//保存文件的路径
 		//保存最后excel文件转成集合
@@ -149,10 +172,10 @@ public class QuestionLibController {
 		System.out.println("这是在controll中获取到的题库集合的大小="+list.size());
  		if(service.getQuestionLibService().addQuestions(questionLibName, teacherEmail, list)){
  			System.out.println("8");
- 			request.setAttribute("state", "创建成功，您可以在左侧继续您的操作。");
+ 			request.setAttribute("state", "success");
 		}else{
 			System.out.println("9");
-			request.setAttribute("state", "很遗憾，本次创建失败！");
+			request.setAttribute("state", "fail");
 		}
 		//设置返回的数据格式
 		response.setContentType("application/json");
@@ -162,32 +185,42 @@ public class QuestionLibController {
  	}
 	
 	/**
-	 * <p>getQuestionLib方法的描述</p>
+	 * 
+	 * <p>getQuestionLib方法的描述：
+	 * 通过教师id获取题库信息，并返回编辑题库的列表中
+	 * </p>
 	 * @Title: QuestionLibController的getQuestionLib方法
-	 * @Description: 通过教教师的id获取题库信息，并显示在编辑题库页面
-	 * @author 2213974854@qq.com
-	 * @date 2016年11月21日 下午7:43:56
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:16:33
+	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value="teacherEditQuestionLib")
 	public String getQuestionLib(HttpSession session){
 		String teacherEmail = (String)session.getAttribute("teacherEmail");
-		System.out.println("teacherEmail="+teacherEmail);
 		//获取题库列表信息
 		ArrayList<QuestionLibListEntity> questionLibList = service.getQuestionLibService().getQuestionLibListByTeacherEmail(teacherEmail);
-		System.out.println(questionLibList.size());
 		//将题库信息存到请求request中
 		request.setAttribute("questionLibList", questionLibList);
 		return "teacher/questionLib/editLib";
 	}
 
 	/**
-	 * <p>deleteQuestionLib方法的描述</p>
+	 * 
+	 * <p>deleteQuestionLib方法的描述：
+	 * 按照题库id删除题库,返回状态
+	 * </p>
 	 * @Title: QuestionLibController的deleteQuestionLib方法
-	 * @Description: 按照题库id删除题库,返回状态
-	 * @author 2213974854@qq.com
-	 * @date 2016年11月23日 下午5:15:37
-	 * @param libraryNames
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:17:02
+	 * @param str
+	 * @param session
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value="teacherDeleteQuestionLib",method=RequestMethod.POST)
 	@ResponseBody
@@ -212,12 +245,15 @@ public class QuestionLibController {
 		return jsonObject.toString();
 	}
 	/**
-	 * <p>toAddlib方法的描述</p>
+	 * 
+	 * <p>toAddlib方法的描述：
+	 * 跳转到增加题库界面
+	 * </p>
 	 * @Title: QuestionLibController的toAddlib方法
-	 * @Description: 跳转到增加题库界面
-	 * @author: 蒋玖宏
-	 * @author 2213974854@qq.com
-	 * @date 2016年11月25日 下午2:39:45
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:17:13
 	 * @return
 	 */
 	@RequestMapping(value = "teacherToCreatelib")

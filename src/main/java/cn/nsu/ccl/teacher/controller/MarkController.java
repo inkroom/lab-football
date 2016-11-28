@@ -1,5 +1,7 @@
 /**
- * <p>MarkController.java文件的详细描述</p>
+ * <p>MarkController.java文件的详细描述：
+ * 实现与考试成绩管理相关的功能
+ * </p>
  * @Title: MarkController.java
  * @Package cn.nsu.ccl.teacher.controller
  * @Description: TODO
@@ -35,11 +37,15 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
- * <p>MarkController类的描述</p>
+ * 
+ * <p>MarkController类的描述：
+ * 实现与考试成绩管理相关的操作
+ * </p>
  * @ClassName: MarkController
  * @Description: TODO
- * @author 暴沸 baofeidyz@foxmail.com
- * @date 2016年11月26日 下午12:58:05
+ * @author: 暴沸
+ * @email: baofeidyz@foxmail.com
+ * @date 2016年11月27日 下午9:14:14
  */
 @Controller
 public class MarkController {
@@ -50,6 +56,18 @@ public class MarkController {
 	@Autowired
 	private HttpServletRequest request;
 	
+	/**
+	 * 
+	 * <p>toShowMarkList方法的描述
+	 * 跳转到获取成绩界面-此处返回的界面是显示考试列表信息的
+	 * </p>
+	 * @Title: MarkController的toShowMarkList方法
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午8:54:56
+	 * @return
+	 */
 	@RequestMapping(value="teacherShowMark")
 	public String toShowMarkList(){
 		//1.获取会话seesion中的教师邮箱
@@ -92,6 +110,19 @@ public class MarkController {
 		return "teacher/mark/examList";
 	}
 	
+	/**
+	 * 
+	 * <p>downloadExamDemo方法的描述
+	 * 通过传入的考试id计算考试成绩并返回最后的生成的excel成绩文件
+	 * </p>
+	 * @Title: MarkController的downloadExamDemo方法
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午8:55:29
+	 * @param examId
+	 * @return
+	 */
 	@RequestMapping(value="teacherDownloadMark")
 	public ResponseEntity<byte[]> downloadExamDemo(int examId){
 		//获取项目的上下文路径

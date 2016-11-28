@@ -15,13 +15,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -33,11 +29,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-
-import com.mysql.fabric.xmlrpc.base.Array;
 
 import cn.nsu.ccl.teacher.dao.impl.QuestionLibDaoImpl;
 import cn.nsu.ccl.teacher.entity.QuestionEntity;
@@ -113,7 +104,6 @@ public class QuestionLibServiceImpl implements QestionLibService {
 	 * @return
 	 */
 	public boolean addQuestionLibList(String questionLibName, String teacherId) {
-		System.out.println("123");
 		return questionLibDao.addQuestionLib(questionLibName, teacherId);
 	}
 	

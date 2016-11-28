@@ -47,10 +47,9 @@
                         <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr>
+                                	<th>序号</th>
                                     <th>学号</th>
                                     <th>姓名</th>
-                                    <th>IP地址</th>
-                                    <th>当前状态</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,10 +60,8 @@
                             %>
                                 <tr class="gradeX">
                                     <td><%=i+1 %></td>
-                                    <td>${exam.studentId }</td>
+                                    <td>${exam.studentNumber }</td>
                                     <td>${exam.studentName }</td>
-                                    <td>${exam.ipAddr}</td>
-                                    <td>${exam.studentStatus }</td>
                                 </tr>
                                 <%} %>
                             </tbody>

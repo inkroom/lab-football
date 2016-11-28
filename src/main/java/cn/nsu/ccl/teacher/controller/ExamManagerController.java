@@ -1,5 +1,7 @@
 /**
- * <p>ExamManagerController.java文件的详细描述</p>
+ * <p>ExamManagerController.java文件的详细描述：
+ * 完成与考试管理相关的操作
+ * </p>
  * @Title: ExamManagerController.java
  * @Package cn.nsu.ccl.teacher.controller
  * @Description: TODO
@@ -57,11 +59,14 @@ public class ExamManagerController {
 	
 	/**
 	 * 
-	 * <p>跳转到创建考试信息界面</p>
+	 * <p>toCreateExam方法的描述：
+	 * 跳转到创建考试信息界面
+	 * </p>
 	 * @Title: ExamManagerController的toCreateExam方法
 	 * @Description: TODO
-	 * @author 暴沸 baofeidyz@foxmail.com
-	 * @date 2016年11月20日 下午4:47:48
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:10:45
 	 * @return
 	 */
 	@RequestMapping(value="teacherCreateExam")
@@ -76,11 +81,14 @@ public class ExamManagerController {
 	}
 	/**
 	 * 
-	 * <p>createExam方法的描述--完成创建考试信息（不包括学生信息）</p>
+	 * <p>createExam方法的描述：
+	 * 完成创建考试信息（不包括学生信息）
+	 * </p>
 	 * @Title: ExamManagerController的createExam方法
 	 * @Description: TODO
-	 * @author 暴沸 baofeidyz@foxmail.com
-	 * @date 2016年11月23日 下午2:52:48
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:10:57
 	 * @param libraryId
 	 * @param examName
 	 * @param examStartTime
@@ -146,13 +154,17 @@ public class ExamManagerController {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * 
-	 * <p>upLoadFile方法的描述---上传考生信息表，并添加到对应的考试信息中</p>
+	 * <p>upLoadFile方法的描述：
+	 * 上传考生信息表，并添加到对应的考试信息中
+	 * </p>
 	 * @Title: ExamManagerController的upLoadFile方法
 	 * @Description: TODO
-	 * @author 暴沸 baofeidyz@foxmail.com
-	 * @date 2016年11月23日 下午2:53:16
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:11:08
 	 * @param request
 	 * @param examName
 	 * @return
@@ -210,13 +222,17 @@ public class ExamManagerController {
       //默认返回 创建失败
       return "teacher/exam/createExamInfoFail";
 	} 
+	
 	/**
 	 * 
-	 * <p>toEditExamInfo方法的描述-跳转到修改考试信息界面</p>
+	 * <p>toEditExamInfo方法的描述：
+	 * 跳转到修改考试信息界面
+	 * </p>
 	 * @Title: ExamManagerController的toEditExamInfo方法
 	 * @Description: TODO
-	 * @author 暴沸 baofeidyz@foxmail.com
-	 * @date 2016年11月23日 下午7:13:39
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:11:20
 	 * @return
 	 */
 	@RequestMapping(value="teacherEditExam")
@@ -254,12 +270,24 @@ public class ExamManagerController {
 	
 	/**
 	 * 
-	 * <p>editExamInfo方法的描述--实现教师修改考试信息</p>
+	 * <p>editExamInfo方法的描述：
+	 * 实现教师修改考试信息
+	 * </p>
 	 * @Title: ExamManagerController的editExamInfo方法
 	 * @Description: TODO
-	 * @author 暴沸 baofeidyz@foxmail.com
-	 * @date 2016年11月24日 上午9:21:48
-	 * @return
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:11:30
+	 * @param examId
+	 * @param examStartTime
+	 * @param examEndTime
+	 * @param danNum
+	 * @param danScore
+	 * @param duoNum
+	 * @param duoScore
+	 * @param pNum
+	 * @param pScore
+	 * @param response
 	 */
 	@RequestMapping(value="teacherEditExamDo",method=RequestMethod.POST)
 	public void editExamInfo(int examId,
@@ -355,6 +383,19 @@ public class ExamManagerController {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * 
+	 * <p>deleteExamByExamId方法的描述：
+	 * 实现通过考试id删除考试信息的操作
+	 * </p>
+	 * @Title: ExamManagerController的deleteExamByExamId方法
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:11:44
+	 * @param examId
+	 * @param response
+	 */
 	@RequestMapping(value="teacherDeleteExamInfoByExamId",method=RequestMethod.POST)
 	public void deleteExamByExamId(int examId,HttpServletResponse response){
 		//新建一个jsonobject对象用于存储结果信息
@@ -376,11 +417,23 @@ public class ExamManagerController {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * 
+	 * <p>downloadExamDemo方法的描述：
+	 * 实现下载考生信息模版的功能
+	 * </p>
+	 * @Title: ExamManagerController的downloadExamDemo方法
+	 * @Description: TODO
+	 * @author: 暴沸
+	 * @author baofeidyz@foxmail.com
+	 * @date 2016年11月27日 下午9:12:02
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value="teacherDownloadStudentDemo")
 	public ResponseEntity<byte[]> downloadExamDemo(HttpSession session){
-    	System.out.println("teacherDownloadStudentDemo");
         String path = session.getServletContext().getRealPath("/")+"WEB-INF/teacher/exam/studentDemo.xlsx";
-        System.out.println(path);
         File file = new File(path);
         HttpHeaders headers = new HttpHeaders();
         String fileName = null;
@@ -393,10 +446,8 @@ public class ExamManagerController {
         headers.setContentDispositionFormData("attachment", fileName);
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
         try {
-        	System.out.println("之前");
         	return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
         } catch (IOException e) {
-        	System.out.println("fuck");
         }
         return null;
     }

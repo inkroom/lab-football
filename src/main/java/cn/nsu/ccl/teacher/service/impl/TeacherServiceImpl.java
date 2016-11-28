@@ -66,7 +66,6 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 	
 	public boolean updatePassword(String teacherEmail,String oldPasswd,String newPasswd){
-		System.out.println("service="+newPasswd);
 		//验证原密码是否匹配
 		if (this.login(teacherEmail, oldPasswd)) {
 			//匹配则进行密码更新
