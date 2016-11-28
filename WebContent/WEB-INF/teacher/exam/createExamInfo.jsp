@@ -181,8 +181,9 @@
 						<form action=teacherUploadStudentExcel method="post"
 							enctype="multipart/form-data">
 							<input type="hidden" id="examNameInput" name="examName" value="">
+							<!-- 添加的 accept属性使文件只显示excel文件 -->
 							<input type="file" name="file" class="form-control"
-								required="required" /><br /> <input type="submit"
+								required="required" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"/><br /> <input type="submit"
 								class="btn btn-primary btn-rounded btn-block btn btn-w-m btn-success"
 								value="上传题库资料" />
 						</form>

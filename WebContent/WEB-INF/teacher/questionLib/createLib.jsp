@@ -32,7 +32,7 @@
                     <form action="teacherAddquestionToLib" method="post" enctype="multipart/form-data">
                     <input type="text" name="questionLibName" placeholder="请输入题库名" class="form-control" required="required" /><br/>
                   <!--  只显示excel文件 -->
-                    <input type="file" name="file" class="form-control" required="required" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/><br/>
+                    <input type="file" name="file" class="form-control" required="required" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"/><br/>
                    <!--  <a href="javascript:void(0)" onclick="submit()" class="btn btn-primary btn-rounded btn-block btn btn-w-m btn-success" >上传题库资料</a> -->
                     <input type = "submit", class="btn btn-primary btn-rounded btn-block btn btn-w-m btn-success"/>
                     </form>
