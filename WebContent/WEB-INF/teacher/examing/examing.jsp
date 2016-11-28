@@ -50,6 +50,7 @@
                                 	<th>序号</th>
                                     <th>学号</th>
                                     <th>姓名</th>
+                                    <th>目前状态</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,6 +63,15 @@
                                     <td><%=i+1 %></td>
                                     <td>${exam.studentNumber }</td>
                                     <td>${exam.studentName }</td>
+                                    <td>
+                                    <%if(examingInfoEntity.getState().equals("0")){ %>
+                                    	未参加考试
+                                    <%}else if(examingInfoEntity.getState().equals("1")){ %>
+										正在考试                                    
+                                    <%}else{ %>
+                                    	考试结束
+                                    <%} %>
+                                    </td>
                                 </tr>
                                 <%} %>
                             </tbody>

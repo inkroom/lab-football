@@ -95,87 +95,56 @@
                     <div class="ibox-content">
 
                         <table class="table table-striped table-bordered table-hover dataTables-example">
-                            <tbody>
-                             
-                                <tr>
-                                <th>考试名称</th>
-                                <td id="examName"></td>
+                           <tbody>
+                           	 <tr>
+                                <th colspan="2">考试名称</th>
+                                <td id="examName" colspan="2"></td>
                                 </tr>
-                            	<tr>
+                                <tr>
                                 <th>考试开始时间</th>
                       <td><input class="form-control layer-date" id="examStartTime" placeholder="YYYY-MM-DD hh:mm:ss" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss',min: laydate.now(0)})"></td>
-                                
-                                </tr>
-                            	<tr>
                                  <th>考试结束时间</th>
-                                	<td><input class="form-control layer-date" id="examEndTime" placeholder="YYYY-MM-DD hh:mm:ss" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss',min: laydate.now(0)})"></td>
-                                 
-                                </tr>
-                            	<tr>
+                                    <td><input class="form-control layer-date" id="examEndTime" placeholder="YYYY-MM-DD hh:mm:ss" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss',min: laydate.now(0)})"></td>
+                                </tr> 
+                                <tr>
                                  <th>单选题个数</th>
                                      <td><select class="form-control" id="danNum"></select></td>
-                                 
-                                </tr>
-                            	<tr>
-                                 <th>单选题分数</th>
+                                 	  <th>单选题分数</th>
                                      <td><select class="form-control" id="danScore">
                                  <%for(int i = 1 ; i <= 20;i++){ %>
-                                    	<option><%=i %></option>
-                                    	<%} %></select>
+                                        <option><%=i %></option>
+                                        <%} %></select>
                                 </tr>
-                            	<tr>
+                                 <tr>
                                 <th>多选题个数</th>
                                  <td><select class="form-control" id="duoNum"></select></td>
-                                 
-                                </tr>
-                            	<tr>
                                  <th>多选题分数</th>
                                 
                                     <td><select class="form-control" id="duoScore">
-                                    	<%for(int i = 1 ; i <= 20;i++){ %>
-                                    	<option><%=i %></option>
-                                    	<%} %></select>
+                                        <%for(int i = 1 ; i <= 20;i++){ %>
+                                        <option><%=i %></option>
+                                        <%} %></select>
                                     </td>
                                 </tr>
-                            	<tr>
+                                 <tr>
                                 <th>判断题个数</th>
                                   <td><select class="form-control" id="pNum"></select></td>
-                                </tr>
-                            	<tr>
-                                 <th>判断题分数</th>
+                                  <th>判断题分数</th>
                                   <td><select class="form-control" id="pScore">
-                                    	<%for(int i = 1 ; i <= 20;i++){ %>
-                                    	<option><%=i %></option>
-                                    	<%} %></select>
+                                        <%for(int i = 1 ; i <= 20;i++){ %>
+                                        <option><%=i %></option>
+                                        <%} %></select>
                                     </td>
                                 </tr>
-                            	<tr>
-                                 <th>操作</th>
-                               <td><button class="btn btn-primary btn-rounded btn-block " type="button" onclick="editExamSubmit()"><i class="fa fa-check"></i>&nbsp;提交</button></td>
+                                  <tr>
+                               <td colspan="4"><button class="btn btn-primary btn-rounded btn-block " type="button" onclick="editExamSubmit()"><i class="fa fa-check"></i>&nbsp;提交</button></td>
                                  
-                                </tr>                            	
-                            </tbody>
+                                </tr>
+                           </tbody>
                             <tfoot>
                             </tfoot>
                         </table>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-            <!-- 表单检测提示弹窗DIV -->
-        <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="formName"></h4>
-                </div>
-                <div class="modal-body">
-                	<p id="formContent"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
                 </div>
             </div>
         </div>

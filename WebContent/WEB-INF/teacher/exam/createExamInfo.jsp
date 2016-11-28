@@ -86,6 +86,7 @@
 		</div>
 
 	</div>
+<!--创建考试信息DIV-->
 <div class="wrapper wrapper-content animated fadeInRight"
 		id="createExam" style="display: none">
 		<div class="row">
@@ -99,78 +100,67 @@
 					<div class="ibox-content">
 
 						<table	class="table table-striped table-bordered table-hover dataTables-example">
+						
 							<tbody>
 								<tr>
-									<th>题库名称
-									</th>
-									<td id="questionLibName"></td>
+									<th colspan="2">题库名称</th>
+									<td id="questionLibName" colspan="2"></td>
 								</tr>
 								<tr>
-									<th>考试名称</th>
-									<td><input class="form-control" id="examName" /></td>
+									<th colspan="2">考试名称</th>
+                                    <td colspan="2"><input class="form-control" id="examName" /></td>
 								</tr>
 								<tr>
 									<th>考试开始时间</th>
-									<td><input class="form-control layer-date"
-										id="examStartTime" placeholder="YYYY-MM-DD hh:mm:ss"
-										onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss',min: laydate.now(0)})"></td>
+                                    <td><input class="form-control layer-date"
+                                        id="examStartTime" placeholder="YYYY-MM-DD hh:mm:ss"
+                                        onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss',min: laydate.now(0)})"></td>
+									 <th>考试结束时间</th>
+                                    <td><input class="form-control layer-date"
+                                        id="examEndTime" placeholder="YYYY-MM-DD hh:mm:ss"
+                                        onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss',min: laydate.now(0)})"></td>
+								</tr>
+								<tr>
+									 <th>单选题个数</th>
+                                    <td><select class="form-control" id="danNum"></select></td>
+                                     <th>单选题分数</th>
+                                    <td><select class="form-control" id="danScore">
+                                            <%for(int i = 1 ; i <= 20;i++){ %>
+                                            <option><%=i %></option>
+                                            <%} %>
+                                    </select></td>
+								</tr>
+								<tr>
+                                    <th>多选题个数</th>
+                                    <td><select class="form-control" id="duoNum"></select></td>
+									 <th>多选题分数</th>
 
-								</tr>
-								<tr>
-									<th>考试结束时间</th>
-									<td><input class="form-control layer-date"
-										id="examEndTime" placeholder="YYYY-MM-DD hh:mm:ss"
-										onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss',min: laydate.now(0)})"></td>
+                                    <td><select class="form-control" id="duoScore">
+                                            <%for(int i = 1 ; i <= 20;i++){ %>
+                                            <option><%=i %></option>
+                                            <%} %>
+                                    </select></td>
+                                </tr>
+                                   <tr>
+                                    <th>判断题个数</th>
+                                    <td><select class="form-control" id="pNum"></select></td>
+                                      <th>判断题分数</th>
+                                    <td><select class="form-control" id="pScore">
+                                            <%for(int i = 1 ; i <= 20;i++){ %>
+                                            <option><%=i %></option>
+                                            <%} %>
+                                    </select></td>
+                                </tr>
+                                <tr>
+                                  
+                                    <td colspan="4"><button class="btn btn-primary btn-rounded btn-block"  type="button"
+                                            onclick="toCreateExamSubmit()">
+                                            <i class="fa fa-check"></i>&nbsp;提交
+                                        </button></td>
 
-								</tr>
-								<tr>
-									<th>单选题个数</th>
-									<td><select class="form-control" id="danNum"></select></td>
-
-								</tr>
-								<tr>
-									<th>单选题分数</th>
-									<td><select class="form-control" id="danScore">
-											<%for(int i = 1 ; i <= 20;i++){ %>
-											<option><%=i %></option>
-											<%} %>
-									</select></td>
-								</tr>
-								<tr>
-									<th>多选题个数</th>
-									<td><select class="form-control" id="duoNum"></select></td>
-
-								</tr>
-								<tr>
-									<th>多选题分数</th>
-
-									<td><select class="form-control" id="duoScore">
-											<%for(int i = 1 ; i <= 20;i++){ %>
-											<option><%=i %></option>
-											<%} %>
-									</select></td>
-								</tr>
-								<tr>
-									<th>判断题个数</th>
-									<td><select class="form-control" id="pNum"></select></td>
-								</tr>
-								<tr>
-									<th>判断题分数</th>
-									<td><select class="form-control" id="pScore">
-											<%for(int i = 1 ; i <= 20;i++){ %>
-											<option><%=i %></option>
-											<%} %>
-									</select></td>
-								</tr>
-								<tr>
-									<th>操作</th>
-									<td><button class="btn btn-primary btn-rounded btn-block"  type="button"
-											onclick="toCreateExamSubmit()">
-											<i class="fa fa-check"></i>&nbsp;提交
-										</button></td>
-
-								</tr>
+                                </tr>
 							</tbody>
+							
 							<tfoot>
 							</tfoot>
 						</table>
