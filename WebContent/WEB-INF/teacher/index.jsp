@@ -94,11 +94,33 @@
                     <li class="line dk"></li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                         <span class="ng-scope">成绩管理</span>
+                                                <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="javascript:void(0);" onclick="downloadExamDemo()">下载题库模版</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="teacherToCreatelib">导入题库数据</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="javascript:void(0);" onclick="downloadStudentDemo()">下载考生模版</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="teacherCreateExam">创建考试信息</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="teacherShowMark" class="J_menuItem">
                         <i class="fa fa-cloud-download"></i>
-                        <span class="nav-label">查看成绩</span></a>
+                        <span class="nav-label">成绩管理</span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="teacherToLookAnswer">阅卷</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="teacherToCreatelib">导出成绩</a>
+                            </li>
+                        </ul>
                     </li>
                  </ul>
             </div>
