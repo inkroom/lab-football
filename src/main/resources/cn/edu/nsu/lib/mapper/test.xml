@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--必须和dao层类的全路径相同-->
+<mapper namespace="cn.edu.nsu.lib.dao.TestIntDao">
+
+    <!--必须同dao层类的方法名相同-->
+    <select id="sel" resultType="java.util.HashMap" parameterType="java.lang.String" statementType="PREPARED">
+       select * from account WHERE nickname=#{a};
+    </select>
+</mapper>

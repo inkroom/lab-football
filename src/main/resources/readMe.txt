@@ -1,0 +1,26 @@
+Controller层、service层、dao层，类名结尾带上层名，如LoginController，UserDao
+所有异常一律上抛，在Controller层中将已知异常封装成MessageException后继续上抛
+
+Controller层，建议直接继承BaseController，在每一个处理方法第一行调用 checkForm(Object)方法验证表单，验证未通过会直接抛出异常
+开发期controller继承Anyone接口，绕过拦截器，完成后去掉
+
+返回json数据使用AjaxBean，在构造方法中传入Result枚举，指代不同的处理结果，使用put方法，存放额外的数据
+
+如果该url需要权限验证，使用@Authority注解，权限类型为枚举类型，分成四个角色
+
+登陆和注销 直接调用 RequestUtil 类里的相关方法，
+
+Dao层支持JdbcTemplate和MyBatis 两种模式（需继承BaseDao），同时支持由Mybatis实现，即直接使用dao层接口，如果使用xml文件配置sql语句，
+需要在resources文件夹下创建于dao层类相同路径的xml文件，同时xml的namespace为dao的全路径，sql语句的id和dao类的方法名相同
+具体使用方法，查看对应的dao层test类
+
+MessageException的使用方法
+
+结合使用Result类，可以传递不同的status状态码，以区分不同状态
+
+
+关于重要文件的修改提交
+Constants.java文件可以自由添加自己需要的提示信息，但是必须在修改后则提交到svn，并且再通知所有开发人员，所有人应该在该文件修改后立即更新本地的文件
+Result.java文件同上，该文件新枚举只允许在尾部追加，不允许在其余枚举类型中间插入
+
+ip限制尚未完成
