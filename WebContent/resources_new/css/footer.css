@@ -1,0 +1,79 @@
+.footer{
+    width:1200px;
+    height: 255px;
+    position: absolute;
+    bottom: 0px;
+    left:50%;
+    margin-left: -600px;
+}
+.footer>p{
+    width: 950px;
+    margin: 0 auto;
+    height: 100px;
+    line-height: 100px;
+    font-size: 16px;
+}
+.footer>p>a{
+    float: left;
+    margin-right: 86px;
+    text-decoration: none;
+    color: white;
+}
+.footer>p>a:hover{
+    color: slategrey;
+}
+.footer>p>a:nth-child(6){
+    margin-right: 0;
+}
+.PrimarySelect,.JuniorSelect,.SeniorSelect{
+    width: 950px;
+    margin: 0 auto;
+}
+.PrimarySelect select{
+    background-color: #C5E7B7;
+    margin-right: 30px;
+    width: 209px;
+    border: 0px;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    color: rgb(0,153,68);
+}
+.PrimarySelect select:nth-child(4),.JuniorSelect select:nth-child(4),.SeniorSelect select:nth-child(4){
+    margin-right: 0;
+}
+
+.JuniorSelect select{
+    background-color: rgb(221, 227, 259);
+    margin-right: 30px;
+    width: 209px;
+    border: 0px;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    color: rgb(131, 137, 169);
+}
+
+.SeniorSelect select{
+    background-color: rgb(296, 227, 223);
+    margin-right: 30px;
+    width: 209px;
+    border: 0px;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    color: rgb(206, 137, 133);
+}
+.last{
+    text-align: center;
+    margin-top: 50px;
+}
+.last p{
+    margin-top: 30px;
+    color: #595959;
+}
+.last p span a{
+    text-decoration: none;
+    color: rgba(0,0,0,0.5);
+}
+/*footer END*/

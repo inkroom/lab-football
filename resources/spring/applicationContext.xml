@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:property-placeholder location="classpath:upload.properties"/>
+
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="com.nsu"/>
+
+    <mvc:resources mapping="/**" location="file:${upload.base.path}"/>
+
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/school_admin/**"/>
+            <mvc:mapping path="/admin_school/**"/>
+            <!--<mvc:mapping path="/**"/>-->
+            <!--<mvc:exclude-mapping path="/school/**"/>-->
+            <!--<mvc:exclude-mapping path="/**/login"/>-->
+            <!--<mvc:exclude-mapping path="/**/login_view"/>-->
+            <!--<mvc:exclude-mapping path="/**/common_logout"/>-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/school_admin/login"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/school_admin/login_view"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/school_admin/common_logout"/>&ndash;&gt;-->
+            <!--<mvc:exclude-mapping path="/random_code"/>-->
+            <!--<mvc:exclude-mapping path="/common/**"/>-->
+            <bean class="com.nsu.SInterceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/school_admin/**"/>
+            <mvc:mapping path="/admin_school/**"/>
+            <!--<mvc:mapping path="/**"/>-->
+            <!--<mvc:exclude-mapping path="/school/**"/>-->
+            <!--<mvc:exclude-mapping path="/**/login"/>-->
+            <!--<mvc:exclude-mapping path="/**/login_view"/>-->
+            <!--<mvc:exclude-mapping path="/**/common_logout"/>-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/school_admin/login"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/school_admin/login_view"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/school_admin/common_logout"/>&ndash;&gt;-->
+            <!--<mvc:exclude-mapping path="/random_code"/>-->
+            <!--<mvc:exclude-mapping path="/common/**"/>-->
+            <bean class="com.nsu.SInterceptor.TokenVerificatify"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/school_admin/**"/>
+            <mvc:mapping path="/admin_school/**"/>
+            <!--<mvc:mapping path="/**"/>-->
+            <!--<mvc:exclude-mapping path="/school/**"/>-->
+            <!--<mvc:exclude-mapping path="/**/login"/>-->
+            <!--<mvc:exclude-mapping path="/**/login_view"/>-->
+            <!--<mvc:exclude-mapping path="/**/common_logout"/>-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/school_admin/login"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/school_admin/login_view"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/school_admin/common_logout"/>&ndash;&gt;-->
+            <!--<mvc:exclude-mapping path="/random_code"/>-->
+            <!--<mvc:exclude-mapping path="/common/**"/>-->
+            <bean class="com.nsu.SInterceptor.RoleAuthorityInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- 定义文件上传解析器 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设定默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+        <property name="maxUploadSize" value="5242880"/>
+    </bean>
+
+</beans>

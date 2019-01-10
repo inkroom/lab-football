@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE urlrewrite
+    PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+    "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+    
+<urlrewrite>
+	
+	<!-- <rule>
+        <from>^/user/([a-z0-9]+).html$</from>
+        <to>/user/$1.action</to>
+    </rule> -->
+    
+    <!-- 系统管理员 -->
+    <rule>
+    	<from>^/admin_school/([a-z0-9_]+)$</from>
+        <to>/admin_school/$1.action</to>
+    </rule>
+    
+    <rule>
+    	<from>^/admin_school/get_school/([0-9]+)/([a-z0-9]+)$</from>
+        <to>/admin_school/get_school.action?page=$1&amp;token=$2</to>
+    </rule>
+    
+    <!-- 编辑器上传action -->
+    <rule>
+    	<from>^/edit/uploadpic/([0-9]+)$</from>
+        <to>/edit/uploadpic.action?type=$1</to>
+    </rule>
+    
+    
+    <!-- 学校管理 -->
+    <rule>
+		<from>^/school_admin/([a-z0-9_]+)$</from>
+		<to>/school_admin/$1.action</to>  
+    </rule>
+
+    <rule>
+    	<from>^/school_admin/([a-z0-9]+)/info/([1-4])$</from>
+    	<to>/school_admin/info.action?schoolUrl=$1&amp;typeInfo=$2</to>
+    </rule>
+
+    <!--<rule>-->
+        <!--<from>^/school_admin/update_info_([0-4])$</from>-->
+        <!--<to>/school_admin/update_info.action?type=$1</to>-->
+    <!--</rule>-->
+
+	<!-- 学校 -->
+    <rule>
+    	<from>^/([a-z0-9]+)$</from>
+    	<to>/school/index.action?schoolUrl=$1</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/([0-9]+)$</from>
+    	<to>/school/$2.action?schoolUrl=$1</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/([0-9]+)/([0-9]+)$</from>
+    	<to>/school/$2.action?schoolUrl=$1&amp;scId=$3</to>
+    </rule>
+    
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/info/([1-4])$</from>
+    	<to>/school/info.action?schoolUrl=$1&amp;typeInfo=$2</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/info/([1-4])$</from>
+    	<to>/school/info.action?schoolUrl=$1&amp;typeInfo=$2</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/people/([1-6])$</from>
+    	<to>/school/people.action?schoolUrl=$1&amp;typePeople=$2</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/people/([1-6])/([0-9]+)$</from>
+    	<to>/school/people.action?schoolUrl=$1&amp;typePeople=$2&amp;page=$3</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/people/info/([1-6])/([0-9]+)$</from>
+    	<to>/school/people_info.action?schoolUrl=$1&amp;typePeople=$2&amp;scId=$3</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/feature/([1-5])$</from>
+    	<to>/school/feature.action?schoolUrl=$1&amp;typeFeature=$2</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/feature/([1-5])/([0-9]+)$</from>
+    	<to>/school/feature.action?schoolUrl=$1&amp;typeFeature=$2&amp;page=$3</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/feature/info/([1-5])/([0-9]+)$</from>
+    	<to>/school/feature_info.action?schoolUrl=$1&amp;typeFeature=$2&amp;scId=$3</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/news/([1-9])$</from>
+    	<to>/school/news.action?schoolUrl=$1&amp;typeNews=$2</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/news/([1-9])/([0-9]+)$</from>
+    	<to>/school/news.action?schoolUrl=$1&amp;typeNews=$2&amp;page=$3</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/news/info/([1-9])/([0-9]+)$</from>
+    	<to>/school/news_info.action?schoolUrl=$1&amp;typeNews=$2&amp;scId=$3</to>
+    </rule>
+    
+    <rule>
+    	<from>^/([a-z0-9]+)/found$</from>
+    	<to>/school/found.action?schoolUrl=$1</to>
+    </rule>
+    
+    
+    
+    
+    
+</urlrewrite>

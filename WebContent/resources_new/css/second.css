@@ -1,0 +1,243 @@
+		*{margin:0;padding: 0}
+		body{font-family: "微软雅黑";}
+		ul,ol{list-style: none;}
+		a{text-decoration: none;}
+        .content{
+            width: 1100px;
+            height: auto;
+            margin: 0 auto;
+        }
+		
+/*==========================================================================*/
+
+/*==================================校长寄语========================================*/
+
+.principalnote{
+	width:880px;
+	height: 950px;
+	margin: 0 auto;
+}
+.principalnote h1{
+	color: gray;
+	margin-bottom: 10px;
+}
+.principalnote article{text-indent: 30px;}
+
+/*==================================学校简介========================================*/
+.schoolprofile{width: 910px;margin: 0 auto}
+.main_ul li{
+			height: 115px;
+			padding:5px 0px 10px;
+			border-bottom: 1px solid lightgray;
+			overflow: hidden;
+		}
+		.main_ul li img{
+			width: 200px;
+			height: 115px;
+			float:left;
+			margin-left: 10px;
+		}
+		.main_ul li>a .main_text{
+			width: 660px;
+			float: right;
+			color: black;
+		}
+		.main_text h4{
+			overflow: hidden;
+			text-overflow:ellipsis;
+			white-space: nowrap;
+		}
+		.main_text p{
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3;
+			overflow: hidden;
+		}
+
+/*==================================分页========================================*/
+		.paging{
+			margin-top: 50px;
+		}
+		.paging .paging_ul{
+			width: 52%;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.paging .paging_ul li{
+			float: left;
+			border: 1px solid lightgray;
+			border-radius: 5px;
+			padding: 0px 12px;
+			height: 30px;
+			margin: 0px 2px;
+			text-align: center;
+			line-height: 30px;
+		}
+		.paging .paging_ul li a{
+			color: #7AA7C8;
+		}
+
+/*==================================学校领导========================================*/
+.leader{width: 910px;margin: 0 auto;}
+.leader .person{
+	padding: 20px 0px;
+	float: left;
+	width: 200px;
+	height: 200px;
+	border: 1px solid white;
+	border-radius: 5px;
+	background: #F8F8F8;
+	box-shadow: 2px 2px 3px lightgray;
+	margin-top: 40px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+.leader .person:hover{
+	box-shadow: 0px 0px 10px gray;
+}
+.person img{width: 70px;height: 70px;border-radius: 35px;float: left; margin-left:10px}
+.person hgroup{float: left; margin-left: 20px;}
+.person hgroup p{background:#65B2FA;color: white;text-align: center;border-radius: 5px;}
+.person .remarks{
+	clear: both;
+	margin-top: 100px;
+	padding: 10px;
+	width: 180px;
+	height: 75px;
+	border-top: 1px dotted lightgray;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	overflow: hidden;
+}
+
+/*==================================教师风采========================================*/
+.teacher{width: 910px;margin: 0 auto;overflow: hidden;}
+.teacher .person{
+	padding: 20px 0px;
+	float: left;
+	width: 200px;
+	height: 200px;
+	border: 1px solid white;
+	border-radius: 5px;
+	background: #F8F8F8;
+	box-shadow: 2px 2px 3px lightgray;
+	margin-top: 40px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+.teacher .person:hover{
+	box-shadow: 0px 0px 10px gray;
+}
+.teacher .person img{width: 70px;height: 70px;border-radius: 35px;float: left; margin-left:10px}
+.teacher .person hgroup{float: left; margin-left: 20px;}
+.teacher .person hgroup p{background:#65B2FA;color: white;text-align: center;border-radius: 5px;}
+.teacher .person .remarks{
+	clear: both;
+	margin-top: 100px;
+	padding: 10px;
+	width: 180px;
+	height: 75px;
+	border-top: 1px dotted lightgray;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	overflow: hidden;
+}
+
+
+
+/*==================================校园风光========================================*/
+#campusScenery{
+	width: 910px;
+	margin: 2px auto;
+	position: relative;
+}
+#campusScenery .image{
+	width: 910px;
+	margin: 0 auto;
+	text-align: center;
+}
+#campusScenery .image img{
+	width: 800px;
+	height: 600px;
+	border: 10px solid white;
+	box-shadow: 0px 0px 3px gray;
+}
+#campusScenery .fa{
+	position: absolute;
+	opacity: 0.8;
+	color: white;
+	display: none;
+}
+#campusScenery .fa-chevron-circle-left{
+	top: 250px;
+	left: 55px;
+}
+#campusScenery .fa-chevron-circle-right{
+	top: 250px;
+	right: 55px;
+}
+#campusScenery .image:hover i{
+	display: block;
+}
+#campusScenery .image i:hover{
+	cursor: pointer;
+}
+#campusScenery ul{
+	width: 865px;
+	height: 135px;
+	padding: 5px;
+	margin: 0 auto;
+	background: lightgray;
+}
+#campusScenery ul li{
+	float: left;
+	margin-left:5px; 
+	margin-right:5px;
+}
+#campusScenery ul li:hover{
+	cursor: pointer;
+}
+#campusScenery ul li:hover img{
+	transform: scale(1.1);
+}
+#campusScenery ul li img{
+	width: 130px;
+	height: 130px;
+	border: 2px solid lightgray;
+}
+
+
+/*==================================新闻中心========================================*/
+.news{
+	width: 870px;
+	margin: 0px auto;
+	padding: 0px 20px;
+
+}
+.news ul li{
+	padding: 10px 0px;
+	border-bottom: 1px solid lightgray;
+	overflow: hidden;
+}
+.news ul li a{
+	float: left;
+	color: black;
+}
+.news ul li a:hover{
+	text-decoration: underline;
+	color: #551A8B;
+}
+.news ul li p{
+	text-indent: 30px;
+	color:gray;
+	clear: both;
+}
+.news ul li span{
+	color: orange;
+	clear: both;
+	display: block;
+	float: right;
+	margin-top: 10px;
+}
