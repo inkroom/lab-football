@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.core.MobileTokenDao">
+	
+	<select id="getMobileToken" resultType="String" >
+		SELECT A_DEVICE_INFO FROM ACCOUNT where A_USERNAME = #{username} and left(A_PASSWORD,9) = #{password} AND A_TYPE = #{a_type} AND A_ID = #{aId};
+	</select>
+	
+</mapper> 

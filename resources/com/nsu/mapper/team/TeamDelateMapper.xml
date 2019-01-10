@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.team.TeamDeleteDao">
+
+
+	<select id="wouldDelete" resultType="boolean">
+		SELECT COUNT(*) FROM COMPETITION_NOTICE join MID_TEAM_COM on COMPETITION_NOTICE.COM_ID = MID_TEAM_COM.COM_ID WHERE COMPETITION_NOTICE.COM_STATUS = 1 AND MID_TEAM_COM.TEAM_ID = #{teamId};
+	</select>
+
+
+	<!--DATE_FORMAT(NOW(), '%Y-%c-%d-%r')-->
+<!-- 删除学生 -->
+	<update id="delatestu"  parameterType="com.nsu.bean.team.TeamCenterDO" >
+    UPDATE  MID_PLAYER_TEAM 
+    SET MID_PLAYER_TEAM.TEAM_PLAYER_STATUS = 3
+    WHERE MID_PLAYER_TEAM.P_ID = #{P_ID} AND MID_PLAYER_TEAM.TEAM_ID=#{TEAM_ID} AND MID_PLAYER_TEAM.TEAM_PLAYER_STATUS = 1
+	</update>
+	
+<!-- 解雇教练 -->	
+	<update id="delatecoach" parameterType="com.nsu.bean.team.TeamCenterDO">
+	UPDATE  MID_COACH_TEAM 
+    SET MID_COACH_TEAM.COACH_TEAM_STATSU = 3
+    WHERE MID_COACH_TEAM.COACH_ID = #{COACH_ID} AND MID_COACH_TEAM.TEAM_ID=#{TEAM_ID} AND MID_COACH_TEAM.COACH_TEAM_STATSU = 1
+	</update>
+</mapper>

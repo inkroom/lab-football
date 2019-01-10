@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.player.PlayerMatchDao">
+	<resultMap type="com.nsu.bean.player.PlayerMatchBean" id="teamList">
+		<id column="R_ID" property="r_id" />
+		<result column="R_NAME" property="r_name" />
+		<result column="R_END_TIME" property="r_time" />
+		<result column="R_H_TEAM_ID" property="r_h_team_id" />
+		<result column="R_V_TEAM_ID" property="r_v_team_id" />
+		<result column="R_REGULAR_H_T_S" property="r_regular_h_t_s" />
+		<result column="R_REGULAR_V_T_S" property="r_regular_v_t_s" />
+		<result column="R_OVERTIME_H_T_S" property="r_overtime_h_t_s" />
+		<result column="R_OVERTIME_V_T_S" property="r_overtime_v_t_s" />
+		<result column="R_PENA_H_T_S" property="r_pena_h_t_s" />
+		<result column="R_PENA_V_T_S" property="r_pena_v_t_s" />	
+	</resultMap>
+	<select id="getTeamID" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT team_id FROM MID_PLAYER_TEAM
+			WHERE p_id = (
+				SELECT p_id FROM PLAYER	WHERE a_id =#{A_ID}
+			)and TEAM_PLAYER_STATUS=1
+	</select>
+	<select id="getMatchID">
+		SELECT r_id FROM MID_TEAM_RACE WHERE TEAM_ID=#{TEAM_ID}
+	</select>	
+	<select id="getTeamName" resultType="java.lang.String">
+		select team_name from TEAM where TEAM_ID=#{TEAM_ID} limit 1
+	</select>
+	<select id="getMatchList" resultMap="teamList">
+		SELECT COM_ID,R_ID,R_NAME,R_END_TIME,R_H_TEAM_ID,R_V_TEAM_ID,R_REGULAR_H_T_S,R_REGULAR_V_T_S
+		,R_OVERTIME_H_T_S,R_OVERTIME_V_T_S,R_PENA_H_T_S,R_PENA_V_T_S
+			FROM RACE_DETAILS WHERE R_ID in
+		(SELECT R_ID FROM MID_TEAM_COM JOIN RACE_DETAILS ON MID_TEAM_COM.`COM_ID` = RACE_DETAILS.`COM_ID` WHERE MID_TEAM_COM.`TEAM_ID` = #{TEAM_ID} AND MID_TEAM_COM.`TEAM_COM_STATUS` = 1
+AND RACE_DETAILS.`R_STATUS` = 2 AND RACE_DETAILS.`R_LIVE_TYPE` = 3 AND (RACE_DETAILS.`R_H_TEAM_ID` = #{TEAM_ID} OR RACE_DETAILS.`R_V_TEAM_ID` = #{TEAM_ID}))
+		
+	</select>
+	<select id="getSchedule" resultType="com.nsu.bean.player.MobilePlayerMatchBean">
+	SELECT
+	R_REGION,
+	R_END_TIME,
+	R_START_TIME,
+	(SELECT
+	TEAM.`TEAM_NAME`
+	FROM
+	TEAM
+	WHERE TEAM.`TEAM_ID` = RACE_DETAILS.R_H_TEAM_ID) AS H_TEAM_NAME,
+	(SELECT
+	TEAM.`TEAM_NAME`
+	FROM
+	TEAM
+	WHERE TEAM.`TEAM_ID` = RACE_DETAILS.R_V_TEAM_ID) AS V_TEAM_NAME
+	FROM
+	RACE_DETAILS
+	WHERE RACE_DETAILS.`COM_ID` = #{COM_ID}
+	AND (R_H_TEAM_ID = #{TEAM_ID} OR R_V_TEAM_ID = #{TEAM_ID})
+	AND RACE_DETAILS.`R_STATUS` =1
+	ORDER BY R_START_TIME ASC
+	</select>
+	<select id="getMatchName" resultType="map">
+	SELECT
+	COM_NAME,
+	COMPETITION_NOTICE.COM_ID,
+	COM_END,
+	COM_START,
+	TEAM.`TEAM_ID`
+	FROM
+	TEAM
+	JOIN MID_TEAM_COM
+	ON MID_TEAM_COM.`TEAM_ID` = TEAM.`TEAM_ID`
+	JOIN COMPETITION_NOTICE
+	ON COMPETITION_NOTICE.`COM_ID` = MID_TEAM_COM.`COM_ID`
+	WHERE TEAM.`TEAM_ID` = #{TEAM_ID}
+	AND COMPETITION_NOTICE.`COM_STATUS` = 1
+	AND TEAM.`TEAM_STATUS` = 1
+	AND MID_TEAM_COM.`TEAM_COM_STATUS` = 1
+	ORDER BY COM_START ASC
+	</select>
+	<!-- 比赛详情的第一个表有人数主客队和比分 -->
+	<select id="getRaceScore" resultType="map">
+		SELECT 
+		RACE_DETAILS.R_ID,
+		(SELECT COUNT(MID_PLAYER_TEAM.P_ID) FROM MID_PLAYER_TEAM
+		WHERE MID_PLAYER_TEAM.`TEAM_ID` = R_H_TEAM_ID AND MID_PLAYER_TEAM.`TEAM_PLAYER_STATUS` = 1) AS H_TEAM_NUM,
+		(SELECT COUNT(MID_PLAYER_TEAM.P_ID) FROM MID_PLAYER_TEAM
+		WHERE MID_PLAYER_TEAM.`TEAM_ID` = R_V_TEAM_ID AND MID_PLAYER_TEAM.`TEAM_PLAYER_STATUS` = 1) AS V_TEAM_NUM,
+		(SELECT TEAM_NAME FROM TEAM
+		WHERE TEAM.TEAM_ID= R_H_TEAM_ID) AS H_TEAM_NAME ,
+		(SELECT TEAM_NAME
+		FROM TEAM WHERE TEAM.TEAM_ID= R_V_TEAM_ID) AS V_TEAM_NAME ,
+		R_REGULAR_H_T_S,
+		R_REGULAR_V_T_S
+		FROM RACE_DETAILS
+		WHERE
+		RACE_DETAILS.R_ID=#{raceID}
+		limit 1
+	</select>
+	<!-- 警告人员名单 -->
+	<select id="getRaceWarning" resultType="java.util.HashMap">
+	SELECT
+	W_NAME,
+	W_NUM,
+	W_REASON,
+	R_H_TEAM_ID,
+	R_V_TEAM_ID,
+	W_TEAM
+		FROM RACE_DETAILS
+		join 
+		`WARNINGS`   on `WARNINGS`.R_ID=RACE_DETAILS.R_ID
+		WHERE
+		RACE_DETAILS.R_ID=#{raceID}
+	</select>
+	<!-- 罚出人员名单 -->
+	<select id="getRaceSendOff" resultType="java.util.HashMap">
+	SELECT 
+		S_NAME,
+		S_NUM,
+		S_REASON,
+		R_H_TEAM_ID,
+		R_V_TEAM_ID,
+		S_TEAM
+    FROM RACE_DETAILS
+		JOIN  SEND_OFF ON SEND_OFF.R_ID=RACE_DETAILS.R_ID
+		WHERE
+		RACE_DETAILS.R_ID=#{raceID}
+	</select>
+	<!-- 红牌，罚球，错判情况 -->
+	<select id="getRacePunish" resultType="java.util.HashMap">
+		SELECT 
+		R_RED_C_TEXT,
+		R_PENA_TEXT,
+		R_WRONG_TEXT
+		FROM RACE_DETAILS
+		WHERE
+		RACE_DETAILS.R_ID=#{raceID}
+	</select>
+	<select id="getRaceNameAndEndTime" resultType="java.util.Map">
+		SELECT COM_NAME,COM_END FROM COMPETITION_NOTICE WHERE COM_ID=#{com_id} limit 1
+	</select>
+</mapper>

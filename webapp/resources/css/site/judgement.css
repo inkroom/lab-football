@@ -1,0 +1,33 @@
+body{
+    background: #bbb;
+}
+#judgment{
+    width: 800px;
+    margin: 0 auto;
+    background: #fff;
+}
+#game-time>input{
+    width: 50px !important;
+}
+#judgment table tr td{
+    padding: 0 !important;
+}
+input[type="text"]{
+    border-color: transparent;
+}
+input[type="button"] {
+    margin-left: 350px !important;
+}
+#list select{
+    padding:0px 0;
+}
+#list .select-box{
+    border: 0;
+}
+#judgment h4>input,#judgment h4 li>input{
+    border: solid 1px #ddd;
+    width: 200px ;
+}
+#judgment h4>input:focus,#judgment h4 li>input:focus{
+    border: solid 1px #3bb4f2;
+}

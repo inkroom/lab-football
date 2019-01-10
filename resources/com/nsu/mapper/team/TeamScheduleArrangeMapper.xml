@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.team.TeamScheduleArrangeDao">
+
+<!-- 分页 根据赛事ID和球队ID查询赛程信息	 -->
+	<select id="findSchedulesByComIDPageRecords" parameterType="java.lang.Object" resultType="com.nsu.bean.team.ScheduleBean" >
+		SELECT * FROM
+			(SELECT R_ID rID, COM_ID comID, R_START_TIME s, date_format(R_START_TIME, '%Y-%c-%e %k:%i') sTime, date_format(R_END_TIME, '%Y-%c-%e %k:%i') eTime, R_H_TEAM_ID rHTeamID, R_V_TEAM_ID rVTeamID, 
+				(SELECT TEAM.TEAM_NAME FROM TEAM WHERE TEAM_ID=R_V_TEAM_ID AND TEAM_STATUS=1) rVTeamName,
+				(SELECT TEAM.TEAM_NAME FROM TEAM WHERE TEAM_ID=R_H_TEAM_ID AND TEAM_STATUS=1) rHTeamName,
+				(SELECT TEAM.TEAM_BADGE FROM TEAM WHERE TEAM_ID=R_V_TEAM_ID AND TEAM_STATUS=1) rVTeamBadge,
+				(SELECT TEAM.TEAM_BADGE FROM TEAM WHERE TEAM_ID=R_H_TEAM_ID AND TEAM_STATUS=1) rHTeamBadge
+			FROM RACE_DETAILS 
+			WHERE R_STATUS=1 AND COM_ID=#{comID} AND (R_H_TEAM_ID=#{teamID} OR R_V_TEAM_ID=#{teamID}))
+		S ORDER BY s DESC
+		limit #{startIndex},#{pageSize}
+	</select>
+	
+<!-- 根据球队ID和赛程ID查询球队在这个赛程安排多少人 -->	
+	<select id="findCountArrangedNum" parameterType="java.lang.String" resultType="int">
+		SELECT DISTINCT COUNT(START_IN_ID) 
+		FROM MID_TEAM_RACE
+		WHERE  TEAM_ID=#{teamID} AND R_ID=#{rID} AND CHECK_IDCARD!=3
+			AND START_IN_ID IN (SELECT P_ID FROM MID_PLAYER_TEAM WHERE TEAM_ID=#{teamID} AND TEAM_PLAYER_STATUS=1)
+	</select>
+<!-- 根据赛事ID和球队ID查询赛程数量	 -->
+	<select id="findSchedulesNum" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) FROM RACE_DETAILS 
+			WHERE COM_ID=#{comID} AND R_STATUS=1 AND (R_V_TEAM_ID=#{teamID} OR R_H_TEAM_ID=#{teamID})
+	</select>
+
+<!-- 查询球队队员已经被安排参加赛事的球员ID -->
+	<select id="findPlanMatchPlayers" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT START_IN_ID pID 
+		FROM MID_TEAM_RACE
+		WHERE CHECK_IDCARD!=3 AND TEAM_ID=#{teamID} AND R_ID=#{rID}
+	</select>	
+
+<!-- 更新球队队员在MID_TEAM_RACE 表的状态值 -->	
+	<update id="updateMatchPlayersStatus" parameterType="java.lang.String">
+		UPDATE MID_TEAM_RACE 
+		SET CHECK_IDCARD=#{checkStatus} 
+		WHERE START_IN_ID=#{pid} AND TEAM_ID=#{teamID}  AND R_ID=#{rID} 
+	</update>
+
+<!-- 根据P_ID查询MID_TEAM_RACE 表是否存在记录	 -->
+	<select id="findCountRecordMatchPlayers" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) 
+		FROM MID_TEAM_RACE
+		WHERE  START_IN_ID=#{pid} AND TEAM_ID=#{teamID}  AND R_ID=#{rID} 
+	</select>
+	
+<!-- 向MID_TEAM_RACE 表插入数据	 -->
+	<insert id="insertMatchPlayers" parameterType="java.lang.String"> 
+		INSERT INTO MID_TEAM_RACE(START_IN_ID, TEAM_ID, R_ID, CHECK_IDCARD) 
+		VALUES(#{pid}, #{teamID}, #{rID}, 0)
+	</insert>
+	
+<!-- 根据传入的赛事id查询所有和本队有关的赛程信息	 -->
+	<select id="MatchRecordInfo" parameterType="java.lang.Object" resultType="com.nsu.bean.team.ScheduleBean" >
+			SELECT DISTINCT COMPETITION_NOTICE.COM_ID,COM_NAME,RACE_DETAILS.R_ID rID, DATE_FORMAT(R_START_TIME, '%Y-%c-%e %k:%i') sTime, DATE_FORMAT(R_END_TIME, '%Y-%c-%e %k:%i') eTime, R_H_TEAM_ID rHTeamID, R_V_TEAM_ID rVTeamID
+			, RACE_DETAILS.R_REGULAR_H_T_S RE_WIN, RACE_DETAILS.R_OVERTIME_H_T_S OV_WIN, RACE_DETAILS.R_PENA_H_T_S PE_WIN,RACE_DETAILS.R_REGULAR_V_T_S RE_FAILE
+			, RACE_DETAILS.R_OVERTIME_V_T_S OV_FAILE, RACE_DETAILS.R_PENA_V_T_S PE_FAILE,SE_STATUS,SE_STATUS,
+			(SELECT TEAM.TEAM_NAME FROM TEAM WHERE TEAM_ID=R_V_TEAM_ID AND TEAM_STATUS=1) rVTeamName,
+			(SELECT TEAM.TEAM_NAME FROM TEAM WHERE TEAM_ID=R_H_TEAM_ID AND TEAM_STATUS=1) rHTeamName,
+			(SELECT TEAM.TEAM_FLAG FROM TEAM WHERE TEAM_ID=R_V_TEAM_ID AND TEAM_STATUS=1) rVTeamFlag,
+			(SELECT TEAM.TEAM_FLAG FROM TEAM WHERE TEAM_ID=R_H_TEAM_ID AND TEAM_STATUS=1) rHTeamFlag
+			FROM COMPETITION_NOTICE
+			LEFT JOIN RACE_DETAILS ON COMPETITION_NOTICE.COM_ID = RACE_DETAILS.COM_ID 
+			LEFT JOIN SCENE ON RACE_DETAILS.`R_ID` = SCENE.`R_ID`
+			LEFT JOIN MID_TEAM_RACE ON SCENE.R_ID = MID_TEAM_RACE.R_ID
+			LEFT JOIN TEAM ON MID_TEAM_RACE.TEAM_ID = TEAM.TEAM_ID
+			WHERE (R_V_TEAM_ID=#{TEAM_ID} OR R_H_TEAM_ID=#{TEAM_ID}) AND COMPETITION_NOTICE.COM_ID=#{COM_ID}
+			ORDER BY sTime DESC
+			limit #{startIndex},#{pageSize}
+	</select>	
+</mapper> 

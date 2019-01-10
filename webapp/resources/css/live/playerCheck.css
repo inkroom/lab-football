@@ -1,0 +1,58 @@
+.playerCheck-box ,.player{
+    width: 960px;
+    height: 763px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.team-title{
+    width: 960px;
+    height: 40px;
+    border-bottom:1px solid #bbb;
+    cursor: pointer;
+}
+.team-title li{
+    height: 40px;
+}
+.team-title li:last-child{
+    border-left:2px solid #bbb;
+}
+.team-title li:hover{
+    background: #aaa;
+}
+.playerCheck-box{
+    border:2px solid #bbb;
+}
+.player li{
+    position: relative;
+    float: left;
+    width: 120px;
+    height: 220px;
+    padding: 10px 20px;
+    text-align: center;
+    border-bottom: 1px solid #BBB;
+}
+.player img{
+    width: 120px;
+    height: 140px;
+    margin: 0 auto;
+    cursor: pointer;
+ }
+.player span{
+    width: 120px;
+    display: inline-block;
+    background: #F4F4F4;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 160;
+}
+
+.playerchecked::before{
+    content: url("../img/pass.png");
+    position: absolute;
+    right: 20px;
+    width: 120px;
+    height: 140px;
+    top:10px;
+    z-index: 10;
+    background: rgba(47, 47, 47, 0.46);
+}

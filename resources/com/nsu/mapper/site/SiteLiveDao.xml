@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.site.SiteLiveDao">
+	<!-- 查询两队赛前球队ID信息及开始比赛时间 返回结果 eg: R_TIME TEAM_NAME 2017-04-12 10:14:26 东软队 
+		2017-04-12 10:14:26 外国语队 -->
+
+	<select id="selectAllBeforeGame" resultType="map">
+		select
+		date_format(R_START_TIME, '%Y-%c-%e %T')
+		R_START_TIME,R_H_TEAM_ID,R_V_TEAM_ID,R_NAME,RACE_DETAILS.R_ID from
+		RACE_DETAILS
+		left join SCENE on
+		RACE_DETAILS.SE_ID = SCENE.SE_ID
+		left
+		join ACCOUNT
+		on SCENE.SE_ID = ACCOUNT.SE_ID
+		where ACCOUNT.A_ID = #{A_ID}
+		limit 1
+	</select>
+
+	<select id="selectGameName" resultType="java.lang.String">
+		select
+		COMPETITION_NOTICE.COM_NAME
+		FROM COMPETITION_NOTICE
+		LEFT JOIN RACE_DETAILS ON COMPETITION_NOTICE.COM_ID = RACE_DETAILS.COM_ID
+		where RACE_DETAILS.R_ID = #{R_ID}
+		limit 1
+	</select>
+
+	<select id="selectTeamName" resultType="java.lang.String">
+		select TEAM_NAME from
+		TEAM where TEAM_ID = #{T_ID} limit 1
+	</select>
+
+	<select id="selectRID" resultType="java.lang.Long">
+		select RACE_DETAILS.R_ID from RACE_DETAILS
+		left join SCENE on RACE_DETAILS.SE_ID = SCENE.SE_ID
+		left join ACCOUNT on SCENE.SE_ID = ACCOUNT.SE_ID
+		where ACCOUNT.A_ID= #{A_ID} limit 1
+	</select>
+
+	<insert id="insertLiveInfo">
+		insert into RACE_LIVE (
+		RL_H_T_SCORE,
+		RL_V_T_SCORE,
+		RL_TIME,
+		RL_TEXT,
+		RL_IMAGES,
+		RL_ST,
+		RL_STATUS,
+		R_ID)
+		VALUES (
+		#{RL_H_T_SCORE},
+		#{RL_V_T_SCORE},
+		#{RL_TIME},
+		#{RL_TEXT},
+		#{RL_IMAGES},
+		#{RL_ST},
+		1,
+		#{R_ID}
+		)
+	</insert>
+
+	<update id="updateDetailsStatus">
+		update RACE_DETAILS set R_LIVE_TYPE = #{status}
+		where
+		R_ID = #{R_ID}
+	</update>
+
+	<select id="selectScores" resultType="map">
+		select
+		RL_H_T_SCORE,RL_V_T_SCORE from RACE_LIVE
+		left
+		join RACE_DETAILS on
+		RACE_LIVE.R_ID = RACE_DETAILS.R_ID
+		left join SCENE
+		on RACE_DETAILS.SE_ID
+		= SCENE.SE_ID
+		left join ACCOUNT
+		on SCENE.SE_ID = ACCOUNT.SE_ID
+		where
+		ACCOUNT.A_ID = #{A_ID} order by
+		RACE_LIVE.RL_TIME DESC limit 1
+	</select>
+
+	<update id="endGame">
+		UPDATE RACE_LIVE SET RL_STATUS = 2 WHERE R_ID =
+		#{R_ID}
+	</update>
+
+	<update id="endTime">
+		UPDATE RACE_DETAILS SET R_END_TIME = #{time},
+		R_WIN_T = #{win}
+		WHERE
+		R_ID = #{R_ID}
+	</update>
+
+	<select id="selectStatus" resultType="Integer">
+		select R_LIVE_TYPE from
+		RACE_DETAILS where R_ID = #{R_ID} limit 1
+	</select>
+
+	<update id="setStatus">
+		UPDATE RACE_DETAILS SET
+		R_LIVE_TYPE = #{status}
+		WHERE R_ID = #{R_ID}
+	</update>
+
+	<select id="selectTeamLogo" resultType="java.lang.String">
+		SELECT TEAM_BADGE from TEAM WHERE TEAM_ID= #{T_ID}
+	</select>
+
+	<select id="selectSE" resultType="java.lang.Long">
+		SELECT SCENE.SE_ID from SCENE
+		left join ACCOUNT on SCENE.SE_ID = ACCOUNT.SE_ID
+		where ACCOUNT.A_ID = #{A_ID} limit 1
+	</select>
+
+	<update id="endStatus">
+		UPDATE SCENE SET SE_ENDTIME = #{time}
+		WHERE SE_ID = #{SE_ID}
+	</update>
+
+	<update id="setA_Status">
+		UPDATE ACCOUNT SET A_STATUS = 2
+		WHERE A_ID = #{A_ID}
+	</update>
+
+
+</mapper> 

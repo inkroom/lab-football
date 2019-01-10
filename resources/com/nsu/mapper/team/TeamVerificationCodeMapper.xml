@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.team.TeamSendVerificationCodeDao">
+
+<!-- 更新球队邮箱验证码 -->
+	<update id="updateTeamVerificationCode" parameterType="java.lang.String">
+			UPDATE ACCOUNT 
+			SET A_EMAIL_CHECK_CODE=#{code} 
+			WHERE A_ID =#{aid} AND A_STATUS=1 
+	</update>
+
+<!-- 获取球队邮箱验证码 -->
+	<select id="findEmailVerificationCode" parameterType="java.lang.String"  resultType="java.lang.String">
+		SELECT A_EMAIL_CHECK_CODE 
+		FROM ACCOUNT 
+		WHERE A_ID=#{aid} AND A_STATUS=1 LIMIT 1
+	</select>
+
+<!-- 根据aid查询邮箱 -->	
+	<select id="findTeamBindingEmail" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT A_EMAIL email
+		FROM ACCOUNT 
+		WHERE A_ID=#{aid} AND A_STATUS=1 LIMIT 1
+	</select>
+	
+	<!-- 根据角色id查询aid-->	
+	<select id="findAidByRoleId" parameterType="java.lang.Object" resultType="java.lang.String">
+		SELECT A_ID FROM 
+		<choose>
+			<when test="type==1">
+			<!--球员 -->
+				PLAYER WHERE P_ID=#{id} AND P_STATUS=1
+			</when>
+			<when test="type==2">
+			<!--教练员 -->
+				COACH WHERE COACH_ID=#{id} AND COACH_STATUS=1
+			</when>
+			<when test="type==3">
+			<!--机构 -->
+				 ACCOUNT WHERE ORG_ID=#{id} AND A_TYPE=3 AND A_STATUS=1
+			</when>
+			<when test="type==4">
+			<!--球队-->
+				TEAM WHERE TEAM_ID=#{id} AND TEAM_STATUS=1
+			</when>
+			<otherwise>
+			<!--赛事id -->
+				ACCOUNT WHERE A_TYPE=3 AND A_STATUS=1 AND 
+					ORG_ID= (SELECT ORG_ID FROM COMPETITION_NOTICE WHERE COM_ID=#{id} AND COM_STATUS=1)
+			</otherwise>
+		</choose>
+		limit 1
+	</select>
+	
+</mapper> 

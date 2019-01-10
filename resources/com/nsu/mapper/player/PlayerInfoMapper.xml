@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.player.PlayerInfoDao">
+	<select id="getPlayerInfo" resultType="map">
+		SELECT
+			A_NAME,
+			A_ID_CARD,
+			P_SEX,
+			P_SCHOOL,
+			A_PHONE,
+			A_EMAIL,
+			A_EMAIL_CHECK_CODE,
+			P_PLAYER_HEIGHT,
+			P_PLAYER_WEIGHT,
+			P_POSITION AS positionInfo,
+			P_PEROSONAL_PHOTO
+		FROM
+			ACCOUNT
+		 JOIN PLAYER
+			ON ACCOUNT.`A_ID` = PLAYER.`A_ID`
+		WHERE ACCOUNT.`A_ID` = #{A_ID}
+		limit 1
+	</select>
+	<update id="updatePlayerInfo" parameterType="com.nsu.bean.player.PlayerInfoBean">
+		UPDATE
+		PLAYER
+		SET
+		<if test="STU_ID != null and STU_ID!=''">
+			STU_ID = #{STU_ID},
+		</if>
+		<if test="P_SEX!=null and P_SEX!=''">
+			P_SEX = #{P_SEX},
+		</if>
+		P_SCHOOL = #{P_SCHOOL},
+		P_PLAYER_HEIGHT = #{P_PLAYER_HEIGHT},
+		P_PLAYER_WEIGHT = #{P_PLAYER_WEIGHT},
+		P_POSITION = #{positionInfo}
+		WHERE A_ID = #{A_ID}
+	</update>
+	<update id="updatePlayerInfoName" parameterType="com.nsu.bean.player.PlayerInfoBean">
+		UPDATE
+		ACCOUNT
+		SET A_ID = #{A_ID}
+		<if test="A_NAME!=null and A_NAME!=''">
+			,A_NAME = #{A_NAME}
+		</if>
+		<if test="A_EMAIL!=null and A_EMAIL!=''">
+			,A_EMAIL = #{A_EMAIL}
+		</if>
+		<if test="A_EMAIL_CHECK_CODE!=null and A_EMAIL_CHECK_CODE!=''">
+			,A_EMAIL_CHECK_CODE = #{A_EMAIL_CHECK_CODE}
+		</if>
+		WHERE A_ID = #{A_ID}
+	</update>
+	<resultMap type="com.nsu.bean.player.PlayerActityBean" id="getActity">
+		<id column="COM_ID" property="com_id" />
+		<result column="COM_NAME" property="com_name" />
+		<result column="COM_END" property="com_end" />
+		<result column="COM_WINNER" property="com_winner" />
+		<result column="COM_SECOND" property="com_second" />
+		<result column="COM_THIRD" property="com_third" />
+		<result column="COM_TYPE" property="com_type" />
+		<result column="COM_BIG_LEVEL" property="com_big_level" />
+		<result column="TEAM_ID0" property="team_id" />
+		<result column="COM_LEVEL" property="com_level" />
+		<result column="COM_GROUNP" property="com_grounp" />
+		<result column="TEAM_NAME" property="team_name"/>
+	</resultMap>
+	<select id="getPlayerActivityInfo" parameterType="map" resultMap="getActity">
+		SELECT DISTINCT
+		COMPETITION_NOTICE.`COM_ID`,
+		COM_NAME,
+		COM_END,
+		COM_WINNER,
+		COM_SECOND,
+		COM_THIRD,
+		COM_TYPE,
+		COM_LEVEL,
+		COM_GROUNP,
+		MID_TEAM_RACE.`TEAM_ID` AS TEAM_ID,
+		COM_BIG_LEVEL,
+		TEAM_NAME
+		FROM
+		PLAYER JOIN MID_TEAM_RACE ON PLAYER.`P_ID` = MID_TEAM_RACE.`START_IN_ID`
+		JOIN TEAM ON TEAM.`TEAM_ID` = MID_TEAM_RACE.`TEAM_ID`
+		JOIN RACE_DETAILS ON RACE_DETAILS.`R_ID` = MID_TEAM_RACE.`R_ID`
+		JOIN COMPETITION_NOTICE ON COMPETITION_NOTICE.`COM_ID` = RACE_DETAILS.`COM_ID`
+		WHERE PLAYER.`A_ID` = #{A_ID}
+		AND COMPETITION_NOTICE.`COM_BIG_LEVEL` = #{COM_BIG_LEVEL}
+		AND RACE_DETAILS.`R_STATUS` != 1
+		AND COMPETITION_NOTICE.`COM_STATUS` = 2
+		AND MID_TEAM_RACE.`CHECK_IDCARD` = 1
+		AND (COMPETITION_NOTICE.`COM_WINNER` = MID_TEAM_RACE.`TEAM_ID`
+		OR COMPETITION_NOTICE.`COM_SECOND` = MID_TEAM_RACE.`TEAM_ID`
+		OR COMPETITION_NOTICE.`COM_THIRD` = MID_TEAM_RACE.`TEAM_ID` )
+		ORDER BY COM_END DESC
+	</select>
+	<update id="updatePlayerPhoto" parameterType="java.lang.String">
+		UPDATE
+		PLAYER
+		SET
+		P_PEROSONAL_PHOTO = #{filePath}
+		WHERE A_ID = #{a_id}
+	</update>
+	<insert id="insertWonderfulPhoto" parameterType="map">
+		INSERT INTO
+			`UPLOAD_FILES`
+			( `A_ID`,
+			`SAVE_PATH`,
+			`FILE_TYPE`,
+			`UP_CREATE_DATE`,
+			`UP_CREATE_BY`,
+			`UP_OPER_DATE`,
+			`UP_OPER_BY`,
+			`UP_STATUS`)
+		VALUES (#{wonder.a_id},#{wonder.save_path},#{wonder.file_type}, now(),
+			#{wonder.a_id}, now(), #{wonder.a_id}, #{wonder.up_status});
+	</insert>
+	<select id="getWdpic" resultType="map">
+		SELECT
+			SAVE_PATH
+		FROM 
+			UPLOAD_FILES
+		WHERE UPLOAD_FILES.`A_ID` = #{A_ID}
+		AND UPLOAD_FILES.UP_STATUS = 1
+		ORDER BY UP_CREATE_DATE
+		DESC LIMIT 3
+	</select>
+	<select id="getTeamInfo" resultType="map">
+	SELECT
+	PS_SCHOOL_WIN,
+	PS_SCHOOL_FLAT,
+	PS_SCHOOL_LOSE,
+	PS_COUNTY_WIN,
+	PS_COUNTY_FLAT,
+	PS_COUNTY_LOSE,
+	PS_CITY_WIN,
+	PS_CITY_FLAT,
+	PS_CITY_LOSE,
+	PS_PROVINE_WIN,
+	PS_PROVINE_FLAT,
+	PS_PROVINE_LOSE,
+	PS_OTHER_WIN,
+	PS_OTHER_LOSS,
+	PS_OTHER_ALL
+	FROM
+	ACCOUNT
+	JOIN PLAYER
+	ON ACCOUNT.`A_ID` = PLAYER.`A_ID`
+	JOIN PLAYER_SCORE
+	ON PLAYER_SCORE.`P_ID` = PLAYER.`P_ID`
+	WHERE ACCOUNT.`A_ID` = #{A_ID}
+	AND PLAYER.P_STATUS = 1
+	AND PLAYER_SCORE.PS_STUTAS = 1
+	</select>
+	<select id="getStuNum" resultType="string">
+	SELECT
+	STU_NUM
+	FROM
+	STUDENT
+	WHERE STU_ID_CARD = #{STU_ID_CARD}
+	limit 1
+	</select>
+	<select id="getStudentInfo" resultType="map">
+		SELECT STU_ID, STU_NAME,STU_SEX,STU_NUM 
+		FROM STUDENT 
+   		WHERE STU_ID_CARD = #{STU_ID_CARD}
+   		limit 1
+	</select>
+
+</mapper>

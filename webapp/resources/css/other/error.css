@@ -1,0 +1,40 @@
+#errorfrm{
+    text-align:center;
+}
+#error{
+    margin:150px auto;
+    width:650px;
+}
+.icon{
+    display: inline-block;
+    width:100px;
+    height:100px;
+    background:url("../../img/other/systemError.png") no-repeat;
+    -webkit-background-size:100px;
+    background-size:100px;
+}
+.privIcon{
+    display: inline-block;
+    width:100px;
+    height:100px;
+    background:url("../../img/other/privaError.png") no-repeat;
+    -webkit-background-size:100px;
+    background-size:100px;
+}
+.errorText a{
+    text-decoration: none;
+    color:#5a98de;
+    font-weight:normal;
+}
+.errorText h1{
+    letter-spacing: 2px;
+    color: #AFB5BF;
+}
+.lasTIcon{
+    display: inline-block;
+    width:100px;
+    height:100px;
+    background:url("../../img/other/lasTerror.png") no-repeat;
+    -webkit-background-size:100px;
+    background-size:100px;
+}

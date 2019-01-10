@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.publicity.PlayerPubDao">
+	<!-- 查询球员信息 -->
+	<select id="getPlayerAll" resultType="com.nsu.bean.publicity.PlayerPubBean" >
+		SELECT
+			PLAYER.P_ID AS id,
+			A_NAME AS name,
+			P_SEX AS sex,
+			(YEAR(UTC_DATE())-YEAR(P_BIRTHDAY)) AS age
+		FROM PLAYER LEFT JOIN ACCOUNT
+		ON PLAYER.A_ID=ACCOUNT.A_ID
+		WHERE P_STATUS = 1 AND P_SEX IS NOT NULL
+		order by P_OPER_DATE desc
+	</select>
+	
+	<!-- 根据球员名查询球员信息 -->
+	<select id="getPlayerByName" resultType="com.nsu.bean.publicity.PlayerPubBean" parameterType="java.lang.String">
+		SELECT
+			PLAYER.P_ID AS id,
+			A_NAME AS name,
+			P_SEX AS sex,
+			(YEAR(UTC_DATE())-YEAR(P_BIRTHDAY)) AS age
+		FROM PLAYER LEFT JOIN ACCOUNT
+		ON PLAYER.A_ID=ACCOUNT.A_ID
+		WHERE A_NAME = #{name} AND P_STATUS = 1
+	</select>
+	
+	<!-- 查询球员详细信息 -->
+	<select id="getPlayerDetail" resultType="com.nsu.bean.publicity.PlayerPubBean" parameterType="java.lang.String" >
+		SELECT
+			A_NAME AS name,
+			P_SEX AS sex,
+			P_PLAYER_HEIGHT AS height,
+			P_PLAYER_WEIGHT AS weight,
+			P_CLASS_HONORS AS classHonor,
+			P_SCHOOL_HONORS AS schoolHonor,
+			P_COUNTRY_HONORS AS countryHonor,
+			P_CITY_HOURS AS cityHonor,
+			P_SCHOOL AS school,
+			P_PEROSONAL_PHOTO AS photo,
+			P_POSITION AS position,
+			(YEAR(UTC_DATE())-YEAR(P_BIRTHDAY)) AS age
+		FROM PLAYER LEFT JOIN ACCOUNT
+		ON PLAYER.A_ID=ACCOUNT.A_ID
+		WHERE PLAYER.P_ID = #{id}
+		limit 1
+	</select>
+	
+	<!-- 查询积分 -->
+	<select id="getScore" resultType="map" parameterType="java.lang.String" >
+		SELECT 
+			PS_CITY_WIN,
+			PS_CITY_FLAT,
+			PS_CITY_LOSE,
+			PS_PROVINE_WIN,
+			PS_PROVINE_FLAT,
+			PS_PROVINE_LOSE,
+			PS_COUNTY_WIN,
+			PS_COUNTY_FLAT,
+			PS_COUNTY_LOSE,
+			PS_SCHOOL_WIN,
+			PS_SCHOOL_FLAT,
+			PS_SCHOOL_LOSE
+		FROM PLAYER_SCORE WHERE P_ID = #{id} AND PS_STUTAS = 1
+		limit 1
+	</select>
+	
+	<!-- 查询球员所属的球队 -->
+	<select id="getPlayerTeam" resultType="java.lang.String" parameterType="java.lang.String" >
+		SELECT 
+			TEAM_NAME 
+		FROM MID_PLAYER_TEAM LEFT JOIN TEAM
+		ON MID_PLAYER_TEAM.`TEAM_ID` = TEAM.`TEAM_ID`
+		WHERE MID_PLAYER_TEAM.`P_ID` = #{id} AND MID_PLAYER_TEAM.`TEAM_PLAYER_STATUS` = 1 AND TEAM.`TEAM_STATUS` = 1
+	</select>
+	
+	<!-- 首页显示 -->
+	<select id="showPlayer" resultType="com.nsu.bean.publicity.PlayerPubBean">
+		SELECT
+			PLAYER.P_ID AS id,
+			A_NAME AS name,
+			DATE_FORMAT(P_CREATE_DATE,'%Y-%m-%d') AS createTime,
+			P_SEX AS sex
+		FROM PLAYER LEFT JOIN ACCOUNT
+		ON PLAYER.A_ID=ACCOUNT.A_ID
+		WHERE P_STATUS = 1
+		ORDER BY P_OPER_DATE DESC LIMIT 7
+	</select>
+</mapper> 

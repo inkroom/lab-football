@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.site.SitePlayerAccessDao">
+    <!--&#45;&#45;         SELECT *-->
+    <!--&#45;&#45;         FROM-->
+    <!--&#45;&#45;             TEAM_PLAYER_LU-->
+    <!--&#45;&#45;         WHERE-->
+    <!--&#45;&#45;             SCENE_AID = #{AId};-->
+    <!--SELECT * FROM PLAYER WHERE A_ID= #{AId};-->
+    <!--通过现场管理员A_ID 查到对应比赛的球员A_ID-->
+    <select id="getPlayerAIdByRId" statementType="PREPARED" parameterType="java.lang.Long" resultType="java.lang.Long">
+
+          SELECT P.A_ID FROM PLAYER P,MID_TEAM_RACE M
+          WHERE M.R_ID = #{RId}
+          AND M.R_ID = S.R_ID
+          AND M.START_IN_ID = P.P_ID
+    </select>
+    <!--SELECT M.*,T.TEAM_NAME FROM ACCOUNT A,PLAYER P,MID_TEAM_RACE M ,SCENE S ,TEAM T-->
+    <!--WHERE A.A_ID  = #{AId} AND  A.A_TYPE = 5-->
+    <!--AND S.A_ID = A.A_ID AND M.R_ID = S.R_ID-->
+    <!--AND M.START_IN_ID = P.P_ID AND M.TEAM_ID = T.TEAM_ID-->
+    <select id="getCheckPlayerByRid" resultType="map" parameterType="java.lang.Long">
+        SELECT M.*,T.TEAM_NAME,A2.A_NAME,A2.A_ID FROM PLAYER P,MID_TEAM_RACE M
+		,TEAM T,ACCOUNT A2
+		WHERE M.R_ID = #{RId}
+		AND M.START_IN_ID = P.P_ID AND M.TEAM_ID = T.TEAM_ID
+		AND P.A_ID = A2.A_ID
+    </select>
+
+
+    <update id="updatePlayerStatus">
+        UPDATE MID_TEAM_RACE
+        SET CHECK_IDCARD = #{Status}
+        WHERE MID_TEAM_RACE.START_IN_ID = (SELECT P_ID
+                                           FROM PLAYER
+                                           WHERE A_ID = #{AId});
+    </update>
+
+</mapper> 

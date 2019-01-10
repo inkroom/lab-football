@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.organization.OrgPerfectInfoDao">
+	
+	<!-- 根据登录ID查机构信息 -->
+	<select id="getOrganizationMessage" parameterType="java.lang.Long" resultType="map" >
+        SELECT  A_NAME,A_PHONE,ORG_NAME FROM `ACCOUNT`
+        	LEFT  JOIN `ORGANIZATION`
+        ON
+        	`ORGANIZATION`.ORG_ID=`ACCOUNT`.ORG_ID
+        WHERE `ACCOUNT`.ORG_ID = #{org_id} AND ACCOUNT.A_TYPE = 3
+        limit 1
+	</select>
+	
+	<!-- 更新ORG中的Name-->
+	<update id="modifyOrganizationName" >
+			UPDATE ORGANIZATION
+		SET ORG_NAME = #{orgName}
+		WHERE
+			ORG_ID = #{org_id}
+	</update>
+	
+	<!-- 更新ORG中用户的Name-->
+	<update id="modifyAccountName" >
+			UPDATE ACCOUNT
+		SET A_NAME = #{userName}
+		WHERE
+			ORG_ID = #{org_id}
+		AND A_TYPE = 3
+	</update>
+	
+	
+	<!-- 更新account表中的数据 -->
+	<update id="updateOrganizationOrg" >
+			UPDATE ACCOUNT
+			SET A_NAME = #{user_name},
+			 A_PHONE = #{user_phone},
+			 A_EMAIL = #{user_email}
+			WHERE
+				ORG_ID = #{org_id} AND A_TYPE = 3
+	</update>
+	
+</mapper> 

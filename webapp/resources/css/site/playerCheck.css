@@ -1,0 +1,128 @@
+body{
+    background: #fff;
+}
+/*
+.playerCheck-box{
+    box-shadow: 0 0 5px 1px rgba(111,111,111,0.2);
+}
+*/
+.playerCheck{
+    margin:3% 5% auto 5%;
+    border:1px solid #ededed;
+}
+.playerCheck-box ,.player{
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #fafafa;
+}
+.player{
+    padding: 5px;
+}
+/*@media screen and (max-width: 1920px) {
+    .playerCheck,.playerCheck-box ,.player{
+        width: 1450px;
+    }
+}
+@media screen and (max-width: 1500px) {
+    .playerCheck,.playerCheck-box ,.player{
+        width: 1290px;
+    }
+}
+@media screen and (max-width: 1340px) {
+    .playerCheck,.playerCheck-box ,.player{
+        width: 1132px;
+    }
+}
+@media screen and (max-width: 1180px) {
+    .playerCheck,.playerCheck-box ,.player{
+        width: 970px;
+    }
+}*/
+
+.team-title{
+    /*min-width: 960px;*/
+   /* margin-right: 40px;
+    margin-left: 40px;*/
+    height: 40px;
+    border-bottom:2px solid #15926b;
+    cursor: pointer;
+}
+.team-title li{
+    height: 40px;
+    background: #e8e8e8;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+.team-title li:hover{
+    background: #1ab181;
+    color: #fefefe;
+}
+.player li{
+    position: relative;
+    float: left;
+    background: #fff;
+    width: 138px;
+    margin: 8px 6px;
+    min-height: 220px;
+    height: 230px;
+    text-align: center;
+    border:5px solid #fff;
+    border-radius: 3px;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    box-shadow: 0 0 2px 1px rgba(111,111,111,0.1);
+}
+.player li:hover{
+    box-shadow: 0 3px 15px 1px rgba(111,111,111,0.4);
+}
+.player img{
+    width: 138px;
+    height: 145px;
+    margin: 0px auto;
+    cursor: pointer;
+ }
+.player span{
+    width: auto;
+    display: block;
+    overflow: hidden;
+    line-height: 60px;
+    cursor: pointer;
+    z-index: 160;
+    margin-top: 5px;
+}
+
+.playerchecked:before{
+    content: url("../../img/site/pass.png");
+    position: absolute;
+    left:0px;
+    width: 138px;
+    height: 145px;
+    top:0px;
+    z-index: 10;
+    background: rgba(47, 47, 47, 0.46);
+}
+.check{
+    background: #15926b !important;
+    color: #fgff;
+}
+/*
+.overtext:before{
+    content: "...";
+    color: limegreen;
+    font-size: 28px;
+    position: absolute;
+    line-height: 16px;
+    right: 20px;
+    width: 34px;
+    height: 32px;
+    background: #F4F4F4;
+}
+*/
+

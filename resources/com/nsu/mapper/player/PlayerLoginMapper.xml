@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.player.PlayerLoginDao">
+	<select id="getPlayer" parameterType="map" resultType="map">
+		SELECT
+			ACCOUNT.`A_ID`,
+			A_USERNAME,
+			A_PASSWORD,
+			A_TYPE
+		FROM
+			ACCOUNT
+		WHERE ACCOUNT.A_USERNAME = #{username}
+			AND ACCOUNT.A_TYPE = 1
+			AND A_STATUS = 1
+			limit 1
+	</select>
+	<update id="updateLoginTime" parameterType="map">
+		UPDATE
+			ACCOUNT
+		SET A_RECENT_LOGIN = now()
+		WHERE
+			A_ID = #{A_ID}
+	</update>
+	<insert id="insertUser" parameterType="java.util.Map">
+		INSERT INTO `ACCOUNT`(A_USERNAME,A_PASSWORD,A_ID_CARD,A_PHONE,A_STATUS,A_TYPE,A_CREATE_DATE,A_OPER_DATE) 
+		VALUES (#{user.username},#{user.password},#{user.id_card},#{user.phone},1,1,now(), now());
+	</insert>
+	<select id="getA_ID" resultType="java.lang.Long">
+		select A_ID from `ACCOUNT` where A_USERNAME=#{user} and A_TYPE=1 limit 1
+	</select>
+	<insert id="insertAccountToPlayer" parameterType="java.util.Map">
+		INSERT INTO `PLAYER` (A_ID,P_CREATE_DATE,P_OPER_DATE,P_STATUS,P_BIRTHDAY)
+		VALUES(#{param.a_id},NOW(),NOW(),1,#{param.bir,jdbcType=VARCHAR})
+	</insert>
+	<select id="getID_CARD" resultType="java.lang.Integer">
+		SELECT 	count(A_ID) FROM 	ACCOUNT WHERE 	A_ID_CARD=#{id_card};
+	</select>
+	<select id="getUserInfo" resultType="java.util.Map">
+		SELECT ACCOUNT.A_ID,A_NAME,P_PEROSONAL_PHOTO,P_SCHOOL,P_SEX,P_PLAYER_HEIGHT,P_PLAYER_WEIGHT,P_BIRTHDAY,A_ID_CARD
+		FROM `PLAYER` join  ACCOUNT ON PLAYER.A_ID=ACCOUNT.A_ID 
+		WHERE A_USERNAME =#{username} limit 1
+	</select>
+	<select id="getUserNameById" resultType="map">
+		SELECT A_NAME,A_USERNAME,A_PHONE,A_EMAIL FROM ACCOUNT WHERE A_ID = #{A_ID} and A_TYPE=1 limit 1
+	</select>
+	<select id="userIsExist" resultType="java.lang.Integer">
+		select count(A_ID) from `ACCOUNT` where A_USERNAME=#{user} and A_TYPE=1
+	</select>
+	<update id="updateBir">
+		UPDATE PLAYER SET P_BIRTHDAY=#{bir} WHERE (A_ID=#{a_id});
+	</update>
+	<update id="updateMobileInfo">
+		UPDATE ACCOUNT SET A_DEVICE_INFO=#{mobile.deviceInfo},A_PUSH_INFO=#{mobile.pushInfo} WHERE A_USERNAME =#{mobile.username}
+	</update>
+	<insert id="insertPyScore" parameterType="java.util.Map">
+		INSERT INTO PLAYER_SCORE(P_ID,PS_STUTAS) VALUES(#{p.p_id},1)
+	</insert>
+	<select id="getPid" resultType="java.lang.Integer">
+		SELECT P_ID FROM PLAYER WHERE A_ID=#{a_id} limit 1
+	</select>
+</mapper>

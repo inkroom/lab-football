@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.player.PlayerTeamApplyDao">
+	<select id="getTeamInfo" resultType="com.nsu.bean.player.PlayerTeamBean">
+		SELECT
+			TEAM.TEAM_ID as teamID,
+			TEA_ID as teaId,
+			TEAM_BADGE as teamBadge,
+			TEAM_NAME as teamName,
+			TEAM_FLAG as teamFlag,
+			TEAM_ISPIRATION_LOGO as teamInspirationalSlogan,
+			TEAM_RANK as teamRank,
+			TEAM_TYPE as teamType,
+			TEAM_AFFILIATION as teamAffiliation,
+			TEAM_REGION as teamRegion
+		FROM
+			TEAM
+		WHERE
+			TEAM_STATUS = 1
+		AND TEAM_NUM = #{team_num}
+		limit 1;
+	</select>
+	<select id="getTeamApplyList" resultType="com.nsu.bean.player.PlayerTeamBean">
+		SELECT
+			TEAM_PLAYER_STATUS as teamPlayerStatus,
+			TEAM.TEAM_ID as teamID,
+			TEA_ID as teaId,
+			TEAM_BADGE as teamBadge,
+			TEAM_NAME as teamName,
+			TEAM_FLAG as teamFlag,
+			TEAM_ISPIRATION_LOGO as teamInspirationalSlogan,
+			TEAM_RANK as teamRank,
+			TEAM_TYPE as teamType,
+			TEAM_AFFILIATION as teamAffiliation,
+			TEAM_REGION as teamRegion,
+			MID_PLAYER_TEAM.TIME as applyTime
+		FROM
+			TEAM 
+			JOIN MID_PLAYER_TEAM ON TEAM.TEAM_ID=MID_PLAYER_TEAM.TEAM_ID
+			JOIN PLAYER ON PLAYER.P_ID=MID_PLAYER_TEAM.P_ID
+		WHERE TEAM_STATUS = 1 AND PLAYER.A_ID=#{a_id}
+		ORDER BY  MID_PLAYER_TEAM.TIME DESC
+		<!--  and TEAM_PLAYER_STATUS <![CDATA[<>]]>3 -->
+	</select>
+	<select id="getTeamScoreInfo" resultType="java.util.Map">
+		SELECT 
+			TS_SCHOOL_VICTOR,
+			TS_SCHOOL_DRAW,
+			TS_SCHOOL_LOSE,
+			TS_COUNTRY_VICTOR,
+			TS_COUNTRY_DRAW,
+			TS_COUNTRY_LOSE,
+			TS_CITY_VICTOR,
+			TS_CITY_DRAW,
+  			TS_CITY_LOSE,
+			TS_PROVINCE_VICTOR,
+			TS_PROVINCE_DRAW,
+			TS_PROVINCE_LOSE,
+			TS_OTHER_WIN,
+			TS_OTHER_LOSS,
+			TS_OTHER_ALL
+		FROM TEAM_SCORE WHERE TS_STATUS=1 AND TEAM_ID=#{team_id}
+		limit 1
+	</select>
+	<select id="getP_id" resultType="java.lang.String">
+		SELECT P_ID FROM PLAYER WHERE A_ID=#{a_id} AND P_STATUS=1 limit 1;
+	</select>
+	<insert id="insertMidPlayerTeam" parameterType="java.util.Map">
+		INSERT INTO MID_PLAYER_TEAM (TEAM_ID, P_ID, TEAM_PLAYER_STATUS,TIME) VALUES (#{team.team_id}, #{team.p_id}, '0',now());
+	</insert>
+	<select id="isApplied" parameterType="java.util.Map" resultType="java.lang.Integer" >
+		SELECT count(TEAM_PLAYER_ID) FROM MID_PLAYER_TEAM WHERE TEAM_ID=#{mid.team_id} AND P_ID=#{mid.p_id} AND TEAM_PLAYER_STATUS not in(2,3)
+	</select>
+	<select id="allowApply" parameterType="java.util.Map" resultType="java.lang.Integer" >
+		SELECT
+			count(TEAM.TEAM_ID)
+		FROM
+			MID_PLAYER_TEAM
+		JOIN TEAM ON TEAM.TEAM_ID = MID_PLAYER_TEAM.TEAM_ID
+		WHERE
+			TEAM_STATUS = 1
+		AND TEAM_PLAYER_STATUS IN (0, 1)
+		AND P_ID = #{mid.p_id}
+		AND TEAM_RANK=#{mid.team_rank}
+	</select>
+	<select id="getTeamRank" parameterType="java.util.Map" resultType="java.lang.Integer" >
+		SELECT
+			team_rank
+		FROM
+			TEAM
+		WHERE
+			team_id = #{mid.team_id} limit 1
+	</select>
+	<select id="getTeamAId" resultType="string">
+		SELECT A_ID FROM TEAM WHERE TEAM_ID = #{team_id} limit 1
+	</select>
+</mapper>

@@ -1,0 +1,158 @@
+*{
+    font-family: "Microsoft Yahei", Arial,SimSun;
+}
+body {
+    background: #e2e2e2;
+}
+.team-game{
+    width: 1050px;
+    height: 1400px;
+    margin: 50px auto;
+}
+.team-game tr{
+    cursor: pointer;
+}
+/*左侧*/
+.team-area{
+    height: auto;
+    background: #fff;
+}
+.team-area ul li{
+    height: 40px;
+    width: 200px;
+    box-sizing: border-box;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+}
+.team-area ul li span{
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    cursor: pointer;
+}
+
+.team-area ul li:hover,.team-area-checked{
+    border-left: 4px solid #24BE62 !important;
+    background: #efefef;
+}
+
+.team-area-checked i{
+    right: 10px;
+    top:10px;
+    color: #23be62;
+}
+/*右侧*/
+.live-past{
+    margin-top: 50px;
+}
+.live-now
+{
+    margin-top: 50px;
+}
+.live-now>div>span,.live-past>div>span,.live-middle>div>span{
+    display: block;
+    width: 130px;
+    text-align: center;
+    margin-top: 5px;
+    font-weight: 600;
+    border-left: 4px solid #00B83F;
+}
+.live-past>div>span{
+    border-left: 4px solid #7d7d7d;
+}
+.live-now>div>span
+{
+    border-left: 4px solid #d54f4d;
+}
+.game-live{
+    width: 820px;
+    height: auto;
+    background: #FFF;
+}
+.game-live table tr{
+    cursor: default;
+}
+.game-live table tr td a{
+    cursor: pointer;
+    text-decoration: none;
+}
+.c-primary a:hover{
+    color: red !important;
+}
+
+.game-live table tr td a:hover{
+    text-decoration: none;
+}
+.team-name{
+    width: 140px;
+}
+.team-name span{
+    width: 90px;
+    display: inline-block;
+}
+.game-live img{
+    width: 40px;
+    height: auto;
+}
+.live-grade{
+    height: 40px;
+    width: 100%;
+}
+
+.live-grade li{
+    width: 80px;
+    line-height: 40px;
+    cursor: pointer;
+    color: #7d7d7d;
+    font-weight: bold;
+}
+.live-grade li:hover{
+    background: #eee;
+}
+.live-grade li:last-child:hover{
+    background: #24BE62;
+}
+#slide-line{
+    width: 80px;
+    height: 4px;
+    background: #24BE62;
+    bottom: 0;
+    left: 0px;
+}
+/*页脚*/
+.laypage_main{
+    text-align: center;
+    margin: 20PX auto;
+}
+.page-box ul{
+    height: 32.4px;
+    width: 378px;
+    margin: 0 auto;
+    text-align: center;
+}
+.page-box ul li{
+    float: left;
+}
+.page-box ul li a{
+    margin: 3px;
+    border-radius:2px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    display: inline-block;
+    background: #f1eff0;
+    color: #666;
+    text-decoration: none;
+}
+li.first-page a,li.last-page a{
+    width: 60px !important;
+}
+.current a{
+    color: #FFF !important;
+    background: #00AA91 !important;
+}
+.page-box ul a:hover{
+    background: #ddd;
+}

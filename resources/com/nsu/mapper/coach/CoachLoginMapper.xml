@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.coach.CoachLoginDao">
+
+	<select id="getCoachPass" resultType="String">
+
+		select A_PASSWORD from ACCOUNT where A_USERNAME=#{phone} AND A_STATUS=1 AND
+		A_TYPE=2 limit 1
+	</select>
+	<select id="getCoachInfo" resultType="map">
+		SELECT ACCOUNT.A_ID,A_NAME,COACH.COACH_ID,COACH_PHOTO,A_TYPE,A_EMAIL FROM ACCOUNT INNER JOIN COACH ON
+		ACCOUNT.A_ID=COACH.A_ID WHERE A_PHONE=#{phone} AND A_STATUS=1 AND
+		A_TYPE=2 AND COACH.COACH_STATUS=1 limit 1
+	</select>
+	<!-- 手机客户端获取个人信息 -->
+	<select id="getUserInfo" resultType="map">
+		SELECT ACCOUNT.A_NAME,
+		COACH.COACH_ID,
+		COACH.COACH_PHOTO,
+		COACH.COACH_SEX,
+		ACCOUNT.A_ID_CARD,
+		ACCOUNT.A_PHONE,
+		COACH_SCORE.CS_PRCVINCE_WIN,
+		COACH_SCORE.CS_PRCVINCE_LOSE,
+		CS_CITY_WIN,CS_CITY_LOSE,
+		CS_COUNTRY_WIN,CS_COUNTRY_LOSE,
+		CS_OTHER_WIN,
+		CS_OTHER_LOSS
+		 FROM COACH_SCORE
+		RIGHT JOIN COACH ON COACH.COACH_ID = COACH_SCORE.COACH_ID
+		INNER JOIN ACCOUNT ON COACH.A_ID = ACCOUNT.A_ID
+		WHERE ACCOUNT.A_USERNAME = #{username} and ACCOUNT.A_TYPE =2
+		 and ACCOUNT.A_STATUS=1 
+		AND COACH.COACH_STATUS=1 
+        AND COACH_SCORE.CS_STATUS=1
+        limit 1
+	</select>
+	
+	<update id="updateMobileInfo">
+		UPDATE ACCOUNT SET A_DEVICE_INFO=#{mobile.deviceInfo},A_PUSH_INFO=#{mobile.pushInfo} WHERE A_USERNAME =#{mobile.username}
+	</update>
+
+</mapper>

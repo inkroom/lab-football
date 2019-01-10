@@ -1,0 +1,80 @@
+body {
+    background: #e2e2e2;
+}
+*{
+    font-family: "Microsoft Yahei", Arial,SimSun;
+}
+.livePage, .live-info,.live-pre{
+    margin: 0 auto;
+}
+.livePage {
+    width: 1200px;
+    height:auto;
+    background: #fff;
+    overflow: hidden;
+}
+.live-wrap {
+    width: 100%;
+    height: 1100px;
+    background: #fff;
+}
+.live-wrap a {
+    text-decoration: none;
+}
+.live-head {
+    height: 100px;
+}
+.live-head-title {
+    text-align: center;
+}
+.live-info {
+    width: 900px;
+    height: 200px;
+}
+.live-team {
+    width: 200px;
+    height: 200px;
+    color: #2cbe6e;
+}
+.live-score {
+    width: 500px;
+    height: 100px;
+}
+.live-score h1 {
+   /* color: #eaf1f8;*/
+    color: #2F2F2F;
+    font-size: 80px;
+    height: 100px;
+    line-height: 100px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+.live-score i{
+    cursor: pointer;
+}
+.live-score i:hover{
+    color: #24BE62;
+}
+#l-plus,#r-plus{
+    top:-42px;
+}
+#r-plus,#r-minus{
+    right:150px;
+}
+#l-minus,#l-plus{
+    left:150px;
+}
+#l-minus,#r-minus{
+    bottom:-52px;
+}
+.live-pre{
+    width:950px;
+    margin-top: 100px;
+}
+
+#edui1{
+    margin-left: -40px;
+}
