@@ -1,0 +1,108 @@
+<@p.index setReferUrl=true>
+
+ <form action="artFirst.action" method="post" name="artFirst">
+<input id="token" type="hidden" name="token" value="${token?if_exists}"/>
+<div class="container">
+    <div class="page-container">
+        <div class="col-xs-12 text-center">
+            <h4 class="title">艺术课程和活动</h4>
+        </div>
+        <div class="mt-20">
+            <table class="table table-border table-bordered table-bg table-hover table-sort">
+                <tbody>
+                <tr class="text-c">
+                    <td rowspan="6">每周艺术课程</td>
+                    <td>音乐课时</td>
+                    <td><input class="input-text form-control"  name = "musicClass" value="${musicClass?if_exists}" onkeyup="javascript:this.value.substring(0,1)=='0'?this.value='0':this.value=this.value" />
+                             <label class="control-label">前一年数据</label></td>
+                </tr>
+                <tr class="text-c">
+                    <td>美术课时</td>
+                    <td><input class="input-text form-control"  name = "artClass" value="${artClass?if_exists}" onkeyup="javascript:this.value.substring(0,1)=='0'?this.value='0':this.value=this.value"/>
+                              <label class="control-label">前一年数据</label></td>
+                </tr>
+                <tr class="text-c">
+                    <td>综合艺术课时</td>
+                    <td><input class="input-text form-control"  name = "integratedArtClass" value="${integratedArtClass?if_exists}" onkeyup="javascript:this.value.substring(0,1)=='0'?this.value='0':this.value=this.value"/>
+                             <label class="control-label">前一年数据</label></td>
+                </tr>
+                <tr class="text-c">
+                    <td>地方/学校艺术课时</td>
+                    <td><input class="input-text form-control"  name = "localArtClass" value="${localArtClass?if_exists}" onkeyup="javascript:this.value.substring(0,1)=='0'?this.value='0':this.value=this.value"/>
+                              <label class="control-label">前一年数据</label></td>
+                </tr>
+                <tr class="text-c">
+                    <td>是否开齐开足</td>
+                    <td>
+                        <div class="form-group">
+                            <select class="form-control"  name = "enoughClass">
+                                <option value = "1">是</option>
+                                <option value = "2" selected="true">否</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="text-c">  
+                    <td>自评得分</td>
+                    <td><input class="input-text form-control"  name = "srscroeClass" value="${srscroeClass?if_exists}"  placeholder = "满分为30分" onkeyup="javascript:this.value.substring(0,1)=='0'?this.value='0':this.value=this.value"/>
+                             <label class="control-label">前一年数据</label></td>
+                </tr>
+                
+                <tr class="text-c">
+                    <td rowspan="5">艺术活动</td>
+                    <td>学校每年开展艺术节场（次/年）</td>
+                    <td><input class="input-text form-control"  name = "screenings" value="${screenings?if_exists}" onkeyup="javascript:this.value.substring(0,1)=='0'?this.value='0':this.value=this.value"/>
+                             <label class="control-label">前一年数据</label></td>
+                </tr>
+                <tr class="text-c">
+                    <td>每周开展活动频次（次/周）</td>
+                    <td><input class="input-text form-control"  name = "frequency" value="${frequency?if_exists}" onkeyup="javascript:this.value.substring(0,1)=='0'?this.value='0':this.value=this.value"/>
+                             <label class="control-label">前一年数据</label></td>
+                </tr>
+                <tr class="text-c">
+                    <td>艺术社团数量</td>
+                    <td><input class="input-text form-control"  name = "artSocieties" value="${artSocieties?if_exists}" onkeyup="javascript:this.value.substring(0,1)=='0'?this.value='0':this.value=this.value"/>
+                             <label class="control-label">前一年数据</label></td>
+                </tr>
+                <tr class="text-c">
+                    <td>艺术活动学生参与面（%）</td>
+                    <td><input class="input-text form-control"  name = "participating" value="${participating?if_exists}" onkeyup="javascript:this.value.substring(0,1)=='0'?this.value='0':this.value=this.value"/>
+                             <label class="control-label">前一年数据</label></td>
+                </tr>
+                <tr class="text-c">
+                    <td>自评得分</td>
+                    <td><input class="input-text form-control"  name = "srscroeActivity" value="${srscroeActivity?if_exists}" placeholder = "满分为20分" onkeyup=" isNumeric()"/>
+                             <label class="control-label">前一年数据</label></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class=" col-sm-12 text-c">
+        <button type="reset"   class="btn btn-success radius" ><strong>重置</strong></button>
+        <button type="submit"   class="btn btn-success radius" ><strong>下一步</strong></button>
+    </div>
+
+</div>
+
+  <script>
+			<#if errorInfo?exists>
+				alert('${errorInfo?if_exists}');
+			</#if>
+</script>
+<script>
+     function isNumeric(){
+        var str = document.getElementByName("srscroeActivity");
+        if (str == null || str.equals("") ) {
+			alert("1111111");
+		}
+		for (int i = str.length();--i>=0;){    
+			if (!Character.isDigit(str.charAt(i))){  
+				alert("222222222"); 
+			}  
+		}  
+     }
+</script>
+ </form>
+
+</@p.index>

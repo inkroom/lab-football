@@ -1,0 +1,41 @@
+<!ELEMENT EXCEL (config,sheet+,format*)>
+<!ELEMENT config (sourceFile?,targetFile)>
+<!ELEMENT sourceFile (#PCDATA)>
+<!ELEMENT targetFile (#PCDATA)>
+
+<!ELEMENT sheet (head,record)>
+
+<!ELEMENT head (data)>
+<!ELEMENT record (data)>
+
+<!ELEMENT data (#PCDATA)>
+
+<!ELEMENT format EMPTY>
+
+<!ATTLIST config type (copy|build) "build">
+
+<!ATTLIST sheet name CDATA "sheet">
+<!ATTLIST sheet index CDATA "1">
+<!ATTLIST sheet format IDREF #IMPLIED>
+
+<!ATTLIST head column CDATA #REQUIRED>
+<!ATTLIST head rows CDATA #REQUIRED>
+
+<!ATTLIST record column CDATA #REQUIRED>
+<!ATTLIST record rows CDATA #REQUIRED>
+<!ATTLIST record format IDREF #IMPLIED>
+<!ATTLIST data type (label|number|blank|image) "label">
+<!ATTLIST data isArray (true|false) "false">
+<!ATTLIST data increaseLength CDATA "1">
+<!ATTLIST data amongLength CDATA #IMPLIED>
+<!ATTLIST data increaseType (horizontal|vertical) #IMPLIED>
+<!ATTLIST data image-width CDATA "6">
+<!ATTLIST data image-height CDATA "10">
+ 
+
+<!ATTLIST format name ID #REQUIRED>
+<!ATTLIST format background CDATA #IMPLIED>
+<!ATTLIST format font-size CDATA #IMPLIED>
+<!ATTLIST format border CDATA #IMPLIED>
+<!ATTLIST format border-style CDATA #IMPLIED>
+<!ATTLIST format alignment CDATA #IMPLIED>

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE EXCEL>
+<EXCEL ndex="">
+	<config type="copy">
+		<sourceFile>/download/art.xls</sourceFile>
+		<targetFile>/download/</targetFile>
+	</config>
+
+	<sheet name="模版" index="1">
+	
+		
+		<record column="(13,17)" rows="(1,1)" format="1">
+			<data type="label">PERSON_NAME</data>
+		</record>
+		
+		<record column="(25,29)" rows="(1,1)" format="1">
+			<data type="label">PERSON_PHONE</data>
+		</record>
+		
+		
+		
+		<record column="(1,1)" rows="(6,6)" format="1">
+			<data type="label">STAGE</data>
+		</record>
+		
+		<record column="(2,2)" rows="(6,6)" format="1">
+			<data type="label">"1"</data>
+		</record>
+		
+		<record column="(3,3)" rows="(6,6)" format="1">
+			<data type="label">CLASS_TOTAL</data>
+		</record>
+		
+		
+		<record column="(4,4)" rows="(6,6)" format="1">
+			<data type="label">STU_TOTAL</data>
+		</record>
+		
+		<record column="(5,5)" rows="(6,6)" format="1">
+			<data type="label">MUS_HOUR</data>
+		</record>
+		
+		<record column="(6,6)" rows="(6,6)" format="1">
+			<data type="label">PAINT_HOUR</data>
+		</record>
+		
+		<record column="(7,7)" rows="(6,6)" format="1">
+			<data type="label">ART_COMPREHENSIVE_HOUR</data>
+		</record>
+		
+		<record column="(8,8)" rows="(6,6)" format="1">
+			<data type="label">ART_HOUR</data>
+		</record>
+		
+		<record column="(9,9)" rows="(6,6)" format="1">
+			<data type="label">IS_COMPLETE</data>
+		</record>
+		
+		<record column="(10,10)" rows="(6,6)" format="1">
+			<data type="label">SELF_REMARK_ART_COURSE</data>
+		</record>
+		
+		<record column="(11,11)" rows="(6,6)" format="1">
+			<data type="label">ART_FESTIVAL_ANNUAL</data>
+		</record>
+		
+		<record column="(12,12)" rows="(6,6)" format="1">
+			<data type="label">ART_ACTIVITIES_WEEKLY</data>
+		</record>
+		
+		<record column="(13,13)" rows="(6,6)" format="1">
+			<data type="label">CLUB_TOTAL</data>
+		</record>
+		
+		
+		<record column="(14,14)" rows="(6,6)" format="1">
+			<data type="label">ACTIVITIES_PARTICIPATE_RATIO</data>
+		</record>
+		
+		<record column="(15,15)" rows="(6,6)" format="1">
+			<data type="label">SELF_REMARK_ART_ACTIVITY</data>
+		</record>
+		
+		<record column="(16,16)" rows="(6,6)" format="1">
+			<data type="label">TEACHERS_MUS_IDEAL</data>
+		</record>
+		
+		<record column="(17,17)" rows="(6,6)" format="1">
+			<data type="label">TEACHERS_MUS_PRESENT</data>
+		</record>
+		
+		<record column="(18,18)" rows="(6,6)" format="1">
+			<data type="label">TEACHERS_MUS_REQUIRED</data>
+		</record>
+		
+		<record column="(19,19)" rows="(6,6)" format="1">
+			<data type="label">TEACHERS_MUS_PART_TIME</data>
+		</record>
+		
+		<record column="(20,20)" rows="(6,6)" format="1">
+			<data type="label">RATIO_MUS_STU_TEACHER</data>
+		</record>
+		
+		<record column="(21,21)" rows="(6,6)" format="1">
+			<data type="label">HOURS_WEEKLY_MUS_TEACHER</data>
+		</record>
+		
+		<record column="(22,22)" rows="(6,6)" format="1">
+			<data type="label">PAINT_TEACHERS_IDEAL</data>
+		</record>
+		
+		<record column="(23,23)" rows="(6,6)" format="1">
+			<data type="label">PAINT_TEACHERS_PRESENT</data>
+		</record>
+		
+		
+		<record column="(24,24)" rows="(6,6)" format="1">
+			<data type="label">PAINT_TEACHERS_REQUIRED</data>
+		</record>
+		
+		<record column="(25,25)" rows="(6,6)" format="1">
+			<data type="label">PAINT_TEACHERS_PART_TIME</data>
+		</record>
+		
+		<record column="(26,26)" rows="(6,6)" format="1">
+			<data type="label">RATIO_PAINT_STU_TEACHER</data>
+		</record>
+		
+		<record column="(27,27)" rows="(6,6)" format="1">
+			<data type="label">HOURS_WEEKLY_PAINT_TEACHER</data>
+		</record>
+		
+		<record column="(28,28)" rows="(6,6)" format="1">
+			<data type="label">TEACHERS_ART_TRAINED</data>
+		</record>
+		
+		<record column="(29,29)" rows="(6,6)" format="1">
+			<data type="label">TEACHERS_ART_AWARDED</data>
+		</record>
+		
+		<record column="(30,30)" rows="(6,6)" format="1">
+			<data type="label">SELF_REMARK_ART_TEACHER</data>
+		</record>
+		
+		<record column="(31,31)" rows="(6,6)" format="1">
+			<data type="label">MUS_CLASSROOM_IDEAL</data>
+		</record>
+		
+		<record column="(32,32)" rows="(6,6)" format="1">
+			<data type="label">MUS_CLASSROOM_PRESENT</data>
+		</record>
+		
+		<record column="(33,33)" rows="(6,6)" format="1">
+			<data type="label">MUS_CLASSROOM_REQUIRED</data>
+		</record>
+		
+		
+		<record column="(34,34)" rows="(6,6)" format="1">
+			<data type="label">PAINT_CLASSROOM_IDEAL</data>
+		</record>
+		
+		<record column="(35,35)" rows="(6,6)" format="1">
+			<data type="label">PAINT_CLASSROOM_PRESENT</data>
+		</record>
+		
+		<record column="(36,36)" rows="(6,6)" format="1">
+			<data type="label">PAINT_CLASSROOM_REQUIRED</data>
+		</record>
+		
+		<record column="(37,37)" rows="(6,6)" format="1">
+			<data type="label">ART_CLASSROOM_OTHER</data>
+		</record>
+		
+		<record column="(38,38)" rows="(6,6)" format="1">
+			<data type="label">ART_VENUES_NUM</data>
+		</record>
+		
+		<record column="(39,39)" rows="(6,6)" format="1">
+			<data type="label">VENUES_AREA</data>
+		</record>
+		
+
+		<record column="(40,41)" rows="(6,6)" format="1">
+			<data type="label">IS_EQUIP_QUALIFIED</data>
+		</record>
+
+		
+		<record column="(42,42)" rows="(6,6)" format="1">
+			<data type="label">FUND_REQUIRED</data>
+		</record>
+		
+		<record column="(43,43)" rows="(6,6)" format="1">
+			<data type="label">SELF_REMARK_ENSURANCE</data>
+		</record>
+		
+
+		
+		<record column="(44,45)" rows="(6,6)" format="1">
+			<data type="label">IS_FEATURED</data>
+		</record>
+		
+
+		<record column="(46,46)" rows="(6,6)" format="1">
+			<data type="label">SELF_REMARK_FEATURE</data>
+		</record>
+		
+		
+		<!-- 艺术素质测评 -->
+		
+		<record column="(47,48)" rows="(6,6)" format="1">
+			<data type="label">IS_TEST_PERFORMED</data>
+		</record>
+		
+		
+		<record column="(49,50)" rows="(6,6)" format="1">
+			<data type="label">STUDENTS_EXCELLENT</data>
+		</record>
+		
+		
+		<record column="(51,52)" rows="(6,6)" format="1">
+			<data type="label">STUDENTS_GOOD</data>
+		</record>
+		
+		
+		<record column="(53,54)" rows="(6,6)" format="1">
+			<data type="label">STUDENTS_PASS</data>
+		</record>
+		
+		<record column="(55,56)" rows="(6,6)" format="1">
+			<data type="label">STUDENTS_FAIL</data>
+		</record>
+		
+		<!-- 艺术教育经费 -->
+		
+		<record column="(57,57)" rows="(6,6)" format="1">
+			<data type="label">SELF_REMARK_ART_QUALITY</data>
+		</record>
+		
+		<record column="(58,58)" rows="(6,6)" format="1">
+			<data type="label">EXPENSE_ART_CONSTRUCTION</data>
+		</record>
+		
+		<record column="(59,59)" rows="(6,6)" format="1">
+			<data type="label">EXPENSE_ART_EQUIP</data>
+		</record>
+		
+		<record column="(60,60)" rows="(6,6)" format="1">
+			<data type="label">EXPENSE_ACTIVITY</data>
+		</record>
+		
+		<record column="(61,61)" rows="(6,6)" format="1">
+			<data type="label">SELF_REMARK_TOTAL</data>
+		</record>
+		
+		<record column="(62,65)" rows="(6,6)" format="1">
+			<data type="label">SELF_REMARK_GRADE</data>
+		</record>
+		
+		<!-- 各个名称 -->
+		<record column="(3,26)" rows="(7,9)" format="1">
+			<data type="label">ART_COURSE_NAMES</data>
+		</record>
+		
+		<record column="(3,26)" rows="(10,12)" format="1">
+			<data type="label">ART_CLUB_NAME</data>
+		</record>
+		
+		<record column="(3,26)" rows="(13,15)" format="1">
+			<data type="label">ART_CULTURE_ATMOSPHERE</data>
+		</record>
+		
+		<record column="(3,26)" rows="(16,18)" format="1">
+			<data type="label">ART_VENUE_NAMES_OTHER</data>
+		</record>
+		
+		<record column="(3,26)" rows="(19,21)" format="1">
+			<data type="label">ACHIEVE_ART_FEATURE</data>
+		</record>
+		
+		<!-- 各个存在问题以及措施 -->
+		
+		<record column="(30,35)" rows="(8,14)" format="1">
+			<data type="label">PROBLEM_IN_ART_COURSE</data>
+		</record>
+		
+		<record column="(30,35)" rows="(15,21)" format="1">
+			<data type="label">SOLUTION_TO_PROBLEM_ART_COURSE</data>
+		</record>
+		
+		<record column="(36,41)" rows="(8,14)" format="1">
+			<data type="label">PROBLEM_ART_ACTIVITY</data>
+		</record>
+		
+		<record column="(36,41)" rows="(15,21)" format="1">
+			<data type="label">SOLUTION_TO_PROBLEM_ACTIVITY</data>
+		</record>
+		
+		<record column="(42,47)" rows="(8,14)" format="1">
+			<data type="label">PROBLEM_ART_TEACHER</data>
+		</record>
+		
+		<record column="(42,47)" rows="(15,21)" format="1">
+			<data type="label">SOLUTION_TO_PROBLEM_TEACHER</data>
+		</record>
+		
+		
+		<record column="(48,53)" rows="(8,14)" format="1">
+			<data type="label">PROBLEM_ENSURANCE</data>
+		</record>
+		
+		<record column="(48,53)" rows="(15,21)" format="1">
+			<data type="label">PROBLEM_ENSURANCE</data>
+		</record>
+		
+		<record column="(54,59)" rows="(8,14)" format="1">
+			<data type="label">PROBLEM_ENSURANCE</data>
+		</record>
+		
+		<record column="(54,59)" rows="(15,21)" format="1">
+			<data type="label">SOLUTION_TO_PROBLEM_ENSURANCE</data>
+		</record>
+		
+		<record column="(60,65)" rows="(8,14)" format="1">
+			<data type="label">PROBLEM_ART_FEATURE</data>
+		</record>
+		
+		<record column="(60,65)" rows="(15,21)" format="1">
+			<data type="label">SOLUTION_TO_PROBLEM_FEATURE</data>
+		</record>
+		
+
+	
+
+	</sheet>
+	
+<!-- 	<sheet name="第二页" index="2">
+		<record column="(2,3)" rows="(1,3)" format="1">
+			<data type="label">"这是第二页"</data>
+		</record>
+	</sheet>
+	 -->
+	<!--  
+	
+	<sheet name="第三页" index="4">
+		<record column="(2,3)" rows="(1,3)" format="1">
+			<data type="label">"这是第三页"</data>
+		</record>
+	</sheet>
+	
+	<sheet name="第四页" index="3">
+		<record column="(2,3)" rows="(1,3)" format="1">
+			<data type="label">"这是第四页"</data>
+		</record>
+	</sheet> -->
+	
+	
+	<format name="1" border="all" font-size="11"  border-style="thin" alignment="center" />
+	
+</EXCEL>

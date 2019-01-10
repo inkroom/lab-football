@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+<style>
+.page-container {
+	margin-top: 50px;
+}
+
+.form-control {
+	width: 50%;
+	float: left;
+}
+
+.control-label {
+	display: inline-block;
+	width: 50%;
+	text-align: center;
+	line-height: 30px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="page-container">
+			<div class="col-xs-12 text-center">
+				<h4 class="title">场地设施</h4>
+			</div>
+			<div class="mt-20">
+				<table
+					class="table table-border table-bordered table-bg table-hover table-sort">
+					<tbody>
+
+						<tr class="text-c">
+							<td rowspan="4">田径块</td>
+							<td>200米场地</td>
+							<td><input class="input-text form-control" name="length2"  /><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+						<tr class="text-c">
+							<td>300米场地</td>
+							<td><input class="input-text form-control" name="legth3"/><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+						<tr class="text-c">
+							<td>300米至400米场地</td>
+							<td><input class="input-text form-control" name="legth3t4"/><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+						<tr class="text-c">
+							<td>400米场地</td>
+							<td><input class="input-text form-control" name="length4" /><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+
+						<tr class="text-c">
+							<td rowspan="3">球场游戏区域</td>
+							<td>篮球场个数</td>
+							<td><input class="input-text form-control" name="basketball" /><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+						<tr class="text-c">
+							<td>排球场个数</td>
+							<td><input class="input-text form-control" name="volleyball" /><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+						<tr class="text-c">
+							<td>器械体操/游戏区面积</td>
+							<td><input class="input-text form-control" name="gameArea"/><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+
+						<tr class="text-c">
+							<td rowspan="2">体育馆</td>
+							<td>体育馆个数</td>
+							<td><input class="input-text form-control" name="sportHall"/><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+						<tr class="text-c">
+							<td>体育馆面积</td>
+							<td><input class="input-text form-control" name="sportHallArea" /><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+
+						<tr class="text-c">
+							<td rowspan="2">游泳池</td>
+							<td>游泳池个数</td>
+							<td><input class="input-text form-control" name="swimPool" /><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+						<tr class="text-c">
+							<td>游泳池面积</td>
+							<td><input class="input-text form-control" name="swimPoolArea"/><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+
+						<tr class="text-c">
+							<td rowspan="1">学生体质测试室</td>
+							<td>测试室个数</td>
+							<td><input class="input-text form-control" name="testRoom"/><label
+								class="control-label">前一年数据</label></td>
+						</tr>
+
+						<tr class="text-c">
+							<td rowspan="1">体育器材</td>
+							<td>体育器材是否达标</td>
+							<td><select class="form-control" name="storard">
+									<option >是</option>
+									<option >否</option>
+							</select></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class=" col-sm-12 text-c">
+			<button type="submit" class="btn btn-success radius" >
+				<strong>上一步</strong>
+			</button>
+			<button type="submit" class="btn btn-success radius">
+				<strong>下一步</strong>
+			</button>
+		</div>
+
+	</div>
+	<script src="../lib/js/jquery-2.1.4.js"></script>
+	<script src="../lib/js/bootstrap.js"></script>
+</body>
+</html>

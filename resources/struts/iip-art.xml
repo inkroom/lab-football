@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="artview" extends="iip-default" namespace="/art">
+		<action name="artFormTable" class="javadev.iip.action.art.ArtFormTableAction">
+			<result name="success">/art/artFormTable.ftl</result>
+			<result name="backView" type="redirect">
+				<param name="location">/art/artFirstView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="art" extends="iip-default-art" namespace="/art">
+
+		<!-- 朱明民 First -->
+
+		<action name="artSelfView" class="javadev.iip.action.art.ArtSomeAction">
+			<result name="success">/art/artSomeFrom.ftl</result>
+			<result name="someBackView" type="redirect">
+				<param name="location">/art/artFourthView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="errorTime" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+		<action name="artSelf" class="javadev.iip.action.art.ArtSomeAction"
+			method="artSomeSelf">
+			<result name="artSomeSelf" type="redirect">
+				<param name="location">/art/artEnd!execute.action</param>
+			</result>
+			<result name="error">/art/artSomeFrom.ftl</result>
+
+			<result name="someBack" type="redirect">
+				<param name="location">/art/artFourthView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="errorTime" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+		<action name="artFirstView" class="javadev.iip.action.art.ArtFirstAction">
+			<result name="success">/art/artFirstForm.ftl</result>
+			<result name="firstBackView" type="redirect">
+				<param name="location">/sport/sportThirdView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="errorTime" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+		<action name="artFirst" class="javadev.iip.action.art.ArtFirstAction"
+			method="verification">
+			<result name="ArtFirstForm" type="redirect">
+				<param name="location">/art/artSecondView.action</param>
+			</result>
+			<result name="error">/art/artFirstForm.ftl</result>
+			<result name="firstBack" type="redirect">
+				<param name="location">/sport/sportThirdView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="errorTime" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+
+
+		<!-- 曾绩平 Second -->
+		<action name="artSecondView" class="javadev.iip.action.art.ArtSecondAction">
+			<result name="success">/art/artSecondForm.ftl</result>
+			<result name="back" type="redirect">
+				<param name="location">/art/artFirstView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="notOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+		<action name="artSecond" class="javadev.iip.action.art.ArtSecondAction"
+			method="jump">
+			<result name="success" type="redirect">
+				<param name="location">/art/artThirdView.action</param>
+			</result>
+			<result name="back" type="redirect">
+				<param name="location">/art/artFirstView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="notOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="error">/art/artSecondForm.ftl</result>
+		</action>
+
+
+
+		<!-- 刘俊良 Third -->
+
+		<action name="artThirdView" class="javadev.iip.action.art.ArtThirdAction"
+			method="intoArtThirdView">
+			<result name="success">/art/artThirdFrom.ftl</result>
+			<result name="intoArtNdView" type="redirect">
+				<param name="location">/art/artSecondView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+		<action name="artThird" class="javadev.iip.action.art.ArtThirdAction"
+			method="insertArtThird">
+			<result name="success" type="redirect">
+				<param name="location">/art/artFourthView.action</param>
+			</result>
+			<result name="intoArtNdView" type="redirect">
+				<param name="location">/art/artSecondView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="error">/art/artThirdFrom.ftl</result>
+		</action>
+
+
+		<!-- 刘俊 Fourth -->
+
+		<action name="artFourthView" class="javadev.iip.action.art.ArtFourthAction">
+			<result name="success">/art/artFourthFrom.ftl</result>
+
+			<result name="backView" type="redirect">
+				<param name="location">/art/artThirdView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+		<action name="artFourth" class="javadev.iip.action.art.ArtFourthAction"
+			method="getData">
+			<result name="error">/art/artFourthFrom.ftl</result>
+
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="back" type="redirect">
+				<param name="location">/art/artThirdView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+
+
+
+			<result name="success" type="redirect">
+				<param name="location">/art/artSelfView.action</param>
+			</result>
+		</action>
+
+		
+
+		<action name="artEnd" class="javadev.iip.action.art.ArtEnd">
+			<result name="error">/art/artEnd.ftl</result>
+			<result name="backview" type="redirect">
+				<param name="location">/art/artSelfView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="success" type = "redirect">../index.action</result>
+			<result name="noerror">/art/artEnd.ftl</result>
+		</action>
+
+	</package>
+</struts>

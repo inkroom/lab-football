@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="test" extends="iip-default" namespace="/test">
+		<action name="test" class="javadev.iip.action.LoginAction" method="getData">
+		<!-- 	<result>/index.html</result> -->
+		</action>	
+		
+		<action name="fileDownload" class="javadev.iip.action.FileDownloadAction">
+            <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="inputName">downloadFile</param>
+            </result>
+        </action>
+		
+	</package>
+</struts>

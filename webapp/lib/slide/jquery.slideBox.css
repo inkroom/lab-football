@@ -1,0 +1,87 @@
+@charset "utf-8";
+html, body { font-family:"微软雅黑"}
+/*
+ * jQuery图片轮播(焦点图)插件
+ * ADD.JENA.201206291027
+ * EDIT.JENA.201206300904
+ * Author: jena
+ * Demo: http://ishere.cn/demo/jquery.slidebox/
+ */
+div.slideBox{ position:relative; width:594px; height:294px; overflow:hidden;}
+div.slideBox ul.items{ position:absolute; float:left; background:none; list-style:none; padding:0px; margin:0px;}
+div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:0px; margin:0px;}
+div.slideBox ul.items li a{ float:left; line-height:normal !important; padding:0px !important; border:none/*For IE.ADD.JENA.201206300844*/;}
+div.slideBox ul.items li a img{ margin:0px !important; padding:0px !important; display:block; border:none/*For IE.ADD.JENA.201206300844*/;}
+div.slideBox div.tips{ position:absolute; bottom:0px; width:100%; height:30px; background-color:#093e04; overflow:hidden;left: 0}
+div.slideBox div.tips div.title{ position:absolute; left:0px; top:-5px; height:100%;}
+div.slideBox div.tips div.title a{ color:#fff; font-size:14px; line-height:40px; margin-left:10px; text-decoration:none;}
+div.slideBox div.tips div.title a:hover{ text-decoration:underline !important;}
+div.slideBox div.tips div.nums{ position:absolute; right:0px; top:-5px; height:100%;}
+div.slideBox div.tips div.nums a{ display:inline-block;float:left/*For IE.ADD.JENA.201206300844*/; width:9px; height:9px; background-color:#c7fdc1; text-indent:-99999px; margin:15px 10px 0px 0px;}
+div.slideBox div.tips div.nums a.active{ background-color:#32bbfb;}
+ body{
+            background: url("../../static/football/images/index/background.jpg");
+        }
+
+        .navbar{
+            padding: 3px 10%;
+            color: white;
+            line-height: 30px;
+            background-color: rgb(38,152,64);
+        }
+        .navbar button{
+            float: right;
+            background-color: rgb(75,220,67);
+        }
+
+        #container{
+            height:auto; margin-top:-36px; padding-top:31px;
+			
+			width:auto;
+           
+           
+        }
+        .logo33{margin-top:27px; margin-bottom:8px;}
+        #nav{margin: 5px auto;padding-left:0px;}
+		#nav ul{ width:1024px; margin-left:0px; list-style:none;}
+        #nav ul li{float:left; font-family:"微软雅黑";font-weight:600;font-size: 15px;padding-left:42px; display:inline;}
+		
+		#nav ul li a{ color:#0c5f03;}
+		#nav ul li a:hover{ color:#0baccf;}
+		
+        #nav ul li .nav_icon{color:rgb(143,146,145);padding-right: 4px;font-size: 19px;}
+		
+		
+
+        #lunbo-div{background: white;border-top: solid 3px #00b7ee;padding:10px 0;}
+        #lunbo-div .lunbo-r{padding-top: 10px;}
+
+        .article-list{margin-top:10px;}
+        .article-list li{padding-left:8px;padding-bottom:30px;background: url("../../static/football/images/index/dot2.png")no-repeat left 8px;}
+        .article-list .title{float: left; padding-left:5px;max-width: 400px;}
+        .article-list .time{float: right;font-size: 12px;color: rgb(192,149,147); margin-top:3px;}
+
+        #reg-match{background: white;height: 40px;margin:12px 0;line-height: 40px;padding: 0 40px;letter-spacing: 1px;}
+
+        .article-block div{background: white;}
+		.article-cate{width:362px;}
+        .article-cate li{float: left}
+
+        .information li{border-bottom: solid 2px rgb(211,231,249);padding:5px 54px;  cursor: pointer;}
+        
+        .notice li{border-bottom: solid 2px rgb(211,231,249);padding:5px 25px;  cursor: pointer;}
+
+        .article-cate li.active,.article-cate li:hover{border-bottom: solid 2px rgb(0,178,65);color: rgb(255,66,0)}
+
+        .elegant-appearance{background: white;margin-top: 12px;}
+        .fc-img{padding-left:7px;padding-bottom:15px;width: 238px;height: 145px;}
+
+        .friend-link{background: rgb(162,239,229);margin-top: 12px;padding: 25px 0;}
+       .footer{background: rgb(232,246,250);margin-top: 12px;line-height:25px;color:#495548;}
+        .footer a{background: rgb(232,246,250);margin-top: 20px;line-height:25px;color:#495548;}
+
+        .article-list .more{background: none;}
+        .more a{color: rgb(68,160,100);font-weight: bold;float: right;}
+
+        #lb img{width: 590px;}
+

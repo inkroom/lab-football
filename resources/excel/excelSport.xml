@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE EXCEL>
+<EXCEL>
+	<config type="copy">
+		<sourceFile>download/sport.xls</sourceFile>
+		<targetFile>download/sportData</targetFile>
+	</config>
+
+	<sheet name="模版" index="1">
+
+		<record column="(1,1)" rows="(7,7)" format="1">
+			<data type="label">STAGE</data>
+		</record>
+		
+		<record column="(2,2)" rows="(7,7)" format="1">
+			<data type="label">"1"</data>
+		</record>
+		
+		<record column="(3,3)" rows="(7,7)" format="1">
+			<data type="label">STU_TOTAL</data>
+		</record>
+		
+		
+		<record column="(4,4)" rows="(7,7)" format="1">
+			<data type="label">CLASS_TOTAL</data>
+		</record>
+		
+		<record column="(5,5)" rows="(7,7)" format="1">
+			<data type="label">HOURS_TOTAL</data>
+		</record>
+		
+ 		<record column="(6,6)" rows="(7,7)" format="1">
+			<data type="label">IS_ONE_HR_DAILY</data>
+		</record>
+		
+		<record column="(7,7)" rows="(7,7)" format="1">
+			<data type="label">IS_LONG_BREAK_ACTIVITY</data>
+		</record>
+		
+		<record column="(8,8)" rows="(7,7)" format="1">
+			<data type="label">TEACHERS_FULL_TIME</data>
+		</record>
+		
+		<record column="(9,9)" rows="(7,7)" format="1">
+			<data type="label">TEACHERS_PART_TIME</data>
+		</record>
+		
+		<record column="(10,10)" rows="(7,7)" format="1">
+			<data type="label">TEACHERS_TRAINED</data>
+		</record>
+		
+		<record column="(11,11)" rows="(7,7)" format="1">
+			<data type="label">TEACHERS_AWARDED</data>
+		</record>
+		
+		<record column="(12,12)" rows="(7,7)" format="1">
+			<data type="label">FIELD_TRACK_200M</data>
+		</record>
+		
+		<record column="(13,13)" rows="(7,7)" format="1">
+			<data type="label">FIELD_TRACK_300M</data>
+		</record>
+		
+		
+		<record column="(14,14)" rows="(7,7)" format="1">
+			<data type="label">FIELD_TRACK_300_400M</data>
+		</record>
+		
+		<record column="(15,15)" rows="(7,7)" format="1">
+			<data type="label">FIELD_TRACK_400M</data>
+		</record>
+		
+		<record column="(16,16)" rows="(7,7)" format="1">
+			<data type="label">FIELDS_BASKETBALL</data>
+		</record>
+		
+		<record column="(17,17)" rows="(7,7)" format="1">
+			<data type="label">FIELDS_VOLLEYBALL</data>
+		</record>
+		
+		<record column="(18,18)" rows="(7,7)" format="1">
+			<data type="label">FIELDS_GYM_AREA</data>
+		</record>
+		
+		<record column="(19,19)" rows="(7,7)" format="1">
+			<data type="label">STADIUM_TOTAL</data>
+		</record>
+		
+		<record column="(20,20)" rows="(7,7)" format="1">
+			<data type="label">STADIUM_AREA</data>
+		</record>
+		
+		<record column="(21,21)" rows="(7,7)" format="1">
+			<data type="label">POOL_TOTAL</data>
+		</record>
+		
+		<record column="(22,22)" rows="(7,7)" format="1">
+			<data type="label">POOL_AREA</data>
+		</record>
+		
+		<record column="(23,23)" rows="(7,7)" format="1">
+			<data type="label">TEST_ROOM_TOTAL</data>
+		</record>
+		
+		
+		<record column="(24,24)" rows="(7,7)" format="1">
+			<data type="label">IS_EQUIP_QUALIFIED</data>
+		</record>
+		
+		
+		
+		
+		
+		<record column="(25,25)" rows="(7,7)" format="1">
+			<data type="label">IS_ADD_POINT_PROJECT</data>
+		</record>
+		
+		<record column="(26,26)" rows="(7,7)" format="1">
+			<data type="label">EXPENSE</data>
+		</record>
+		
+		<record column="(27,27)" rows="(7,7)" format="1">
+			<data type="label">EXPENSE_FIELD</data>
+		</record>
+		
+		<record column="(28,28)" rows="(7,7)" format="1">
+			<data type="label">EXPENSE_EQUIP</data>
+		</record>
+		
+		<record column="(29,29)" rows="(7,7)" format="1">
+			<data type="label">EXPENSE_ACTIVITY</data>
+		</record>
+		
+		<record column="(30,30)" rows="(7,7)" format="1">
+			<data type="label">IS_INSURANCE</data>
+		</record> 
+		
+
+	</sheet>
+
+	
+	
+	<format name="1" border="all" font-size="11"  border-style="thin" alignment="center" />
+	
+</EXCEL>

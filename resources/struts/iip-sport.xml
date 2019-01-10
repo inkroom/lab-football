@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="sportview" extends="iip-default" namespace="/sport">
+		<action name="sportFormTable" class="javadev.iip.action.sport.sportFormTable">
+			<result name="success">/sport/SportFormTable.ftl</result>
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="backView" type="redirect">
+				<param name="location">/sport/sportFirstView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+		
+		
+		
+		<action name="sport_self_view" class="javadev.iip.action.sport.sportsReportBySelf" method="sportSelfView">
+			<result name="success">/sport/sportsReportBySelfView.ftl</result>
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="backView" type="redirect">
+				<param name="location">/sport/sportSelfView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+		
+	</package>
+
+	<package name="sport" extends="iip-default-sport" namespace="/sport">
+
+		<!-- 曹旭峰 First -->
+		<!-- 体育报表 -->
+		
+		
+
+		<!-- SportFirst -->
+		<action name="sportFirstView" class="javadev.iip.action.sport.SportFirstAction">
+			<result name="success">/sport/sportsFirstFrom.ftl</result>
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+		<action name="sportFirst" class="javadev.iip.action.sport.SportFirstAction"
+			method="view">
+			<result name="error">/sport/sportsFirstFrom.ftl</result>
+			<result name="success" type="redirect">
+				<param name="location">/sport/sportSecondView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+		<action name="sportEnd" class="javadev.iip.action.sport.SportEnd">
+			<result name="succ" type = "redirect">../index.action</result>
+			<result name="into">/sport/sportEnd.ftl</result>
+			<result name="error">/sport/sportEnd.ftl</result>
+		</action>
+
+		<!-- 刘俊 Second -->
+
+		<action name="sportSecondView" class="javadev.iip.action.sport.SportSecondAction">
+			<result name="success">/sport/sportsSecondFrom.ftl</result>
+			<result name="backView" type="redirect">
+				<param name="location">/sport/sportFirstView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+
+		<action name="sportSecond" class="javadev.iip.action.sport.SportSecondAction"
+			method="getData">
+			<result name="success" type="redirect">
+				<param name="location">/sport/sportThirdView.action</param>
+			</result>
+
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="back" type="redirect">
+				<param name="location">/sport/sportFirstView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="error">/sport/sportsSecondFrom.ftl</result>
+		</action>
+
+		<!-- 刘俊良 Third -->
+
+		<action name="sportThirdView" class="javadev.iip.action.sport.SportThirdAction"
+			method="intoSportThirdView">
+			<result name="success">/sport/sportsThirdFrom.ftl</result>
+			<result name="intoSportNdView" type="redirect">
+				<param name="location">/sport/sportSecondView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+		<action name="sportThird" class="javadev.iip.action.sport.SportThirdAction"
+			method="insertSportThird">
+			<result name="error">/sport/sportsThirdFrom.ftl</result>
+			<result name="success" type="redirect">
+				<param name="location">/sport/sportEnd!intoPage.action</param>
+			</result>
+			<result name="intoSportNdView" type="redirect">
+				<param name="location">/sport/sportSecondView.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+	</package>
+	
+	<package name="sportSelf" extends="iip-default-sportSelf" namespace="/sport">
+		<!-- 体育自评表单 -->
+		<action name="sportSelfView" class="javadev.iip.action.sport.sportsReportBySelf">
+			<result name="success">/sport/sportsReportBySelf.ftl</result>
+			<result name="noOpen" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+
+		<action name="sportSelf" class="javadev.iip.action.sport.sportsReportBySelf"
+			method="updateData">
+			<result name="error">/sport/sportsReportBySelf.ftl</result>
+			<result name="success" type="redirect">
+				<param name="location">../index.action</param>
+				<param name="token">${token}</param>
+				<param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+	</package>
+</struts>

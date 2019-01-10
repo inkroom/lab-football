@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">    
+
+<struts>
+	<package name="iip-ROOT" extends="iip-default" namespace="/">
+		
+		<action name="rCode" class="javadev.core.common.CommonAnonymousAction"></action>
+	
+		<action name="login_view" class="javadev.iip.action.LoginAction" method="loginView">
+			<result name="success">/login.ftl</result>
+			<result name="alreadyLogin" type="redirect">
+				<param name="location">/index.action</param>
+			</result>
+		</action>
+		
+		<action name="login" class="javadev.iip.action.LoginAction" method="login">
+			<result name="success" type="redirect">index.action</result>	
+ 			<result name="login" type="redirect">
+				<param name="location">/login_view.action</param>
+			</result>
+		</action>
+		
+		<action name="logout" class="javadev.iip.action.LoginAction" method="logout">
+			<result name="success" type="redirectAction">  
+                 <param name="actionName">login_view.action</param>  
+                 <param name="errorInfo">${errorInfo}</param>  
+            </result>  
+		</action>
+		
+		
+		<action name="updateView" class="javadev.iip.action.OtherAction" >
+			<result name="success" >/updatePassword.ftl</result>
+		</action>
+		
+		<action name="update" class="javadev.iip.action.OtherAction" method="updatePassword" >
+			<result name="success" type="redirect">
+				<param name="location">/login_view.action</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">/updateView.action</param>
+			</result>
+		</action>
+		
+		
+		
+		<action name="index" class="javadev.iip.action.OtherAction" method="indexView">  
+			<result name="success">/index.ftl</result>
+		</action>
+		
+		<action name="fileDownloadView" >
+			<result name="success">/fileDownload.ftl</result>
+		</action>
+		
+		<action name="fileDownload" class="javadev.iip.action.FileDownloadAction">
+            <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="inputName">downloadFile</param>
+            </result>
+        </action>
+        
+        <action name="sportDownload" class="javadev.iip.action.GetSportExcelAction" >
+             <result name="success">/fileDownload.ftl</result>
+            <result name="error">/fileDownload.ftl</result>
+        </action>
+        
+        
+        <action name="artDownload" class="javadev.iip.action.GetArtExcelAction" >
+             <result name="error">/fileDownload.ftl</result>
+        </action>
+        
+        <action name="auditStatus" class="javadev.iip.action.OtherAction" method="auditStatus">
+             <result name="success">/auditStatus.ftl</result>
+        </action>
+		
+
+
+	</package>
+</struts>
