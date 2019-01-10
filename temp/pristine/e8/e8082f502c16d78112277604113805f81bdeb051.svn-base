@@ -1,0 +1,163 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>add-match</title>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/match/style.1.0.css"/>
+
+    <script src="../../../resources/js/match/respond.js"></script>
+    <script src="../../../resources/js/match/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../../resources/js/match/bootstrap2.min.js"></script>
+
+</head>
+<body>
+<nav class="nav-bg navbar">
+    <div class="container">
+        <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-11">
+            <img src="../../../resources/img/logo足球项目组.png"/>
+            <span><a href="index.jsp">四川省青少年校园足球信息网</a></span>
+        </div>
+        <div class="nav-b hidden-lg hidden-md col-sm-1 hidden-xs">
+            <button type="button" class="glyphicon glyphicon-th-list"></button>
+        </div>
+        <div class="nav-w col-lg-8 col-md-7 hidden-sm hidden-xs">
+            <ul>
+                <li><a href="matchList.jsp">赛事赛程</a></li>
+                <li><a href="#">教练管理</a></li>
+                <li><a href="#">球员管理</a></li>
+                <li><a href="#">球队管理</a></li>
+                <li><a href="#">个人中心</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container ml-h">
+    报名
+</div>
+<div class="container">
+    <div class="tab-6">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th colspan="2" style="font-size: 20px;">1队</th>
+            </tr>
+            <tr>
+                <th>姓名</th>
+                <th>选择</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>张三</td>
+                <td><input type="checkbox" value="option1" aria-label="..."></td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td><input type="checkbox" value="option1" aria-label="..."></td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td><input type="checkbox" value="option1" aria-label="..."></td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td><input type="checkbox" value="option1" aria-label="..."></td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td><input type="checkbox" value="option1" aria-label="..."></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="matchDetailsAdmin.jsp" style="margin-left: 50%;">
+            <button type="submit" class="btn btn-default">确认</button>
+        </a>
+        <div class="pag pag-2">
+            <nav aria-label="Page navigation" class="pag">
+                <ul class="pagination ">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="tab-6">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th colspan="2" style="font-size: 20px;">2队</th>
+            </tr>
+            <tr>
+                <th>姓名</th>
+                <th>选择</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>张三</td>
+                <td><input type="checkbox" value="option1" aria-label="..."></td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td><input type="checkbox" value="option1" aria-label="..."></td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td><input type="checkbox" value="option1" aria-label="..."></td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td><input type="checkbox" value="option1" aria-label="..."></td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td><input type="checkbox" value="option1" aria-label="..."></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="matchDetailsAdmin.jsp" style="margin-left: 50%;">
+            <button type="submit" class="btn btn-default">确认</button>
+        </a>
+        <div class="pag">
+            <nav aria-label="Page navigation" class="pag">
+                <ul class="pagination ">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

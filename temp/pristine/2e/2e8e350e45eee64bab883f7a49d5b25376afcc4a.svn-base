@@ -1,0 +1,175 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>球队管理</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--为了让 Bootstrap 开发的网站对移动设备友好，确保适当的绘制和触屏缩放，需要在网页的 head 之中添加 viewport meta 标签，-->
+  <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" type="text/css" href="../../../resources/css/style.1.0.css" />
+  <!--[if lt IE 9]>
+  　　<script src="../../../resources/js/respond.min.js"></script>
+  　　<script src="../../../resources/js/html5shiv.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<nav class="nav-bg navbar" >
+  <div class="container">
+    <div class="logo-w span3 ">
+      <img src="../../../resources/img/logo足球项目组.png"/>
+      <span>四川省青少年校园足球信息网</span>
+    </div>
+    <div class="nav-w span9">
+      <ul>
+        <li><a href="#">赛事赛程</a></li>
+        <li><a href="#">教练管理</a></li>
+        <li><a href="#">球员管理</a></li>
+        <li><a href="#">球队管理</a></li>
+        <li><a href="#">个人中心</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<c:set var="base_path" value="${path}"></c:set>
+<div class="container" style="width:1002px;">
+  <ul class="breadcrumb">
+    <li class="active">球队预览<span class="divider">/</span></li>
+    <li><a href="${path}/team/create">球队创建</a></li>
+  </ul>
+  <!--导航结束-->
+  <table class="table table-striped table-hover " id="tableStyle">
+    <tr class="info">
+      <th>编号</th>
+      <th>队名</th>
+      <th>教练</th>
+      <th>人数</th>
+      <th>状态</th>
+      <th colspan="2" style="text-align:center">操作</th>
+    </tr>
+    <tr>
+      <td>xxxxxx</td>
+      <td>凌凌漆</td>
+      <td>王五</td>
+      <td>30</td>
+      <td>在役</td>
+      <td>
+        <center>
+          <a href="#myModal3" role="button" class="btn btn-info" data-toggle="modal">查看</a>
+          <button type="button" class="btn btn-default btn-warning btn-sm">修改</button>
+          <button type="button" class="btn btn-default btn-danger btn-sm">解散</button>
+        </center>
+      </td>
+    </tr>
+  </table>
+  <center>
+    <div class="pagination">
+      <ul>
+        <li><a href="#">上一页</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">下一页</a></li>
+      </ul>
+    </div>
+  </center>
+</div>
+<!--container end-->
+<!-- 模态框3Modal 开始-->
+<div id="myModal3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">球队信息</h3>
+  </div>
+  <div class="modal-body">
+    <div class="span6">
+      <table class="table table-bordered " id="messageCard">
+        <tr class="success">
+          <td>基本信息</td>
+        </tr>
+        <tr>
+          <td>
+            <p><span class="muted">队&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</span>
+              <input type="text" style="height:20px;width:190px;"></p>
+            <p><span class="muted">球队类型:</span>
+              <select id="myInput" style="width:204px;">
+                <option value="小学一年级">小学一年级</option>
+                <option value="小学二年级">小学二年级</option>
+                <option value="小学三年级">小学三年级</option>
+                <option value="小学四年级">小学四年级</option>
+                <option value="小学五年级">小学五年级</option>
+                <option value="小学六年级">小学六年级</option>
+                <option value="初中一年级">初中一年级</option>
+                <option value="初中二年级">小学二年级</option>
+                <option value="初中三年级">小学三年级</option>
+                <option value="混合(年级)">混合(年级)</option>
+                <option value="混合(年级)">混合(校级)</option>
+                <select></p>
+            <p></p><span class="muted">球队状态:</span>
+            <input type="radio" name="TEAM_STATUS" checked="checked" value="在役"> 在役
+            <input type="radio" name="TEAM_STATUS" value="退役"> 退役
+            </p>
+            <p><span class="muted">球队编号: </span><span >123456789</span></p>
+            <p><span class="muted">创建时间: </span><span >2018-3-21</span></p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="span6">
+      <table class="table table-bordered table-hover messageCard">
+        <tr class="success">
+          <td>教练信息</td>
+        </tr>
+        <tr>
+          <td>
+            <p style="margin-top:6px;"><span class="muted">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名: <span></span></span></p>
+            <p style="margin-top:32px;"><span class="muted">教练编号:</span></p>
+
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div class="span6">
+      <table class="table table-bordered " id="messageCard">
+        <tr class="success">
+          <td>球员信息</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row">
+
+              <div class="zhazhazha">
+                <img class="clo" src="../../../resources/img/22.png" style="width:100%;">
+                <p class="muted zhazhahui" >
+                  <span>渣渣渣</span><br>
+                  <span>123456</span>
+                </p>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div><!--中部结束-->
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+  </div>
+</div><!-- 模态框3Modal 结束-->
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="../../../resources/js/jquery-1.11.3.js "></script>
+<!-- <script src="js/jquery-3.1.1.min.js"></script> -->
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="../../../resources/js/bootstrap.min.js"></script>
+</body>
+
+</html>

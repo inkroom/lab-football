@@ -1,0 +1,14 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #F1F3F1;
+}
+
+.div-404-under {
+    width: 100%;
+    display: flex;
+    /* 使子元素水平居中 */
+    justify-content: center;
+    /* 使子元素垂直居中 */
+    /*align-items: center;*/
+}

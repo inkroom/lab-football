@@ -1,0 +1,32 @@
+package cn.nsu.edu.web.four.beans.common;
+
+public class PhoneCode {
+
+    private String phone;//所属手机号
+    private String code;//验证码
+    private int count = 0;//已验证次数
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+}

@@ -1,0 +1,65 @@
+package cn.nsu.edu.web.four.services.referee.impl;
+
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.beans.teams.Team;
+import cn.nsu.edu.web.four.daos.jdbc.referee.RefereeDao;
+import cn.nsu.edu.web.four.dto.stc.referee.ScheduleInformationDto;
+import cn.nsu.edu.web.four.services.referee.RefereeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Service
+public class RefereeServiceImpl implements RefereeService {
+
+    @Autowired
+    RefereeDao refereeDao;
+
+    @Override
+    public ScheduleInformationDto getScheduleInformation(Integer scheduleId) throws Exception {
+        ScheduleInformationDto dto = new ScheduleInformationDto();
+        try {
+            dto.setScheduleInformation(refereeDao.getScheduleInformation(scheduleId));
+            if (dto.getScheduleInformation() == null) {
+                return null;
+            }
+            dto.setTeamA(refereeDao.getTeamName(dto.getScheduleInformation().getTeamA()));
+            dto.setTeamB(refereeDao.getTeamName(dto.getScheduleInformation().getTeamB()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return dto;
+    }
+
+
+    @Override
+    public List<Player> getPlayerInformation(Integer teamId) throws Exception {
+        List<Player> playerInformation;
+        try {
+            playerInformation = refereeDao.getPlayerInformation(teamId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return playerInformation;
+    }
+
+    @Override
+    public boolean insertPlayerInformation(Integer playerId, Integer scheduleId, Integer teamId, String time) throws Exception {
+        boolean b = false;
+        try {
+            b = refereeDao.insertPlayerInformation(playerId, scheduleId, teamId, time);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return b;
+    }
+
+
+}
+
+

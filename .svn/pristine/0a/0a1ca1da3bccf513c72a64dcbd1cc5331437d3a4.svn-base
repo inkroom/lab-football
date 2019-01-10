@@ -1,0 +1,13 @@
+td {
+	vertical-align: middle!important;
+	text-align: center!important;
+}
+
+button {
+	margin: 4px;
+}
+
+.coach-table {
+	padding: 10px;
+	text-align: center;
+}

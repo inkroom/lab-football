@@ -1,0 +1,159 @@
+package cn.nsu.edu.web.four.interceptors;
+
+import cn.nsu.edu.web.four.annotation.Security;
+import cn.nsu.edu.web.four.config.BaseStatic;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.enums.Role;
+import cn.nsu.edu.web.four.utils.code.CodeUtil;
+import cn.nsu.edu.web.four.utils.http.RequestUtil;
+import cn.nsu.edu.web.four.utils.http.ResponseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Enumeration;
+
+/**
+ * 权限拦截器
+ */
+public class SecurityInterceptor extends HandlerInterceptorAdapter {
+
+
+    private Logger log = LoggerFactory.getLogger(getClass());
+
+    private String tokenErrorUrl;
+    private String roleErrorUrl;
+
+    public void setRoleErrorUrl(String roleErrorUrl) {
+        this.roleErrorUrl = roleErrorUrl;
+    }
+
+    public void setTokenErrorUrl(String tokenErrorUrl) {
+        this.tokenErrorUrl = tokenErrorUrl;
+    }
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+        if ((handler instanceof HandlerMethod)) {
+            HandlerMethod method = (HandlerMethod) handler;
+            Security a = method.getMethodAnnotation(Security.class);
+            if (a != null) {
+
+//                if (a.createToken()&&a.checkToken()){
+//                    throw new RuntimeException("Security 属性 createToken 和 checkToken 不可同时为true");
+//                }
+                if (a.checkToken()) {
+                    //验证token
+                    //获取token
+                    String requestToken = CodeUtil.getToken(request);
+                    String sessionToken = (String) request.getSession().getAttribute(BaseStatic.KEY_SESSION_TOKEN);
+//                    if (sessionToken == null) {
+//                        throw new RuntimeException("未曾创建token");
+//                    }
+                    if (requestToken == null || sessionToken == null || !requestToken.equals(sessionToken)) {
+                        log.debug("token错误");
+                        if (RequestUtil.isAjax(request)) {
+                            MessageDto dto = new MessageDto(Result.TOKEN_ERROR);
+                            ResponseUtil.outJson(response, dto.toString());
+                        } else {
+                            request.getRequestDispatcher(tokenErrorUrl).forward(request, response);
+                        }
+                        return false;
+                    }
+                }
+                if (a.createToken()) {//创建token
+                    String token = CodeUtil.createToken();
+                    request.getSession().setAttribute(BaseStatic.KEY_SESSION_TOKEN, token);
+                    log.debug("创建token=" + token);
+                }
+
+                //验证操作权限
+                Role[] roles;
+                if ((roles = a.roles()).length > 0) {
+                    Role role = RequestUtil.getRole(request);
+                    for (Role role1 : roles) {
+                        if (role == role1) {
+                            return true;
+                        }
+                    }
+                    log.debug("权限不足");
+                    if (RequestUtil.isAjax(request)) {
+                        ResponseUtil.outJson(response, new MessageDto(Result.NO_AUTHORITY).toString());
+                    } else {
+                        request.getRequestDispatcher(roleErrorUrl).forward(request, response);
+                    }
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+//    /**
+//     * 渲染视图之前
+//     *
+//     * @param request
+//     * @param response
+//     * @param handler
+//     * @param modelAndView
+//     * @throws Exception
+//     */
+//    @Override
+//    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+//        if ((handler instanceof HandlerMethod)) {
+//            HandlerMethod method = (HandlerMethod) handler;
+//            Security a = method.getMethodAnnotation(Security.class);
+//            if (a != null) {
+//                if (a.createToken()) {
+//                    // TODO: 18-3-22 放到这里获取到的是上一次的
+//                    if (RequestUtil.isAjax(request)) {
+//                        log.info("model  = " + modelAndView);
+//                    }else{
+//                        String token = CodeUtil.createToken();
+//                        request.getSession().setAttribute(BaseStatic.KEY_SESSION_TOKEN, token);
+//                        log.debug("创建token=" + token);
+//                    }
+//                }
+//
+////                if (a.createToken()) {//创建token
+////                    String token = CodeUtil.createToken();
+////                    request.getSession().setAttribute(BaseStatic.KEY_SESSION_TOKEN, token);
+////                    log.debug("创建token=" + token);
+////                }
+//            }
+////            Enumeration<String> en = request.getAttributeNames();
+////            while (en.hasMoreElements()) {
+////                System.out.println("key=" + (en.nextElement()));
+////            }
+//
+//        }
+//
+//    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        if ((handler instanceof HandlerMethod)) {
+            HandlerMethod method = (HandlerMethod) handler;
+            Security a = method.getMethodAnnotation(Security.class);
+            if (a != null) {
+                // TODO: 18-3-22 放到这里获取到的是上一次的
+//                if (a.createToken()) {//创建token
+//                    String token = CodeUtil.createToken();
+//                    request.getSession().setAttribute(BaseStatic.KEY_SESSION_TOKEN, token);
+//                    log.debug("创建token=" + token);
+//                }
+            }
+//            Enumeration<String> en = request.getAttributeNames();
+//            while (en.hasMoreElements()) {
+//                System.out.println("key=" + (en.nextElement()));
+//            }
+
+        }
+    }
+}

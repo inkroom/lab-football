@@ -1,0 +1,45 @@
+/*入场验证*/
+.scorer{
+	opacity: 1.0;
+}	
+.img{
+	opacity: 0.5;
+}
+.btn-distance{
+	margin-bottom: 100px;
+}
+.font-color{
+	color: red;
+}
+.text-top{
+	margin: 5px 0;
+}
+.img1-float{
+	float: left;
+}
+.img2-float{
+	float: left; 
+	position: absolute; 
+	margin-left: 5px;
+}
+.margin-top1{
+	margin-top: 20px;
+}
+.font-size1{
+	font-size: 20px;
+}
+.margin1{
+	margin:10px 0;
+}
+.margin-left1{
+	margin-left: 10px;
+}
+.color1{
+	color: #aaa;
+}
+.width1{
+	width:68px;
+}
+.width2{
+	width: 58px;
+}

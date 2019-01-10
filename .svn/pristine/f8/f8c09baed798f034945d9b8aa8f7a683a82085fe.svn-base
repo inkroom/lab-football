@@ -1,0 +1,12 @@
+package cn.nsu.edu.web.four.annotation;
+
+import cn.nsu.edu.web.four.enums.Role;
+
+/**
+ * 权限注解
+ */
+public @interface Authority {
+
+    Role[] roles();
+
+}

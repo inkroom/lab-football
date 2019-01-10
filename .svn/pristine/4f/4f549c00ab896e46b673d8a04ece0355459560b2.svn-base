@@ -1,0 +1,83 @@
+package cn.nsu.edu.web.four.services.match.impl;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+import cn.nsu.edu.web.four.beans.match.MatchPlayer;
+import cn.nsu.edu.web.four.daos.jdbc.match.MatchMapper;
+import cn.nsu.edu.web.four.services.match.MatchService;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.services.match.impl
+ * @date 2018/3/20 11:07
+ * @description
+ **/
+@Service
+public class MatchServiceImpl  implements MatchService{
+    @Autowired
+    private MatchMapper mapper;
+
+    @Override
+    public List<Match> selectByIdWithOrg(int orgId) {
+        return mapper.selectByIdWithOrg(orgId);
+    }
+
+    @Override
+    public List<Match> selectByStaff(int orgId) {
+        return mapper.selectByStaff(orgId);
+    }
+
+    @Override
+    public List<Match> selectByStaffOther(int orgId) {
+        return mapper.selectByStaffOther(orgId);
+    }
+
+    @Override
+    public List<Map<String, Object>> listTeamAndPlayer(int orgId) {
+        List<MatchPlayer>players=mapper.selectPlayerByOrgId(1);
+        List<Map<String,Object>> teamlist=new ArrayList<>();
+        for (Map<String,Object> map:mapper.listTeamIdByorgId(1)){
+            Map<String,Object> teamMap=new HashMap<>();
+            teamMap.put("teamName",map.get("name"));
+            List<MatchPlayer> list=new ArrayList<>();
+            for (MatchPlayer player:players){
+                if (map.get("id_team").equals(player.getTeamId())){
+                    list.add(player);
+                }
+            }
+            teamMap.put("playerList",list);
+            teamlist.add(teamMap);
+        }
+        return teamlist;
+    }
+
+    @Override
+    public void insertPlayer(List<MatchPlayer> list) {
+        mapper.insertPlayer(list);
+    }
+
+    @Override
+    public List<MatchPlayer> listExamine(int matchId) {
+        return mapper.selectOrgNameAndTeamName(matchId);
+    }
+
+    @Override
+    public void updateStatus(int orgId) {
+        mapper.updateStatus(orgId);
+    }
+
+    @Override
+    public void insertMatch(Match match) {
+        mapper.insertMatch(match);
+    }
+
+
+}

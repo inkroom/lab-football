@@ -1,0 +1,171 @@
+/**
+ * Created by 灵魂都在冒香气的神 on 2018/3/23.
+ */
+
+match = 666;    //页面保存的赛事ID
+/*
+ 环境上下文
+ */
+context = {
+    num: 10,   //一页最多显示数据
+    btn_num: 0,   //分页按钮数量
+    btn_max: 5,   //最多显示出来的按钮数量
+    totalSize: 0,   //赛程总数
+    cur_page: 0,   //当前页码
+    cur_index: 1,  //当前按钮index
+    page_num: 0,   //计算出来应该存在的页数
+    isError: false,   //获取信息失败标志
+    isCreateBtn: false,   //isCreateBtn指示是否应该在click事件中创建分页按钮
+    isCreatePage: true    //判断是否第一次点击赛程表按钮，优化，不用每次请求数据渲染tab,若第一次没获取到则不影响，下次点击刷新
+};
+trData = "<tr><td>{time}</td><td>{place}</td><td><a href='javascript:showdiv();' id='strHref' class='hpn-1'>{teamA}</a></td><td><b>{scoreA}&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;{scoreB}</b></td><td><a href='#'>{teamB}</a></td><td>{status}</td></tr>";
+liData = "<li dom_type='page_btn' onclick='pageClick(this)' index='{index}'><a href='#'>{pageNum}</a></li>";   //index为唯一标识
+
+function pageClick(cur_this)    //page按钮点击事件
+{
+    $(cur_this).attr("class", "active");   //被选中的按钮改变
+    var selector = "[index=" + (context.cur_index) + "]";
+    $(selector).removeAttr("class");    //恢复前一个按钮
+    showSchedule(match, String($(cur_this).text()));
+    context.cur_index = parseInt($(cur_this).attr("index"));   //更新index
+}
+
+
+function showSchedule(idMatch, page) {
+    postData = "idMatch=" + idMatch;
+    $.ajax({
+        async: false,     //必须用同步，否则后面逻辑判断可能出错
+        url: "/schedule/showSchedule/" + page,
+        type: "POST",
+        data: postData,
+        dataType: "json",
+        error: function () {
+            context.isError = true;
+            $("#schedule-data tbody").empty();   //如果有数据则先把页面清空
+            errorMessge = '<tr><td></td><td></td><td>获取信息失败!</td><td></td><td></td><td></td></tr>';
+            $("#schedule-data tbody").append(errorMessge);
+            $("#schedule-data").css("visibility", "visible");
+        },
+        success: function (data, status) {
+            context.isError = false;
+            context.totalSize = data.size;    //   data,size是总的赛程数量，不是本次请求传回的赛程数量
+            context.cur_page = page;
+            var realSize = data.schedule.length;
+            var num = realSize <= context.num ? realSize : context.num;  //判断实际传回的数据是否小于页面最大值
+            context.isCreateBtn = (data.size > context.num);    //假设是在#schedule-list的click事件中调用，则判断是否显示分页按钮
+            $("#schedule-data tbody").empty();   //先清空
+            for (var i = 0; i < num; i++) {
+                var time = new Date(Number(data.schedule[i].time));
+                var beginTime = String(time.getFullYear() + "/" + time.getMonth() + "/" + time.getDate());
+                var state = null;
+                switch (data.schedule[i].status) {
+                    case 0:
+                        state = "正在准备";
+                        break;
+                    case 1:
+                        state = "正在比赛";
+                        break;
+                    case 2:
+                        state = "比赛结束";
+                        break;
+                    case 3:
+                        state = "已删除";
+                        break;
+                }
+                var tr = trData.replace("{time}", beginTime).replace("{place}", data.schedule[i].place)
+                    .replace("{teamA}", data.schedule[i].nameA).replace("{scoreA}", String(data.schedule[i].goalA))
+                    .replace("{scoreB}", String(data.schedule[i].goalB)).replace("{teamB}", data.schedule[i].nameB)
+                    .replace("{status}", state);
+                $("#schedule-data tbody").append(tr);
+            }
+            $("#schedule-data").css("visibility", "visible");
+        }
+    });
+}
+
+/*
+ 初始化
+ */
+$(document).ready(function () {
+    $("#schedule-list").click(function ()   //赛程表按钮
+    {
+        if (context.isCreatePage)   //判断是否应该初始化赛程页面
+        {
+            showSchedule(match, 1);
+            if (context.isError) {
+                return;
+            }
+
+            /*
+             初始化分页按钮
+             */
+
+            if (context.isCreateBtn) {
+                context.page_num = parseInt(context.totalSize / context.num);
+                if (context.page_num < context.totalSize / context.num) {
+                    context.page_num++;
+                }
+                var realBtn_num = (context.page_num < context.btn_max) ? context.page_num : context.btn_max;  //计算出实际应该显示的按钮
+                for (var i = 1, tmp = ""; i <= realBtn_num; i++) {
+                    tmp += liData.replace("{pageNum}", String(i)).replace("{index}", String(i));
+                }
+                context.btn_num = realBtn_num;
+                $("#previous").after(tmp);
+                $("#pageBtn").css("display", "block");
+                $("[dom_type=page_btn]:eq(0)").attr("class", "active");
+            }
+            context.isCreatePage = false;
+        }
+    });
+
+    $("#next").click(function ()    //下一页
+    {
+        $(this).children("a").css("background-color", "white");   //botstrap的锅，不想让这个按钮变色
+        if (context.cur_page >= context.page_num)   //正是最后一页
+        {
+            return;
+        }
+        else if (context.cur_index === context.btn_num)   //正是末尾按钮
+        {
+            $("[dom_type=page_btn]").each(function () {
+                var number = parseInt($(this).text()) + context.btn_num;
+                if (number > context.page_num) {
+                    $(this).css("display", "none");  //向上翻页也要做类似处理
+                }
+                else {
+                    $(this).children("a").text(String(number));
+                }
+            });
+            $("[index=1]").click();
+        }
+        else {
+            var selector = "[index=" + (context.cur_index + 1) + "]";
+            $(selector).click();
+        }
+
+    });
+
+    $("#previous").click(function ()   //前一页
+    {
+        $(this).children("a").css("background-color", "white");   //botstrap的锅，不想让这个按钮变色
+        if (context.cur_page <= 1)   //正是第一页
+        {
+            return;
+        }
+        if (context.cur_index === 1)   //正是第一个按钮,能执行到这一步，说明页面数量是大于btn_max:5的
+        {
+            var number = parseInt($("[index=1]").text()) - context.btn_num;    //算出<<过后的第一个按钮的值
+            $("[dom_type=page_btn]").each(function () {
+                $(this).children("a").text(String(number));
+                $(this).css("display", "inline");
+                number++;    //推算其他按钮的值
+            });
+            var selector = "[index=" + context.btn_max + "]";
+            $(selector).click();
+        }
+        else {
+            var selector = "[index=" + (context.cur_index - 1) + "]";
+            $(selector).click();
+        }
+    });
+});

@@ -1,0 +1,35 @@
+package cn.nsu.edu.web.four.services.team;
+
+import cn.nsu.edu.web.four.beans.coach.Coach;
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.beans.teams.Team;
+
+import java.util.List;
+
+public interface FindInfoService {
+
+    public List<Player> findSameOrgAllPlayer (int org_id,int status) ;
+
+    public  List<Coach> findSameOrgAllCoach (int org_id,int status) ;
+
+    public List<Team> findSameOrgAllTeam (int org_id,int status) ;
+
+    public Team findTeamInfo (int id_team) ;
+
+    //球队教练信息接口
+
+    public  void findTeamIdByCoachid (int id_coach,int status) ;
+
+    public  void findCoachJoinTeamTime (int id_coach,int status) ;
+
+    public  void findCoachOutTeamTime (int id_coach,int status) ;
+
+    //球队球员信息接口
+
+    public  void findTeamIdByPlayerid (int  id_player,int status) ;
+
+    public  void findPlayerJoinTeamTime (int id_player,int status) ;
+
+    public  void findPlayerOutTeamTime (int id_player,int status) ;
+
+}

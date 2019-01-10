@@ -1,0 +1,47 @@
+package cn.nsu.edu.web.four.daos.redis.common;
+
+import cn.nsu.edu.web.four.beans.common.PhoneCode;
+import cn.nsu.edu.web.four.config.BaseStatic;
+import cn.nsu.edu.web.four.daos.redis.RedisPool;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import redis.clients.jedis.exceptions.JedisConnectionException;
+
+@Repository
+public class SmsDao {
+
+    @Autowired
+    private RedisPool pool;
+    @Autowired
+    private ObjectMapper mapper;
+
+
+    public boolean setPhoneCode(PhoneCode code) {
+        try {
+            pool.set(BaseStatic.PREFIX_REDIS + BaseStatic.SMS_PREFIX + code.getPhone(), BaseStatic.SMS_RETAIN_TIME, mapper.writeValueAsString(code));
+            return true;
+        } catch (Exception e) {
+            return false;
+//            e.printStackTrace();
+        }
+    }
+
+    public PhoneCode getPhoneCode(String phone) {
+        String value = null;
+        try {
+            value = pool.get(BaseStatic.PREFIX_REDIS + BaseStatic.SMS_PREFIX + phone);
+        } catch (JedisConnectionException e) {
+            return null;
+        }
+        if (value == null) return null;
+        return mapper.convertValue(value, PhoneCode.class);
+    }
+
+    public void removePhoneCode(String phone) {
+        pool.del(BaseStatic.PREFIX_REDIS + BaseStatic.SMS_PREFIX + phone);
+    }
+
+
+}

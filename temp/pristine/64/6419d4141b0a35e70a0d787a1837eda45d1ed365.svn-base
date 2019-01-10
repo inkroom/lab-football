@@ -1,0 +1,12 @@
+
+
+#\u6570\u636E\u5E93
+jdbc.driver=com.mysql.cj.jdbc.Driver
+jdbc.url=jdbc:mysql://10.14.2.248:3306/football4th?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+jdbc.ip=127.0.0.1
+jdbc.username=4th
+# 密码已加密
+jdbc.password=EA8CF5C1660E07D7F8159A09DEC8494D
+jdbc.baseName=base
+
+

@@ -1,0 +1,185 @@
+package cn.nsu.edu.web.four.services.match.impl;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+import cn.nsu.edu.web.four.beans.match.MatchExamine;
+import cn.nsu.edu.web.four.beans.match.MatchPlayer;
+import cn.nsu.edu.web.four.beans.organization.Organization;
+import cn.nsu.edu.web.four.beans.teams.Team;
+import cn.nsu.edu.web.four.daos.jdbc.match.MatchDao;
+import cn.nsu.edu.web.four.services.match.MatchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.services.match.impl
+ * @date 2018/3/20 11:07
+ * @description
+ **/
+@Service
+public class MatchServiceImpl  implements MatchService{
+    @Autowired
+    private MatchDao mapper;
+
+    @Override
+    public List<Match> selectByIdWithOrg(int orgId) {
+        try {
+            return mapper.selectByIdWithOrg(orgId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Match> selectByStaff(int orgId) {
+        try {
+            return mapper.selectByStaff(orgId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Match> selectByStaffOther(int orgId) {
+        try {
+            return mapper.selectByStaffOther(orgId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Map<String, Object>> listTeamAndPlayer(int orgId) {
+        List<Map<String, Object>> teamlist = null;
+        try {
+            List<MatchPlayer> players = mapper.selectPlayerByOrgId(1);
+            teamlist = new ArrayList<>();
+            for (Map<String, Object> map : mapper.listTeamIdByorgId(1)) {
+                Map<String, Object> teamMap = new HashMap<>(16);
+                teamMap.put("teamName", map.get("name"));
+                List<MatchPlayer> playerList = new ArrayList<>();
+                for (MatchPlayer player : players) {
+                    if (map.get("id_team").equals(player.getTeamId())) {
+                        playerList.add(player);
+                    }
+                }
+                teamMap.put("playerList", playerList);
+                teamlist.add(teamMap);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return teamlist;
+    }
+
+    @Override
+    public void insertPlayer(List<MatchPlayer> list) {
+        mapper.insertPlayer(list);
+    }
+
+    @Override
+    public List<MatchExamine> listExamine(int matchId) {
+        try {
+            return mapper.selectExamineOrg(matchId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<MatchPlayer> listExaminePlayer(int orgId) {
+        try {
+            return mapper.selectExaminePlayer(orgId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void updateStaffStatus(int status, int orgId) {
+        try {
+            mapper.updateStaffStatus(status, orgId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean insertMatch(Match match) {
+        try {
+            mapper.insert(match);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public Integer getLevel(int matchId) {
+        try {
+            return mapper.getLevel(matchId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @Override
+    public Match getMatchInfoById(Integer matchId) {
+        try {
+            return mapper.selectById(matchId);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw new RuntimeException();
+        }
+    }
+
+    @Override
+    public boolean modifyMatch(Match match) {
+        try {
+            if (mapper.updateById(match) > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public List<Organization> getMatchOrgList(Integer matchId) {
+        try {
+            return mapper.selectMatchStaffOrgsByMatchId(matchId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Team> getMatchStaffTeamList(Integer matchId, Integer orgId) {
+        try {
+            return mapper.selectMatchStaffTeamsByMatchOrgId(matchId, orgId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+
+}

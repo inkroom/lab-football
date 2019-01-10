@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.staff.MatchStaffDao">
+    <select id="getOrgIdByMatch" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT org_id FROM
+        M_Match_Staff
+        WHERE match_id=#{matchID,jdbcType=INTEGER}
+    </select>
+</mapper>

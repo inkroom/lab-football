@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.match.MacthStaffDao">
+    <resultMap id="MatchStaffOrgId" type="cn.nsu.edu.web.four.beans.match.MatchStaffTeamId">
+        <result column="team_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="teamId"/>
+    </resultMap>
+    <select id="getTeamIdByMatch" parameterType="java.lang.Integer" resultMap="MatchStaffOrgId">
+        select DISTINCT team_id FROM M_Match_Staff WHERE match_id=#{matchId,jdbcType=INTEGER} AND status=1
+    </select>
+
+    <select id="abc">
+
+    </select>
+</mapper>

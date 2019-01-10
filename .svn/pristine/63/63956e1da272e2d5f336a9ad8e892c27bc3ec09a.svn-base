@@ -1,0 +1,31 @@
+package cn.nsu.edu.web.four.controllers.team;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+/**
+ * @author anyong
+ * @version V1.0
+ * @Title: ${file_name}
+ * @Package ${package_name}
+ * @Description: TODO
+ * @date ${date} ${time}
+ */
+@Controller
+@RequestMapping("teamInfo")
+public class TeamInfoController {
+
+    /**
+     * @author:YuanXin
+     * @Description:添加一只球队得基本信息
+     * @Date: 10:35 2018/3/22/022
+     **/
+    @RequestMapping("/addTeamInfo")
+    @ResponseBody
+    public String addTeamInfo(){
+        System.out.println("sadad");
+        return "success!";
+    }
+}

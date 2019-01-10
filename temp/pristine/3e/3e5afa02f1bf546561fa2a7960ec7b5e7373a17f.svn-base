@@ -1,0 +1,36 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>nav</title>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/style.1.0.css"/>
+
+    <script src="../../../resources/js/match/respond.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<nav class="nav-bg navbar">
+    <div class="container">
+        <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-11">
+            <img src="../../../resources/img/logo足球项目组.png"/>
+            <span><a href="index.jsp">四川省青少年校园足球信息网</a></span>
+        </div>
+        <div class="nav-b hidden-lg hidden-md col-sm-1 hidden-xs">
+            <button type="button" class="glyphicon glyphicon-th-list"></button>
+        </div>
+        <div class="nav-w col-lg-8 col-md-7 hidden-sm hidden-xs">
+            <ul>
+                <li><a href="matchList.jsp">赛事赛程</a></li>
+                <li><a href="#">教练管理</a></li>
+                <li><a href="#">球员管理</a></li>
+                <li><a href="#">球队管理</a></li>
+                <li><a href="#">个人中心</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

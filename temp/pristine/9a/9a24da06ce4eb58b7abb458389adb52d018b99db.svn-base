@@ -1,0 +1,117 @@
+package cn.nsu.edu.web.four.beans.organization;
+
+/**
+ * @author :王新璋
+ * @Description: 机构的实体类
+ * @date :18.01 2018/3/16
+ */
+
+public class Organization {
+
+    private Integer idOrg;//机构id
+    private String name;//机构姓名
+    private String password;//密码
+    private String salt;//加密
+    private Integer schoolCode;//学校代码
+    private Integer provinceCode;//省代码
+    private Integer countryCode;//城市代码
+    private Integer villageCode;//乡村代码
+    private Integer type;//机构类型
+    private String phone;//机构手机号
+
+    public Integer getIdOrg() {
+        return idOrg;
+    }
+
+    public void setIdOrg(Integer idOrg) {
+        this.idOrg = idOrg;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public Integer getSchoolCode() {
+        return schoolCode;
+    }
+
+    public void setSchoolCode(Integer schoolCode) {
+        this.schoolCode = schoolCode;
+    }
+
+    public Integer getProvinceCode() {
+        return provinceCode;
+    }
+
+    public void setProvinceCode(Integer provinceCode) {
+        this.provinceCode = provinceCode;
+    }
+
+    public Integer getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(Integer countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public Integer getVillageCode() {
+        return villageCode;
+    }
+
+    public void setVillageCode(Integer villageCode) {
+        this.villageCode = villageCode;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Organization{" +
+                "idOrg=" + idOrg +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", schoolCode=" + schoolCode +
+                ", provinceCode=" + provinceCode +
+                ", countryCode=" + countryCode +
+                ", villageCode=" + villageCode +
+                ", type=" + type +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
+}

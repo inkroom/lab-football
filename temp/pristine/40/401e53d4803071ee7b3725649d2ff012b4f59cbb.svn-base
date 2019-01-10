@@ -1,0 +1,276 @@
+/*发送验证码*/
+function send(base) {
+    var count = 60;
+    var countdown = 0;
+    if (valid(false)) {
+        var $msg = $('#msg');
+        var index;
+        $.ajax({
+            url: base + '/sendPhoneCode',
+            data: {
+                phone: $('#phone').val()
+            },
+            dataType: 'json',
+            beforeSend: function () {
+                index = layer.open({type: 2});
+            },
+            success: function (result) {
+                layer.close(index);
+                switch (result.status) {
+                    case 0:
+                        setInterval(CountDown, 1000);
+                        //跳往首页
+                        break;
+                    case 1:
+                        $msg.html('手机验证码发送失败').removeClass('invisible');
+                        break;
+                    case 2://未登录
+                        break;
+                    case 3://没有权限
+                        break;
+                    case 4://异地登录
+                        break;
+                    case 5://系统异常
+                        $msg.html('系统异常').removeClass('invisible');
+                        break;
+                    case 6://参数错误
+                        $msg.html('错误请求').removeClass('invisible');
+                        break;
+                    case 7://参数长度错误
+                        break;
+                    case 8://参数类型错误
+                        break;
+                    case 14://token错误，页面过期
+                        $msg.html('页面过期').removeClass('invisible');
+                        break;
+                    case 17://裁判身份信息未完善
+                        break;
+                    case 18://赛程已结束
+                        break;
+                    case 19: //手机号码与之前的手机号码不一致
+                        $msg.html('手机号码不一致').removeClass('invisible');
+                        break;
+                }
+            },
+            error: function () {
+                layer.close(index);
+                $msg.html('网络错误').removeClass('invisible');
+            }
+        });
+    }
+
+    function CountDown() {
+        var $confirm = $("#confirm").attr("disabled", true).addClass('disabled').val("重新发送(" + count + ")");
+        if (count <= 0) {
+            $confirm.val("发送验证码").removeAttr("disabled").removeClass('disabled');
+            clearInterval(countdown);
+        }
+        count--;
+    }
+}
+
+/**
+ * 验证输入框
+ * @param isCode 是否验证验证码
+ * @returns {boolean} 通过返回true
+ */
+function valid(isCode) {
+    var name = $('#name').val();
+    var card = $('#card').val();
+    var phone = $('#phone').val();
+    var veri = $('#verification').val();
+    var $msg = $('#msg');
+    if (name === '') {
+        $msg.html('名字不能为空').removeClass('invisible');
+        return false;
+    } else if (card === '') {
+        $msg.html('身份证不能为空').removeClass('invisible');
+        return false;
+    } else if (phone === '') {
+        $msg.html('电话号码不能为空').removeClass('invisible');
+        return false;
+    } else if (isCode && veri === '') {
+        $msg.html('验证码不能为空').removeClass('invisible');
+        return false;
+    } else if (!/[\u4e00-\u9fa5]+/.test(name)) {
+        $msg.html('请输入中文姓名').removeClass('invisible');
+        return false;
+    } else if (!/(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/.test(card)) {
+        $msg.html('请输入正确的身份证号').removeClass('invisible');
+        return false;
+    }
+    else if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(phone)) {
+        $msg.html('请输入正确的手机号').removeClass('invisible');
+        return false;
+    }
+    return true;
+}
+
+/*提交按钮*/
+function confirm() {
+    if (valid(true)) {
+        var name = $('#name').val();
+        var card = $('#card').val();
+        var phone = $('#phone').val();
+        var veri = $('#verification').val();
+        var $msg = $('#msg');
+        var token = $('#token').val();
+        alert('验证通过')
+        // $msg.addClass('invisible');
+        $.ajax({
+            url: 'consummate',
+            type: 'get',
+            dataType: 'json',
+            data: {
+                name: name,
+                phone: phone,
+                id: card,
+                code: veri,
+                token:token
+            },
+            success: function (result) {
+                switch (result.status) {
+                    case 0:
+                        $msg.html('完善身份成功').removeClass('invisible');
+                        //跳往首页
+                        break;
+                    case 1:
+                        $msg.html('完善身份失败').removeClass('invisible');
+                        break;
+                    case 2://未登录
+                        break;
+                    case 3://没有权限
+                        break;
+                    case 4://异地登录
+                        break;
+                    case 5://系统异常
+                        $msg.html('系统异常').removeClass('invisible');
+                        break;
+                    case 6://参数错误
+                        $msg.html('错误请求').removeClass('invisible');
+                        break;
+                    case 7://参数长度错误
+                        break;
+                    case 8://参数类型错误
+                        break;
+                    case 14://token错误，页面过期
+                        $msg.html('页面过期').removeClass('invisible');
+                        break;
+                    case 17://裁判身份信息未完善
+                        break;
+                    case 18://赛程已结束
+                        break;
+                    case 19: //手机号码与之前的手机号码不一致
+                        $msg.html('手机号码不一致').removeClass('invisible');
+                        break;
+                }
+            },
+            error: function () {
+                $msg.html('网络错误').removeClass('invisible');
+            }
+        });
+    }
+    else{
+        alert('验证不通过');
+    }
+    // var name = $('#name').val();
+    // var card = $('#card').val();
+    // var phone = $('#phone').val();
+    // var veri = $('#verification').val();
+    // var $msg = $('#msg');
+    // if (name === '') {
+    //     $msg.html('名字不能为空').removeClass('invisible');
+    // } else if (card === '') {
+    //     $msg.html('身份证不能为空').removeClass('invisible');
+    // } else if (phone === '') {
+    //     $msg.html('电话号码不能为空').removeClass('invisible');
+    // } else if (veri === '') {
+    //     $msg.html('验证码不能为空').removeClass('invisible');
+    // } else if (!/[\u4e00-\u9fa5]/.test(name)) {
+    //     $msg.html('请输入中文姓名').removeClass('invisible');
+    // } else if (!/(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/.test(card)) {
+    //     $msg.html('请输入正确的身份证号').removeClass('invisible');
+    // }
+    // else if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(phone)) {
+    //     $msg.html('请输入正确的手机号').removeClass('invisible');
+    // } else {
+    //     $msg.addClass('invisible');
+    //     $.ajax({
+    //         url: 'consummate',
+    //         type: 'get',
+    //         dataType: 'json',
+    //         data: {
+    //             name: name,
+    //             phone: phone,
+    //             id: card,
+    //             code: veri
+    //         },
+    //         success: function (result) {
+    //             switch (result.status) {
+    //                 case 0:
+    //                     $msg.html('完善身份成功').removeClass('invisible');
+    //                     //跳往首页
+    //                     break;
+    //                 case 1:
+    //                     $msg.html('完善身份失败').removeClass('invisible');
+    //                     break;
+    //                 case 2://未登录
+    //                     break;
+    //                 case 3://没有权限
+    //                     break;
+    //                 case 4://异地登录
+    //                     break;
+    //                 case 5://系统异常
+    //                     $msg.html('系统异常').removeClass('invisible');
+    //                     break;
+    //                 case 6://参数错误
+    //                     $msg.html('错误请求').removeClass('invisible');
+    //                     break;
+    //                 case 7://参数长度错误
+    //                     break;
+    //                 case 8://参数类型错误
+    //                     break;
+    //                 case 14://token错误，页面过期
+    //                     $msg.html('页面过期').removeClass('invisible');
+    //                     break;
+    //                 case 17://裁判身份信息未完善
+    //                     break;
+    //                 case 18://赛程已结束
+    //                     break;
+    //                 case 19: //手机号码与之前的手机号码不一致
+    //                     $msg.html('手机号码不一致').removeClass('invisible');
+    //                     break;
+    //             }
+    //         },
+    //         error: function () {
+    //             $msg.html('网络错误').removeClass('invisible');
+    //         }
+    //
+    //     });
+    // }
+}
+
+/*
+这些是随时可能返回的数据
+                    case 2://未登录
+                        break;
+                    case 3://没有权限
+                        break;
+                    case 4://异地登录
+                        break;
+                    case 5://系统异常
+                        break;
+                    case 6://参数错误
+                        break;
+                    case 7://参数长度错误
+                        break;
+                    case 8://参数类型错误
+                        break;
+                    case 14://token错误，页面过期
+                        break;
+                    case 17://裁判身份信息未完善
+                        break;
+                    case 18://赛程已结束
+                        break;
+
+ */

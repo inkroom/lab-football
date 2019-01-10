@@ -1,0 +1,158 @@
+$(function () {
+    $('.col-right').height($('.col-left').height());
+
+    function msg(content) {
+        layer.open({
+            content: content
+            , skin: 'msg'
+            , time: 2 //2秒后自动关闭
+        });
+    }
+
+    function scroll() {
+        location.hash = '#hash';
+        $('#hash').remove();
+        location.hash = '';
+    }
+
+    $('#send').click(function () {
+
+        var content = $('#idEdit').html().trim();
+        if (content.length <= 0 || content.length > 300) {
+            msg('内容限制为1-300字')
+            return;
+        }
+
+        //获取发送url
+        var sendUrl = "send";
+        if (location.href.indexOf("m") > -1) {
+            sendUrl = "../send";
+        }
+        $.ajax({
+            url: sendUrl,
+            data: {
+                content: content
+            },
+            dataType: 'json',
+            success: function (result) {
+                switch (result.status) {
+                    case 0:
+                        msg('发送成功');
+                        $('#idEdit').html('');
+                        break;
+                    case 1:
+                        msg('发送失败');
+                        break;
+                    case 2://未登录
+                        break;
+                    case 3://没有权限
+                        msg('您尚未认证，不可发送消息')
+                        break;
+                    case 4://异地登录
+                        break;
+                    case 5://系统异常
+                        msg('系统错误')
+                        break;
+                    case 6://参数错误
+                        msg('参数错误')
+                        break;
+                    case 7://参数长度错误
+                        break;
+                    case 8://参数类型错误
+                        break;
+                    case 14://token错误，页面过期
+                        msg('页面过期')
+                        break;
+                    case 17://裁判身份信息未完善
+                        break;
+                    case 18://赛程已结束
+                        msg('比赛已结束')
+                        break;
+                }
+            },
+            error: function () {
+
+            }
+        })
+
+    });
+    $('#img').click(function () {
+
+    });
+    var $messages = $('#messages');
+    // console.log($messages.scrollTop());
+    // console.log($messages.height());
+    // $messages.scrollTop($messages.height()+'px');
+    // console.log($messages.scrollTop());
+
+    // $messages.animate({scrollTop: $('#hash').offset().top}, 1000)
+    // location.hash='#hash';
+    scroll();
+    //创建web socket
+    if (!("WebSocket" in window)) {
+        msg('您的浏览器版本过低，暂不支持观看直播')
+    } else {
+        var socket = new WebSocket('ws://' + location.host + getRootPath() + '/test');
+        socket.onmessage = function (evt) {
+            // alert(evt);
+            var message = JSON.parse(evt.data);
+
+            if (message.status === 0 && message.data.schId === getSch()) {
+                if (message.data.type === 1) {//消息
+
+                    $messages.append('<div class="div-border">\n' +
+                        '                            <div class="row">\n' +
+                        '                                <div class="col-xs-6 text-right">' + message.data.message.phone + '</div>\n' +
+                        '                                <div class="col-xs-6">' + message.data.message.time + '</div>\n' +
+                        '                            </div>\n' +
+                        '                            <div class="row">\n' +
+                        '                                <div class="col-xs-12 col-right">\n' +
+                        '                                        <p class="text-style">' + message.data.message.content + '</p>\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                        </div>').append("<div id='hash'></div>")
+                    scroll();
+                } else if (message.data.type === 2) {//状态改变
+                    $('#status').html('已结束');
+                    $('#send').unbind('click');
+                    $('#img').unbind('click');
+                    $('#idEdit').attr('disabled', true);
+                } else if (message.data.type === 3) {//比分修改
+
+                }
+
+            }
+        }
+        socket.onclose = function (ev) {
+            msg('连接关闭');
+            $('#status').html('连接关闭');
+        }
+        socket.onerror = function (ev) {
+            msg('连接中断，刷新重连')
+            $('#status').html('连接中断');
+        }
+    }
+
+    function getSch() {
+        var regex = new RegExp('live/([1-9]+[0-9]*)/');
+        return parseInt(regex.exec(location.pathname)[1]);
+    }
+
+})
+
+
+function getRootPath() {
+    var src = document.getElementsByTagName('script')[0].src;
+    // console.log(location.host);
+    // console.log(location.hostname);
+    // console.log(location.pathname);
+    var regex = new RegExp(location.host + '/(.*)resources');
+    console.log(regex.exec(src))
+    var result = (regex.exec(src));
+    if (result.length > 1)
+        return result[1];
+    else {
+        return ""
+    }
+    ;
+}

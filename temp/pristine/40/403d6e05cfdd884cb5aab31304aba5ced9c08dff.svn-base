@@ -1,0 +1,18 @@
+package cn.nsu.edu.web.four.services.team;
+
+import cn.nsu.edu.web.four.beans.teams.Team;
+
+import java.util.Date;
+
+public interface OperateInfoService {
+
+    public  void  updatePlayer (int id_team,int id_player,int status,Date time) ;
+
+    public void  updateCoach (int id_team,int id_coach,int status,Date time) ;
+
+    public  void  retireTeam (int id_team,int status,Date retire_time) ;
+
+    public  void  upDateTeamInfo(Team team) ;
+
+
+}

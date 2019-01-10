@@ -1,0 +1,29 @@
+/**
+ * @author :mengyixin
+ * @Description:
+ *  2018/3/23
+ */
+package cn.nsu.edu.web.four.services.referee;
+
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+import cn.nsu.edu.web.four.daos.jdbc.schedule.ModifyScore;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ModifyscoreService {
+
+    @Autowired
+    public ModifyScore modify;
+
+    public void modifyScore(Schedule schedule){
+        try {
+            modify.modifyScore(schedule);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+}

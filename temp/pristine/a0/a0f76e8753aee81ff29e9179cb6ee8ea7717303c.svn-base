@@ -1,0 +1,38 @@
+/* 修改比分 */
+.panel-distance{
+	margin-top: 15px;
+}
+.spinner.input-group .input-group-addon a.spin-up,.spinner.input-group .input-group-addon a.spin-down{
+	font-size:20px;
+	overflow:hidden;
+	text-align:center;
+	text-decoration:none;
+	position:relative;
+	color:#999;
+}
+.spinner.input-group .input-group-addon a.spin-up .icon-sort-down,.spinner.input-group .input-group-addon a.spin-down .icon-sort-down{
+	position:relative;
+	top:-6px;
+}
+.spinner.input-group .input-group-addon a.spin-up:hover,.spinner.input-group .input-group-addon a.spin-down:hover{color:#555}.spinner.input-group input{text-align:center}.spinner.input-group.input-group-lg .input-group-addon a.spin-up,.spinner.input-group.input-group-lg .input-group-addon a.spin-down{
+	font-size:16px;
+	height:12px;
+}
+.spinner.input-group.input-group-sm .input-group-addon a.spin-up,.spinner.input-group.input-group-sm .input-group-addon a.spin-down{
+	font-size:12px;
+	height:9px;
+}
+.col-center{
+	font-size: 25px;
+}
+.fa{
+	margin-right: 8px;
+}
+.btn-distance{
+	margin-bottom: 100px;
+}
+/* 常规赛比分*/
+[class *= col-]{
+	padding-right: 0px;
+	padding-left: 0px;	  
+}

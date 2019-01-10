@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.team.PlayerMapper">
+    <resultMap id="BaseResultMap" type="cn.nsu.edu.web.four.beans.player.Player" >
+        <id column="id_player" property="idPlayer" />
+        <result column="org_id" property="orgId"  />
+        <result column="name" property="name" />
+        <result column="password" property="password" />
+        <result column="grade" property="grade"  />
+        <result column="classes" property="classes" />
+        <result column="headpic" property="headPic" />
+        <result column="status" property="status" />
+        <result column="salt" property="salt" />
+        <result column="sex" property="sex" />
+        <result column="idcard" property="idCard" />
+    </resultMap>
+
+    <select id="selectPlayerByIds" resultMap="BaseResultMap">
+        select
+        name,id_player,sex,idcard,headpic,classes
+        from Player
+        where id_player in
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+
+    <select id="selectPlayersByconditions" resultMap="BaseResultMap" >
+
+        select
+        name,id_player,sex,idcard,headpic,classes
+        from Player
+        where 1=1
+        <if test="grade != null and grade!=''">
+            AND  grade=#{grade}
+        </if>
+        <if test="classes!=null and classes!=''">
+            AND classes = #{classes}
+        </if>
+        <if test="name != null and name!=''">
+            AND name LIKE  CONCAT('%',#{name},'%')
+        </if>
+        <if test="orgId != null and orgId != ''">
+            AND org_id = #{orgId}
+        </if>
+
+
+    </select>
+
+    <select id="selectPlayerById" resultMap="BaseResultMap" parameterType="Integer" >
+        select
+        name,id_player,sex,idcard,headpic,classes
+        from Player
+        where id_player=#{idPlayer}
+    </select>
+
+
+    <select id="selectCountsByCondition" resultType="Integer">
+            select
+            count(*)
+            from Player
+                where 1=1
+                <if test="grade != null and grade!=''">
+                    AND  grade=#{grade}
+                </if>
+                <if test="classes!=null and classes!=''">
+                    AND classes = #{classes}
+                </if>
+                <if test="name != null and name!=''">
+                    AND name LIKE  CONCAT('%',#{name},'%')
+                </if>
+    </select>
+
+    <select id="selectPlayerByPage" resultMap="BaseResultMap" >
+        select
+        name,id_player,sex,idcard,headpic,classes
+        from Player
+        where 1=1
+        <if test="grade != null and grade!=''">
+            AND  grade=#{grade}
+        </if>
+        <if test="classes!=null and classes!=''">
+            AND classes = #{classes}
+        </if>
+        <if test="name != null and name!=''">
+            AND name LIKE  CONCAT('%',#{name},'%')
+        </if>
+        LIMIT #{startRow},#{pageSize}
+    </select>
+</mapper>

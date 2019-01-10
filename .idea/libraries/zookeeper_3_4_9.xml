@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="zookeeper-3.4.9">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/apache/zookeeper/zookeeper/3.4.9/zookeeper-3.4.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

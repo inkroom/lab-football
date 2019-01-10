@@ -1,0 +1,112 @@
+package cn.nsu.edu.web.four.daos.jdbc.team;
+
+import cn.nsu.edu.web.four.beans.coach.Coach;
+import cn.nsu.edu.web.four.beans.player.Player;
+
+import java.util.Date;
+import java.util.List;
+
+import cn.nsu.edu.web.four.beans.teams.Team;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
+
+/**
+ * @author :孙帅
+ * @Description: 信息查询的dao
+ * @date :16:33 2018/3/16
+ */
+
+public interface FindInfoDao {
+
+    /**
+     * 根据id_org查询所有的球员
+     */
+
+    public List<Player> findSameOrgAllPlayer(@Param("id_org") int id_org,
+                                             @Param("status") int status
+                                             ) throws  Exception;
+
+    /**
+     * 根据id_org查询所有的教练
+     */
+    public  List<Coach> findSameOrgAllCoach(@Param("id_org") int org_id,
+                                            @Param("status") int status
+                                            ) throws  Exception;
+
+
+    /**
+     * 根据id_org查询所有的team
+     */
+
+    public List<Team> findSameOrgAllTeam(@Param("id_org") int org_id,
+                                         @Param("status") int status
+                                        ) throws  Exception;
+
+    /**
+     *根据id_team查询team具体信息
+     */
+
+    public Team findTeamInfo(@Param("id_team")int id_team) throws  Exception;
+
+
+
+    //球队教练信息查询
+
+    /**
+     *查询教练队伍信息返回球队id
+     * 映射表
+     */
+
+    public int findTeamByCoachid(@Param("id_coach") int id_coach,
+                                  @Param("status") int status) throws  Exception;
+
+    /**
+     *查询教练队伍信息,返回join时间
+     *
+     */
+
+    public Date findCoachJoinTeamTime(@Param("id_coach") int id_coach,
+                                       @Param("status") int status) throws  Exception;
+
+    /**
+     *查询教练队伍信息，返回outTeam时间
+     *
+     */
+
+    public Date findCoachOutTeamTime(@Param("id_coach") int id_coach,
+                                      @Param("status") int status) throws  Exception;
+
+
+
+
+
+    //球队球员信息查询
+
+
+
+    /**
+     *查询球员队伍信息返回球队id
+     *
+     */
+
+    public int findTeamByPlayerid(@Param("id_player") int id_player,
+                                  @Param("status") int status) throws  Exception;
+
+    /**
+     *查询球员队伍信息,返回join时间
+     *
+     */
+
+    public Date findPlayerJoinTeamTime(@Param("id_player") int id_player,
+                                       @Param("status") int status) throws  Exception;
+
+    /**
+     *查询球员队伍信息返回out时间
+     *
+     */
+
+    public Date findPlayerOutTeamTime(@Param("id_player") int id_player,
+                                      @Param("status") int status) throws  Exception;
+
+
+}

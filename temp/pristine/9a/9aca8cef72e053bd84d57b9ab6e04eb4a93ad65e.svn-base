@@ -1,0 +1,18 @@
+
+登录、登录、获取信息均使用 cn.nsu.edu.web.four.utils.four.RequestUtil 里的对应方法
+
+返回json数据，Controller方法返回值使用 cn.nsu.edu.web.four.dto.ctv.MessageDto
+    使用cn.nsu.edu.web.four.enums.Result 来注明处理结果，对应已有枚举不合适的，自行添加类型
+
+
+加密使用 cn.nsu.edu.web.four.utils.encrypt 包里的类，AES为可逆加密，md5为不可逆加密
+
+dao 层sql语句统一使用xml文件，不使用注解
+
+多次使用的常量，在 BaseStatic 类中声明为静态常量，直接引用静态常量
+
+
+使用  cn.nsu.edu.web.four.annotation.Security 注解来声明 url 权限，对应敏感数据的操作、如删除等，需要使用 token 属性
+    前台传参 name值为 token
+
+    2018-3-16 09:34 更新

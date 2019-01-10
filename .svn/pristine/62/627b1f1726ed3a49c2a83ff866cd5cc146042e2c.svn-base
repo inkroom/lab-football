@@ -1,0 +1,40 @@
+package cn.nsu.edu.web.four.daos.jdbc.match;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+import cn.nsu.edu.web.four.beans.match.MatchPlayer;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Map;
+
+public interface MatchDao {
+    int deleteById(Integer idMatch) throws Exception;
+
+    int insert(Match record) throws Exception;
+
+    int insertSelective(Match record) throws Exception;
+
+    Match selectById(Integer idMatch) throws Exception;
+
+    int updateByIdSelective(Match record) throws Exception;
+
+    int updateById(Match record) throws Exception;
+
+    List<Match> selectByIdWithOrg(int orgId);
+
+    List<Match> selectByStaff(int orgId);
+
+    List<Match> selectByStaffOther(int orgId);
+
+    List<MatchPlayer> selectPlayerByOrgId(int orgId);
+
+    List<Map<String,Object>> listTeamIdByorgId(int orgId);
+
+    void insertPlayer(List<MatchPlayer> list);
+
+    List<MatchPlayer> selectOrgNameAndTeamName(int matchId);
+
+    void updateStatus(int orgId);
+
+    void insertMatch(Match match);
+}

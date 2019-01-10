@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.player.PlayerDao">
+
+    <!--通过主键id查询单个球员信息-->
+    <select id="selectPlayerById" parameterType="Integer" resultType="cn.nsu.edu.web.four.beans.player.Player" >
+        select * from Player where id_player=#{idPlayer,jdbcType=BIGINT}
+    </select>
+
+    <!--通过用户名查询单个球员信息-->
+    <select id="selectPlayerByUserName" parameterType="String" resultType="cn.nsu.edu.web.four.beans.player.Player" >
+        select * from Player where username=#{userName,jdbcType=VARCHAR}
+    </select>
+
+    <!--查询单条未删除的球员-->
+    <select id="selectPlayerByIdStatus" parameterType="java.lang.Integer" resultType="cn.nsu.edu.web.four.beans.player.Player">
+        select * from Player  where id_player=#{idPlayer,jdbcType=INTEGER} AND status=#{status,jdbcType=INTEGER}
+    </select>
+
+    <!--查询机构名称-->
+    <select id="selectOrgNameById" parameterType="java.lang.Integer" resultType="String">
+        select o.`name` from Player p LEFT JOIN Organization o on p.org_id=o.id_org where p.id_player=#{idPlayer,jdbcType=INTEGER}
+    </select>
+
+    <!--查询身份证号是否占用-->
+    <select id="selectPlayerByIdCard" parameterType="String" resultType="String">
+        select  idcard from Player  where idcard=#{idCard,jdbcType=VARCHAR}
+    </select>
+
+    <resultMap id="TeamName" type="java.lang.String">
+        <result column="name" property="name" jdbcType="VARCHAR" />
+    </resultMap>
+    <!--查询球队名称-->
+    <select id="selectTeamNameById" parameterType="java.lang.Integer" resultMap="TeamName">
+        select t.`name` from M_Team_Player m LEFT JOIN Team t on m.team_id=t.id_team where m.player_id=#{playerId,jdbcType=INTEGER}
+    </select>
+
+    <!--更新单个球员信息-->
+    <update id="updatePlayerById" parameterType="cn.nsu.edu.web.four.beans.player.Player">
+        update Player
+        <set>
+            <if test="orgId != null" >
+                org_id=#{orgId},
+            </if>
+            <if test="userName != null" >
+                username=#{userName},
+            </if>
+            <if test="name != null" >
+                name=#{name},
+            </if>
+            <if test="password != null" >
+                password=#{password},
+            </if>
+            <if test="grade != null" >
+                grade=#{grade},
+            </if>
+            <if test="classes != null" >
+                classes=#{classes},
+            </if>
+            <if test="headPic != null" >
+                headpic=#{headPic},
+            </if>
+            <if test="sex != null" >
+                sex=#{sex},
+            </if>
+            <if test="idCard != null" >
+                idcard=#{idCard},
+            </if>
+            <if test="salt != null" >
+                salt=#{salt},
+            </if>
+        </set>
+        where id_player = #{idPlayer,jdbcType=BIGINT}
+    </update>
+
+    <!--删除单个球员信息：只是设置状态为已删除-->
+    <update id="addStateById" >
+        update Player set status=#{status}  where id_player=#{idPlayer,jdbcType=BIGINT}
+    </update>
+
+    <!--添加球员头像路径-->
+    <update id="updatePlayerImageById" >
+        update Player set headpic=#{headPic,jdbcType=VARCHAR}  where id_player=#{idPlayer,jdbcType=BIGINT}
+    </update>
+
+    <!--添加球员信息：注册使用-->
+    <insert id="insertPlayer" parameterType="cn.nsu.edu.web.four.beans.player.Player" >
+        insert into Player
+         (org_id,username, `name`,
+          password, grade, classes,
+          headpic, salt, status,
+          score, sex,idcard)
+        values ( #{orgId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+          #{password,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, #{classes,jdbcType=INTEGER},
+          #{headPic,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+          #{score,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR},#{idCard,jdbcType=VARCHAR})
+  </insert>
+    <!--<insert id="insertPlayer" parameterType="cn.nsu.edu.web.four.beans.player.Player" >-->
+        <!--insert into Player-->
+        <!--<trim prefix="(" suffix=")" suffixOverrides="," >-->
+            <!--<if test='orgId != null and orgId != "" '>-->
+                <!--org_id,-->
+            <!--</if>-->
+            <!--<if test='userName != null and userName != "" '>-->
+                <!--username,-->
+            <!--</if>-->
+            <!--<if test='name != null and name != "" '>-->
+                <!--`name`,-->
+            <!--</if>-->
+            <!--<if test='password != null and password != "" '>-->
+                <!--password,-->
+            <!--</if>-->
+            <!--<if test='grade != null and grade != "" '>-->
+                <!--grade,-->
+            <!--</if>-->
+            <!--<if test='classes != null and classes != "" '>-->
+                <!--classes,-->
+            <!--</if>-->
+            <!--<if test='headPic != null and headPic != "" '>-->
+                <!--headpic,-->
+            <!--</if>-->
+            <!--<if test='salt != null and salt != "" '>-->
+                <!--salt,-->
+            <!--</if>-->
+            <!--<if test='status != null and status != "" '>-->
+                <!--status,-->
+            <!--</if>-->
+            <!--<if test='score != null and score != "" '>-->
+                <!--score,-->
+            <!--</if>-->
+            <!--<if test='sex != null and sex != "" '>-->
+                <!--sex,-->
+            <!--</if>-->
+            <!--<if test='idCard != null and idCard != "" '>-->
+                <!--idcard,-->
+            <!--</if>-->
+        <!--</trim>-->
+        <!--<trim prefix="(" suffix=")" suffixOverrides="," >-->
+            <!--<if test='orgId != null and orgId != "" '>-->
+                <!--#{orgId,jdbcType=INTEGER},-->
+            <!--</if>-->
+            <!--<if test='userName != null and userName != "" '>-->
+                <!--#{userName,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test='name != null and name != "" '>-->
+                <!--#{name,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test='password != null and password != "" '>-->
+                <!--#{password,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test='grade != null and grade != "" '>-->
+                <!--#{grade,jdbcType=INTEGER},-->
+            <!--</if>-->
+            <!--<if test='classes != null and classes != "" '>-->
+                <!--#{classes,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test='headPic != null and headPic != "" '>-->
+                <!--#{headPic,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test='salt != null and salt != "" '>-->
+                <!--#{salt,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test='status != null and status != "" '>-->
+                <!--#{status,jdbcType=INTEGER},-->
+            <!--</if>-->
+            <!--<if test='score != null and score != "" '>-->
+                <!--#{score,jdbcType=INTEGER},-->
+            <!--</if>-->
+            <!--<if test='sex != null and sex != "" '>-->
+                <!--#{sex,jdbcType=VARCHAR},-->
+            <!--</if>-->
+            <!--<if test='idCard != null and idCard != "" '>-->
+                <!--#{idCard,jdbcType=VARCHAR},-->
+            <!--</if>-->
+        <!--</trim>-->
+    <!--</insert>-->
+</mapper>

@@ -1,0 +1,352 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教练信息</title>
+    <link rel="stylesheet" type="text/css"
+          href="${path}/resources/lib/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/style.1.0.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="${path}/resources/css/coach/coach_info.css"/>
+    <link href="${path}/resources/lib/layer/default/layer.css"/>
+
+
+</head>
+
+<body>
+<nav class="nav-bg navbar">
+    <div class="container">
+        <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+            <img src="${path}/resources/img/coach/logo足球项目组.png"/>
+            <span>四川省青少年校园足球信息网</span>
+        </div>
+        <div class="nav-b hidden-lg hidden-md col-sm-1 hidden-xs">
+            <button type="button" class="btn">菜单</button>
+        </div>
+        <div class="nav-w col-lg-8 col-md-7 hidden-sm hidden-xs">
+            <ul>
+                <li>
+                    <a href="#">赛事赛程</a>
+                </li>
+                <li>
+                    <a href="#">教练管理</a>
+                </li>
+                <li>
+                    <a href="#">球员管理</a>
+                </li>
+                <li>
+                    <a href="#">球队管理</a>
+                </li>
+                <li>
+                    <a href="#">个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="coach-table" id="div1">
+    <table class="table table-bordered text-center table-striped class" style="word-break:break-all;">
+        <caption></caption>
+        <thead>
+        <tr>
+            <th colspan="7">
+                <a href="/coach/getAllCoach/${coach.orgId}&0">
+                    <button type="button" class="btn btn-default pull-left">返回</button>
+                </a>
+                <button type="button" class="btn btn-success pull-right" style="display: none;" onclick="bt1()">保存
+                </button>
+                <button type="button" class="btn btn-primary pull-right" onclick="ch()">编辑</button>
+                <button type="button" class="btn btn-primary pull-right" onclick="coachStatus()">就职</button>
+                <button type="button" class="btn btn-danger pull-right" onclick="coachStatus()">离职</button>
+            </th>
+        </tr>
+        </thead>
+        <tbody var="coach" items="${coach}">
+        <tr>
+            <c:if test="${coach.photo==null}">
+                <td rowspan="3" style="width:160px"><img src="${path}/resources/img/coach/nofile.png" style=" width: 120px;height: 140px;"></td>
+            </c:if>
+            <c:if test="${coach.photo!=null}">
+                <fmt:bundle basename="properties.upload">
+                    <td rowspan="3" style="width:160px" id="photo"><img src="${path}+'/'+ <fmt:message key="upload.image.url.prefix"/>+'/'+${coach.photo}" style=" width: 120px;height: 140px;"></td>
+                </fmt:bundle>
+            </c:if>
+            <%--<fmt:bundle basename="properties.upload">--%>
+            <%--<td rowspan="3" id="photo"><img src="${path}+'/'+ <fmt:message key="upload.image.url.prefix"/>+'/'+${upload(coach.photo)}" style="width: 100px;"></td>--%>
+            <%--</fmt:bundle>--%>
+            <%--<td><img src="${path}/resources/img/coach/1.jpg"></td>--%>
+            <td>姓名</td>
+            <td class="div2">${coach.name}</td>
+            <td>身份证号</td>
+            <td colspan="3" class="div2">${coach.idcard}</td>
+
+        </tr>
+        <tr>
+            <td>性别</td>
+            <c:if test="${coach.status==1}">
+                <td id="sex" class="div2">男</td>
+            </c:if>
+            <c:if test="${coach.status==0}">
+                <td id="sex" class="div2">女</td>
+            </c:if>
+            <td>年龄</td>
+            <td class="div2">${coach.age}</td>
+            <td>是否就职</td>
+            <c:if test="${coach.status==0}">
+                <td class="div2">是</td>
+            </c:if>
+            <c:if test="${coach.status==1}">
+                <td class="div2">否</td>
+            </c:if>
+        </tr>
+        <form id="form">
+            <tr>
+                <td>积分</td>
+                <td>${coach.score}</td>
+                <td>手机号码</td>
+                <td class="div2"><input type="text" readOnly="" id="inputPhone" name="phone" value="${coach.phone}"></td>
+                <input type="hidden" readOnly="" id="Idcoach" name="idCoach" value="${coach.idCoach}">
+                <td>编号</td>
+                <td class="div2">${coach.idCoach}</td>
+            </tr>
+        </form>
+
+
+        <%--<tr>--%>
+            <%--<td rowspan="5">积分榜</td>--%>
+            <%--<td>校级(分)</td>--%>
+            <%--<td>0</td>--%>
+            <%--<td>胜场</td>--%>
+            <%--<td>0</td>--%>
+            <%--<td>败场</td>--%>
+            <%--<td>0</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>县级(分)</td>--%>
+            <%--<td>0</td>--%>
+            <%--<td>胜场</td>--%>
+            <%--<td>0</td>--%>
+            <%--<td>败场</td>--%>
+            <%--<td>0</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>市级(分)</td>--%>
+            <%--<td>0</td>--%>
+            <%--<td>胜场</td>--%>
+            <%--<td>0</td>--%>
+            <%--<td>败场</td>--%>
+            <%--<td>0</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>省级(分)</td>--%>
+            <%--<td>0</td>--%>
+            <%--<td>胜场</td>--%>
+            <%--<td>0</td>--%>
+            <%--<td>败场</td>--%>
+            <%--<td>0</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>其他(分)</td>--%>
+            <%--<td>0</td>--%>
+            <%--<td>胜场</td>--%>
+            <%--<td>0</td>--%>
+            <%--<td>败场</td>--%>
+            <%--<td>0</td>--%>
+        <%--</tr>--%>
+
+
+        </tbody>
+    </table>
+
+    <table class="table table-bordered text-center table-striped class" id="trnum">
+        <tbody>
+        <tr>
+            <td colspan="7"><h4>工作经历</h4></td>
+        </tr>
+        <tr>
+            <td>球队名称</td>
+            <td>球队编号</td>
+            <td>球队类型</td>
+            <td>入队时间</td>
+            <td>离队时间</td>
+
+        </tr>
+
+        <c:forEach var="ct" items="${coachTeam}">
+            <tr>
+                <td>${ct.teamName}</td>
+                <td>${ct.teamId}</td>
+                <td class="tnum">${ct.type}</td>
+                <td>${ct.joinTime}</td>
+                <td>${ct.outTime}</td>
+            </tr>
+        </c:forEach>
+
+
+        <form id="form2">
+            <input type="hidden" id="inputIdCoach" placeholder="" name="idCoach" value="${coach.idCoach}">
+        </form>
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="${path}/resources/lib/jquery/jquery-1.11.3.js"></script>
+<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+<script src="${path}/resources/lib/layer/layer.js"></script>
+<script>
+    var p = document.getElementById("div1").getElementsByClassName("div2")
+    var bt = document.getElementById("div1").getElementsByTagName("button")
+    //		var p = document.getElementById("div1").getElementsByTagName("td")
+    var ipt = document.getElementById("div1").getElementsByTagName("input")
+    var myreg=/^[1][3,4,5,6,7,8,9][3,4,5,6,7,8,9][0-9]{8}$/;
+    var check = 1;
+
+    function bt1() {
+        ch();
+        checkn();
+
+    }
+
+
+    function ch() {
+//				编辑样式
+        if (check == 1) {
+            for (var i = 0; i < p.length; i++) {
+                bt[2].style.display = "none";
+                bt[1].style.display = "";
+                for (var x = 0; x < ipt.length; x++) {
+                    ipt[x].readOnly = false;
+                    ipt[x].setAttribute("class", "form-control");
+                    ipt[x].style.background = "white";
+
+
+                }
+
+                check = 0;
+            }
+        } else {
+            for (var i = 0; i < p.length; i++) {
+                bt[1].style.display = "none";
+                bt[2].style.display = "";
+                //p[i].style.color="black";
+                for (var x = 0; x < ipt.length; x++) {
+                    ipt[x].readOnly = true;
+                    ipt[x].setAttribute("class", "");
+                    ipt[x].style.background = "#F9F9F9";
+
+                }
+                check = 1;
+            }
+        }
+
+    }
+
+
+    <%--${path}--%>
+
+    var phone = document.getElementById("inputPhone");
+    var phonen = phone.value;
+    alert(phonen);
+    function checkn() {
+        if (!myreg.test(phone.value)) {
+            layer.alert('手机号码不正确');
+            phone.value=phonen;
+            return false;
+        }else {
+            updateCoach()
+        }
+
+    }
+    function updateCoach() {
+        $.ajax({
+            url: "/coach/updateCoach",
+            type: "POST",
+            data: $('#form').serialize(),
+            // dataType: "json",
+            success: function (data) {
+                if (data === 0) {
+                    layer.msg('修改成功')
+                } else {
+                    layer.msg('修改失败')
+                }
+            },
+            error: function () {
+                layer.msg('网络错误');
+            }
+        });
+        location.reload();
+        <%--<fmt:bundle basename="properties.upload">--%>
+        <%--${path}+'/'+ <fmt:message key="upload.image.url.prefix"/>+'/'+upload()--%>
+        <%--</fmt:bundle>--%>
+    }
+
+    function coachStatus() {
+        $.ajax({
+            url: "/coach/coachStatus",
+            type: "POST",
+            data: $('#form2').serialize(),
+            // dataType: "json",
+            success: function (data) {
+                if (data == 0) {
+                    layer.msg('修改成功')
+                } else {
+                    layer.msg('修改失败')
+                }
+            },
+            error: function () {
+                layer.msg('网络错误');
+            }
+
+        });
+        setTimeout("rel()","3000");
+
+
+    }
+    function rel(){
+        location.reload();
+    }
+
+</script>
+<script>
+    (function () {
+        /*就职*/
+        if (${coach.status==1}) {
+            bt[4].style.display = "none";
+            bt[3].style.display = "";
+        } else {
+            bt[3].style.display = "none";
+            bt[4].style.display = "";
+        }
+    }());
+
+
+</script>
+<script>
+    (function () {
+        num = document.getElementById("trnum").getElementsByClassName("tnum");
+        // lv = document.getElementById("trlv").getElementsByClassName("tlv");
+        for (var x = 0; x < num.length; x++) {
+            if (0<num[x].innerText&&num[x].innerText<7) {
+                num[x].innerHTML = "小学球队";
+            } else if (6<num[x].innerText&&num[x].innerText<10) {
+                num[x].innerHTML = "初中球队";
+            } else if (num[x].innerText == 10) {
+                num[x].innerHTML = "年级球队";
+            } else {
+                num[x].innerHTML = "校级球队";
+            }
+        }
+
+    })();
+
+</script>
+
+
+</html>

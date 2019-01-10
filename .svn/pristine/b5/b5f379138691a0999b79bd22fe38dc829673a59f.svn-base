@@ -1,0 +1,337 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>个人中心</title>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/lib/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/player/innerupdate.css" />
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/common/style.css" />
+</head>
+<body>
+<jsp:include page="../common/head.jsp"/>
+
+<div class="wrapper">
+    <div class="top_">
+        <h2>球员信息</h2>
+    </div>
+    <div class="box">
+        <div class="img_">
+            <img src="${path}/resources/img/player/upimg.png" />
+            <label for="file_">上传头像</label>
+            <input type="file" id="file_" onchange="handleFiles(this.files,this.parentNode)">
+        </div>
+        <div class="mess">
+            <h2>基本信息</h2>
+            <a href="javascript:void(0)" id="change" onclick="toEdit();return false;"  data-toggle="modal" data-target="#myModal" >修改信息</a>
+        </div>
+        <div class="main">
+            <div class="lef">
+                <p>用户名:</p>
+                <p>姓名:</p>
+                <p>身份证号:</p>
+                <p>性别:</p>
+                <p>学校:</p>
+                <p>年级:</p>
+                <p>班级:</p>
+                <p>球队:</p>
+            </div>
+            <div class="rig">
+                <p>${item.userName }</p>
+                <p>${item.name }</p>
+                <p>${item.idCard }</p>
+                <p>
+                    <c:if test="${item.sex==0}">男</c:if>
+                    <c:if test="${item.sex==1}">女</c:if>
+                </p>
+                <p>${orgname }</p>
+                <p>${item.grade }</p>
+                <p>${item.classes }</p>
+                <p>
+                    <c:if test="${empty teamName}">
+                        没有
+                    </c:if>
+                    <c:if test="${!empty teamName}">
+                        <c:forEach var="teamname" items="${teamName}">${teamname} </c:forEach>
+                    </c:if>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div><!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">球员信息修改</h4>
+            </div>
+            <div class="modal-body" style="padding:0;">
+                <div class="wrapper1">
+
+                    <form class="form-horizontal">
+
+                        <div class="main">
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="name">姓名</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="name" class="form-control" placeholder="姓名" value="${item.name}" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-sm-offset-3 col-sm-10">
+                                    <label for="boy" class="sex">男</label>
+                                    <input type="radio" id="boy" class="sex1" value="0" name="sex" <c:if test="${item.sex eq '0'}" >checked="checked"</c:if>>
+                                    <label for="girl" class="sex">女</label>
+                                    <input type="radio" id="girl" class="sex1" value="1" name="sex" <c:if test="${item.sex eq '1'}" >checked="checked"</c:if>>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="idcard" >身份证号</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="idcard" class="form-control" placeholder="身份证号" maxlength="18" value="${item.idCard}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="password1">原密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" id="password1" placeholder="原密码" maxlength="20" class="form-control">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="newPassword">新密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" id="newPassword" placeholder="新密码" maxlength="20" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="grade">班级信息</label>
+                                <div class="col-sm-9">
+                                    <select id="grade">
+                                        <option value="1">1年级</option>
+                                        <option value="2">2年级</option>
+                                        <option value="3">3年级</option>
+                                        <option value="4">4年级</option>
+                                        <option value="5">5年级</option>
+                                        <option value="6">6年级</option>
+                                        <option value="7">7年级</option>
+                                        <option value="8">8年级</option>
+                                        <option value="9">9年级</option>
+                                    </select>
+                                    <input type="text" id="classes" placeholder="班" class="form-control" value="${item.classes}">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <input type="hidden" id="token" value="${token}">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" >关闭</button>
+                <button type="button" class="btn btn-success" id="btn_" onclick="reg();return false;">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${path}/resources/lib/jquery/jquery-3.1.1.min.js"></script>
+<script src="${path}/resources/lib/bootstrap/bootstrap.min.js"></script>
+<script src="${path}/resources/lib/jquery/jquery-1.11.3.js"></script>
+<script src="${path}/resources/lib/bootstrap/bootstrap.min.js"></script>
+<script src="${path}/resources/js/player/District.js"></script>
+<script src="${path}/resources/lib/layer/layer.js"></script>
+<script src="${path}/resources/js/index.js"></script>
+
+<script>
+    var wra = $(".wrapper1");
+    var wr = $(".wrapper");
+    var ch = $("#change");
+    var btn = $("#btn_");
+    var bt = $("#bt");
+    var timer;
+
+    var inputPassword_ = $("#idcard"),
+        name = $("#name"),
+        newPassword_ = $("#newPassword"),
+        oCity = $("#city"),
+        oSchool = $("#school"),
+        oArea = $("#city"),
+        grade_ = $("#grade_"),
+        inputPasswordA = $("#inputPassword_"),
+        btn_ = $("#btn_"),
+        sex = $("#xb"),
+        oRadio = document.getElementsByName("gender"),
+        nan = $("#nan"),
+        nv = $("nv"),
+        btn_ = $("#btn_");
+
+    function handleFiles(file, obj) {
+        //获取当前点击的元素的所有同级元素的html内容
+        var con = obj.innerHTML;
+        //判断当前点击元素内是否已经存在img图片元素，如果有则先全部清除后再添加，如果没有就直接添加
+        if (con.indexOf("img") > 0) {
+            var pic = obj.getElementsByTagName("img");
+            for (var i = 0; i < pic.length; i++) {
+                obj.removeChild(pic[i]);
+            }
+            //调用添加img图片的函数
+            creatImg();
+        } else {
+            creatImg();
+        }
+
+        function creatImg() {
+            //创建一个img元素
+            var img = document.createElement("img");
+            //设置img元素的源文件路径，window.URL.createObjectURL() 方法会根据传入的参数创建一个指向该参数对象的URL. 这个URL的生命仅存在于它被创建的这个文档里
+            img.src = window.URL.createObjectURL(file[0]);
+            //window.URL.revokeObjectURL() 释放一个通过URL.createObjectURL()创建的对象URL，在图片被显示出来后，我们就不再需要再次使用这个URL了，因此必须要在加载后释放它
+            img.onload = function() {
+                window.URL.revokeObjectURL(this.src);
+            }
+            //在当前点击的input元素后添加刚刚创建的img图片元素
+            obj.appendChild(img);
+        }
+    }
+
+    function reg(){
+        if (this.checkInput()){
+            doSubmit();
+        }
+    }
+    function checkInput(){
+        /*数字*/
+        var reg = /[1-9]+[0-9]*/;
+        /*中文*/
+        var reg1 = /^[\u4E00-\u9FA5]*$/;
+        /*正则-数字字母*/
+        var reg2 = /^[0-9a-zA-Z]+$/;
+        /*身份证号*/
+        var reg3 = /^[1-9][0-9]{5}(19[0-9]{2}|200[0-9]|2010)(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[0-9]{3}[0-9xX]$/;
+
+        var name=$("#name").val();
+        var sex = $("input[name='sex']:checked").val();
+        var idcard=$("#idcard").val();
+        var city=$("#city").val();
+        var oldpassword=$("#password1").val();
+        var newpassword=$("#newPassword").val();
+        var classes=$("#classes").val();
+        var grade=$("#grade").val();
+
+
+        if(name==""){
+            layer.msg("姓名不能为空");
+            return false;
+        }
+        else if(!reg1.test(name)){
+            layer.msg("姓名不是中文");
+            return false;
+        }
+        else if(sex != 1&& sex != 0){
+            layer.msg("没有选择性别");
+            return false;
+        }
+        else if(idcard==""){
+            layer.msg("身份证号不能为空");
+            return false;
+        }
+        else if(idcard.length<18){
+            layer.msg("身份证号位数不足18位");
+            return false;
+        }
+        else if(!reg3.test(idcard)){
+            layer.msg("身份证号格式错误");
+            return false;
+        }
+        else if(oldpassword==""){
+            layer.msg("原密码不能为空");
+            return false;
+        }
+        else if(!reg2.test(oldpassword)){
+            layer.msg("密码格式错误");
+            return false;
+        }
+        else if(oldpassword.length<6){
+            layer.msg("密码位数不足");
+            return false;
+        }
+        else if(newpassword==""){
+            layer.msg("新密码不能为空");
+            return false;
+        }
+        else if(newpassword.length<6){
+            layer.msg("密码位数不足");
+            return false;
+        }
+        else if(!reg2.test(newpassword)){
+            layer.msg("新密码有非法字符");
+            return false;
+        }
+        else if(city==""){
+            layer.msg("市下拉框没有选择");
+            return false;
+        }
+        else if(grade==""){
+            layer.msg("年级不能为空");
+            return false;
+        }
+        else if(!reg.test(grade)){
+            layer.msg("年级格式错误");
+            return false;
+        }
+        else if(classes==""){
+            layer.msg("班级不能为空");
+            return false;
+        }
+        else if(!reg.test(classes)){
+            layer.msg("班级格式错误");
+            return false;
+        }
+        return true;
+
+    }
+    function doSubmit() {
+        ajax({
+            type: "POST",   //提交的方法
+            url:"${path}/player/update", //提交的地址
+            data:{
+                name:$("#name").val(),
+                sex:$("input[name='sex']:checked").val(),
+                idCard:$("#idcard").val(),
+                password:$("#newPassword").val(),
+                grade:$("#grade").val(),
+                classes:$("#classes").val(),
+                oldPassword:$("#password1").val(),
+                token:$("#token").val()
+
+            },
+            dataType:'json',
+            success: function(data) {  //成功
+                switch(data.status){
+                    case 0:
+                        layer.msg("球员信息更新成功");
+                        setTimeout(function(){
+                            window.location.href="${path}/player/list";
+                        },1000);
+                        break;
+                    case 6:
+                        layer.msg("参数错误");
+                        break;
+                }
+            },
+            error:function(){
+                layer.msg("请求异常");
+            }
+
+        });
+    }
+</script>
+
+</body>
+</html>

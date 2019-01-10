@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.referee.RefereeDao">
+
+  <resultMap id="BaseResultMap" type="cn.nsu.edu.web.four.beans.schedule.Schedule">
+    <id column="id_schedule" property="idSchedule" jdbcType="INTEGER"/>
+    <result column="team_A" property="teamA" jdbcType="INTEGER"/>
+    <result column="team_B" property="teamB" jdbcType="INTEGER"/>
+    <result column="goal_A" property="goalA"/>
+    <result column="goal_B" property="goalB"/>
+    <result column="begin_time"  property="beginTime" jdbcType="DATE"/>
+    <result column="place" property="place" jdbcType="VARCHAR"/>
+  </resultMap>
+
+  <resultMap id="Player" type="cn.nsu.edu.web.four.beans.player.Player">
+    <id column="id_player" property="id_player" jdbcType="INTEGER"/>
+    <result column="name" property="name" jdbcType="VARCHAR"/>
+    <result column="headpic" property="headpic" jdbcType="VARCHAR"/>
+    <association property="matchStaff" javaType="cn.nsu.edu.web.four.beans.matchStaff.MatchStaff">
+      <id column="id" property="id" jdbcType="INTEGER"/>
+      <result column="playerId" property="player_id" jdbcType="INTEGER"/>
+    </association>
+  </resultMap>
+
+  <resultMap id="Team" type="cn.nsu.edu.web.four.beans.teams.Team">
+    <id column="id_team" property="id_team" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="getScheduleInformation" parameterType="Integer" resultMap="BaseResultMap">
+    select team_A,team_B,begin_time,place,goal_A,goal_B,status from Schedule
+	where id_schedule=#{scheduleId}
+  </select>
+
+  <select id="getTeamName" parameterType="Integer" resultMap="Team">
+    select name from Team
+    where id_team = #{teamId}
+  </select>
+
+  <select id="getPlayerInformation" parameterType="Integer" resultMap="Player">
+    select name,headpic from Player p
+    join M_Match_Staff m on p.id_player=m.player_id
+    where team_id=#{teamId}
+  </select>
+
+  <insert id="insertPlayerInformation" parameterType="java.util.Map">
+    insert into M_Sch_Staff(player_id,sch_id,team_id,time) VALUES(#{playerId},#{scheduleId},#{teamId},#{time})
+  </insert>
+</mapper>

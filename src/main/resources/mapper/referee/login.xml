@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace需要填写dao层全路径-->
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.referee.LoginDao">
+
+    <select id="selectAccount" statementType="PREPARED" resultType="java.util.HashMap">
+        select id_referee AS  refId, username,password,salt, phone,name,idcard,id_sch AS schId,id_referee AS refId
+        ,isCheck
+        from Referee WHERE username = #{username} AND status = 0;
+    </select>
+</mapper>

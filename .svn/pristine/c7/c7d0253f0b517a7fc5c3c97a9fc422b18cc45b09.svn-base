@@ -1,0 +1,53 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/resources/lib/bootstrap/bootstrap.min.css/"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/match/style.1.0.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/404.css"/>
+</head>
+
+<body>
+<nav class="nav-bg navbar">
+
+    <div class="container">
+        <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+            <img src="${pageContext.request.contextPath}/resources/img/coach/logo足球项目组.png"/>
+            <span>四川省青少年校园足球信息网</span>
+        </div>
+        <div class="nav-b hidden-lg hidden-md col-sm-1 hidden-xs">
+            <button type="button" class="btn">菜单</button>
+        </div>
+        <div class="nav-w col-lg-8 col-md-7 hidden-sm hidden-xs">
+            <ul>
+                <li>
+                    <a href="#">赛事赛程</a>
+                </li>
+                <li>
+                    <a href="#">教练管理</a>
+                </li>
+                <li>
+                    <a href="#">球员管理</a>
+                </li>
+                <li>
+                    <a href="#">球队管理</a>
+                </li>
+                <li>
+                    <a href="#">个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div>
+    <div class="div-404-under">
+        <img src="${pageContext.request.contextPath}/resources/img/common/404.png"/>
+    </div>
+</div>
+
+</body>
+
+</html>

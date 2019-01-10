@@ -1,0 +1,31 @@
+/* 常规赛比分*/
+[class *= col-]{
+	padding-right: 0px;
+	padding-left: 0px;	  
+}
+/*输入框*/
+/*输入框*/
+.input-score{
+	width: 20px;
+	border-bottom: thin solid #000000;
+}
+.input-write{
+	width: 80%;
+	border-bottom: 1px solid #000000;
+}
+/* 表格*/
+.table th, .table td{
+	text-align: center;
+	vertical-align: middle !important;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 0px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}

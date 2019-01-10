@@ -1,0 +1,26 @@
+/*发送验证码*/
+function send(){
+	var count = 60;
+	var countdown = setInterval(CountDown, 1000);
+	function CountDown() {
+	    $("#confim").attr("disabled", true);
+	    $("#confim").val("重新发送(" + count + ")");
+	    if (count == 0) {
+	        $("#confim").val("发送验证码").removeAttr("disabled");
+	        learInterval(countdown);
+	    }
+	    count--;
+	}
+}/*手机验证*/
+function sure(){
+	var num = $('#num').val();
+	var validate = $('#validate').val();
+	if(num=='' || validate==''){
+		console.log("错误");
+		$('#msg').removeClass('invisible');
+	}
+	else{
+		console.log("正确");
+		$('#msg').addClass('invisible');
+	}
+}

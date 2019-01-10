@@ -1,0 +1,49 @@
+package cn.nsu.edu.web.four.beans.match;
+
+import java.util.List;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.beans.match
+ * @date 2018/3/23 13:42
+ * @description
+ **/
+public class MatchExamine {
+    private int orgId;
+    private String orgName;
+    private List<String> teamName;
+
+    public int getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(int orgId) {
+        this.orgId = orgId;
+    }
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
+    public List<String> getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(List<String> teamName) {
+        this.teamName = teamName;
+    }
+
+    @Override
+    public String toString() {
+        return "MatchExamine{" +
+                "orgId=" + orgId +
+                ", orgName='" + orgName + '\'' +
+                ", teamName=" + teamName +
+                '}';
+    }
+}

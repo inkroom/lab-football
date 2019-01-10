@@ -1,0 +1,56 @@
+package cn.nsu.edu.web.four.services.referee.impl;
+
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+import cn.nsu.edu.web.four.daos.jdbc.referee.RefereeDao;
+import cn.nsu.edu.web.four.services.referee.RefereeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@Service
+public class RefereeServiceImpl implements RefereeService {
+
+    @Autowired
+    RefereeDao refereeDao;
+
+    @Override
+    public List getScheduleInfomation(Integer scheduleId) throws Exception {
+        List<Schedule> scheduleInfomation = new ArrayList();
+        try {
+            scheduleInfomation = refereeDao.getScheduleInformation(scheduleId);
+        } catch (Exception e ) {
+            throw new RuntimeException(e);
+        }
+        return  scheduleInfomation;
+    }
+
+    @Override
+    public List<Player> getPlayerInformation(Integer teamId) throws Exception {
+        List<Player> playerInformation = new ArrayList();
+        try {
+                 playerInformation = refereeDao.getPlayerInformation(teamId);
+        }catch (Exception e ){
+            throw new RuntimeException(e);
+        }
+        return  playerInformation;
+    }
+
+    @Override
+    public boolean insertPlayerInformation(Integer playerId, Integer scheduleId, Integer teamId,String time) throws Exception {
+        boolean b = false;
+        try {
+            b = refereeDao.insertPlayerInformation(playerId,scheduleId,teamId,time);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+        return b;
+    }
+
+
+}
+
+

@@ -1,0 +1,25 @@
+package cn.nsu.edu.web.four.utils.tocken;
+
+import cn.nsu.edu.web.four.config.BaseStatic;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
+
+public class TokenUtil {
+    public static String create() {
+        try {
+            return UUID.randomUUID().toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String get(HttpServletRequest request) {
+        String token = request.getParameter(BaseStatic.KEY_PARAMETER_TOKEN);
+        if (token == null) {
+            token = request.getHeader(BaseStatic.KEY_PARAMETER_TOKEN);
+        }
+        return token;
+    }
+}

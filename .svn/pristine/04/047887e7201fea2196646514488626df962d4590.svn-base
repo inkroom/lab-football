@@ -1,0 +1,124 @@
+* {
+	margin:0;
+	padding:0;
+}
+html, body, #box {
+	height:100%;
+}
+body {
+	text-align:center;
+}
+#box {
+	text-align:left;
+	display:table;
+	width:100%;
+	margin:0 auto;
+	position:relative;
+}
+#box > div {
+	display:table-row;
+}
+#header{
+	height:50px;
+	vertical-align:bottom;
+}
+#middle{
+	height:70px;
+	vertical-align:bottom;
+}
+#footer {
+	height:50px;
+	vertical-align:bottom;
+}
+#main #wrap {
+	display:table-cell;
+	vertical-align:middle;
+}
+#text {
+	text-align:center;
+}
+.body-height{
+	overflow-y:scroll;
+	height: 90%;
+}
+.float{
+	float: left;
+}
+.img-style{
+	float: left;
+	width:100%;
+	height:85%;
+	margin-top: 5px;
+}
+.text-style{
+	width:100%;
+	height:85%;
+	margin-top: 5px;
+}
+.undiv{
+	float: right;
+	height: 0.5rem;
+	width:100%;
+	position: fixed;
+	bottom: 0px;
+	border-top: 1px solid #E7E7E7;
+	display: flex;
+	visibility: visible;
+}
+.uninput{
+	width: 80%;
+	height: 0.5rem;
+}
+.unbutton{
+	float: right;
+	margin-top: 8px;
+}
+.undiv{
+	height: 0.9rem;
+	width:100%;
+	position: fixed;
+	bottom: 0px;
+	border-top: 1px solid #E7E7E7;
+	display: flex;
+	visibility: hidden;
+}
+.form-style{
+	width: 100%;
+}
+.style1{
+	width: 95%;
+	margin-top:8px;
+	margin-right:5px;
+}
+.style2{
+	overflow-y:scroll;
+	width: 100%;
+	height:78px;
+	border: 1px solid #797979;
+	border-color: transparent;
+	border-color: rgba(0,0,0,.2);
+}
+.img-height{
+	margin-top:8px;margin-right:10px;height: 34px;
+}
+.btn-height{
+	margin-top:8px;margin-right:10px;height: 34px;
+}
+.div-border{
+	border: 1px solid #797979;
+	border-color: transparent;
+	border-color: rgba(0,0,0,0.2);
+}
+.div-top{
+	margin-top:8px;
+}
+.font-size1{
+	font-size: 15px;
+	font-weight: 600;
+}
+.middle-back{
+	background: #CAE1FF;
+}
+.img-size{
+	width: 20px;height: 20px;
+}

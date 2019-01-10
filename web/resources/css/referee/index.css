@@ -1,0 +1,66 @@
+/*今日赛程*/
+.font-size1{
+	font-size: 16px;
+}
+.bor-bottom{
+	border-bottom:#eee 1px solid;
+}
+.nav-style{
+	height:55px;
+	margin: 0; 
+	position: relative;
+}
+.div-style{
+	position: absolute; 
+	top: 50%; 
+	transform: translateY(-50%);
+}
+.float-left{
+	float: left;
+}
+.margin{
+	margin-top: 5px;
+}
+.img-style{
+	height: 20px;
+	width: 20px; 
+}
+.color{
+	color: #333;
+}
+.font-size2{
+	font-size: 20px;
+}
+.font-size3{
+	font-size: 15px;
+}
+.font-size4{
+	font-size: 18px;
+}
+.font-size5{
+	font-size: 17px;
+}
+.color1{
+	color: #aaa;
+}
+
+.div-top{
+	margin: 20px 0;
+}
+.img-style1{
+	width: 40px; 
+	margin: 0 20px; 
+	margin-top: -10px;
+}
+.div-top1{
+	margin-top: 30px;
+}
+.none-padding{
+	padding: 0 0;
+}
+.div-top2{
+	margin-top: 20px;
+}
+.font-style{
+	text-align: right;
+}

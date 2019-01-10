@@ -1,0 +1,164 @@
+package cn.nsu.edu.web.four.beans.schedule;
+
+import java.util.Date;
+
+/**
+ * @author Xuing
+ * @date 2018/3/20.
+ */
+public class Schedule {
+    private String teamNameA;
+
+    public String getTeamNameA()
+    {
+        return teamNameA;
+    }
+
+    public void setTeamNameA(String teamNameA)
+    {
+        this.teamNameA = teamNameA;
+    }
+
+    public String getTeamNameB()
+    {
+        return teamNameB;
+    }
+
+    public void setTeamNameB(String teamNameB)
+    {
+        this.teamNameB = teamNameB;
+    }
+
+    private String teamNameB;
+    private Integer idSchedule;
+
+    private Integer matchId;
+
+    private Integer teamA;
+
+    public Integer getLevel()
+    {
+        return level;
+    }
+
+    public void setLevel(Integer level)
+    {
+        this.level = level;
+    }
+
+    private Integer level;
+
+    private Integer teamB;
+
+    private Integer goalA;
+
+    private Integer goalB;
+
+    private Date beginTime;
+
+    private Long time;
+
+    private String place;
+
+    private Integer status;
+
+    @Override
+    public String toString() {
+        return "Schedule{" +
+                "idSchedule=" + idSchedule +
+                ", matchId=" + matchId +
+                ", teamA=" + teamA +
+                ", teamB=" + teamB +
+                ", goalA=" + goalA +
+                ", goalB=" + goalB +
+                ", beginTime=" + beginTime +
+                ", time=" + time +
+                ", place='" + place + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
+    public Integer getIdSchedule() {
+        return idSchedule;
+    }
+
+    public void setIdSchedule(Integer idSchedule) {
+        this.idSchedule = idSchedule;
+    }
+
+    public Integer getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(Integer matchId) {
+        this.matchId = matchId;
+    }
+
+    public Integer getTeamA() {
+        return teamA;
+    }
+
+    public void setTeamA(Integer teamA) {
+        this.teamA = teamA;
+    }
+
+    public Integer getTeamB() {
+        return teamB;
+    }
+
+    public void setTeamB(Integer teamB) {
+        this.teamB = teamB;
+    }
+
+    public Integer getGoalA() {
+        return goalA;
+    }
+
+    public void setGoalA(Integer goalA) {
+        this.goalA = goalA;
+    }
+
+    public Integer getGoalB() {
+        return goalB;
+    }
+
+    public void setGoalB(Integer goalB) {
+        this.goalB = goalB;
+    }
+
+    public Date getBeginTime() {
+        return beginTime;
+    }
+
+    public Long getTime()
+    {
+        return time;
+    }
+
+    public void setTime(Long time)
+    {
+        this.time = time;
+        this.beginTime=new Date(time);
+    }
+
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
+        this.time=beginTime.getTime();
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place == null ? null : place.trim();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+}

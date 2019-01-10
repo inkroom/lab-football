@@ -1,0 +1,144 @@
+package cn.nsu.edu.web.four.controllers.match;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+import cn.nsu.edu.web.four.beans.match.ModelList;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.services.match.MatchService;
+import cn.nsu.edu.web.four.utils.time.TimeJudge;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.controllers.match
+ * @date 2018/3/20 11:25
+ * @description
+ **/
+@Controller
+@RequestMapping(value = "match")
+public class MatchListController {
+    @Autowired
+    MatchService service;
+
+    /*
+     *@author 痞老板
+     *@description 异步获取分页list 需要获取请求页码和索引值（导航栏上面给点击事件 1为未参加赛事 2为发布赛事 3为已参加赛事）
+     * 返回的pageinfo 对象是封装分页对象 在前端可以参考http://blog.csdn.net/maoyuanming0806/article/details/77720754 来取值
+     *@param [num]
+     *@return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     *@date 2018/3/22 10:37
+     */
+    @ResponseBody
+    @RequestMapping(value = "1")
+    public MessageDto listMatch(@RequestParam(required = false,defaultValue = "1",value = "pn")Integer pn ,
+                                @RequestParam(required = false,defaultValue = "1",value = "pn")Integer num){
+        List<Match> list;
+        PageHelper.startPage(pn,10);
+        switch (num){
+            case 1:   list=service.selectByStaffOther(1);break;
+            case 2:   list=service.selectByIdWithOrg(1);break;
+            case 3:   list=service.selectByStaff(1);
+            default: list=null;
+        }
+        PageInfo pageInfo=new PageInfo(list,5);
+        MessageDto dto;
+        if (list==null&&list.isEmpty()){
+            return  new MessageDto(Result.FAIL);
+        }
+
+        Page<Match> pages=(Page<Match>) pageInfo.getList();
+        for (Match match:pages){
+            if (TimeJudge.compareTime(match.getEndDate())){
+                match.setStatus(2);
+            }
+            else if (TimeJudge.compareTime(match.getStartDate())){
+                match.setStatus(1);
+            } else {
+                match.setStatus(0);
+            }
+        }
+        dto=new MessageDto(Result.SUCCESS);
+        dto.put("matchList", pageInfo);
+        return dto;
+    }
+
+    /*
+     *@author 痞老板
+     *@description 报名表列表 列出球队和球员 注意数据结构为 teamlist->teamMap->teamName,playerList->MatchPlayer
+     *@param [map]
+     *@return java.lang.String
+     *@date 2018/3/22 20:38
+     */
+    @RequestMapping(value = "2")
+    public String listTeamAndPlayer(Map<String,Object> map){
+        map.put("teamList",service.listTeamAndPlayer(1));
+        return "";
+    }
+
+    /*
+     *@author 痞老板
+     *@description 批量上传队员信息 注意 前端只需要以:matchId,orgId,teamId,playerId
+     *@param [model]
+     *@return java.lang.String
+     *@date 2018/3/22 20:43
+     */
+    @RequestMapping(value = "3")
+    public String insertPlayer(ModelList model){
+        service.insertPlayer(model.getPlayers());
+        return "";
+    }
+
+    /*
+     *@author 痞老板
+     *@description 获取审核表 好像有bug
+     *@param [match_id, map]
+     *@return java.lang.String
+     *@date 2018/3/22 20:45
+     */
+    @RequestMapping(value = "4")
+    public String listExamine(@PathVariable("id") Integer match_id , Map<String,Object> map){
+        map.put("listExamine",service.listExamine(match_id));
+        return "";
+    }
+
+    /*
+     *@author 痞老板
+     *@description 通过审核修改状态 若拒绝前端拦下来 不进来
+     *@param [org_id]
+     *@return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     *@date 2018/3/22 20:51
+     */
+    @RequestMapping(value = "5")
+    public MessageDto examineSet(@PathVariable("id")Integer org_id){
+        service.updateStatus(org_id);
+        return new MessageDto(Result.SUCCESS);
+    }
+
+    /*
+     *@author 痞老板
+     *@description 创建赛事
+     *@param [match]
+     *@return java.lang.String
+     *@date 2018/3/22 20:52
+     */
+    @RequestMapping(value = "6")
+    public String insertMatch(Match match){
+        service.insertMatch(match);
+        return "";
+    }
+
+
+
+}

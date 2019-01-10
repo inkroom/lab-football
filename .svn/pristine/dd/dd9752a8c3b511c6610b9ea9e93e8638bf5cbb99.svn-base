@@ -1,0 +1,132 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>match-modify</title>
+    <link rel="stylesheet" type="text/css" href="../../../resources/lib/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/match/style.1.0.css"/>
+
+    <script src="../../../resources/js/match/respond.js"></script>
+    <script src="../../../resources/js/match/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../../../resources/js/match/bootstrap2.min.js"></script>
+
+</head>
+<body>
+<nav class="nav-bg navbar">
+    <div class="container">
+        <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-11">
+            <img src="../../../resources/img/logo足球项目组.png"/>
+            <span><a href="index.jsp">四川省青少年校园足球信息网</a></span>
+        </div>
+        <div class="nav-b hidden-lg hidden-md col-sm-1 hidden-xs">
+            <button type="button" class="glyphicon glyphicon-th-list"></button>
+        </div>
+        <div class="nav-w col-lg-8 col-md-7 hidden-sm hidden-xs">
+            <ul>
+                <li><a href="matchList.jsp">赛事赛程</a></li>
+                <li><a href="#">教练管理</a></li>
+                <li><a href="#">球员管理</a></li>
+                <li><a href="#">球队管理</a></li>
+                <li><a href="#">个人中心</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container mo-h">
+    修改赛事
+</div>
+<div class="container">
+    <form id="modifyMatchForm" class="form-horizontal">
+        <div class="form-group">
+            <label for="inputName" class="col-sm-2 control-label">赛事名称</label>
+            <div class="col-sm-10">
+                <input type="text" value="Fate英灵赛" id="inputName" name="name" class="form-control"
+                       placeholder="请填写赛事名称">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputLevel" class="col-sm-2 control-label">赛事级别</label>
+            <div class="col-sm-10">
+                <select id="inputLevel" name="level" class="form-control input-sm">
+                    <option value="0">校级</option>
+                    <option value="1">县级</option>
+                    <option value="2">市级</option>
+                    <option value="3">省级</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputNumPlayer" class="col-sm-2 control-label">赛制</label>
+            <div class="col-sm-10">
+                <select id="inputNumPlayer" name="numPlayer" class="form-control input-sm">
+                    <option value="5">5人制</option>
+                    <option value="7">7人制</option>
+                    <option value="11">11人制</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputTime" class="col-sm-2 control-label">赛事时间</label>
+            <div class="col-sm-10">
+                <input type="date" value="2018-03-27" class="form-control" id="inputTime" name="startDate"
+                       placeholder="请填写比赛时间">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputDeadline" class="col-sm-2 control-label">报名截止时间</label>
+            <div class="col-sm-10">
+                <input type="date" value="2018-04-27" class="form-control" id="inputDeadline" name="applyDeadline"
+                       placeholder="请填写报名截止时间">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputStatus" class="col-sm-2 control-label">状态</label>
+            <div class="col-sm-10">
+                <select id="inputStatus" class="form-control input-sm">
+                    <option value="0">报名阶段</option>
+                    <option value="1">进行中</option>
+                    <option value="2">已结束</option>
+                    <option value="3">删除赛事</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="button" onclick="modifyMatch();return false;" class="btn btn-default" value="确认"/>
+                <a href="matchList.jsp">
+                    <button type="submit" class="btn btn-default">取消</button>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script type="application/javascript">
+
+    function modifyMatch() {
+        var postData = new FormData(document.getElementById("modifyMatchForm"));
+        postData.append("idMatch", 8);
+        $.ajax({
+            type: "post",//方法类型
+            url: "/match/modifyMatch",//url
+            data: postData,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                alert("恭喜 恭喜");   //TODO 做成功失败提醒
+                // ajax(2);
+            },
+            error: function () {
+                alert("Fail");
+                ajax(6);
+            }
+        });
+    }
+</script>
+</html>
+
+

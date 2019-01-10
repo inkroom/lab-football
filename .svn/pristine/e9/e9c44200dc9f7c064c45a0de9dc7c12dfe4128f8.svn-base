@@ -1,0 +1,38 @@
+package cn.nsu.edu.web.four.services.match.impl;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+import cn.nsu.edu.web.four.daos.jdbc.match.MatchMapper;
+import cn.nsu.edu.web.four.services.match.MatchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.services.match.impl
+ * @date 2018/3/20 11:07
+ * @description
+ **/
+@Service
+public class MatchServiceImpl  implements MatchService{
+    @Autowired
+    private MatchMapper mapper;
+    @Override
+    public List<Match> selectByIdWithOrg(int id) {
+        return mapper.selectByIdWithOrg(id);
+    }
+
+    @Override
+    public List<Match> selectByStaff(int org_id) {
+        return mapper.selectByStaff(org_id);
+    }
+
+    @Override
+    public List<Match> selectByStaffOther(int org_id) {
+        return mapper.selectByStaffOther(org_id);
+    }
+
+
+}

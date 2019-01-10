@@ -1,0 +1,168 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:set var="path" value="${path}"/>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0">
+    <title>修改分数</title>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/lib/bootstrap/bootstrap.min.css"/>
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">--%>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/referee/public.css">
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/referee/score.css"/>
+
+</head>
+
+<body>
+<!--导航-->
+<nav class="nav-bg navbar">
+    <div class="container">
+        <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+            <img src="${path}/resources/img/logo.png"/>
+            <span>四川省青少年校园足球信息网</span>
+        </div>
+    </div>
+</nav>
+
+<!--内容-->
+<!--赛事内容-->
+<div class="panel panel-info">
+    <div class="panel-heading text-center">
+        <h3 class="panel-title">赛事内容</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">赛事名称：</div>
+                <div class="col-xs-8 text-center">${match.name}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">参赛队伍：</div>
+                <div class="col-xs-8">
+                    <div class="row text-center">
+                        <div class="col-xs-5">${schedule.teamA.name}</div>
+                        <div class="col-xs-2">VS</div>
+                        <div class="col-xs-5">${schedule.teamB.name}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5">比赛开始时间：</div>
+                <div class="col-xs-7 text-center"><fmt:formatDate
+                        value="${schedule.scheduleInformation.beginTime}" pattern="yyyy/MM/dd HH:mm"/></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--比赛情况-->
+<div class="panel panel-info">
+    <div class="panel-heading text-center">
+        <h3 class="panel-title">比赛情况</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-xs-6">${schedule.teamA.name}</div>
+                <div class="col-xs-6">${schedule.teamB.name}</div>
+            </div>
+            <div class="row text-center">
+                <%--<div class="col-xs-4 col-xs-offset-1 col-left">--%>
+                    <%--<div class="input-group spinner" data-trigger="spinner">--%>
+                        <%--<div class="input-group-addon">--%>
+                            <%--<a href="javascript:;" class="spin-up" id="upscore1"  data-spin="up"><i--%>
+                                    <%--class="fa fa-caret-up"></i></a>--%>
+                            <%--<a href="javascript:;" class="spin-down" id="downscore1" data-spin="down"><i--%>
+                                    <%--class="fa fa-caret-down"></i></a>--%>
+                        <%--</div>--%>
+                        <%--<input type="text" class="form-control text-center" id="score1" value="${schedule.scheduleInformation.goalA}" data-rule="quantity">--%>
+                    <%--</div>--%>
+
+                <%--</div>--%>
+
+                    <!--修改-->
+                    <div class="col-xs-1 col-xs-offset-1 up-height up-back">
+                        <img class="up-style" id="upscore1"  src="${path}/resources/img/up.png" />
+                    </div>
+                    <div class="col-xs-1 up-height up-back">
+                        <img class="up-style" id="downscore1" src="${path}/resources/img/down.png" />
+                    </div>
+                    <div class="col-xs-2 input-height" style="">
+                        <input type="text" class="form-control text-center" id="score1" value="${schedule.scheduleInformation.goalA}">
+                    </div>
+
+                <div class="col-xs-2 col-center">:</div>
+
+                <%--<div class="col-xs-4">--%>
+                    <%--<div class="input-group spinner" data-trigger="spinner">--%>
+                        <%--<input type="text" class="form-control text-center" id="score2" value="${schedule.scheduleInformation.goalB}" data-rule="quantity">--%>
+                        <%--<div class="input-group-addon">--%>
+                            <%--<a href="javascript:;" class="spin-up" id="upscore2"  data-spin="up"><i--%>
+                                    <%--class="fa fa-caret-up"></i></a>--%>
+                            <%--<a href="javascript:;" class="spin-down" id="downscore2"  data-spin="down"><i--%>
+                                    <%--class="fa fa-caret-down"></i></a>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+
+                    <!--修改-->
+                    <div class="col-xs-2 input-height">
+                        <input type="text" class="form-control text-center" id="score2" value="${schedule.scheduleInformation.goalB}">
+                    </div>
+                    <div class="col-xs-1 up-height up-back">
+                        <img class="up-style" id="upscore2" src="${path}/resources/img/up.png" />
+                    </div>
+                    <div class="col-xs-1 up-height up-back">
+                        <img class="up-style" id="downscore2" src="${path}/resources/img/down.png" />
+                    </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--按钮-->
+<div class="container btn-distance">
+    <div>
+        <input class="btn btn-success btn-lg radius center-block panel-distance" type="button" data-toggle="modal"
+               data-target="#myModal" value="修改比分">
+    </div>
+    <div>
+        <input class="btn btn-danger btn-lg radius center-block panel-distance" type="button" value="结束比赛"
+               id="finish">
+    </div>
+</div>
+<!--模态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center" id="myModalLabel">
+                    询问
+                </h4>
+            </div>
+            <div class="modal-body text-center">
+                是否修改分数
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="cancel" data-dismiss="modal">
+                    取消
+                </button>
+                <button type="button" class="btn btn-primary" id="confirm" data-dismiss="modal">
+                    确认
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<jsp:include page="bar.jsp"/>
+
+<script src="${path}/resources/lib/jquery/jquery-3.1.1.min.js"></script>
+<script src="${path}/resources/lib/bootstrap/bootstrap.min.js"></script>
+<script src="${path}/resources/lib/layer_mobile/layer.js"></script>
+<script src="${path}/resources/js/index.js"></script>
+<script src="${path}/resources/js/referee/score.js"></script>
+</body>
+</html>

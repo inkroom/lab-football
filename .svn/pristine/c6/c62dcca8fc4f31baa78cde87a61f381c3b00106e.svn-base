@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace需要填写dao层全路径-->
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.coach.CoachDao">
+
+    <!--查询全部教练-->
+    <select id="getAllCoach" statementType="PREPARED" resultType="cn.nsu.edu.web.four.beans.coach.Coach">
+        select name,status,photo,id_coach AS 'idCoach'
+        from Coach
+        WHERE org_id = #{org_id};
+    </select>
+
+    <!--查询单个教练-->
+    <select id="getCoach" statementType="PREPARED" resultType="cn.nsu.edu.web.four.beans.coach.Coach">
+        SELECT name,sex,idcard,height,weight,score,status,phone,photo,org_id AS 'orgId',id_coach AS 'idCoach'
+        from Coach
+        WHERE id_coach = #{id_coach};
+    </select>
+
+    <!--添加单个教练-->
+    <insert id="addCoach" statementType="PREPARED" parameterType="cn.nsu.edu.web.four.beans.coach.Coach">
+    insert into Coach(org_id,name,sex,idcard,height,weight,status,phone,photo)
+    value(#{orgId},#{name},#{sex},#{idcard},#{height},#{weight},#{status},#{phone},#{photo});
+    </insert>
+
+    <!--修改教练信息（电话）-->
+    <update id="updateCoach" statementType="PREPARED" parameterType="cn.nsu.edu.web.four.beans.coach.Coach">
+        UPDATE Coach
+        set phone=#{phone}
+        WHERE id_coach=#{idCoach};
+    </update>
+    <!--<update id="updateCoach" statementType="PREPARED" parameterType="cn.nsu.edu.web.four.beans.coach.Coach">-->
+    <!--UPDATE Coach-->
+    <!--set height=#{height},weight=#{weight},phone=#{phone}-->
+    <!--WHERE id_coach=#{idCoach};-->
+    <!--</update>-->
+
+    <!--删除教练（修改教练status值不删除数据）-->
+    <update id="coachStatus" statementType="PREPARED" parameterType="cn.nsu.edu.web.four.beans.coach.Coach">
+        UPDATE Coach
+        set status=#{status}
+        WHERE id_coach=#{idCoach};
+    </update>
+
+</mapper>

@@ -1,0 +1,38 @@
+html,
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: #34485E;
+}
+
+.div-401-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0px 100px;
+}
+
+.div-401-font {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: -100px 0px;
+}
+
+.div-401-ast {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0px 100px;
+}
+
+.div-401-under {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+}

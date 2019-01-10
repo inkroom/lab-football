@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--关闭redis的操作-->
+
+    <aop:aspectj-autoproxy expose-proxy="true"/>
+
+    
+    <bean id="redisAop" class="cn.nsu.edu.web.four.aop.RedisAop"/>
+
+    <aop:config>
+        <aop:pointcut expression="execution(public * cn.nsu.edu.web.four.daos.redis.RedisPool.*(..)) and !execution(public * cn.nsu.edu.web.four.daos.redis.RedisPool.close())"
+                      id="redisPointcut"/>
+        <aop:advisor advice-ref="redisAop" pointcut-ref="redisPointcut"/>
+        <!--<aop:aspect id="redisAspect" ref="redisAop">-->
+            <!--<aop:after-returning method="afterReturning" pointcut-ref="redisPointcut"/>-->
+        <!--</aop:aspect>-->
+    </aop:config>
+
+    <!--可以添加控制层参数和结果aop日志记录-->
+    <bean id="controllerAop" class="cn.nsu.edu.web.four.aop.ControllerAop"/>
+    <aop:config>
+
+        <!--<aop:pointcut id="controllerCut" expression="execution(public * cn.inkroom.web.money.four.utils.encrypt.AESEncryptUtil.*(..))"/>-->
+        <aop:pointcut id="controllerCut" expression="@annotation(org.springframework.web.bind.annotation.RequestMapping)"/>
+        <!--<aop:pointcut id="controllerCut" expression="execution(public * cn.inkroom.web.money.four.utils.encrypt.*.*(..))"/>-->
+
+        <!--<aop:pointcut id="controllerCut" expression="execution(public * cn.inkroom.web.money.four.daos.redis.RedisPool.*(..))"/>-->
+
+        <!--<aop:pointcut id="controllerCut"-->
+                      <!--expression="execution(public * cn.inkroom.web.money.four.controllers.TestController.*(..))"/>-->
+        <aop:advisor advice-ref="controllerAop" pointcut-ref="controllerCut"/>
+
+    </aop:config>
+
+    <!--自定义contextPath-->
+    <bean id="contextPathAop" class="cn.nsu.edu.web.four.aop.ContextPathAop">
+        <property name="contextPath" value="4th-12"/>
+    </bean>
+    <!--无效-->
+    <aop:config>
+
+        <aop:pointcut id="contextPathCut" expression="execution(* javax.servlet.ServletContext.getContextPath(..))"/>
+        <aop:advisor advice-ref="contextPathAop" pointcut-ref="contextPathCut"/>
+
+    </aop:config>
+</beans>

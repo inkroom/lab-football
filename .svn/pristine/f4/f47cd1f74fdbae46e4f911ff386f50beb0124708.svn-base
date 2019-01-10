@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.organization.OrganizationDao">
+
+    <!--添加球员信息：注册使用-->
+    <insert id="insertOrganization" parameterType="cn.nsu.edu.web.four.beans.organization.Organization" >
+        insert into Organization (id_org,`name`, password,
+        province_code, country_code, village_code,
+        school_code, `type`, phone,salt)
+        values ( #{idOrg,jdbcType=INTEGER},#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        #{provinceCode,jdbcType=INTEGER}, #{countryCode,jdbcType=INTEGER}, #{villageCode,jdbcType=INTEGER},
+        #{schoolCode,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR},
+        #{salt,jdbcType=VARCHAR})
+    </insert>
+</mapper>

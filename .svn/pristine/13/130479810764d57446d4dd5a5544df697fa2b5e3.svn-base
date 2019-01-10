@@ -1,0 +1,26 @@
+package cn.nsu.edu.web.four.daos.jdbc.match;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+@Repository
+public interface MatchMapper {
+    int deleteById(Integer idMatch) throws Exception;
+
+    int insert(Match record) throws Exception;
+
+    int insertSelective(Match record) throws Exception;
+
+    Match selectById(Integer idMatch) throws Exception;
+
+    int updateByIdSelective(Match record) throws Exception;
+
+    int updateById(Match record) throws Exception;
+
+    List<Match> selectByIdWithOrg(int org_id);
+
+    List<Match> selectByStaff(int org_id);
+
+    List<Match> selectByStaffOther(int org_id);
+}

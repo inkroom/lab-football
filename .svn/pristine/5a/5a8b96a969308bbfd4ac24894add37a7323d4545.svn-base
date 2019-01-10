@@ -1,0 +1,220 @@
+package cn.nsu.edu.web.four.controllers.match;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+import cn.nsu.edu.web.four.beans.match.MatchExamine;
+import cn.nsu.edu.web.four.beans.match.ModelList;
+import cn.nsu.edu.web.four.beans.match.Staff;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.services.match.MatchService;
+import cn.nsu.edu.web.four.utils.time.TimeJudge;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.controllers.match
+ * @date 2018/3/20 11:25
+ * @description
+ **/
+@Controller
+@RequestMapping(value = "match")
+public class MatchController {
+    @Autowired
+    MatchService service;
+
+
+    /**
+     *@author 痞老板
+     *@description 异步获取分页list 需要获取请求页码和索引值（导航栏上面给点击事件 1为未参加赛事 2为发布赛事 3为已参加赛事）
+     * 返回的pageinfo 对象是封装分页对象 在前端可以参考http://blog.csdn.net/maoyuanming0806/article/details/77720754 来取值
+     *@param [num]
+     *@return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     *@date 2018/3/22 10:37
+     */
+    @ResponseBody
+    @RequestMapping(value = "/listMatch")
+    public MessageDto listMatch(@RequestParam(required = false,defaultValue = "1",value = "pn")Integer pn ,
+                                @RequestParam(required = false, defaultValue = "1", value = "num") Integer num) {
+        List<Match> list;
+        PageHelper.startPage(pn,10);
+        switch (num){
+            case 1:   list=service.selectByStaffOther(1);break;
+            case 2:
+                list = service.selectByStaff(1);
+                break;
+            case 3:
+                list = service.selectByIdWithOrg(1);
+                break;
+            default: list=null;
+        }
+        PageInfo pageInfo=new PageInfo(list,5);
+        MessageDto dto;
+        if (list == null || list.isEmpty()) {
+            return  new MessageDto(Result.FAIL);
+        }
+
+        Page<Match> pages=(Page<Match>) pageInfo.getList();
+        //2表示已结束 1正在进行 0正在报名
+        for (Match match:pages){
+            System.out.println(match);
+//            if (TimeJudge.compareTime(match.getEndDate())){
+//                match.setStatus(2);
+//            }
+            if (TimeJudge.compareTime(match.getStartDate())) {
+                match.setStatus(1);
+            } else {
+                match.setStatus(0);
+            }
+        }
+        dto=new MessageDto(Result.SUCCESS);
+        dto.put("pageInfo", pageInfo);
+        return dto;
+    }
+
+    /**
+     *@author 痞老板
+     *@description 报名表列表 列出球队和球员 注意数据结构为 teamlist->teamMap->teamName,playerList->MatchPlayer
+     *@param [map]
+     *@return java.lang.String
+     *@date 2018/3/22 20:38
+     */
+    @RequestMapping(value = "/listSign/{id}")
+    public String listTeamAndPlayer(Map<String, Object> map, @PathVariable("id") Integer mathcid) {
+        map.put("matchid", mathcid);
+        map.put("teamList",service.listTeamAndPlayer(1));
+        return "";
+    }
+
+    /**
+     *@author 痞老板
+     *@description 批量上传队员信息 注意 上传字段只需要:matchId,orgId,teamId,playerId
+     *@param [model]
+     *@return java.lang.String
+     *@date 2018/3/22 20:43
+     */
+    @RequestMapping(value = "/addPlayer")
+    public String insertPlayer(ModelList model){
+        service.insertPlayer(model.getPlayers());
+        return "";
+    }
+
+    /**
+     *@author 痞老板
+     *@description 获取审核表 返回值是matchExamine类 teamName是复数需要遍历
+     *@param [match_id, map]
+     *@return java.lang.String
+     *@date 2018/3/22 20:45
+     */
+    @RequestMapping(value = "/turnExamine")
+    public String turnExamine(@RequestParam("id") Integer matchId, Model model) {
+        model.addAttribute("mid", matchId);
+        return "match/matchDetailsAdmin";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/listExamine")
+    public MessageDto listExamine(@RequestParam(required = false, defaultValue = "1", value = "pn") Integer pn,
+                                  @RequestParam("mid") Integer matchId) {
+        PageHelper.startPage(pn, 8);
+        List<MatchExamine> list = service.listExamine(matchId);
+        if (list == null || list.isEmpty()) {
+            return new MessageDto(Result.FAIL);
+        }
+        PageInfo pageInfo = new PageInfo(list, 5);
+        MessageDto messageDto = new MessageDto(Result.SUCCESS);
+        messageDto.put("pageInfo", pageInfo);
+        return messageDto;
+    }
+
+    /**
+     *@author 痞老板
+     *@description 通过审核修改状态
+     *@param [org_id]
+     *@return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     *@date 2018/3/22 20:51
+     */
+    @ResponseBody
+    @RequestMapping(value = "/setExamine")
+    public MessageDto setExamine(@RequestParam("id") Integer org_id, @RequestParam("status") Integer status) {
+        service.updateStaffStatus(status, org_id);
+        System.out.println("成功");
+        return new MessageDto(Result.SUCCESS);
+    }
+
+    /**
+     *@author Xuing
+     *@description 创建赛事
+     *@param [match]
+     *@return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     *@date 2018-3-26 20:59:07
+     */
+
+    @ResponseBody
+    @RequestMapping(value = "/createMatch", method = {RequestMethod.GET, RequestMethod.POST})
+    public MessageDto createMatch(Match match, Integer orgId) {
+        System.out.println("============================================");
+        System.out.println(match + "\n" + orgId);
+        System.out.println("============================================");
+        match.setOrgStaff(new Staff(orgId));
+        match.setStatus(0);
+        if (service.insertMatch(match)) {
+            System.out.println("成功" + match);
+            return new MessageDto(Result.SUCCESS);
+        } else {
+            System.out.println("失败" + match);
+            return new MessageDto(Result.FAIL);
+        }
+    }
+
+    /**
+     * @param beans.match.Match
+     * @return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     * @author Xuing
+     * @description 修改赛事信息
+     * @date 2018-3-28 09:30:56
+     */
+    @ResponseBody
+    @RequestMapping(value = "/modifyMatch")
+    public MessageDto modifyMatchInfo(Match match) {
+        System.out.println("============================================");
+        System.out.println(match);
+        System.out.println("============================================");
+        if (service.modifyMatch(match)) {
+            System.out.println("成功" + match);
+            return new MessageDto(Result.SUCCESS);
+        } else {
+            System.out.println("失败" + match);
+            return new MessageDto(Result.FAIL);
+        }
+    }
+
+    /**
+     *@author Xuing
+     *@description 通过ID获取赛事信息 /MatchInfo/{id}
+     *@param idMatch
+     *@return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     *@date 2018-3-28 09:08:20
+     */
+    @ResponseBody
+    @RequestMapping(value = "/MatchInfo/{id:[1-9]+[0-9]*}")
+    public MessageDto getMatchInfoByid(@PathVariable Integer id) {
+        MessageDto dto = new MessageDto(Result.FAIL);
+        Match matchInfo = service.getMatchInfoById(id);
+        if (matchInfo != null) {
+            dto = new MessageDto(Result.SUCCESS);
+            dto.put("matchInfo", matchInfo);
+        }
+        return dto;
+    }
+
+}

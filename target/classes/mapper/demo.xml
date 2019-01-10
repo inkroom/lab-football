@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace需要填写dao层全路径-->
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.DemoDao">
+
+    <!--id与对应dao类的里方法相同-->
+    <select id="count" statementType="PREPARED" resultType="cn.inkroom.web.money.gate.beans.common.HtmlBean">
+        select id,content,type,title,create_time AS createTime
+        from html alias where alias.id = #{id} limit 1;
+    </select>
+</mapper>

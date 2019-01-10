@@ -1,0 +1,1264 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: inkbox
+  Date: 18-3-21
+  Time: 下午3:43
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<!DOCTYPE html>--%>
+<%--<html lang="zh-CN">--%>
+<%--<head>--%>
+    <%--<meta charset="utf-8"/>--%>
+    <%--<meta http-equiv="X-UA-Compatible" content="IE=edge">--%>
+    <%--<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0">--%>
+    <%--<title>裁判报告书</title>--%>
+    <%--<link rel="stylesheet" type="text/css" href="${path}/resources/css/bootstrap.min.css"/>--%>
+    <%--<link rel="stylesheet" type="text/css"--%>
+          <%--href="${path}/resources/css/mobile.style.1.0.css"/>--%>
+<%--</head>--%>
+
+<%--<style>--%>
+    <%--/*[class *= col-]{--%>
+      <%--background-color: #eee;--%>
+      <%--border: 1px solid #ccc;--%>
+    <%--}*/--%>
+    <%--/*[class *= col-] [class *= col-] {--%>
+      <%--background-color: #f36;--%>
+      <%--border:1px dashed #fff;--%>
+      <%--color: #fff;--%>
+    <%--}*/--%>
+<%--</style>--%>
+
+<%--<body>--%>
+<%--<!--导航-->--%>
+<%--<nav class="nav-bg navbar">--%>
+    <%--<div class="container">--%>
+        <%--<div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">--%>
+            <%--<img src="${path}/resources/img/logo足球项目组.png"/>--%>
+            <%--<span>四川省青少年校园足球信息网</span>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</nav>--%>
+
+<%--<!--内容-->--%>
+<%--<div class="panel panel-info">--%>
+    <%--<div class="panel-heading text-center">--%>
+        <%--<h3 class="panel-title">裁判报告书</h3>--%>
+    <%--</div>--%>
+    <%--<div class="panel-body">--%>
+        <%--<!--赛事内容-->--%>
+        <%--<div class="panel panel-default">--%>
+            <%--<div class="panel-heading text-center">--%>
+                <%--赛事内容--%>
+            <%--</div>--%>
+            <%--<div class="panel-body">--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-4">赛事名称：</div>--%>
+                        <%--<div class="col-xs-8 text-center">${match.name}</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-4">参赛队伍：</div>--%>
+                        <%--<div class="col-xs-3 text-center">主队：</div>--%>
+                        <%--<div class="col-xs-5 text-center">${schedule.teamA.name}</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="row text-center">--%>
+                        <%--<div class="col-xs-3 col-xs-offset-4">客队：</div>--%>
+                        <%--<div class="col-xs-5">${schedule.teamB.name}</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-5">比赛开始时间：</div>--%>
+                        <%--<div class="col-xs-7 text-center"><fmt:formatDate value="${schedule.scheduleInformation.beginTime}" pattern="yyyy/MM/dd HH:mm"/></div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!--比赛情况-->--%>
+        <%--<div class="panel panel-default">--%>
+            <%--<div class="panel-heading text-center">--%>
+                <%--比赛情况--%>
+            <%--</div>--%>
+            <%--<div class="panel-body">--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-12">比分：</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="row text-center">--%>
+                        <%--<div class="col-xs-4">${schedule.teamA.name}</div>--%>
+                        <%--<div class="col-xs-1">VS</div>--%>
+                        <%--<div class="col-xs-4">${schedule.teamB.name}</div>--%>
+                        <%--<div class="col-xs-1">${schedule.scheduleInformation.goalA}</div>--%>
+                        <%--<div class="col-xs-1">：</div>--%>
+                        <%--<div class="col-xs-1">${schedule.scheduleInformation.goalB}</div>--%>
+                    <%--</div>--%>
+                    <%--&lt;%&ndash;<div class="row">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-12">加时赛比分：</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="row text-center">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-4 ">15级一班</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-1 ">VS</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-4 ">15级二班</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-1 ">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<input type="text" class="input-score" placeholder="00" />&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-1 ">：</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-1 ">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<input type="text" class="input-score" placeholder="00"/>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="row">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-12">点球决胜结果：</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="row text-center">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-4 ">15级一班</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-1 ">VS</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-4 ">15级二班</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-1 ">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<input type="text" class="input-score" placeholder="00"/>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-1 ">：</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<div class="col-xs-1 ">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<input type="text" class="input-score" placeholder="00"/>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-4">获胜队：</div>--%>
+                        <%--<div class="col-xs-8">--%>
+                            <%--<c:choose>--%>
+                                <%--<c:when test="${schedule.scheduleInformation.goalA>schedule.scheduleInformation.goalB}">--%>
+                                    <%--${schedule.teamA.name}--%>
+                                <%--</c:when>--%>
+                                <%--<c:when test="${schedule.scheduleInformation.goalA<schedule.scheduleInformation.goalB}">--%>
+                                    <%--${schedule.teamB.name}--%>
+                                <%--</c:when>--%>
+                                <%--<c:otherwise>平局</c:otherwise>--%>
+                            <%--</c:choose>--%>
+                            <%--&lt;%&ndash;<select>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<option value="1">平局</option>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<option value="2">15级一班</option>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<option value="3">15级二班</option>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;</select>&ndash;%&gt;--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!--参赛队员名单-->--%>
+        <%--<div class="panel panel-default">--%>
+            <%--<div class="panel-heading text-center">--%>
+                <%--首发队员名单--%>
+            <%--</div>--%>
+            <%--<div class="panel-body">--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-12">${schedule.teamA.name}：</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<table class="table table-bordered " id="firstMaster">--%>
+                    <%--<thead>--%>
+                    <%--<tr class="warning">--%>
+                        <%--<th>队员姓名</th>--%>
+                        <%--<th>位置</th>--%>
+                        <%--<th>球衣号码</th>--%>
+                        <%--<th>--%>
+                            <%--<input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>--%>
+                        <%--</th>--%>
+                    <%--</tr>--%>
+                    <%--</thead>--%>
+                    <%--<tbody>--%>
+                    <%--<tr>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-name" value="张三"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<select>--%>
+                                <%--<option value="前锋">前锋</option>--%>
+                                <%--<option value="前锋">后卫</option>--%>
+                                <%--<option value="中场">中场</option>--%>
+                                <%--<option value="守门员">守门员</option>--%>
+                            <%--</select>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-num" value="15"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>--%>
+                        <%--</td>--%>
+                    <%--</tr>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-12">${schedule.teamB.name}：</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<table class="table table-bordered" id="firstServant">--%>
+                    <%--<thead>--%>
+                    <%--<tr class="warning">--%>
+                        <%--<th>队员姓名</th>--%>
+                        <%--<th>位置</th>--%>
+                        <%--<th>球衣号码</th>--%>
+                        <%--<th>--%>
+                            <%--<input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>--%>
+                        <%--</th>--%>
+                    <%--</tr>--%>
+                    <%--</thead>--%>
+                    <%--<tbody>--%>
+                    <%--<tr>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-name" value="张三"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<select>--%>
+                                <%--<option value="1">前锋</option>--%>
+                                <%--<option value="2">后卫</option>--%>
+                                <%--<option value="3">中场</option>--%>
+                                <%--<option value="4">守门员</option>--%>
+                            <%--</select>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-num" value="15"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>--%>
+                        <%--</td>--%>
+                    <%--</tr>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!--替补队员名单-->--%>
+        <%--<div class="panel panel-default">--%>
+            <%--<div class="panel-heading text-center">--%>
+                <%--替补队员名单--%>
+            <%--</div>--%>
+            <%--<div class="panel-body">--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-12">${schedule.teamA.name}：</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<table class="table table-bordered " id="secMaster">--%>
+                    <%--<thead>--%>
+                    <%--<tr class="warning">--%>
+                        <%--<th>进场姓名</th>--%>
+                        <%--<th>号码</th>--%>
+                        <%--<th>出场姓名</th>--%>
+                        <%--<th>号码</th>--%>
+                        <%--<th>时间</th>--%>
+                        <%--<th>--%>
+                            <%--<input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>--%>
+                        <%--</th>--%>
+                    <%--</tr>--%>
+                    <%--</thead>--%>
+                    <%--<tbody>--%>
+                    <%--<tr>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-name table-padding" value="张三"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-num" value="15"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-name" value="李四"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-num" value="25"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-time" value="00:25:00"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>--%>
+                        <%--</td>--%>
+                    <%--</tr>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-12">${schedule.teamB.name}：</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<table class="table table-bordered " id="secServant">--%>
+                    <%--<thead>--%>
+                    <%--<tr class="warning">--%>
+                        <%--<th>进场姓名</th>--%>
+                        <%--<th>号码</th>--%>
+                        <%--<th>出场姓名</th>--%>
+                        <%--<th>号码</th>--%>
+                        <%--<th>时间</th>--%>
+                        <%--<th>--%>
+                            <%--<input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>--%>
+                        <%--</th>--%>
+                    <%--</tr>--%>
+                    <%--</thead>--%>
+                    <%--<tbody>--%>
+                    <%--<tr>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-name table-padding" value="张三"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-num" value="15"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-name" value="李四"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-num" value="25"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-time" value="00:25:00"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>--%>
+                        <%--</td>--%>
+                    <%--</tr>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!--进球队员-->--%>
+        <%--<div class="panel panel-default">--%>
+            <%--<div class="panel-heading text-center">--%>
+                <%--进球队员--%>
+            <%--</div>--%>
+            <%--<div class="panel-body">--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-12">${schedule.teamA.name}：</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<table class="table table-bordered " id="scoreMaster">--%>
+                    <%--<thead>--%>
+                    <%--<tr class="warning">--%>
+                        <%--<th>姓名</th>--%>
+                        <%--<th>号码</th>--%>
+                        <%--<th>时间</th>--%>
+                        <%--<th>--%>
+                            <%--<input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>--%>
+                        <%--</th>--%>
+                    <%--</tr>--%>
+                    <%--</thead>--%>
+                    <%--<tbody>--%>
+                    <%--<tr>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-name" value="张三"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-num" value="15"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-time" value="00:25:00"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>--%>
+                        <%--</td>--%>
+                    <%--</tr>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-12">${schedule.teamB.name}：</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<table class="table table-bordered " id="scoreServant">--%>
+                    <%--<thead>--%>
+                    <%--<tr class="warning">--%>
+                        <%--<th>姓名</th>--%>
+                        <%--<th>号码</th>--%>
+                        <%--<th>时间</th>--%>
+                        <%--<th>--%>
+                            <%--<input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>--%>
+                        <%--</th>--%>
+                    <%--</tr>--%>
+                    <%--</thead>--%>
+                    <%--<tbody>--%>
+                    <%--<tr>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-name" value="张三"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-num" value="15"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-time" value="00:25:00"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>--%>
+                        <%--</td>--%>
+                    <%--</tr>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!--警告队员名单-->--%>
+        <%--<div class="panel panel-default">--%>
+            <%--<div class="panel-heading text-center">--%>
+                <%--警告队员名单--%>
+            <%--</div>--%>
+            <%--<div class="panel-body">--%>
+                <%--<table class="table table-bordered " id="warning">--%>
+                    <%--<thead>--%>
+                    <%--<tr class="warning">--%>
+                        <%--<th>队伍</th>--%>
+                        <%--<th>号码</th>--%>
+                        <%--<th>队员姓名</th>--%>
+                        <%--<th>时间</th>--%>
+                        <%--<th>原因</th>--%>
+                        <%--<th>--%>
+                            <%--<input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>--%>
+                        <%--</th>--%>
+                    <%--</tr>--%>
+                    <%--</thead>--%>
+                    <%--<tbody>--%>
+                    <%--<tr>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-team" value="客队"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-num" value="15"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-name" value="李四"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-time" value="00:25:00"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-team" value="犯规"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>--%>
+                        <%--</td>--%>
+                    <%--</tr>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!--罚令出场名单-->--%>
+        <%--<div class="panel panel-default">--%>
+            <%--<div class="panel-heading text-center">--%>
+                <%--罚令出场名单--%>
+            <%--</div>--%>
+            <%--<div class="panel-body">--%>
+                <%--<table class="table table-bordered " id="punish">--%>
+                    <%--<thead>--%>
+                    <%--<tr class="warning">--%>
+                        <%--<th>队伍</th>--%>
+                        <%--<th>号码</th>--%>
+                        <%--<th>队员姓名</th>--%>
+                        <%--<th>时间</th>--%>
+                        <%--<th>原因</th>--%>
+                        <%--<th>--%>
+                            <%--<input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>--%>
+                        <%--</th>--%>
+                    <%--</tr>--%>
+                    <%--</thead>--%>
+                    <%--<tbody>--%>
+                    <%--<tr>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-team" value="客队"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-num" value="15"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-name" value="李四"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-time" value="00:25:00"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="text" class="input-team" value="犯规"/>--%>
+                        <%--</td>--%>
+                        <%--<td>--%>
+                            <%--<input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>--%>
+                        <%--</td>--%>
+                    <%--</tr>--%>
+                    <%--</tbody>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!--红牌情况说明-->--%>
+        <%--<div class="panel panel-default">--%>
+            <%--<div class="panel-heading text-center">--%>
+                <%--红牌情况说明--%>
+            <%--</div>--%>
+            <%--<div class="panel-body">--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-12">--%>
+                            <%--<textarea class="form-control" rows="3" placeholder="请输入本场比赛红牌情况，不超过100字"></textarea>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!--罚球点球情况说明-->--%>
+        <%--<div class="panel panel-default">--%>
+            <%--<div class="panel-heading text-center">--%>
+                <%--罚球点球情况说明--%>
+            <%--</div>--%>
+            <%--<div class="panel-body">--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-12">--%>
+                            <%--<textarea class="form-control" rows="3" placeholder="请输入本场比赛罚球点球情况，不超过100字"></textarea>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!--严重错漏判情况说明-->--%>
+        <%--<div class="panel panel-default">--%>
+            <%--<div class="panel-heading text-center">--%>
+                <%--严重错漏判情况说明--%>
+            <%--</div>--%>
+            <%--<div class="panel-body">--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-xs-12">--%>
+                            <%--<textarea class="form-control" rows="3" placeholder="请输入本场比赛严重错漏判情况，不超过100字"></textarea>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<!--底部-->--%>
+        <%--<div class="container">--%>
+            <%--<div class="row text-center">--%>
+                <%--<div class="col-xs-6">裁判员姓名：</div>--%>
+                <%--<div class="col-xs-6">${name}</div>--%>
+            <%--</div>--%>
+            <%--<div class="row text-center">--%>
+                <%--<div class="col-xs-6">裁判员电话：</div>--%>
+                <%--<div class="col-xs-6">${phone}</div>--%>
+            <%--</div>--%>
+            <%--<div>--%>
+                <%--<input class="btn btn-success btn-md radius center-block panel-distance" type="button" value="提交">--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
+<%--<span style="display: none" id="token">${token}</span>--%>
+<%--<script src="${path}/resources/js/jquery-3.1.1.min.js"></script>--%>
+<%--<script src="${path}/resources/js/bootstrap.min.js"></script>--%>
+<%--<script type="text/javascript">--%>
+    <%--$(function () {--%>
+        <%--function transDate(value) {--%>
+            <%--var split = value.split(':');--%>
+            <%--var date = new Date();--%>
+            <%--date.setHours(parseInt(split[0]));--%>
+            <%--date.setMinutes(parseInt(split[1]));--%>
+            <%--return date;--%>
+        <%--}--%>
+        <%--function getPlayDes() {--%>
+            <%--var players = [];--%>
+            <%--var $trs = $('#firstMaster>tr');--%>
+            <%--//主队出场球员--%>
+            <%--for (var i = 1; i < $trs.length; i++) {--%>
+                <%--var item = {};--%>
+                <%--var $tr = $trs.eq(i);--%>
+                <%--item.teamId = $('#firstMaster').attr('teamId');--%>
+                <%--item.playerId = $tr.find('td:eq(0)').attr('playerId');--%>
+                <%--item.name = $tr.find('td:eq(0)').find('input:eq(0)').val();--%>
+                <%--item.position = $tr.find('td:eq(1)').find('input:eq(0)').val();--%>
+                <%--item.number = $tr.find('td:eq(2)').find('input:eq(0)').val();--%>
+                <%--item.type = 1;--%>
+                <%--players.push(item);--%>
+            <%--}--%>
+            <%--//客队首发球员--%>
+            <%--$trs = $('#firstServant>tr');--%>
+            <%--for (var i = 1; i < $trs.length; i++) {--%>
+                <%--var item = {};--%>
+                <%--var $tr = $trs.eq(i);--%>
+                <%--item.teamId = $('#firstServant').attr('teamId');--%>
+                <%--item.playerId = $tr.find('td:eq(0)').attr('playerId');--%>
+                <%--item.name = $tr.find('td:eq(0)').find('input:eq(0)').val();--%>
+                <%--item.position = $tr.find('td:eq(1)').find('input:eq(0)').val();--%>
+                <%--item.number = $tr.find('td:eq(2)').find('input:eq(0)').val();--%>
+                <%--item.type = 1;--%>
+                <%--players.push(item);--%>
+            <%--}--%>
+
+            <%--//主队替补球员--%>
+            <%--$trs = $('#secMaster>tr');--%>
+            <%--for (var i = 1; i < $trs.length; i++) {--%>
+                <%--var item = {};--%>
+                <%--var $tr = $trs.eq(i);--%>
+                <%--item.teamId = $('#secMaster').attr('teamId');--%>
+                <%--item.playerId = $tr.find('td:eq(0)').attr('playerId');--%>
+                <%--item.name = $tr.find('td:eq(0)').find('input:eq(0)').val();--%>
+                <%--item.position = $tr.find('td:eq(1)').find('input:eq(0)').val();--%>
+                <%--item.number = $tr.find('td:eq(2)').find('input:eq(0)').val();--%>
+                <%--item.type = 2;--%>
+                <%--item.date= transDate($tr.find('td:eq(3)')).html();--%>
+                <%--players.push(item);--%>
+            <%--}--%>
+            <%--//客队替补球员--%>
+            <%--$trs = $('#secServant>tr');--%>
+            <%--for (var i = 1; i < $trs.length; i++) {--%>
+                <%--var item = {};--%>
+                <%--var $tr = $trs.eq(i);--%>
+                <%--item.teamId = $('#secServant').attr('teamId');--%>
+                <%--item.playerId = $tr.find('td:eq(0)').attr('playerId');--%>
+                <%--item.name = $tr.find('td:eq(0)').find('input:eq(0)').val();--%>
+                <%--item.position = $tr.find('td:eq(1)').find('input:eq(0)').val();--%>
+                <%--item.number = $tr.find('td:eq(2)').find('input:eq(0)').val();--%>
+                <%--item.type = 2;--%>
+                <%--players.push(item);--%>
+            <%--}--%>
+            <%--//主队进球球员--%>
+            <%--$trs = $('#scoreMaster>tr');--%>
+            <%--for (var i = 1; i < $trs.length; i++) {--%>
+                <%--var item = {};--%>
+                <%--var $tr = $trs.eq(i);--%>
+                <%--item.teamId = $('#scoreMaster').attr('teamId');--%>
+                <%--item.playerId = $tr.find('td:eq(0)').attr('playerId');--%>
+                <%--item.name = $tr.find('td:eq(0)').find('input:eq(0)').val();--%>
+                <%--item.position = $tr.find('td:eq(1)').find('input:eq(0)').val();--%>
+                <%--item.number = $tr.find('td:eq(2)').find('input:eq(0)').val();--%>
+                <%--item.type = 3;--%>
+                <%--players.push(item);--%>
+            <%--}--%>
+            <%--//客队进球球员--%>
+            <%--$trs = $('#scoreServant>tr');--%>
+            <%--for (var i = 1; i < $trs.length; i++) {--%>
+                <%--var item = {};--%>
+                <%--var $tr = $trs.eq(i);--%>
+                <%--item.teamId = $('#scoreServant').attr('teamId');--%>
+                <%--item.playerId = $tr.find('td:eq(0)').attr('playerId');--%>
+                <%--item.name = $tr.find('td:eq(0)').find('input:eq(0)').val();--%>
+                <%--item.position = $tr.find('td:eq(1)').find('input:eq(0)').val();--%>
+                <%--item.number = $tr.find('td:eq(2)').find('input:eq(0)').val();--%>
+                <%--item.type = 3;--%>
+                <%--players.push(item);--%>
+            <%--}--%>
+            <%--//警告球员--%>
+            <%--$trs = $('#warning>tr');--%>
+            <%--for (var i = 1; i < $trs.length; i++) {--%>
+                <%--var item = {};--%>
+                <%--var $tr = $trs.eq(i);--%>
+                <%--item.teamId = $('#warning').attr('teamId');--%>
+                <%--item.playerId = $tr.find('td:eq(0)').attr('playerId');--%>
+                <%--item.name = $tr.find('td:eq(0)').find('input:eq(0)').val();--%>
+                <%--item.position = $tr.find('td:eq(1)').find('input:eq(0)').val();--%>
+                <%--item.number = $tr.find('td:eq(2)').find('input:eq(0)').val();--%>
+                <%--item.type = 4;--%>
+                <%--players.push(item);--%>
+            <%--}--%>
+            <%--//罚令球员--%>
+            <%--$trs = $('#punish>tr');--%>
+            <%--for (var i = 1; i < $trs.length; i++) {--%>
+                <%--var item = {};--%>
+                <%--var $tr = $trs.eq(i);--%>
+                <%--item.teamId = $('#punish').attr('teamId');--%>
+                <%--item.playerId = $tr.find('td:eq(0)').attr('playerId');--%>
+                <%--item.name = $tr.find('td:eq(0)').find('input:eq(0)').val();--%>
+                <%--item.position = $tr.find('td:eq(1)').find('input:eq(0)').val();--%>
+                <%--item.number = $tr.find('td:eq(2)').find('input:eq(0)').val();--%>
+                <%--item.type = 5;--%>
+                <%--players.push(item);--%>
+            <%--}--%>
+
+            <%--return players;--%>
+        <%--}--%>
+
+        <%--$('input[type=button]').click(function () {--%>
+
+
+            <%--//获取--%>
+
+            <%--console.log(players);--%>
+            <%--$.ajax({--%>
+                <%--url: '',--%>
+                <%--type: 'post',--%>
+                <%--dataType: 'json',--%>
+                <%--data: {playerJson: JSON.stringify(players), 'token': $('#token').html()},--%>
+                <%--success: function (result) {--%>
+                    <%--$('#token').html(result.token);--%>
+                <%--}--%>
+            <%--})--%>
+
+        <%--});--%>
+    <%--})--%>
+<%--</script>--%>
+<%--</body>--%>
+<%--</html>--%>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0">
+    <title>裁判报告书</title>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/referee/public.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/referee/report.css" />
+</head>
+
+<body>
+<!--导航-->
+<nav class="nav-bg navbar">
+    <div class="container">
+        <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+            <img src="${path}/resources/img/logo.png"/>
+            <span>四川省青少年校园足球信息网</span>
+        </div>
+    </div>
+</nav>
+
+<!--内容-->
+<div class="panel panel-info">
+    <div class="panel-heading text-center">
+        <h3 class="panel-title">裁判报告书</h3>
+    </div>
+    <div class="panel-body">
+        <!--赛事内容-->
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                赛事内容
+            </div>
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-4">赛事名称：</div>
+                        <div class="col-xs-8 text-center">东软杯</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">参赛队伍：</div>
+                        <div class="col-xs-3 text-center">主队：</div>
+                        <div class="col-xs-5 text-center">15级一班</div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-xs-3 col-xs-offset-4">客队：</div>
+                        <div class="col-xs-5">15级二班</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-5">比赛开始时间：</div>
+                        <div class="col-xs-7 text-center">2018/3/15 10:25</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--比赛情况-->
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                比赛情况
+            </div>
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">常规赛比分：</div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-xs-4">15级一班</div>
+                        <div class="col-xs-1">VS</div>
+                        <div class="col-xs-4">15级二班</div>
+                        <div class="col-xs-1">00</div>
+                        <div class="col-xs-1">：</div>
+                        <div class="col-xs-1">00</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">加时赛比分：</div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-xs-4 ">15级一班</div>
+                        <div class="col-xs-1 ">VS</div>
+                        <div class="col-xs-4 ">15级二班</div>
+                        <div class="col-xs-1 ">
+                            <input type="text" class="input-score" placeholder="00" />
+                        </div>
+                        <div class="col-xs-1 ">：</div>
+                        <div class="col-xs-1 ">
+                            <input type="text" class="input-score" placeholder="00"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">点球决胜结果：</div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-xs-4 ">15级一班</div>
+                        <div class="col-xs-1 ">VS</div>
+                        <div class="col-xs-4 ">15级二班</div>
+                        <div class="col-xs-1 ">
+                            <input type="text" class="input-score" placeholder="00"/>
+                        </div>
+                        <div class="col-xs-1 ">：</div>
+                        <div class="col-xs-1 ">
+                            <input type="text" class="input-score" placeholder="00"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-4">获胜队：</div>
+                        <div class="col-xs-8">
+                            <select>
+                                <option value="1">平局</option>
+                                <option value="2">15级一班</option>
+                                <option value="3">15级二班</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--参赛队员名单-->
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                参赛队员名单
+            </div>
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">15级一班：</div>
+                    </div>
+                </div>
+                <table class="table table-bordered" id="tab">
+                    <thead>
+                    <tr class="warning" id="t1">
+                        <th>队员姓名</th>
+                        <th>位置</th>
+                        <th>球衣号码</th>
+                        <th>
+                            <input type="button" id="" class="btn btn-warning btn-xs center-block game-add" value="添加" />
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr>
+                        <td>张三</td>
+                        <td>前锋</td>
+                        <td>15</td>
+                        <td>
+                            <input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>
+                        </td>
+                    </tr>-->
+                    </tbody>
+                </table>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">15级二班：</div>
+                    </div>
+                </div>
+                <table class="table table-bordered " >
+                    <thead>
+                    <tr class="warning">
+                        <th>队员姓名</th>
+                        <th>位置</th>
+                        <th>球衣号码</th>
+                        <th>
+                            <input type="button" id="" class="btn btn-warning btn-xs center-block game-add" value="添加"/>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr>
+                        <td>张三</td>
+                        <td>前锋</td>
+                        <td>15</td>
+                        <td>
+                            <input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>
+
+                        </td>
+                    </tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--替补队员名单-->
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                替补队员名单
+            </div>
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">15级一班：</div>
+                    </div>
+                </div>
+                <table class="table table-bordered " >
+                    <thead>
+                    <tr class="warning">
+                        <th>进场队员</th>
+                        <th>位置</th>
+                        <th>号码</th>
+                        <th>时间</th>
+                        <th>
+                            <input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>张三</td>
+                        <td>前锋</td>
+                        <td>15</td>
+                        <td>00:25:00</td>
+                        <td>
+                            <input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">15级二班：</div>
+                    </div>
+                </div>
+                <table class="table table-bordered " >
+                    <thead>
+                    <tr class="warning">
+                        <th>进场队员</th>
+                        <th>位置</th>
+                        <th>号码</th>
+                        <th>时间</th>
+                        <th>
+                            <input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>张三</td>
+                        <td>前锋</td>
+                        <td>15</td>
+                        <td>00:25:00</td>
+                        <td>
+                            <input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--进球队员-->
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                进球队员
+            </div>
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">15级一班：</div>
+                    </div>
+                </div>
+                <table class="table table-bordered " >
+                    <thead>
+                    <tr class="warning">
+                        <th>姓名</th>
+                        <th>位置</th>
+                        <th>号码</th>
+                        <th>时间</th>
+                        <th>
+                            <input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>张三</td>
+                        <td>前锋</td>
+                        <td>15</td>
+                        <td>00:25:00</td>
+                        <td>
+                            <input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">15级二班：</div>
+                    </div>
+                </div>
+                <table class="table table-bordered " >
+                    <thead>
+                    <tr class="warning">
+                        <th>姓名</th>
+                        <th>位置</th>
+                        <th>号码</th>
+                        <th>时间</th>
+                        <th>
+                            <input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>张三</td>
+                        <td>前锋</td>
+                        <td>15</td>
+                        <td>00:25:00</td>
+                        <td>
+                            <input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--警告队员名单-->
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                警告队员名单
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered " >
+                    <thead>
+                    <tr class="warning">
+                        <th>队伍</th>
+                        <th>队员姓名</th>
+                        <th>号码</th>
+                        <th>时间</th>
+                        <th>原因</th>
+                        <th>
+                            <input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>客队</td>
+                        <td>李四</td>
+                        <td>15</td>
+                        <td>00:25:00</td>
+                        <td>犯规</td>
+                        <td>
+                            <input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--罚令出场名单-->
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                罚令出场名单
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered " >
+                    <thead>
+                    <tr class="warning">
+                        <th>队伍</th>
+                        <th>队员姓名</th>
+                        <th>号码</th>
+                        <th>时间</th>
+                        <th>原因</th>
+                        <th>
+                            <input type="button" class="btn btn-warning btn-xs center-block" value="添加"/>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>客队</td>
+                        <td>李四</td>
+                        <td>15</td>
+                        <td>00:25:00</td>
+                        <td>犯规</td>
+                        <td>
+                            <input type="button" class="btn btn-danger btn-xs center-block" value="删除"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--红牌情况说明-->
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                红牌情况说明
+            </div>
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <textarea class="form-control" rows="3" placeholder="请输入本场比赛红牌情况，不超过100字"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--罚球点球情况说明-->
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                罚球点球情况说明
+            </div>
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <textarea class="form-control" rows="3" placeholder="请输入本场比赛罚球点球情况，不超过100字"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--严重错漏判情况说明-->
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                严重错漏判情况说明
+            </div>
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <textarea class="form-control" rows="3" placeholder="请输入本场比赛严重错漏判情况，不超过100字"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--底部-->
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-xs-6">裁判员姓名：</div>
+                <div class="col-xs-6">张三</div>
+            </div>
+            <div class="row text-center">
+                <div class="col-xs-6">裁判员电话：</div>
+                <div class="col-xs-6">11111111111</div>
+            </div>
+            <div>
+                <input class="btn btn-success btn-md radius center-block panel-distance" type="button" value="提交">
+            </div>
+        </div>
+
+    </div>
+    <!--添加页面-->
+    <div class="panel panel-info add-page" id="add-page"  >
+        <div class="panel-heading">
+            <h3 class="panel-title text-center">
+                添加信息
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="container text-center">
+
+                <div class="row" >
+                    <div class="col-xs-4 col-xs-offset-1 text-right" style="background-color: #FDF5E6; " >队伍：</div>
+                    <div class="col-xs-6">
+                        <select class="input-write" id="select-team" >
+                            <option value="1" >主队</option>
+                            <option value="2">客队</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-xs-4 col-xs-offset-1 text-right" style="background-color: #FDF5E6;">队员姓名：</div>
+                    <div class="col-xs-6">
+                        <select class="input-write" id="select-name"  >
+                            <option value="1">张三</option>
+                            <option value="2">李四</option>
+                            <option value="3">王五</option>
+                            <option value="4">光头强</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-xs-4 col-xs-offset-1 text-right" style="background-color: #FDF5E6;">位置：</div>
+                    <div class="col-xs-6">
+                        <select class="input-write" id="select-place">
+                            <option value="1">守门员</option>
+                            <option value="2">后卫</option>
+                            <option value="3">中场</option>
+                            <option value="4">前锋</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-xs-4 col-xs-offset-1 text-right" style="background-color: #FDF5E6;">球衣号码：</div>
+                    <div class="col-xs-6">
+                        <input type="number" id="shirt-num" class="input-write input-width" value="" />
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-xs-4 col-xs-offset-1 text-right" style="background-color: #FDF5E6;">时间：</div>
+                    <div class="col-xs-6">
+                        <input type="text" id="time" class="input-write input-width" value="" />
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-xs-4 col-xs-offset-1 text-right" style="background-color: #FDF5E6;">原因：</div>
+                    <div class="col-xs-6">
+                        <input type="text" id="reason" class="input-write input-width" value="" />
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-xs-4 col-xs-offset-2" style="">
+                        <input type="button" class="btn btn-success btn-sm radius center-block" id="confim" value="确认" />
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="button" class="btn btn-danger btn-sm radius center-block" id="cancel" value="取消" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="${path}/resources/js/jquery-3.1.1.min.js"></script>
+<script src="${path}/resources/js/bootstrap.min.js"></script>
+<!--<script src="layer_mobile/layer.js"></script>-->
+<script>
+
+
+
+
+
+    $('.game-add').on('click',function(){
+        $('#add-page').addClass('show-hide');
+        $('#select-team').attr({'disabled':'disabled'});
+        $('#time').attr({'disabled':'disabled'});
+        $('#reason').attr({'disabled':'disabled'});
+        $('#confim').on('click',function(){
+            var $tr = $("<tr></tr>");  //创建tr
+            var $btn = $("<td><input type='button' class='btn btn-danger btn-xs center-block' id='del' value='删除'/></td>");
+            var $name = '<td>'+$('#select-name option:selected').text()+'</td>'; //创建td
+            var $place = '<td>'+$('#select-place option:selected').text();+'</td>';
+            var $num = '<td>'+$("#shirt-num").val()+'</td>';
+            $tr.append($name,$place,$num,$btn); //将获取的值追加到tr中
+            $('#tab').append($tr); //将获取的tr追加到 table中
+            $('#del').on('click',function(){
+                var p1 = this.parentNode;
+                var p2 = p1.parentNode;
+                $(p2).remove();
+            });
+//					$('#select-name').get(0).selectedIndex=0;
+//					$('#select-place').get(0).selectedIndex=0;
+//					$('#shirt-num').val('');
+            $('#add-page').removeClass('show-hide');
+        });
+        $('#cancel').on('click',function(){
+            $('#select-name').get(0).selectedIndex=0;
+            $('#select-place').get(0).selectedIndex=0;
+            $('#shirt-num').val('');
+            $('#add-page').removeClass('show-hide');
+        });
+    });
+</script>
+</body>
+</html>
+

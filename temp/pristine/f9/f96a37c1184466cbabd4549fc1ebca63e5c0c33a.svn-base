@@ -1,0 +1,53 @@
+package cn.nsu.edu.web.four.config;
+
+public class BaseStatic {
+
+    public static final String CHARSET = "utf-8";
+
+
+    public static final String KEY_SESSION_ORG_URL = "_KEY_SESSION_ORG_URL_";//原始路径，登陆后跳回
+    public static final String KEY_SESSION_LOGIN = "_KEY_SESSION_LOGIN_USER_";//登录后的路径
+    public static final String KEY_SESSION_ROLE = "_KEY_SESSION_ROLE_";//角色
+    public static final String KEY_SESSION_SEARCH_RESULT = "_KEY_SESSION_SEARCH_RESULT_";
+    public static final String KEY_SESSION_PHONE = "_KEY_SESSION_PHONE_";//手机号码，用于发送手机验证码
+
+    public static final String KEY_SESSION_LIVE_PHONE="live_phone";//直播认证之后的电话号码
+
+    public static final String KEY_SESSION_SCHEDULE_INFORMATION="_KEY_SESSION_SCHEDULE_INFORMATION_";//存储赛程信息
+
+    public static final String KEY_SESSION_TOKEN = "token";//存放token
+
+    public static final String KEY_CONTEXT_SESSION = "_KEY_CONTEXT_SESSION_";
+
+    public static final String KEY_PARAMETER_TOKEN = KEY_SESSION_TOKEN;
+
+    //用户Map的key
+    public static final String KEY_MAP_USERNAME = "USERNAME";
+    public static final String KEY_MAP_PASSWORD = "PASSWORD";
+    public static final String KEY_MAP_SALT = "SALT";
+
+
+    public static final String RESPONSE_CONTENT_TYPE_JSON = "application/json;charset=utf-8";
+
+
+    public static final String URL_LOGIN = "";
+
+
+    public static final String PREFIX_REDIS = "_FOOTBALL4TH_";
+
+    public static final String KEY_SESSION_CODE = "_KEY_SESSION_CODE_";//登陆验证码
+
+    //返回的json数据的key
+    public static final String KEY_JSON_CODE = "code";//返回的json中的key
+    public static final String KEY_JSON_SESSION_ID = "sessionId";//sessionId
+
+
+    //搜索分页相关
+    public static final int EACH_PAGE_COUNT = 15;
+
+
+    //手机验证码相关
+    public static final int SMS_RETAIN_TIME = 20 * 60;//保留时间，20分钟
+    public static final String SMS_PREFIX = "_SMS_PREFIX_";//手机验证码在redis中的key前缀
+    public static final int SMS_MAX_ERROR_COUNT = 3;//手机验证码最多错误次数
+}

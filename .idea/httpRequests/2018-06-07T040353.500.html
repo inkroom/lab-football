@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>系统错误</title>
+    <link rel="stylesheet" type="text/css"
+          href="/f/resources/lib/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/f/resources/css/match/style.1.0.css"/>
+    <link rel="stylesheet" type="text/css" href="/f/resources/css/common/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/f/resources/css/common/500.css"/>
+</head>
+
+<body>
+<nav class="nav-bg navbar" style="rgba(116,216,230,0.5);color:#6997a5">
+    <div class="container boot2-1">
+        <div class="logo-w col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <img src="/f/resources/img/logo.png"/>
+            <span>四川省青少年校园足球信息网</span>
+        </div>
+    </div>
+</nav>
+
+
+<p id="token" style="display: none" value=""></p>
+<input type="hidden" id="refreshed" value="no">
+<script type="text/javascript">
+    // if (window.name !== "hasLoad") {
+    //     location.reload();
+    //     window.name = "hasLoad";
+    // } else {
+    //     window.name = "";
+    // }
+    var e = document.getElementById("refreshed");
+    if (e.value === "no") e.value = "yes";
+    else {
+        e.value = "no";
+        // alert('开始刷新');
+        // location.reload();
+    }
+    window.onload = function (ev) {
+        $('[data-toggle="tooltip"]').tooltip()
+    }
+</script>
+<div>
+    <div class="div-500">
+        <div>
+            <img src="/f/resources/img/common/500title.png"/>
+        </div>
+    </div>
+    <div class="div-500">
+
+        <img src="/f/resources/img/common/500font.png"/>
+
+    </div>
+    <div class="div-500-2">
+        <div>
+            <img src="/f/resources/img/common/500rocket.png"/>
+        </div>
+    </div>
+    <!--<img src="img/common/500bg.png" style="width: 100%;" />-->
+
+    <div class="div-500-under">
+        <img src="/f/resources/img/common/500under.png" style="width: 100%;">
+    </div>
+</div>
+
+<script src="/f/resources/lib/jquery/jquery-3.1.1.min.js"></script>
+<script src="/f/resources/lib/bootstrap/bootstrap.min.js"></script>
+<script src="/f/resources/lib/layer/layer.js"></script>
+</body>
+
+</html>

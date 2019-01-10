@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title>入场验证</title>
+		<link rel="stylesheet" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/public.css">
+		<link rel="stylesheet" type="text/css" href="css/test.css"/>
+	</head>
+	
+	
+	<body>
+		<!--导航-->
+		<nav class="nav-bg navbar">
+			<div class="container">
+				<div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+					<img src="img/logo.png"/>
+					<span>四川省青少年校园足球信息网</span>
+				</div>
+			</div>
+		</nav>
+	
+		<!--内容-->
+		<h3 class="text-center">请选中本场比赛中的运动员</h3>
+		<div class="container-fluid" >
+			<br /><br />
+			<p class="text-center"> <b>东软一队</b></p>
+			<hr style="margin-top:0.1rem;" />
+			<div class="row">
+				<div class="col-xs-12">
+					<span class="col-xs-4">
+						<a><img class="center-block click-img img" src="img/1.png" /></a>
+						<figcaption class="text-center">Norway.</figcaption>
+					</span>
+					<span class="col-xs-4">
+						<a><img class="center-block click-img img" src="img/2.png" /></a>
+						<figcaption class="text-center">Norway.</figcaption>
+					</span>
+					<span class="col-xs-4"><a><img class="center-block img" src="img/3.png" /></a>
+						<figcaption class="text-center">Norway.</figcaption>
+					</span>
+				</div>
+			</div><br />
+			<div class="row">
+				<div class="col-xs-12">
+					<span class="col-xs-4"><a><img class="center-block click-img img" src="img/4.png"/></a><figcaption class="text-center">Norway.</figcaption class="text-center"></span>
+					<span class="col-xs-4"><a><img class="center-block click-img img" src="img/5.png" /></a><figcaption class="text-center">Norway.</figcaption class="text-center"></span>
+					<span class="col-xs-4"><a><img class="center-block click-img img" src="img/6.png" /></a><figcaption class="text-center">Norway.</figcaption class="text-center"></span>
+				</div>
+			</div>
+			<br />
+			<p class="text-center"><b>工商一队</b></p>
+			<hr style="margin-top:0.1rem;" />
+			<div class="row">
+				<div class="col-xs-12">
+					<span class="col-xs-4"><a><img class="center-block click-img img" src="img/7.png" /></a><figcaption class="text-center">Norway.</figcaption></span>
+					<span class="col-xs-4"><a><img class="center-block click-img img" src="img/8.png" /></a><figcaption class="text-center">Norway.</figcaption></span>
+					<span class="col-xs-4"><a><img class="center-block click-img img" src="img/10.png" /></a><figcaption class="text-center">Norway.</figcaption></span>
+				</div>
+			</div><br />
+			<div class="row">
+				<div class="col-xs-12">
+					<span class="col-xs-4"><a><img class="center-block click-img img" src="img/11.png" /></a><figcaption class="text-center">Norway.</figcaption></span>
+					<span class="col-xs-4"><a><img class="center-block click-img img" src="img/12.png" /></a><figcaption class="text-center">Norway.</figcaption></span>
+					<span class="col-xs-4"><a><img class="center-block click-img img" src="img/13.png" /></a><figcaption class="text-center">Norway.</figcaption></span>
+				</div>
+			</div>
+ 			<div class="button btn-distance">
+ 				<input type="button" class="btn btn-success btn-lg radius center-block" id="cancel" value="确定" />
+ 			</div>
+		</div>
+	
+	
+        <!--底部-->
+		<div class="bottom_box">
+            <div class="tab_bar" id="index" onclick="document.location.href='index.html';">
+            	<img src="img/index-on.png" />
+            	<p>后台首页</p>
+            </div>
+            <div class="tab_bar" id="identity" onclick="document.location.href='integral.html';">
+            	<img src="img/identity1.png"/>
+            	<p style="color: #5496F9;">入场验证</p>
+            </div>
+            <div class="tab_bar" id="QRcode" onclick="document.location.href='qrCode.html';">
+            	<img src="img/QRcode.png"/>
+            	<p>二维码</p>
+           	</div>
+           	<div class="tab_bar" id="revisel" onclick="document.location.href='qrCode.html';">
+           		<img src="img/revise.png"/>
+           		<p>修改比分</p>
+           	</div>
+        </div>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/test.js"></script>
+</html>

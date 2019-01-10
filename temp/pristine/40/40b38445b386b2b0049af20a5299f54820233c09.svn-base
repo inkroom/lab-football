@@ -1,0 +1,12 @@
+$(function(){
+	/*入场验证*/
+	$('.img').click(function(){
+		if($(this).hasClass('img')){
+			$(this).addClass("scorer");
+	   		$(this).removeClass("img");
+		}else{
+			$(this).addClass("img");
+	   		$(this).removeClass("scorer");
+		}  	
+	})
+});

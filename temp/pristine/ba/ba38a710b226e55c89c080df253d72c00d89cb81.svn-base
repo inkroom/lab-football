@@ -1,0 +1,64 @@
+package cn.nsu.edu.web.four.services.referee.impl;
+
+import cn.nsu.edu.web.four.beans.matchStaff.MatchStaff;
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.daos.jdbc.referee.RefereeDao;
+import cn.nsu.edu.web.four.dto.stc.referee.PlayerInformationDto;
+import cn.nsu.edu.web.four.dto.stc.referee.ScheduleInformationDto;
+import cn.nsu.edu.web.four.services.referee.RefereeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.*;
+
+@Service
+public class RefereeServiceImpl implements RefereeService {
+
+    @Autowired
+    RefereeDao refereeDao;
+
+    @Override
+    public ScheduleInformationDto getScheduleInformation(Integer scheduleId) throws Exception {
+        ScheduleInformationDto dto = new ScheduleInformationDto();
+        Map<String,Object> map = new HashMap<>();
+        try {
+            dto.setScheduleInformation(refereeDao.getScheduleInformation(scheduleId));
+            dto.setTeamA( refereeDao.getTeamName(dto.getScheduleInformation().getTeamA()));
+            dto.setTeamB( refereeDao.getTeamName(dto.getScheduleInformation().getTeamB()));
+        } catch (Exception e ) {
+            throw new RuntimeException(e);
+        }
+        return dto;
+    }
+
+    @Override
+    public PlayerInformationDto getPlayerInformation(Integer teamId) throws Exception {
+        PlayerInformationDto dto = new PlayerInformationDto();
+
+        List<Player> playerInformation ;
+        try {
+            dto.setPlayer(refereeDao.getPlayerInformation(teamId));
+            dto.setTeam(refereeDao.getTeamName(teamId));
+        }catch (Exception e ){
+            throw new RuntimeException(e);
+        }
+        return  dto;
+    }
+
+    @Override
+    public boolean insertPlayerInformation(Integer playerId, Integer scheduleId, String time) throws Exception {
+        boolean b = false;
+        try {
+            Integer teamId;
+            teamId = refereeDao.getTeamId(playerId);
+            b = refereeDao.insertPlayerInformation(playerId,scheduleId,teamId,time);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+        return b;
+    }
+
+
+}
+
+

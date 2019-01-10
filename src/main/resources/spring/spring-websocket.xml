@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xmlns:redis="http://www.springframework.org/schema/redis"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis.xsd">
+
+    <!--<context:property-placeholder location="classpath*:db.properties" ignore-unresolvable="true"/>-->
+
+    <!--<websocket:handlers>-->
+    <!--<websocket:mapping path="/live" handler="handler" />-->
+    <!--</websocket:handlers>-->
+
+
+    <bean class="cn.nsu.edu.web.four.handler.socket.SocketListener" id="listener">
+        <constructor-arg ref="springSessionDefaultRedisSerializer"/>
+    </bean>
+    <!--订阅redis消息，进行webSocket广播-->
+    <!--<redis:listener-container connection-factory="jedisConnectionFactory">-->
+    <!--&lt;!&ndash;不支持properties属性注入&ndash;&gt;-->
+    <!--<redis:listener ref="listener" topic="socket"/>-->
+    <!--</redis:listener-container>-->
+    <bean class="org.springframework.data.redis.listener.RedisMessageListenerContainer">
+        <property name="connectionFactory" ref="jedisConnectionFactory"/>
+        <property name="messageListeners">
+            <map>
+                <entry key-ref="listener">
+                    <list>
+                        <bean class="org.springframework.data.redis.listener.ChannelTopic">
+                            <constructor-arg value="${redis.topic.socket}"/>
+                        </bean>
+                    </list>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <!--<bean id="handler" class="org.springframework.web.socket.handler.TextWebSocketHandler"/>-->
+</beans>

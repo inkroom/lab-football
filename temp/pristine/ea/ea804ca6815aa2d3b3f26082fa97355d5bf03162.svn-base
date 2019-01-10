@@ -1,0 +1,19 @@
+package cn.nsu.edu.web.four.daos.jdbc.player;
+
+import cn.nsu.edu.web.four.beans.player.Player;
+import org.apache.ibatis.annotations.Param;
+
+public interface PlayerDao {
+
+    //查询单个球员信息
+    Player selectPlayerById(@Param("id_player") Integer id) throws Exception;
+
+    //编辑更新单个球员信息
+    int updatePlayerById(Player player) throws Exception;
+
+    //删除球员信息（只是添加已删除的状态码）
+    int addStateById(@Param("id_player") Integer id,@Param("status") int status) throws Exception;
+
+    //添加单个球员信息：注册使用
+    int insertPlayer(Player player) throws Exception;
+}

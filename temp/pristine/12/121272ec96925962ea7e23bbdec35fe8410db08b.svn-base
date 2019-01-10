@@ -1,0 +1,236 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>schedule</title>
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/resources/css/match/style.1.0.css"/>
+
+    <script src="/resources/js/match/respond.js"></script>
+    <script src="/resources/js/match/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/resources/js/match/bootstrap2.min.js"></script>
+    <script src="/resources/js/match/introduce.js"></script>
+    <script src="/resources/js/match/matchDetails.js"></script>
+
+</head>
+<body>
+<nav class="nav-bg navbar">
+    <div class="container">
+        <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-11">
+            <img src="/resources/img/logo足球项目组.png"/>
+            <span><a href="index.jsp">四川省青少年校园足球信息网</a></span>
+        </div>
+        <div class="nav-b hidden-lg hidden-md col-sm-1 hidden-xs">
+            <button type="button" class="glyphicon glyphicon-th-list"></button>
+        </div>
+        <div class="nav-w col-lg-8 col-md-7 hidden-sm hidden-xs">
+            <ul>
+                <li><a href="matchList.jsp">赛事赛程</a></li>
+                <li><a href="#">教练管理</a></li>
+                <li><a href="#">球员管理</a></li>
+                <li><a href="#">球队管理</a></li>
+                <li><a href="#">个人中心</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container ml-h">
+    东软食堂杯联赛
+</div>
+<div class="container ml-tab">
+    <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+            <li class="active" role="presentation"><a id="home-tab" role="tab" aria-expanded="true" aria-controls="home"
+                                                      href="#home" data-toggle="tab">详情</a></li>
+            <li role="presentation" id="schedule-list"><a id="profile-tab" role="tab" aria-expanded="false"
+                                                          aria-controls="profile" href="#profile"
+                                                          data-toggle="tab">赛程表</a></li>
+            <!--<li class="dropdown" role="presentation"><a id="dropdown1-tab" role="tab" aria-controls="dropdown1" href="#dropdown1" data-toggle="tab">审核表</a></li>-->
+        </ul>
+        <!--标签页-->
+        <div class="tab-content" id="myTabContent">
+            <!--第一个标签-->
+            <div class="tab-pane fade active in sch-w" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <a href="matchList.jsp" style="color: #fff;">
+                    <button class="btn btn-primary" style="float: right;margin-right: 10px;margin-top: 3.5px;">报名
+                    </button>
+                </a>
+                <div>赛事名称: <span><b>世界杯</b></span></div>
+                <div>赛事级别：<span><b>国家</b></span></div>
+                <div>赛事状态：<span><b>进行中</b></span></div>
+                <div>赛制：<span><b>5人</b></span></div>
+                <div>赛事开始时间：<span><b>2018/03/21</b></span></div>
+                <div>报名截止时间：<span><b>2019/3/21</b></span></div>
+            </div>
+            <!--第二个标签-->
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-2" id="schedule-data" style="visibility: hidden">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>开赛时间</th>
+                            <th>地点</th>
+                            <th>主队</th>
+                            <th>得分</th>
+                            <th>客队</th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--第三个标签-->
+            <div class="tab-pane fade" id="dropdown1" role="tabpanel" aria-labelledby="dropdown1-tab">
+                <div class="tab-3">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>审核参赛机构名称</th>
+                            <th>参赛队伍</th>
+                            <th>审核操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>新食堂</td>
+                            <td>
+                                1队
+                            </td>
+                            <td>
+                                <button class="btn btn-success">通过</button>
+                                <button class="btn btn-danger">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>新食堂</td>
+                            <td>
+                                1队
+                            </td>
+                            <td>
+                                <button class="btn btn-success">通过</button>
+                                <button class="btn btn-danger">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>新食堂</td>
+                            <td>
+                                1队
+                            </td>
+                            <td>
+                                <button class="btn btn-success">通过</button>
+                                <button class="btn btn-danger">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>新食堂</td>
+                            <td>
+                                1队
+                            </td>
+                            <td>
+                                <button class="btn btn-success">通过</button>
+                                <button class="btn btn-danger">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>新食堂</td>
+                            <td>
+                                1队
+                            </td>
+                            <td>
+                                <button class="btn btn-success">通过</button>
+                                <button class="btn btn-danger">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>新食堂</td>
+                            <td>
+                                1队
+                            </td>
+                            <td>
+                                <button class="btn btn-success">通过</button>
+                                <button class="btn btn-danger">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>新食堂</td>
+                            <td>
+                                1队
+                            </td>
+                            <td>
+                                <button class="btn btn-success">通过</button>
+                                <button class="btn btn-danger">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>新食堂</td>
+                            <td>
+                                1队
+                            </td>
+                            <td>
+                                <button class="btn btn-success">通过</button>
+                                <button class="btn btn-danger">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>新食堂</td>
+                            <td>
+                                1队
+                            </td>
+                            <td>
+                                <button class="btn btn-success">通过</button>
+                                <button class="btn btn-danger">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>新食堂</td>
+                            <td>
+                                1队
+                            </td>
+                            <td>
+                                <button class="btn btn-success">通过</button>
+                                <button class="btn btn-danger">拒绝</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="pag" id="pageBtn" style="display: none">
+                <nav aria-label="Page navigation" class="pag">
+                    <ul class="pagination">
+                        <li id="previous">
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <!--这里动态加载分页按钮-->
+                        <li id="next">
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="hpn" class="hpn-2">
+    <div>
+        <span>队员一</span><br/>
+        <span>队员一</span><br/>
+        <span>队员一</span><br/>
+        <span>队员一</span><br/>
+        <span>队员一</span><br/>
+    </div>
+</div>
+
+</body>
+</html>

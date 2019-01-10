@@ -1,0 +1,34 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #34485E;
+    background-image: url('../../img/common/500bg.png');
+}
+
+.div-500 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0px;
+}
+
+.div-500-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.div-500-under {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+}

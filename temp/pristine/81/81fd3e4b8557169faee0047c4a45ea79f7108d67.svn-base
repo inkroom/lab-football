@@ -1,0 +1,21 @@
+/*完善个人信息*/
+.vertical-center{
+	margin-top: 100px;
+}
+.text-distance{
+	margin-bottom: 25px; 
+	margin-top: 10px;
+}
+.input-width{
+	width: 100%;
+	border-bottom: 1px solid #000000;
+}
+.cont-top{
+	margin-top: 15%
+}
+.text-top{
+	margin-top: 25%
+}
+.font-color{
+	color: red;
+}

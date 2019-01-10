@@ -1,0 +1,85 @@
+package cn.nsu.edu.web.four.services.team.Impl;
+
+import cn.nsu.edu.web.four.beans.teams.Team;
+import cn.nsu.edu.web.four.daos.jdbc.team.OperateInfoDao;
+import cn.nsu.edu.web.four.services.team.OperateInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.Date;
+
+@Service
+public class OperateInfoServiceImpl implements OperateInfoService {
+
+
+   @Autowired
+   private OperateInfoDao operateInfoDao;
+
+
+    @Override
+    public boolean updatePlayer(int idTeam, int idPlayer, int status, Date time)  {
+
+        try {
+            int flag =  operateInfoDao.updatePlayer(idTeam,idPlayer,status,time);
+            if(flag != 0){
+                return  true;
+            }else {
+                return  false;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean updateCoach(int idTeam, int idCoach, int status, Date time) {
+
+        try {
+            int flag =  operateInfoDao.updateCoach(idTeam,idCoach,status,time);
+            if (flag !=0){
+                return  true;
+            }else {
+                return  false;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean retireTeam(int idTeam, int status, Date retireTime){
+
+        try {
+            int flag = operateInfoDao.retireTeam(idTeam,status,retireTime);
+            if (flag != 0){
+                return  true;
+            }else {
+                return  false;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public boolean upDateTeamInfo(Team team) {
+
+        try {
+            int flag =  operateInfoDao.upDateTeamInfo(team);
+            if(flag != 0){
+                return  true;
+            }else {
+                return  false;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+}

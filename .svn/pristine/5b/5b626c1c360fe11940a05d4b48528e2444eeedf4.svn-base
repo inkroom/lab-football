@@ -1,0 +1,116 @@
+package cn.nsu.edu.web.four.services.coach.impl;
+
+import cn.nsu.edu.web.four.beans.coach.Coach;
+import cn.nsu.edu.web.four.daos.jdbc.coach.CoachDao;
+import cn.nsu.edu.web.four.services.coach.CoachService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * @program: four
+ * @description: 教练增删查改实现
+ * @author: ZhuShengpeng
+ * @create: 2018-03-21 20:09
+ **/
+
+@Service
+public class CoachServiceimpl implements CoachService {
+
+    @Autowired
+    public CoachDao coachDao;
+
+
+    //添加单个教练
+    @Override
+    public void addCoach(Coach coach) {
+        try {
+            coach.setStatus(0);
+            coachDao.addCoach(coach);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    //修改教练的就职状态
+    @Override
+    public void coachStatus(Integer idCoach) {
+        try {
+            Coach coach=coachDao.getCoach(idCoach);
+            if (coach.getStatus() == 1) {
+                coach.setStatus(0);
+            } else {
+                coach.setStatus(1);
+            }
+            coachDao.coachStatus(coach);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    //获取全部教练的信息
+    @Override
+    public List<Coach> getAllCoach(Integer org_id,int state) {
+        try {
+            List<Coach> list = new ArrayList<Coach>();
+            List<Coach> listT = new ArrayList<Coach>();
+            List<Coach> result =coachDao.getAllCoach(org_id);
+            for (int i=0;i<result.size();i++){
+                    if (result.get(i).getStatus() == 0){
+                        list.add(result.get(i));
+                    }else {
+                        listT.add(result.get(i));
+                    }
+            }
+            if (state==0){
+                return list;
+            }else {
+                return listT;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    //获取单个教练的信息
+    @Override
+    public Coach getCoach(Integer id_coach) {
+        try {
+            Coach coach = new Coach();
+            coach = coachDao.getCoach(id_coach);
+            //获取年龄
+            String idCard = coach.getIdcard();
+            String birth = idCard.substring(6, 10);
+            SimpleDateFormat df = new SimpleDateFormat("yyyy");
+            String year = df.format(new Date());
+            int age = Integer.parseInt(year) - Integer.parseInt(birth);
+            coach.setAge(age);
+
+            return coach;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    //修改教练的基础信息
+    @Override
+    public void updateCoach(Coach coach) {
+        try {
+            coachDao.updateCoach(coach);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+}

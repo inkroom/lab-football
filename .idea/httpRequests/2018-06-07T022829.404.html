@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+    <link rel="stylesheet" type="text/css"
+          href="/4th/resources/lib/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/4th/resources/css/common/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/4th/resources/css/common/404.css"/>
+</head>
+
+<body>
+
+
+<nav class="nav-bg navbar" style="rgba(116,216,230,0.5);color:#6997a5">
+    <div class="container boot2-1">
+        <div class="logo-w col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <img src="/4th/resources/img/logo.png"/>
+            <span>四川省青少年校园足球信息网</span>
+        </div>
+
+    </div>
+</nav>
+
+
+<p id="token" style="display: none" value=""></p>
+<input type="hidden" id="refreshed" value="no">
+<script type="text/javascript">
+    // if (window.name !== "hasLoad") {
+    //     location.reload();
+    //     window.name = "hasLoad";
+    // } else {
+    //     window.name = "";
+    // }
+    var e = document.getElementById("refreshed");
+    if (e.value === "no") e.value = "yes";
+    else {
+        e.value = "no";
+        // alert('开始刷新');
+        // location.reload();
+    }
+    window.onload = function (ev) {
+        $('[data-toggle="tooltip"]').tooltip()
+    }
+</script>
+
+<div>
+    <div class="div-404-under">
+        <img src="/4th/resources/img/common/404.png"/>
+    </div>
+</div>
+<script src="/4th/resources/lib/jquery/jquery-3.1.1.min.js"></script>
+<script src="/4th/resources/lib/bootstrap/bootstrap.min.js"></script>
+<script src="/4th/resources/lib/layer/layer.js"></script>
+</body>
+
+</html>

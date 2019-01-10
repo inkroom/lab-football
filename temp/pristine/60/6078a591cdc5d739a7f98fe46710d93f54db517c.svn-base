@@ -1,0 +1,69 @@
+package cn.nsu.edu.web.four.controllers.live;
+
+import cn.nsu.edu.web.four.config.BaseStatic;
+import cn.nsu.edu.web.four.config.RegexStatic;
+import cn.nsu.edu.web.four.daos.jdbc.referee.ConsummateDao;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.services.common.SMSService;
+import cn.nsu.edu.web.four.services.referee.ConsummateService;
+import cn.nsu.edu.web.four.utils.http.RequestUtil;
+import cn.nsu.edu.web.four.utils.string.ParseUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
+
+/**
+ * 裁判员完善信息
+ */
+@Controller
+@RequestMapping("/referee/")
+public class IdentifyController {
+    @Autowired
+    private SMSService smsService;
+    @Autowired
+    private ConsummateService service;
+    @Autowired
+    private HttpServletRequest request;
+
+    @RequestMapping("consummate")
+    public MessageDto consummate(String name, String id, String code) {
+
+        if (StringUtils.isEmpty(name) || StringUtils.isEmpty(id) || StringUtils.isEmpty(code)) {
+            return new MessageDto(Result.PARAM_NOT_SUIT);
+        }
+        //验证是否是中文姓名
+        if (!name.matches(RegexStatic.CHINESE)) {
+            return new MessageDto(Result.PARAM_NOT_SUIT);
+        }
+        //验证是否是身份证号
+        if (!id.matches(RegexStatic.ID_CARD)) {
+            return new MessageDto(Result.PARAM_NOT_SUIT);
+        }
+        //验证手机验证码
+        Result result = smsService.checkCode(code, request);
+        if (result == Result.SUCCESS) {
+
+            Map<String, Object> loginMap = RequestUtil.getLogin(request);
+            //获取赛程ID
+            Long schId = ParseUtil.parseLong(loginMap.get("id_sch").toString());
+            if (service.consummate(name, id, request.getSession().getAttribute(BaseStatic.KEY_SESSION_PHONE).toString(), schId) >= 1) {
+                return new MessageDto(Result.SUCCESS);
+            }
+            return new MessageDto(Result.FAIL);
+        } else {
+            return new MessageDto(result);
+        }
+    }
+
+    @RequestMapping("consummateIndex")
+    public String consummate(){
+        return "";
+    }
+
+
+}

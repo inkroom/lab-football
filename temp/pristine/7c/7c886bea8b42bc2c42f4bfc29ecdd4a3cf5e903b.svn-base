@@ -1,0 +1,23 @@
+package cn.nsu.edu.web.four.services.referee;
+
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Date;
+import java.util.List;
+
+public interface RefereeService {
+
+    //通过裁判员登陆后的赛程id查询赛事名称，比赛开始时间，主队名，客队名
+    List<Schedule> getScheduleInfomation(@Param("schedule") Integer scheduleId) throws Exception;
+
+    //通过赛程id获取球员的姓名和照片
+    List<Player> getPlayerInformation(@Param("teamId") Integer teamId ) throws Exception;
+
+    //向赛程出场人员表插入球员信息
+    boolean insertPlayerInformation(@Param("playerId")Integer playerId, @Param("scheduleId") Integer scheduleId, @Param("teamId") Integer teamId,@Param("time") String time) throws Exception;
+
+
+
+}

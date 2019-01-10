@@ -1,0 +1,39 @@
+package cn.nsu.edu.web.four.daos.jdbc.team;
+
+import cn.nsu.edu.web.four.beans.teams.Team;
+import org.apache.ibatis.annotations.Param;
+import java.util.Date;
+import java.util.List;
+
+public interface CreateTeamDao {
+
+    /**
+     * 创建球队
+     */
+
+    public void createTeam(@Param("team") Team team) throws  Exception;
+
+
+    /**
+     * 添加教练
+     *
+     */
+
+    public  void addCoach(@Param("id_team") int id_team,
+                          @Param("id_coach") int id_coach,
+                          @Param("status") int status,
+                          @Param("time") Date time) throws  Exception;
+
+
+    /**
+     *添加球员
+     */
+
+    public void  addPlayer(@Param("list")List list,@Param("id_team") int id_team,
+                           @Param("status") int status ,
+                           @Param("time") Date time) throws  Exception;
+
+
+
+
+}

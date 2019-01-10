@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.player.PlayerDao">
+
+    <!--查询单个球员信息-->
+    <select id="selectPlayerById" parameterType="Integer" resultType="cn.nsu.edu.web.four.beans.player.Player" >
+        select * from Player where id_player=#{id_player,jdbcType=BIGINT}
+    </select>
+
+
+    <!--更新单个球员信息-->
+    <update id="updatePlayerById" parameterType="cn.nsu.edu.web.four.beans.player.Player">
+        update Player
+        <set>
+            <if test="orgId != null" >
+                org_id=#{orgId},
+            </if>
+            <if test="name != null" >
+                name=#{name},
+            </if>
+            <if test="password != null" >
+                password=#{password},
+            </if>
+            <if test="grade != null" >
+                grade=#{grade},
+            </if>
+            <if test="classes != null" >
+                classes=#{classes},
+            </if>
+            <if test="headPic != null" >
+                headpic=#{headPic},
+            </if>
+            <if test="sex != null" >
+                sex=#{sex},
+            </if>
+            <if test="idCard != null" >
+                idcard=#{idcard},
+            </if>
+        </set>
+        where id_player = #{idPlayer,jdbcType=BIGINT}
+    </update>
+
+    <!--删除单个球员信息：只是设置状态为已删除-->
+    <update id="addStateById" >
+        update Player set status=#{status}  where id_player=#{id_player,jdbcType=BIGINT}
+    </update>
+
+    <!--添加球员信息：注册使用-->
+    <insert id="insertPlayer" parameterType="cn.nsu.edu.web.four.beans.player.Player" >
+        insert into Player (org_id, `name`,
+          password, grade, classes,
+          headpic, salt, status,
+          score, sex,idcard)
+        values ( #{orgId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+          #{password,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, #{classes,jdbcType=VARCHAR},
+          #{headPic,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+          #{score,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR},#{idCard,jdbcType=VARCHAR})
+  </insert>
+</mapper>

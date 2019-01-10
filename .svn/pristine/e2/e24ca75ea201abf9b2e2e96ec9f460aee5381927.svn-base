@@ -1,0 +1,28 @@
+package cn.nsu.edu.web.four.handler.spring;
+
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.utils.http.RequestUtil;
+import cn.nsu.edu.web.four.utils.http.ResponseUtil;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ExceptionHandler extends SimpleMappingExceptionResolver {
+    @Override
+    protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+//        ex.printStackTrace();
+        logger.error(ex.toString());
+        if (RequestUtil.isAjax(request)) {
+            try {
+                ResponseUtil.outJson(response, new MessageDto(Result.EXCEPTION).toString());
+            } catch (Exception e) {
+            }
+            return null;
+        } else {
+            return new ModelAndView("common/404");
+        }
+    }
+}

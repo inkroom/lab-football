@@ -1,0 +1,113 @@
+package cn.nsu.edu.web.four.controllers.team;
+
+
+import cn.nsu.edu.web.four.annotation.Security;
+import cn.nsu.edu.web.four.beans.coach.Coach;
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.beans.teams.Team;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.services.coach.CoachService;
+import cn.nsu.edu.web.four.services.player.impl.PlayerServiceImpl;
+import cn.nsu.edu.web.four.services.team.Impl.FindInfoServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Controller
+@RequestMapping(value = "display")
+public class DisplayTeamController {
+
+    @Autowired
+    private FindInfoServiceImpl findInfoService;
+
+    @Autowired
+    private  PlayerServiceImpl  playerService;
+
+    @Autowired
+    private CoachService coachService;
+
+    //日志文件
+    private Logger log = LoggerFactory.getLogger(getClass());
+
+    @RequestMapping(value = "index")
+    @Security
+    public String displayTeam(HttpServletRequest request){
+        log.info("页面跳转到displayTeam");
+        log.info(request.getRequestURI());
+        request.getSession().setAttribute("base_path",request.getContextPath());
+        return  "team/displayTeam";
+    }
+
+    @RequestMapping(value = "findTeams",method = RequestMethod.POST)
+    @ResponseBody
+    public  MessageDto findTeams(@RequestParam("page") Integer page  ){
+        //分页插件
+        int status = 0;
+        List<Team> list;
+        List<Integer> coachList = new ArrayList<Integer>();
+        List teamSize = new ArrayList();
+
+        MessageDto dto = new MessageDto(Result.SUCCESS);
+        PageHelper.startPage(page,2);
+        list = findInfoService.findSameOrgAllTeam(1,status);
+
+        PageInfo<Team> pageInfo = new PageInfo(list);
+        for (Team team :pageInfo.getList()){
+            coachList.add(findInfoService.findCoachIdByIdTeam(team.getIdTeam(),status));
+            teamSize.add(findInfoService.findPlayerIdByIdTeam(team.getIdTeam(),status).size());
+        }
+        dto.put("teamSize",teamSize);
+        dto.put("teams",list);
+        dto.put("coachList",coachList);
+        dto.put("pageInfo",pageInfo);
+        log.info("ajax请求成功");
+        return  dto;
+    }
+
+    @RequestMapping(value = "teamInfo")
+    @ResponseBody
+    public MessageDto findTeamInfo(@RequestParam(value = "idTeam") Integer idTeam) {
+
+        List<Player> players = new ArrayList<Player>();
+        MessageDto dto = new MessageDto(Result.SUCCESS);
+
+        List<Integer> playerId= findInfoService.findPlayerIdByIdTeam(idTeam,0);
+        for (Integer id : playerId){
+            players.add(playerService.selectPlayerById(id));
+        }
+        log.info(players.toString());
+        Integer idCoach = findInfoService.findCoachIdByIdTeam(idTeam, 0);
+        Coach coach = coachService.getCoach(idCoach);
+        String sex = null;
+        if (coach.getSex() == 1){
+            sex = "男";
+        }else {
+            sex = "女";
+        }
+        Team team = findInfoService.findTeamInfo(idTeam);
+            log.info(team.getIdTeam()+"");
+        dto.put("players",players);
+        dto.put("playerId",playerId);
+        dto.put("coach",coach);
+        dto.put("team",team);
+        dto.put("sex",sex);
+        //dto.put("date",date);
+
+        log.info("ajax");
+        return dto;
+    }
+}
+
+
+
+

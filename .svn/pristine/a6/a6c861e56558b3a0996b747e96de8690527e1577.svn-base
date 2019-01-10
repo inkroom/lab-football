@@ -1,0 +1,28 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: inkbox
+  Date: 18-3-28
+  Time: 上午10:51
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!--底部-->
+<div class="bottom_box" >
+    <div class="tab_bar" id="index" onclick="document.location.href='index.html';">
+        <img src="${pageContext.request.contextPath}/resources/img/index-on.png" />
+        <p>后台首页</p>
+    </div>
+    <div class="tab_bar" id="identity" onclick="document.location.href='test.html';">
+        <img src="${pageContext.request.contextPath}/resources/img/identity.png"/>
+        <p>入场验证</p>
+    </div>
+    <div class="tab_bar" id="QRcode" onclick="document.location.href='qrCode.html';">
+        <img src="${pageContext.request.contextPath}/resources/img/QRcode.png"/>
+        <p>二维码</p>
+    </div>
+    <div class="tab_bar" id="revisel" onclick="document.location.href='score.jsp';">
+        <img src="${pageContext.request.contextPath}/resources/img/revise1.png"/>
+        <p  style="color: #5496F9;">修改比分</p>
+    </div>
+</div>
+<input type="hidden" value="${token}" id="token">

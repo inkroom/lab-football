@@ -1,0 +1,13 @@
+sms.aliyun.access.key = LTAIFzyhnFczOIt0
+sms.aliyun.access.key.secret = SDjtJMBMuvb5mpJfZX7Hm1Y6GWmXuj
+# 连接超时
+sms.aliyun.connect.timeout=10000
+# 不知道是超时
+sms.aliyun.read.timeout=10000
+
+# 短信模块key
+sms.aliyun.template.code = SMS_127155997
+# 短信签名
+sms.aliyun.template.sign.name =校园足球
+# 验证码 Json数据 key
+sms.aliyun.template.json.code = code

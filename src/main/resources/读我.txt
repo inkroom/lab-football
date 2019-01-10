@@ -1,0 +1,45 @@
+
+登录、登录、获取信息均使用 cn.nsu.edu.web.four.utils.four.RequestUtil 里的对应方法
+
+返回json数据，Controller方法返回值使用 cn.nsu.edu.web.four.dto.ctv.MessageDto
+    使用cn.nsu.edu.web.four.enums.Result 来注明处理结果，对应已有枚举不合适的，自行添加类型
+
+
+加密使用 cn.nsu.edu.web.four.utils.encrypt 包里的类，AES为可逆加密，md5为不可逆加密
+
+dao 层sql语句统一使用xml文件，不使用注解
+
+多次使用的常量，在 BaseStatic 类中声明为静态常量，直接引用静态常量
+
+
+使用  cn.nsu.edu.web.four.annotation.Security 注解来声明 url 权限，对应敏感数据的操作、如删除等，需要使用 token 属性
+    前台传参 name值为 token
+
+    2018-3-16 09:34 更新
+
+
+正则表达式统一使用 cn.nsu.edu.web.four.config.RegexStatic 里的静态变量
+
+判断字符串是否为空 使用Spring提供的 SpringUtils.isEmpty() 方法，验证正则直接使用 String 类的 matcher() 方法
+
+发送手机验证码使用 cn.nsu.edu.web.four.controllers.common.CodeController 里的 sendPhoneCode 请求，注：直接前台发送请求即可
+图片验证码使用 cn.nsu.edu.web.four.controllers.common.CodeController 里的 imageCode 请求，注：直接前台发送请求即可
+
+验证码的检验在自己的 controller 里实现，手机验证码使用 cn.nsu.edu.web.four.service.common.SMSService 里的 checkCode 方法
+    图片验证码直接检验
+
+前台传递的数字类型参数 接收类型一律使用 String ，在Controller里使用 cn.nsu.edu.web.four.utils.string.ParseUtil 进行转换，示例如下
+
+   @RequestMapping(value = {"/index"})
+    public String live( String sch) {
+
+        Long l_sch = ParseUtil.parseLong(sch);
+        if(l_sch == null){//数据验证不通过
+            //数据验证不通过的操作
+        }
+        //数据验证通过的操作
+
+
+    }
+
+    2018-3-19 10:34 更新

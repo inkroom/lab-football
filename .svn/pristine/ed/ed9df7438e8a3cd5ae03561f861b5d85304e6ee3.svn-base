@@ -1,0 +1,10 @@
+/*裁判员登录验证*/
+function sumbit(){
+    var name = $('#username').val();
+    var pass = $('#password').val();
+    if(name=='' || pass==''){
+       	$('#msg').removeClass('invisible');
+    }else{
+       	$('#msg').addClass('invisible');
+    }
+}

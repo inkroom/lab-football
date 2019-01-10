@@ -1,0 +1,92 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<title>入场验证</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/lib/bootstrap/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/referee/public.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/referee/test.css"/>
+</head>
+
+
+<body>
+<!--导航-->
+<nav class="nav-bg navbar">
+	<div class="container">
+		<div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+			<img src="${pageContext.request.contextPath}/resources/img/logo.png"/>
+			<span>四川省青少年校园足球信息网</span>
+		</div>
+	</div>
+</nav>
+
+<!--内容-->
+<h3 class="text-center">请选中本场比赛中的运动员</h3>
+<div class="container" >
+	<!--主队-->
+	<div class="home">
+		<div class="row">
+			<div class="col-xs-12 text-center" style="margin: 5px 0;">${Pdto1.team.name}</div>
+		</div>
+		<div class="row" id="master">
+			<fmt:setBundle basename="properties.upload"/>
+			<c:forEach items="${Pdto1.player}" var="P1" >
+					<span class="col-xs-4">
+						<div class="img1 scorer img1-float" playerId ="${P1.idPlayer}" >
+							<img src="${pageContext.request.contextPath}/<fmt:message key="upload.image.url.prefix"/>/${P1.headPic}" />
+							<figcaption class="text-center">${P1.name}</figcaption>
+						</div>
+						<div class="img2 invisible img2-float">
+							<img src="${path}/resources/img/mark.png"  />
+						</div>
+						<%--<img  class="center-block click-img img" playerId ="${P1.idPlayer}" src="${pageContext.request.contextPath}/<fmt:message key="upload.image.url.prefix"/>/${P1.headPic}" />--%>
+						<%--<figcaption class="text-center">${P1.name}</figcaption>--%>
+					</span>
+			</c:forEach>
+		</div>
+
+	</div>
+
+	<!--客队-->
+	<div class="visiting">
+		<div class="row">
+			<div class="col-xs-12 text-center">${Pdto2.team.name}</div>
+		</div>
+		<div class="row" id="servlet">
+			<c:forEach items="${Pdto2.player}" var="P2" varStatus="status">
+					<span class="col-xs-4">
+						<div class="img1 scorer img1-float" playerId ="${P2.idPlayer}">
+							<img  src="${pageContext.request.contextPath}/<fmt:message key="upload.image.url.prefix"/>/${P2.headPic}" />
+							<figcaption class="text-center">${P2.name}</figcaption>
+						</div>
+						<div class="img2 invisible img2-float">
+							<img src="${path}/resources/img/mark.png"  />
+						</div>
+
+						<%--<input type="hidden" value="${P2.idPlayer}" id="${status.index}" />--%>
+						<%--<img class="center-block click-img img"  playerId="${P2.idPlayer}" src="${pageContext.request.contextPath}/<fmt:message key="upload.image.url.prefix"/>/${P2.headPic}" />--%>
+						<%--<figcaption class="text-center">${P2.name}</figcaption>--%>
+					</span>
+			</c:forEach>
+		</div>
+	</div>
+
+	<div class="button btn-distance">
+		<input type="submit" class="btn btn-success btn-lg radius center-block cancel" data-toggle="modal" data-target="#myModal" onclick="submit1()" value="确定" />
+	</div>
+</div>
+
+<jsp:include page="bar.jsp"/>
+
+<script src="${pageContext.request.contextPath}/resources/lib/jquery/jquery-3.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/bootstrap/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/layer_mobile/layer.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/referee/test.js"></script>
+
+</body>
+</html>

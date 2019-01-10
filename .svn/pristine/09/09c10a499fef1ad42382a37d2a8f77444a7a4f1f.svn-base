@@ -1,0 +1,11 @@
+/*入场验证*/
+.scorer{
+	border:2px solid red;
+	opacity: 1.0;
+}	
+.img{
+	opacity: 0.4;
+}
+.btn-distance{
+	margin-bottom: 100px;
+}

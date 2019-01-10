@@ -1,0 +1,28 @@
+/*修改比分*/
+var score1 = $('#score1');
+var score2 = $('#score2');
+function up1(){
+	score1.val(parseInt(score1.val())+1);
+}
+function down1(){
+	if(parseInt(score1.val())==0){
+		$('#downscore1').attr({'disabled':'disabled'});
+	}else{
+		score1.val(parseInt(score1.val())-1);
+	}
+}
+function up2(){
+	score2.val(parseInt(score2.val())+1);
+}
+function down2(){
+	if(parseInt(score2.val())==0){
+		$('#downscore2').attr({'disabled':'disabled'});
+	}else{
+		score2.val(parseInt(score2.val())-1);
+	}
+}
+function save(){
+	var score1 = $('#score1').val();
+	var score2 = $('#score2').val();
+	console.log(score1,score2);
+}

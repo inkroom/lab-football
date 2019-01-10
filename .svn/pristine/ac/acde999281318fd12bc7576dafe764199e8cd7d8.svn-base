@@ -1,0 +1,16 @@
+/*二维码*/
+.row-distance{
+	margin-top: 20%;
+}
+.phone-qr{
+	width: 100px; 
+	height: 100px; 
+	position: relative; 
+	margin: 0 auto;
+}
+.panel-distance{
+	margin-top: 15px;
+}
+.btn-distance{
+	margin-bottom: 100px;
+}

@@ -1,0 +1,17 @@
+package cn.nsu.edu.web.four.daos.jdbc.schedule;
+
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+
+public interface ScheduleMapper {
+    int deleteById(Integer idSchedule) throws Exception;
+
+    int insert(Schedule record) throws Exception;
+
+    int insertSelective(Schedule record) throws Exception;
+
+    Schedule selectById(Integer idSchedule) throws Exception;
+
+    int updateByIdSelective(Schedule record) throws Exception;
+
+    int updateById(Schedule record) throws Exception;
+}

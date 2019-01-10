@@ -1,0 +1,18 @@
+package cn.nsu.edu.web.four.services.match;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+
+import java.util.List;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.services.match
+ * @date 2018/3/20 11:06
+ * @description
+ **/
+public interface MatchService {
+    List<Match> selectByIdWithOrg(int org_id);
+    List<Match> selectByStaff(int org_id);
+    List<Match> selectByStaffOther(int org_id);
+}

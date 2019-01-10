@@ -1,0 +1,29 @@
+package cn.nsu.edu.web.four.utils.code;
+
+import cn.nsu.edu.web.four.config.BaseStatic;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
+
+public class CodeUtil {
+    public static String createToken() {
+        try {
+            return UUID.randomUUID().toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String getToken(HttpServletRequest request) {
+        String token = request.getParameter(BaseStatic.KEY_PARAMETER_TOKEN);
+        if (token == null) {
+            token = request.getHeader(BaseStatic.KEY_PARAMETER_TOKEN);
+        }
+        return token;
+    }
+
+    public static String createPhoneCode(int count){
+        return null;
+    }
+}

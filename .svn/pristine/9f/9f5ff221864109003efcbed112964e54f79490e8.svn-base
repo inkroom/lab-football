@@ -1,0 +1,83 @@
+/*新的页面*/
+body{
+	background: #F2F2F2;
+}
+.yall.container-fluid{
+	padding:0;
+}
+.y-alla{
+	width:100%;
+	overflow:hidden;
+}
+.ytitle{
+	line-height:40px;
+	font-weight:bold;
+	font-size:14px;
+}
+.img-size {
+	width: 30px;
+	height: 30px;
+}
+.y-allb{
+	background:#CCE1FF;
+}
+.yimg img{
+	width:100%;
+}
+.yimg p{
+	margin-bottom:0;
+}
+.fr{
+	float:right;
+}
+.ytitleb{
+	background:#D1DF87;
+	padding:5px 7px;
+	box-shadow: darkgrey 10px 7px 10px 3px;
+	margin-bottom:10px;
+}
+.ytitlec{
+	font-weight:bold;
+}
+.ytitlee{
+	background:#F2F2F2;
+}
+.ytitlef{
+	background:#fff;
+}
+.ytitlef img{
+	width:100%;
+}
+.ytitleg{
+	margin-bottom:0px;
+}
+.ytitleh{
+	margin-top:20px;
+	font-weight:bold;
+}
+.ytitlei{
+	margin-top:25px;
+	font-weight:bold;
+}
+.y-allbc{
+	border-right:1px dashed #A5A5A5;
+}
+.font-right{
+	float: right;
+}
+.font-top{
+	margin-top: 10px;
+}
+.hr-border{
+	border-top:1px dashed #A5A5A5;
+}
+.font-size1{
+	font-size: 15px;
+	font-weight: 600;
+}
+.img-size{
+	width: 20px;height: 20px;
+}
+.div-over{
+	height: 5.6rem;overflow-y: scroll;
+}

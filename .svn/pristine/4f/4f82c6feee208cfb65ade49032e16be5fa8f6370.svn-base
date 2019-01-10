@@ -1,0 +1,27 @@
+package cn.nsu.edu.web.four.services;
+
+import cn.nsu.edu.web.four.daos.jdbc.DemoDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class DemoService {
+
+    @Autowired
+    private DemoDao demoDao;
+    /*
+    @Transactional注解用于开启事务，抛出异常则事务回滚，否则执行结束则提交
+     */
+    @Transactional
+    public String test(String key){
+        try {
+            return demoDao.count(key);
+        } catch (Exception e) {
+            e.printStackTrace();
+            //最好使用该异常进行封装
+            throw new RuntimeException(e);
+        }
+    }
+
+}

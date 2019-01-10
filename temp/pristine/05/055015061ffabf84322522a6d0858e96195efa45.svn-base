@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+" >
+
+    <!--定时任务-->
+
+    <!--<bean id="jobFactory" class="cn.nsu.edu.web.four.handler.quartz.AutoSpringBeanJobFactory"/>-->
+
+    <!--<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
+        <!--<property name="jobFactory" ref="jobFactory"/>-->
+        <!--&lt;!&ndash;<property name="dataSource" ref="dataSource"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="jobDetails">&ndash;&gt;-->
+        <!--&lt;!&ndash;<list>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ref bean="simpleJobDetail"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ref bean="firstJobDetail"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</list>&ndash;&gt;-->
+        <!--&lt;!&ndash;</property>&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="triggers">&ndash;&gt;-->
+        <!--&lt;!&ndash;<list>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ref bean="simpleTrigger"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ref bean="cronTrigger"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</list>&ndash;&gt;-->
+        <!--&lt;!&ndash;</property>&ndash;&gt;-->
+    <!--</bean>-->
+
+
+    <!--<bean class="cn.nsu.edu.web.four.handler.quartz.SchedulerManager">-->
+        <!--&lt;!&ndash;<property name="schedulerFactoryBean" ref="schedulerFactoryBean" />&ndash;&gt;-->
+    <!--</bean>-->
+    <bean class="cn.nsu.edu.web.four.schedule.FinishSchedule"/>
+
+</beans>

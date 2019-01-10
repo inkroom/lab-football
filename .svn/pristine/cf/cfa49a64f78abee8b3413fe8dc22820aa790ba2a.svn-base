@@ -1,0 +1,52 @@
+package cn.nsu.edu.web.four.handler.mybatis;
+
+import org.apache.ibatis.type.BaseTypeHandler;
+import org.apache.ibatis.type.JdbcType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.sql.*;
+import java.util.Calendar;
+import java.util.Date;
+
+/**
+ * @author 墨盒
+ * @version 1.0
+ * @Date 2017/10/23
+ * @Time 18:19
+ * @Descorption
+ */
+public class DateHandler extends BaseTypeHandler<Date> {
+    private Logger log = LoggerFactory.getLogger(getClass());
+
+    @Override
+    public void setParameter(PreparedStatement ps, int i, Date parameter, JdbcType jdbcType) throws SQLException {
+        Timestamp timestamp = new Timestamp(parameter.getTime());
+        log.debug("插入的时间   " + new Date(parameter.getTime()) + "    " + timestamp);
+
+        ps.setTimestamp(i, timestamp, Calendar.getInstance());
+
+    }
+
+    @Override
+    public void setNonNullParameter(PreparedStatement preparedStatement, int i, Date date, JdbcType jdbcType) throws SQLException {
+        log.debug("插入使得时间   =   " + date + "    " + jdbcType);
+        preparedStatement.setString(i, date.toString());
+//        preparedStatement.setDate(i,date);
+    }
+
+    @Override
+    public Date getNullableResult(ResultSet resultSet, String s) throws SQLException {
+        return resultSet.getTimestamp(s, Calendar.getInstance());
+    }
+
+    @Override
+    public Date getNullableResult(ResultSet resultSet, int i) throws SQLException {
+        return resultSet.getTimestamp(i, Calendar.getInstance());
+    }
+
+    @Override
+    public Date getNullableResult(CallableStatement callableStatement, int i) throws SQLException {
+        return callableStatement.getTime(i, Calendar.getInstance());
+    }
+}

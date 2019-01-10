@@ -1,0 +1,43 @@
+#\u8FDE\u63A5\u6C60\u914D\u7F6E
+redis.pool.maxActive=60
+redis.pool.maxIdle=10
+redis.pool.minIdle=3
+redis.pool.maxWait=1000
+redis.pool.testOnBorrow=true
+redis.pool.testOnReturn=true
+
+redis.topic.socket=socket
+redis.database=0
+
+
+# redis ip地址
+#redis.host=10.14.4.20
+## redis端口
+#redis.port=6379
+# # 连接超时
+#redis.timeout=1000
+## 密码已加密
+#redis.password=632DF8DA3500702006256E12AC4C9DA6
+
+
+#分布式session
+redis.host=10.14.4.96
+redis.port=6379
+redis.timeout=3000
+# 密码已加密
+redis.password=632DF8DA3500702006256E12AC4C9DA6
+
+
+###阿里云
+#redis.host=localhost
+#redis.port=6379
+#redis.timeout=1000
+## 密码已加密
+#redis.password=33CD2E2B0084DF479019782865DA6AE6
+
+# 政务云
+#redis.host=172.18.87.92
+#redis.port=6379
+#redis.timeout=1000
+## 密码已加密
+#redis.password=33CD2E2B0084DF479019782865DA6AE6

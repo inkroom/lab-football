@@ -1,0 +1,64 @@
+package cn.nsu.edu.web.four.services.team.Impl;
+
+import cn.nsu.edu.web.four.beans.teams.Team;
+import cn.nsu.edu.web.four.daos.jdbc.team.OperateInfoDao;
+import cn.nsu.edu.web.four.services.team.OperateInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.Resource;
+import java.util.Date;
+
+@Resource
+public class OperateInfoServiceImpl implements OperateInfoService {
+
+
+   @Autowired
+   private OperateInfoDao operateInfoDao;
+
+
+    @Override
+    public void updatePlayer(int id_team, int id_player, int status, Date time)  {
+
+        try {
+            operateInfoDao.updatePlayer(id_team,id_player,status,time);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void updateCoach(int id_team, int id_coach, int status, Date time) {
+
+        try {
+            operateInfoDao.updateCoach(id_team,id_coach,status,time);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void retireTeam(int id_team, int status, Date retire_time){
+
+        try {
+            operateInfoDao.retireTeam(id_team,status,retire_time);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public void upDateTeamInfo(Team team) {
+
+        try {
+            operateInfoDao.upDateTeamInfo(team);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+}

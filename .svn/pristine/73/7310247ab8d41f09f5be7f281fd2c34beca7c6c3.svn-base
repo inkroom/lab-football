@@ -1,0 +1,45 @@
+package cn.nsu.edu.web.four.daos.jdbc.team;
+
+import cn.nsu.edu.web.four.beans.teams.Team;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Date;
+
+public interface OperateInfoDao {
+
+
+    /**
+     * 删除球队球员
+     *只需要改变映射表中球员所在球队的status
+     */
+
+    public  void  updatePlayer(@Param("id_team")int id_team,
+                               @Param("id_player")int id_player,
+                               @Param("status")int status,
+                               @Param("time")Date time ) throws Exception;
+
+    /**
+     * 更新球队教练
+     * 直接改变了教练所在球队的status
+     */
+
+    public void  updateCoach(@Param("id_team")int id_team,
+                             @Param("id_coach")int id_coach,
+                             @Param("status")int status,
+                             @Param("out_time") Date time)throws  Exception;
+
+    /**
+     * 球队退役
+     */
+
+    public  void retireTeam(@Param("id_team") int id_team,
+                            @Param("status") int status,
+                            @Param("retire_time") Date retire_time) throws  Exception;
+
+    /**
+     * 修改球队信息
+     */
+
+    public void  upDateTeamInfo(@Param("team") Team team) throws Exception ;
+}
+

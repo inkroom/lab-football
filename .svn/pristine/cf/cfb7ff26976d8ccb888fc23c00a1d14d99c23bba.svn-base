@@ -1,0 +1,15 @@
+package cn.nsu.edu.web.four.services.team;
+
+import cn.nsu.edu.web.four.beans.teams.Team;
+
+import java.util.Date;
+import java.util.List;
+
+public interface CreateTeamService {
+
+    public void createTeam(Team team) ;
+
+    public  void addPlayer(List list ,int id_team,int status,Date time);
+
+    public  void  addCoach(int id_team,int coach_id,int status,Date time) ;
+}

@@ -1,0 +1,40 @@
+package cn.nsu.edu.web.four.services.match;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+import cn.nsu.edu.web.four.beans.match.MatchPlayer;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.services.match
+ * @date 2018/3/20 11:06
+ * @description
+ **/
+public interface MatchService {
+    //查询发布赛事列表
+    List<Match> selectByIdWithOrg(int orgId);
+    //查询已加入赛事
+    List<Match> selectByStaff(int orgId);
+    //查询未加入赛事
+    List<Match> selectByStaffOther(int orgId);
+    //获取分好队的队员以及队名
+    List<Map<String,Object>> listTeamAndPlayer(int orgId);
+    //插入选择参加赛事的队员
+    void insertPlayer(List<MatchPlayer> list);
+    //查询待审核机构
+    List<MatchPlayer> listExamine(int matchId);
+    //更新审核信息（通过才更新）
+    void updateStatus(int orgId);
+    //创建赛事
+    void  insertMatch(Match match);
+
+    /**
+     *  通过赛事ID获取赛事信息
+     * @param matchId 赛事ID
+     * @return 赛事信息
+     */
+    Match selectInfoById(int matchId);
+}

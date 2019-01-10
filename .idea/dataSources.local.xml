@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="football4th@10.14.4.4" uuid="61f77b2f-2663-4a43-aedc-0868488c7727">
+      <database-info product="MySQL" version="5.5.52-MariaDB" jdbc-version="4.1" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-6.0.6 ( Revision: 3dab84f4d9bede3cdd14d57b99e9e98a02a5b97d )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>4th</user-name>
+      <introspection-schemas>*:football4th</introspection-schemas>
+    </data-source>
+  </component>
+</project>

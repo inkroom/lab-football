@@ -1,0 +1,62 @@
+package cn.nsu.edu.web.four.services.referee.impl;
+
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.beans.teams.Team;
+import cn.nsu.edu.web.four.daos.jdbc.referee.RefereeDao;
+import cn.nsu.edu.web.four.dto.stc.referee.ScheduleInformationDto;
+import cn.nsu.edu.web.four.services.referee.RefereeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Service
+public class RefereeServiceImpl implements RefereeService {
+
+    @Autowired
+    RefereeDao refereeDao;
+
+    @Override
+    public ScheduleInformationDto getScheduleInfomation(Integer scheduleId) throws Exception {
+        ScheduleInformationDto dto = new ScheduleInformationDto();
+        Map<String,Object> map = new HashMap<>();
+        try {
+            dto.setScheduleInfomation(refereeDao.getScheduleInformation(scheduleId));
+            dto.setTeamA( refereeDao.getTeamName(dto.getScheduleInfomation().getTeamA()));
+            dto.setTeamB( refereeDao.getTeamName(dto.getScheduleInfomation().getTeamB()));
+        } catch (Exception e ) {
+            throw new RuntimeException(e);
+        }
+        return dto;
+    }
+
+
+    @Override
+    public List<Player> getPlayerInformation(Integer teamId) throws Exception {
+        List<Player> playerInformation = new ArrayList();
+        try {
+                 playerInformation = refereeDao.getPlayerInformation(teamId);
+        }catch (Exception e ){
+            throw new RuntimeException(e);
+        }
+        return  playerInformation;
+    }
+
+    @Override
+    public boolean insertPlayerInformation(Integer playerId, Integer scheduleId, Integer teamId,String time) throws Exception {
+        boolean b = false;
+        try {
+            b = refereeDao.insertPlayerInformation(playerId,scheduleId,teamId,time);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+        return b;
+    }
+
+
+}
+
+

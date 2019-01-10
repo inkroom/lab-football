@@ -1,0 +1,130 @@
+package cn.nsu.edu.web.four.controllers.referee;
+
+import cn.nsu.edu.web.four.annotation.Security;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.dto.stc.referee.PlayerInformationDto;
+import cn.nsu.edu.web.four.dto.stc.referee.ScheduleInformationDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.enums.Role;
+import cn.nsu.edu.web.four.services.referee.RefereeService;
+import cn.nsu.edu.web.four.utils.http.RequestUtil;
+import cn.nsu.edu.web.four.utils.string.ParseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+
+/*
+//     *@author 痞老板
+//     *@description 异步获取分页list 需要获取请求页码和索引值（导航栏上面给点击事件 1为未参加赛事 2为发布赛事 3为已参加赛事）
+//     * 返回的pageinfo 对象是封装分页对象 在前端可以参考http://blog.csdn.net/maoyuanming0806/article/details/77720754 来取值
+//     *@param [num]
+//     *@return cn.nsu.edu.web.four.dto.ctv.MessageDto
+//     *@date 2018/3/22 10:37
+//     */
+@Controller
+@RequestMapping("/referee")
+public class RefereeController {
+    private Logger log = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    RefereeService refereeService;
+
+    @Autowired
+    HttpServletRequest request;
+
+    /**
+     * @author 杨康
+     * @description 通过裁判员登陆之后的赛程id得到球队赛程信息(登陆需将scheduleId存入session)
+     * @return return java.lang.String
+     * @date 2018/3/29 8:28
+     * */
+    //@Security(createToken = true, roles = Role.REFEREE)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String getScheduleInformation(Model model) throws Exception {
+        Map<String,Object> loginMap = RequestUtil.getLogin(request);
+        ScheduleInformationDto dto;
+        //将主队信息存入赛程信息
+        dto = refereeService.getScheduleInformation(1);
+        //将客队信息存入赛程信息
+        dto = refereeService.getScheduleInformation(2);
+        model.addAttribute("dto",dto);
+        //将主队id存入session
+        request.setAttribute("teamAId",dto.getScheduleInformation().getTeamA());
+        //将客队id存入session
+        request.setAttribute("teamBId",dto.getScheduleInformation().getTeamB());
+        request.setAttribute("dto",dto);
+        return "/referee/index";
+    }
+
+    /**
+     * @author 杨康
+     * @description 通过球队id获取球员信息
+     * @return return java.lang.String
+     * @date 2018/3/29 8:28
+     * */
+    @Security( roles = Role.REFEREE)
+    @RequestMapping(value = "/check", method = RequestMethod.GET)
+    public String getPlayerInformation(Model model) throws Exception {
+        Map<String,Object> loginMap = RequestUtil.getLogin(request);
+        PlayerInformationDto Pdto1;
+        PlayerInformationDto Pdto2;
+        //Pdto1 = refereeService.getPlayerInformation((Integer) loginMap.get("teamAId"));
+        //Pdto2 = refereeService.getPlayerInformation((Integer) loginMap.get("teamBId"));
+        //测试
+        Pdto1 = refereeService.getPlayerInformation(1);
+        Pdto2 = refereeService.getPlayerInformation(2);
+        model.addAttribute("Pdto1",Pdto1);
+        model.addAttribute("Pdto2",Pdto2);
+        return "/referee/test";
+    }
+
+    /**
+     * @author 杨康
+     * @description 通过球队id向赛程表插入球员信息
+     * @return return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     * @date 2018/3/29 8:28
+     * */
+    @ResponseBody
+    @Security(checkToken = true, roles = Role.REFEREE)
+    @RequestMapping(value = "/check",method = RequestMethod.POST)
+    public MessageDto insertPlayerInformation(String playerIdA, String playerIdB) throws Exception {
+        String[] playerA = playerIdA.split("-");
+        String[] playerB = playerIdB.split("-");
+        for (String i:playerA ) {
+            //Integer scheduleId = (Integer) loginMap.get("scheduleId");
+            Integer Id_PlayerA = ParseUtil.parseInt(i);
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            refereeService.insertPlayerInformation(Id_PlayerA,1,sdf.format(date));
+        }
+
+        for (String j: playerB ) {
+            //Integer scheduleId = (Integer) loginMap.get("scheduleId");
+            Integer Id_PlayerB = ParseUtil.parseInt(j);
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            refereeService.insertPlayerInformation(Id_PlayerB,1,sdf.format(date));
+        }
+        return new MessageDto(Result.SUCCESS);
+    }
+
+    /**
+     * @author 杨康
+     * @description 获取二维码页面
+     * @return java.lang.String
+     * @date 2018/3/29 8:28
+     * */
+    @RequestMapping("/QRcode")
+    public String viewQRcode(){
+        return "/referee/qrCode";
+    }
+
+}

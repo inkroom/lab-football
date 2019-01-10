@@ -1,0 +1,180 @@
+package cn.nsu.edu.web.four.beans.player;
+
+import cn.nsu.edu.web.four.config.RegexStatic;
+
+import javax.validation.constraints.*;
+
+/**
+ * @author :王新璋
+ * @Description: 球员的实体类
+ * @date :18.01 2018/3/15
+ */
+
+public class Player {
+
+
+    private int idPlayer;//球员编号
+
+    private String userName;//球员用户名
+
+    @NotNull
+    @Pattern(regexp = RegexStatic.CHINESE)
+    private String name;//球员姓名
+
+    @NotNull
+    @Pattern(regexp =RegexStatic.NUMCHAR)
+    private String password;//球员密码
+
+    private String headPic;//球员头像
+
+    private String salt;//是否加密
+
+    private int orgId;//机构编号
+
+    @NotNull
+    @Pattern(regexp =RegexStatic.NUMBER)
+    @Min(1)
+    @Max(9)
+    private int grade;//球员年级（例如2015）
+
+    @NotNull
+    @Pattern(regexp =RegexStatic.NUMBER)
+    @Min(1)
+    private int classes;//球员班级
+
+    private int status;//球员状态
+
+    private int score;//球员个人积分
+
+    private int  sex;//球员性别
+
+    @NotNull
+    @Min(18)
+    @Max(18)
+    private String idCard;//身份证
+
+
+    public int getIdPlayer() {
+        return idPlayer;
+    }
+
+    public void setIdPlayer(int idPlayer) {
+        this.idPlayer = idPlayer;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getHeadPic() {
+        return headPic;
+    }
+
+    public void setHeadPic(String headPic) {
+        this.headPic = headPic;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public int getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(int orgId) {
+        this.orgId = orgId;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public int getClasses() {
+        return classes;
+    }
+
+    public void setClasses(int classes) {
+        this.classes = classes;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "idPlayer=" + idPlayer +
+                ", userName='" + userName + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", headPic='" + headPic + '\'' +
+                ", salt='" + salt + '\'' +
+                ", orgId=" + orgId +
+                ", grade=" + grade +
+                ", classes=" + classes +
+                ", status=" + status +
+                ", score=" + score +
+                ", sex=" + sex +
+                ", idCard='" + idCard + '\'' +
+                '}';
+    }
+}

@@ -1,0 +1,71 @@
+/**
+ * Created by 刘嘉成 on 2018/3/27.
+ */
+
+
+    $(document).ready(function(){
+        $("#tsk").fadeTo(1,0);
+        $("#password1").blur(function(){
+        var pw_len = $("#password1").val().length;
+        if(pw_len < 6)
+        {
+        $("#tsk").fadeTo(1,1);
+        }
+        else if(pw_len >20)
+        {
+        $("#tsk").fadeTo(1,1);
+        }
+        else{
+        $("#tsk").fadeTo(1,0);
+        }
+        });
+
+        $("#sjts").fadeTo(1,0);
+        $("#phone").blur(function(){
+        var sjh_len = $("#phone").val().length;
+        /*正则是否包含字母*/
+        var reg1 = /[A-Za-z]+/;
+        var val1 = $("#phone").val();
+
+        if(sjh_len <11){
+        $("#sjts").fadeTo(1,1);
+        }
+        else if(reg1.test(val1)){
+        $("#sjts").fadeTo(1,1);
+        }
+        else if(sjh_len =11){
+        $("#sjts").fadeTo(1,0);
+        }
+        else if(sjh_len >11){
+        $("#sjts").fadeTo(1,1);
+        }
+        else{
+        $("#sjts").fadeTo(1,1);
+        }
+        });
+
+
+
+
+        $("#qrts").fadeTo(1,0);
+        $("#password2").blur(function(){
+            var pw = $("#password1").val();
+            var pwqr =$("#password2").val();
+            var pwqr_len=$("#password2").val().length;
+            if(pw == pwqr){
+                if(pwqr_len < 6){
+                    $("#qrts").fadeTo(1,1);
+                }
+                else{
+                    $("#qrts").fadeTo(1,0);
+                }
+
+            }
+
+            else{
+                $("#qrts").fadeTo(1,1);
+            }
+        })
+    });
+
+

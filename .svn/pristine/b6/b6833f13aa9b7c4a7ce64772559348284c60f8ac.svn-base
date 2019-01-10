@@ -1,0 +1,125 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>机构登录</title>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/lib/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/player/style.1.0.css"/>
+
+</head>
+<body>
+<div class="cs-bg">
+    <form class="container" id="login1" method="post">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="login_bg text-center">
+                    <!--注册面板标题-->
+                    <br>
+                    <div class="logo-w2 col-xs-10 col-xs-offset-1 form-group">
+                        <!--<img src="img/logo足球项目组.png">-->
+                        <span class="title" style="color: green; font-size: 25px;">四川省青少年足球信息化</span>
+                    </div>
+                    <div class="logo-w2 col-xs-10 col-xs-offset-1 form-group">
+                        <span class="title" style="color: green; font-size: 22px;">————机构登录————</span>
+                    </div>
+                    <!--注册面板表单-->
+                    <div class="form-horizontal" role="form" id="form1">
+                        <!--用户名-->
+                        <div class="input-icon-group">
+                            <div class="col-xs-8 col-xs-offset-2 input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </span>
+                                <div class="change_margin_1 input-group" style="width: 100%;">
+                                    <input id="yhm" name="schoolCode" class="user form-control"  placeholder="请输入机构编号：6-12位"  type="text">
+                                </div>
+                            </div>
+                            <span id="yhmts" style="color: red">机构编号输入错误</span>
+                        </div>
+
+                        <!--输入密码-->
+                        <div class="input-icon-group">
+                            <div class="col-xs-8 col-xs-offset-2 input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-lock"></i>
+                                </span>
+                                <div class="input-group" style="width: 100%">
+                                    <input id="password1" class="form-control" name="password"  placeholder="请输入密码：6至20位" maxlength="20" type="password" >
+                                </div>
+                                <div class="col-xs-2">
+                                    <span class="passwordInfo"></span>
+                                </div>
+                            </div>
+                            <span id="tsk" style="color: red">密码输入位数错误</span>
+                        </div>
+
+                        <!--验证码-->
+                        <div class="input-icon-group " >
+                            <div class="col-xs-4 col-xs-offset-2 input-group" style="float: left">
+                                <div class="input-group" style="width: 100%;padding-bottom: 16px;">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-qrcode"></span></span>
+                                    <input id="idcode-btn" class="form-control" placeholder="验证码" maxlength="6" minlength="6" type="text" name="yzm">
+                                </div>
+                            </div>
+                            <div style="float: left ;width: 30%;height: 34px;margin-left: 10px; cursor:pointer" class="col-xs-4">
+                                <!--验证码图片-->
+                                <img src="${path}/imageCode" id="imagecode" onclick="getCode()" title="点击图片刷新验证码">
+                            </div>
+                        </div>
+                        <br>
+                        <!--登录按钮-->
+                        <div class="form-group">
+                            <div class="col-xs-8 col-xs-offset-2">
+                                <button class="btn1 btn-success form-group" onclick="doSubmit();return false;">登录</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <input type="hidden" id="token" value="${token}">
+</div>
+<script src="${path}/resources/lib/jquery/jquery-3.1.1.min.js"></script>
+<script src="${path}/resources/lib/bootstrap/bootstrap.min.js"></script>
+<script src="${path}/resources/lib/jquery/jquery-1.11.3.js"></script>
+<script src="${path}/resources/js/player/OrganizationIndex.js"></script>
+<script src="${path}/resources/lib/layer/layer.js"></script>
+<script src="${path}/resources/js/index.js"></script>
+<script type="text/javascript">
+    function doSubmit() {
+        ajax({
+            type: "POST",   //提交的方法
+            url:"/organization/login", //提交的地址
+            data:$('#login1').serialize(),// 序列化表单值
+            dataType:'json',
+            success: function(data) {  //成功
+                //就将返回的数据显示出来
+                switch (data.status) {
+                    case 0:
+                        layer.alert("登录成功，即将跳转进入下一页面");
+                        window.location.href="${path}/player/list";
+                        break;
+                    case 1:
+                        layer.msg("用户名或密码输入错误");
+                        break;
+                    case 12:
+                        layer.msg("验证码输入错误");
+                        break;
+                }
+            },
+            error: function() {  //失败的话
+                msg("请求错误");
+            }
+
+        });
+    }
+    function getCode()
+    {
+        $("#code").val("");
+        $("#imagecode").attr('src',"${path}/imageCode?abc="+Math.random())//MAth.random是为了避免缓冲
+
+    }
+</script>
+</body>
+</html>

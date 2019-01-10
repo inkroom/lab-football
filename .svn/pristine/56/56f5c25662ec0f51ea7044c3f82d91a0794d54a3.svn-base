@@ -1,0 +1,90 @@
+package cn.nsu.edu.web.four.services.referee.impl;
+
+import cn.nsu.edu.web.four.beans.matchStaff.MatchStaff;
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+import cn.nsu.edu.web.four.daos.jdbc.referee.RefereeDao;
+import cn.nsu.edu.web.four.dto.stc.referee.PlayerInformationDto;
+import cn.nsu.edu.web.four.dto.stc.referee.ScheduleInformationDto;
+import cn.nsu.edu.web.four.exception.RollbackException;
+import cn.nsu.edu.web.four.services.referee.RefereeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.*;
+
+@Service
+public class RefereeServiceImpl implements RefereeService {
+
+    @Autowired
+    RefereeDao refereeDao;
+
+    @Override
+    public ScheduleInformationDto getScheduleInformation(Integer scheduleId) throws Exception {
+        ScheduleInformationDto dto = new ScheduleInformationDto();
+        Map<String, Object> map = new HashMap<>();
+        try {
+            dto.setScheduleInformation(refereeDao.getScheduleInformation(scheduleId));
+            dto.setTeamA(refereeDao.getTeamName(dto.getScheduleInformation().getTeamA()));
+            dto.setTeamB(refereeDao.getTeamName(dto.getScheduleInformation().getTeamB()));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return dto;
+    }
+
+    @Override
+    public PlayerInformationDto getPlayerInformation(Integer teamId) throws Exception {
+        PlayerInformationDto dto = new PlayerInformationDto();
+
+        List<Player> playerInformation;
+        try {
+            dto.setPlayer(refereeDao.getPlayerInformation(teamId));
+            dto.setTeam(refereeDao.getTeamName(teamId));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return dto;
+    }
+
+    @Transactional
+    @Override
+    public boolean insertPlayerInformation(List<Integer> playerAId, List<Integer> playerBId, Integer schedule, Integer teamAId, Integer teamBId) throws RollbackException {
+        Date date = new Date();
+        try {
+            for (Integer id : playerAId) {
+                if (!refereeDao.insertPlayerInformation(id, schedule, teamAId, date)) {
+                    throw new RollbackException("球员" + id + "添加失败");
+                }
+            }
+            for (Integer id : playerBId) {
+                if (!refereeDao.insertPlayerInformation(id, schedule, teamBId, date)) {
+                    throw new RollbackException("球员" + id + "添加失败");
+                }
+            }
+        } catch (Exception e) {
+            throw new RollbackException(e);
+//            return false;
+        }
+        return true;
+    }
+
+//    @Override
+//    public boolean insertPlayerInformation(Integer playerId, Integer scheduleId) throws Exception {
+//        boolean b = false;
+//        try {
+//            Integer teamId;
+//            Date date = new Date();
+//            teamId = refereeDao.getTeamId(playerId);
+//            b = refereeDao.insertPlayerInformation(playerId, scheduleId, teamId, date);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//        return b;
+//    }
+
+
+}
+
+

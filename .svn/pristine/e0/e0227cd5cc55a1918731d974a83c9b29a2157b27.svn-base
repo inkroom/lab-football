@@ -1,0 +1,64 @@
+package cn.nsu.edu.web.four.services.live;
+
+import cn.nsu.edu.web.four.beans.live.LiveMessageBean;
+import cn.nsu.edu.web.four.daos.jdbc.live.LiveDao;
+import cn.nsu.edu.web.four.filters.XSSRequestWrapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+@Service
+public class LiveService {
+    @Autowired
+    private LiveDao liveDao;
+    private Pattern pattern = Pattern.compile("<img src=\"(.+)\"");
+
+    public List<LiveMessageBean> getAllMessage(int schId) {
+        try {
+            List<LiveMessageBean> result = liveDao.getAllMessage(schId);
+
+            result.forEach(bean -> {
+//                //提取图片路径
+//                Matcher matcher = pattern.matcher(bean.getContent());
+//                if (matcher.find()) {
+//                    bean.setImgPath(matcher.group(1));
+//                }
+                String orgPhone = bean.getPhone();
+                //隐藏手机号码
+                bean.setPhone(orgPhone.substring(0, 3) + "****" + orgPhone.substring(7, 11));
+            });
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public LiveMessageBean addMessage(int schId, String phone, String content) {
+        LiveMessageBean bean = new LiveMessageBean();
+        bean.setContent(content);
+        bean.setPhone(phone);
+        bean.setSchId(schId);
+        bean.setTime(new Date());
+        //提取图片路径
+        Matcher matcher = pattern.matcher(bean.getContent());
+        if (matcher.find()) {
+            bean.setImgPath(matcher.group(1));
+        }
+
+        //去除图片
+        bean.setContent(XSSRequestWrapper.stripLittleXSS(bean.getContent()));
+        try {
+            return liveDao.addMessage(bean) == 1 ? bean : null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+}
