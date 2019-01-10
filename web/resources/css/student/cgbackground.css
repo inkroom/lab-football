@@ -1,0 +1,11 @@
+/*渐变效果
+ChenGang*/
+.bkTop {
+    width:100%;
+    height: 100%;
+    background: -o-linear-gradient( bottom, #9706ff, #00babc); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom, #9706ff,#00babc); /* Firefox 3.6 - 15 */
+    background: -webkit-linear-gradient(bottom, #9706ff,#00babc);
+    background: linear-gradient(bottom,#9706ff,#00babc);
+}
+

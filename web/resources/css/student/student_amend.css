@@ -1,0 +1,17 @@
+/*邱望婷*/
+/*顶部字体样式*/
+.top{
+    font-weight:bold;
+    font-size:20px;
+    text-align:center;
+    padding-top: 100px;
+    margin-bottom: 0px;
+}
+/*验证码样式*/
+.yanzhengma{
+    border:0px ;
+    width:150px;
+    height:30px;
+    float:right;
+    margin-bottom:20px;
+}
