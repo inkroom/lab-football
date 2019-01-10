@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.student.profile.ProfileDao">
+
+    <resultMap id="ProfileMapper" type="com.nsu.bean.student.profile.ProfileBean">
+        <result column="T_NAME" property="StudentName" jdbcType="VARCHAR"/>
+        <result column="T_SEX" property="Sex" jdbcType="VARCHAR"/>
+        <result column="SCHOOL" property="NowSchoolName" jdbcType="VARCHAR"/>
+        <result column="ID_CARD" property="IdNumber" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="getStudentProfileById" parameterType="java.lang.Long" resultMap="ProfileMapper" >
+        SELECT T_NAME,T_SEX,SCHOOL,ID_CARD FROM login_information WHERE I_ID=#{i_id};
+    </select>
+
+
+    <select id="getStudentClassNameById" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT CLASS_NAME FROM class
+        WHERE class.CLASS_ID IN
+        (SELECT stu_class_map.CLASS_ID FROM stu_class_map
+        WHERE stu_class_map.S_ID=#{s_id} AND stu_class_map.STATUS=1 AND stu_class_map.CH_STATUS='2')
+    </select>
+
+
+
+    <resultMap id="ScoreInfo" type="com.nsu.bean.student.compute.ComputeViewBean">
+        <result column="TEST_NAME" property="ExamName" jdbcType="VARCHAR"/>
+        <result column="RECORD" property="Score" jdbcType="DOUBLE"/>
+    </resultMap>
+
+
+    <select id="getStudentExamById" resultMap="ScoreInfo" parameterType="java.lang.Long">  /*这个键是列名  */
+        SELECT exam_information.TEST_NAME,exam_record.RECORD FROM exam_record,exam_information
+        WHERE exam_record.S_ID=#{s_id} AND exam_information.E_I_ID=exam_record.E_I_ID
+    </select>
+
+
+    <select id="getPastSchoolNameById" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT O_NAME FROM org
+        WHERE org.O_ID IN
+        (SELECT class.O_ID FROM class,stu_class_map
+        WHERE class.CLASS_ID=stu_class_map.CLASS_ID AND stu_class_map.S_ID=#{s_id} AND stu_class_map.CH_STATUS='1')
+    </select>
+</mapper>

@@ -1,0 +1,2530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="art-exam:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="1eb0aea2-57b5-4b06-8a13-6fb30cadabff" name="Default" comment="完成">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/fonts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/fonts/FontAwesome.otf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/(1).DS_Store" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/Hui-tags" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/Hui-tags/empty(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/Hui-tags/empty.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/acrossTab" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/acrossTab/acrossTab(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/acrossTab/acrossTab-bg(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/acrossTab/acrossTab-bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/acrossTab/acrossTab-close(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/acrossTab/acrossTab-close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/acrossTab/acrossTab.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/dataTable" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/dataTable/sort_asc(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/dataTable/sort_asc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/dataTable/sort_both(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/dataTable/sort_both.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/dataTable/sort_desc(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/dataTable/sort_desc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/denlujiemian" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/denlujiemian/2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/denlujiemian/2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/denlujiemian/yan(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/denlujiemian/yan.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/denlujiemian/登录界面(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/denlujiemian/登录界面.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/denlujiemian/登录界面2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/denlujiemian/登录界面2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/dropDown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/dropDown/icon-jt(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/dropDown/icon-jt.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/201(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/201.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/202(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/202.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/203(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/203.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/204(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/204.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/205(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/205.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/206(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/206.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/207(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/207.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/208(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/208.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/209(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/209.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/210(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/210.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/0(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/0.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/1(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/10(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/10.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/100(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/100.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/101(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/101.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/102(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/102.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/103(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/103.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/104(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/104.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/105(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/105.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/106(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/106.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/11(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/11.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/12(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/12.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/13(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/13.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/14(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/14.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/15(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/15.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/16(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/16.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/18(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/18.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/19(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/19.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/2(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/20(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/20.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/21(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/21.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/22(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/22.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/23(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/23.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/24(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/24.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/25(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/25.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/26(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/26.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/27(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/27.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/28(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/28.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/29(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/29.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/3(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/3.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/30(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/30.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/31(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/31.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/32(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/32.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/33(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/33.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/34(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/34.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/35(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/35.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/36(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/36.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/37(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/37.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/38(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/38.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/39(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/39.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/4(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/4.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/40(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/40.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/41(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/41.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/42(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/42.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/43(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/43.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/44(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/44.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/45(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/45.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/46(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/46.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/47(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/47.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/48(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/48.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/49(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/49.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/5(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/5.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/50(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/50.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/51(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/51.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/52(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/52.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/53(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/53.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/54(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/54.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/55(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/55.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/56(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/56.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/57(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/57.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/58(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/58.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/59(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/59.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/6(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/6.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/60(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/60.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/61(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/61.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/62(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/62.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/63(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/63.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/64(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/64.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/65(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/65.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/66(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/66.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/67(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/67.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/68(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/68.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/69(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/69.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/7(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/7.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/70(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/70.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/71(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/71.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/72(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/72.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/73(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/73.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/74(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/74.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/75(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/75.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/76(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/76.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/77(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/77.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/78(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/78.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/79(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/79.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/8(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/8.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/80(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/80.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/81(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/81.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/82(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/82.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/83(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/83.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/84(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/84.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/85(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/85.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/86(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/86.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/87(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/87.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/88(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/88.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/89(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/89.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/9(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/9.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/90(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/90.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/91(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/91.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/92(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/92.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/93(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/93.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/94(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/94.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/95(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/95.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/96(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/96.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/97(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/97.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/98(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/98.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/99(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/QQ/99.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/Thumbs(1).db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/face/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/1(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/3(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/bj(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/bj.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center1(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center3(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center5 (1)(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center5 (1)(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center5 (1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center5 (1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center5 (2)(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center5 (2).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center5 (3)(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center5 (3).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center5(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/center5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hb(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hb2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hb2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hehua(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hehua(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hehua.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hehua.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hehua2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hehua2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hehua3(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hehua3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hehua4(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hehua4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hoster1(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hoster1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hoster2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hoster2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hua(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/hua.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/mo(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/mo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/mo2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/mo2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/mo3(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/mo3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/san(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/san.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/shan(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/shan.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/ym1(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/ym1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/ym2(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/ym2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/ym2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/ym2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/ym3(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/ym3(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/ym3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/ym3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/zhi2(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/zhi2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/zi1(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/zi1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/zi2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/guifeng/zi2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/Thumbs(1).db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/aero(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/aero.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/aero@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/aero@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/blue(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/blue@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/blue@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/green(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/green.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/green@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/green@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/grey(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/grey.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/grey@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/grey@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/minimal(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/minimal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/minimal@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/minimal@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/orange(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/orange.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/orange@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/orange@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/pink(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/pink.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/pink@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/pink@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/purple(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/purple.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/purple@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/purple@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/red(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/red.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/red@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/red@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/yellow(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/yellow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/yellow@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iCheck/yellow@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iconpic-arrow(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/iconpic-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/jselect" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/jselect/iconpic-arrow-down2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/jselect/iconpic-arrow-down2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/loading" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/loading/loading-b(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/loading/loading-b.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/loading/loading-s(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/loading/loading-s.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/rollpic" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/rollpic/unslider-arrow(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/rollpic/unslider-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/star" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/star/iconpic-star-S(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/star/iconpic-star-S-default(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/star/iconpic-star-S-default.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/star/iconpic-star-S.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/steps" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/steps/step_arrow(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/steps/step_arrow-active(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/steps/step_arrow-active.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/steps/step_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/steps/step_bg(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/steps/step_bg-active(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/steps/step_bg-active.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/steps/step_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter/Thumbs(1).db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter/avatar(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter/avatar-default(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter/avatar-default-S(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter/avatar-default-S.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter/avatar-default.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter/avatar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter/noavatar_small(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/ucnter/noavatar_small.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/validform" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/validform/iconpic-error(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/validform/iconpic-error.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/validform/iconpic-right(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/validform/iconpic-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/validform/iconpic-warning(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/validform/iconpic-warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav-active(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav-active.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav-hover(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav-hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav_right(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav_right-active(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav_right-active.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav_right-hover(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav_right-hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tabNav_right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tab_bg(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/verticalTab/tab_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/1(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/3(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/4(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/5(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/6(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi3(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi4(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi5(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi6(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/bi6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/mo(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/mo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/mo2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/mo2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/yan(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/yan.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/yan2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/yan2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/zhi(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/zhi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/zhi2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/images/wen/zhi2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/Hui-tags" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/Hui-tags/empty(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/Hui-tags/empty.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/Thumbs(1).db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab/acrossTab(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab/acrossTab-bg(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab/acrossTab-bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab/acrossTab-close(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab/acrossTab-close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab/acrossTab.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab/unslider-arrow(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab/unslider-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab/unslider-arrow2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/acrossTab/unslider-arrow2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/backdrop(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/backdrop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/dataTable" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/dataTable/sort_asc(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/dataTable/sort_asc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/dataTable/sort_both(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/dataTable/sort_both.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/dataTable/sort_desc(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/dataTable/sort_desc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/dropDown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/dropDown/icon-jt(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/dropDown/icon-jt.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/201(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/201.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/202(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/202.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/203(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/203.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/204(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/204.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/205(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/205.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/206(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/206.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/207(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/207.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/208(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/208.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/209(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/209.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/210(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/210.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/0(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/0.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/1(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/10(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/10.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/100(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/100.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/101(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/101.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/102(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/102.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/103(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/103.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/104(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/104.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/105(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/105.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/106(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/106.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/11(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/11.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/12(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/12.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/13(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/13.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/14(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/14.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/15(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/15.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/16(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/16.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/18(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/18.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/19(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/19.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/2(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/20(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/20.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/21(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/21.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/22(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/22.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/23(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/23.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/24(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/24.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/25(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/25.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/26(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/26.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/27(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/27.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/28(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/28.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/29(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/29.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/3(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/3.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/30(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/30.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/31(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/31.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/32(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/32.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/33(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/33.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/34(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/34.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/35(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/35.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/36(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/36.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/37(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/37.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/38(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/38.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/39(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/39.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/4(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/4.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/40(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/40.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/41(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/41.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/42(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/42.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/43(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/43.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/44(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/44.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/45(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/45.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/46(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/46.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/47(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/47.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/48(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/48.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/49(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/49.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/5(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/5.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/50(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/50.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/51(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/51.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/52(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/52.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/53(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/53.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/54(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/54.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/55(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/55.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/56(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/56.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/57(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/57.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/58(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/58.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/59(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/59.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/6(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/6.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/60(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/60.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/61(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/61.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/62(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/62.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/63(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/63.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/64(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/64.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/65(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/65.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/66(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/66.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/67(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/67.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/68(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/68.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/69(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/69.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/7(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/7.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/70(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/70.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/71(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/71.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/72(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/72.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/73(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/73.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/74(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/74.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/75(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/75.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/76(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/76.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/77(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/77.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/78(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/78.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/79(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/79.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/8(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/8.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/80(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/80.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/81(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/81.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/82(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/82.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/83(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/83.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/84(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/84.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/85(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/85.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/86(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/86.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/87(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/87.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/88(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/88.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/89(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/89.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/9(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/9.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/90(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/90.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/91(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/91.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/92(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/92.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/93(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/93.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/94(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/94.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/95(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/95.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/96(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/96.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/97(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/97.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/98(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/98.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/99(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/QQ/99.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/Thumbs(1).db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/face/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/Thumbs(1).db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/aero(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/aero.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/aero@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/aero@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/blue(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/blue@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/blue@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/green(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/green.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/green@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/green@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/grey(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/grey.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/grey@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/grey@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/minimal(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/minimal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/minimal@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/minimal@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/orange(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/orange.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/orange@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/orange@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/pink(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/pink.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/pink@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/pink@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/purple(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/purple.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/purple@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/purple@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/red(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/red.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/red@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/red@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/yellow(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/yellow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/yellow@2x(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/iCheck/yellow@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/icon-arrow(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/icon-arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/jselect" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/jselect/iconpic-arrow-down2(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/jselect/iconpic-arrow-down2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/loading-b(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/loading-b.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/loading-s(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/loading-s.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/star" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/star/iconpic-star-S(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/star/iconpic-star-S-default(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/star/iconpic-star-S-default.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/star/iconpic-star-S.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/steps" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/steps/step_arrow(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/steps/step_arrow-active(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/steps/step_arrow-active.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/steps/step_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/steps/step_bg(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/steps/step_bg-active(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/steps/step_bg-active.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/steps/step_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter/Thumbs(1).db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter/avatar(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter/avatar-default(1).jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter/avatar-default-S(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter/avatar-default-S.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter/avatar-default.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter/avatar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter/noavatar_small(1).gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/ucnter/noavatar_small.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/validform" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/validform/iconpic-error(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/validform/iconpic-error.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/validform/iconpic-right(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/validform/iconpic-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/validform/iconpic-warning(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/validform/iconpic-warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav-active(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav-active.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav-hover(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav-hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav_right(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav_right-active(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav_right-active.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav_right-hover(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav_right-hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tabNav_right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tab_bg(1).png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/images/verticalTab/tab_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/nsu/interceptor/ExamInterceptor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/HELP-US-OUT.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/css/font-awesome.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/animated.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/bordered-pulled.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/core.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/fixed-width.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/font-awesome.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/icons.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/larger.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/list.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/mixins.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/path.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/rotated-flipped.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/screen-reader.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/stacked.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/less/variables.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_animated.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_bordered-pulled.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_core.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_fixed-width.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_icons.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_larger.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_mixins.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_path.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_rotated-flipped.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_screen-reader.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_stacked.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/_variables.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/font-awesome-4.7.0/scss/font-awesome.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/css/H-ui(1).css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/css/H-ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/css/H-ui.ie(1).css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/css/H-ui.ie.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/css/H-ui.min(1).css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/css/H-ui.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/css/H-ui.reset(1).css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/css/H-ui.reset.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/icheck(1).css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/icheck.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/jcarousellite.min(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/jcarousellite.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/jquery.icheck.min(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/jquery.icheck.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/js/H-ui(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/js/H-ui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/js/H-ui.min(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/js/H-ui.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/js/respond(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/js/respond.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/js/test(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/js/test.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Bootstrap.button(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Bootstrap.button.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huifocusblur(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huifocusblur.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huifold(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huifold.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huihover(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huihover.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huipreview(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huipreview.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huispinner(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huispinner.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huitab(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huitab.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huitags(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huitags.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huitextarealength(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huitextarealength.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/HuitogglePassword(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/HuitogglePassword.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huitotop(1).html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/Huitotop.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/css/Bootsrtap.Switch(1).css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/css/Bootsrtap.Switch.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/css/H-ui(1).css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/css/H-ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/css/jQuery.icheck(1).css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/css/jQuery.icheck.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.Switch(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.Switch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.alert(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.alert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.button(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.button.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.datetimepicker(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.datetimepicker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.dropdown(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.dropdown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.modal(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.modal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.popover(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.popover.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.slider(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.slider.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.tooltip(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.tooltip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.transition(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/Bootstrap.transition.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.ColorPicker(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.ColorPicker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.HuiaddFavorite(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.HuiaddFavorite.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huialert(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huialert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huifocusblur(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huifocusblur.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huifold(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huifold.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huihover(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huihover.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huimodalalert(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huimodalalert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huipreview(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huipreview.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huiselect(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huiselect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huisethome(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huisethome.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huisidenav(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huisidenav.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huispinner(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huispinner.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huitab(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huitab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huitags(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huitags.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huitagsmixed(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huitagsmixed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huitextarealength(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huitextarealength.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.HuitogglePassword(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.HuitogglePassword.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huitotop(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.Huitotop.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.IEMobileHack.js(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.IEMobileHack.js.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.cookie(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.cookie.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.form(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.form.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.format(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.format.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.iCheck(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.iCheck.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.onePageNav(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.onePageNav.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.placeholder(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.placeholder.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.raty(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.raty.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.responsive-nav(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.responsive-nav.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.stickUp(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.stickUp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.stopDefault(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jQuery.stopDefault.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jquery.Huimarquee(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jquery.Huimarquee.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jquery.emailsuggest(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jquery.emailsuggest.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jquery.lazyload(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/jquery.lazyload.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/mValue(1).js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/lib/h-ui/src/js/mValue.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/.jsdtscope" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.component" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.jsdt.ui.superType.container" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.jsdt.ui.superType.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.validation.prefs" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/art-exam.iml" afterPath="$PROJECT_DIR$/art-exam.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/spring/springmvc-interceptor.xml" afterPath="$PROJECT_DIR$/resources/spring/springmvc-interceptor.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nsu/filter/CharacterFilter.java" afterPath="$PROJECT_DIR$/src/com/nsu/filter/CharacterFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nsu/interceptor/LoginInterceptor.java" afterPath="$PROJECT_DIR$/src/com/nsu/interceptor/LoginInterceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nsu/interceptor/RoleAuthorityInterceptor.java" afterPath="$PROJECT_DIR$/src/com/nsu/interceptor/RoleAuthorityInterceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nsu/listener/ServletContextListener.java" afterPath="$PROJECT_DIR$/src/com/nsu/listener/ServletContextListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/nsu/service/student/exam/Impl/ExamManageServiceImpl.java" afterPath="$PROJECT_DIR$/src/com/nsu/service/student/exam/Impl/ExamManageServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/webapp/WEB-INF/web.xml" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored mask="*.imi" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="exam@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="art-exam" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ExamManageController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nsu/controller/student/exam/ExamManageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="38" column="19" lean-forward="false" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IExamManageService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nsu/service/student/exam/IExamManageService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExamManageServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nsu/service/student/exam/Impl/ExamManageServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1600">
+              <caret line="80" column="37" lean-forward="false" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="springmvc-interceptor.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/spring/springmvc-interceptor.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="16" column="40" lean-forward="false" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StudentExamController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/nsu/controller/student/exam/StudentExamController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>jack</find>
+      <find>jackson</find>
+      <find>mysql</find>
+      <find>resources/lib/</find>
+      <find>Field</find>
+      <find>radio_btn1</find>
+      <find>_csrf</find>
+      <find>foot</find>
+      <find>份信息已过期，请重新登录</find>
+      <find>../exam</find>
+      <find>表现蒙古音乐常用的乐器是</find>
+      <find>默认考点</find>
+      <find>单选</find>
+      <find>load.*Event</find>
+      <find>getT</find>
+      <find>getType</find>
+      <find>美术练习</find>
+      <find>get</find>
+      <find>loadAns</find>
+      <find>二是这类联盟可以让广告主按照一些属性进行半精准的投放</find>
+      <find>\$\{.+\}</find>
+      <find>\$\{.+</find>
+      <find>\$\{\}</find>
+      <find>clone</find>
+      <find>i += 4</find>
+      <find>loadQues</find>
+      <find>getSe</find>
+      <find>lo</find>
+      <find>log</find>
+      <find>redis</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>/lib</replace>
+      <replace>lib/</replace>
+      <replace>../../exam</replace>
+    </replaceStrings>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/resources/db.properties" />
+        <option value="$PROJECT_DIR$/src/com/nsu/utils/V.java" />
+        <option value="$PROJECT_DIR$/src/com/nsu/dao/student/practice/PracticeDao.java" />
+        <option value="$PROJECT_DIR$/resources/log4j.properties" />
+        <option value="$PROJECT_DIR$/resources/com/nsu/mapper/student/practice/PracticeMapper.xml" />
+        <option value="$PROJECT_DIR$/src/com/nsu/bean/student/practice/QuestionBean.java" />
+        <option value="$PROJECT_DIR$/src/com/nsu/filter/TestFilter.java" />
+        <option value="$PROJECT_DIR$/webapp/WEB-INF/view/student/practice.jsp" />
+        <option value="$PROJECT_DIR$/src/com/nsu/controller/student/classmanage/ClassManagerController.java" />
+        <option value="$PROJECT_DIR$/webapp/resources/js/student/classManager.js" />
+        <option value="$PROJECT_DIR$/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/com/nsu/service/student/practice/PracticeService.java" />
+        <option value="$PROJECT_DIR$/../../../successful/software/图片重命名/Entry.java" />
+        <option value="$PROJECT_DIR$/src/com/nsu/service/student/practice/impl/PracticeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/nsu/controller/student/practice/PracticeController.java" />
+        <option value="$PROJECT_DIR$/webapp/resources/js/student/practice.js" />
+        <option value="$PROJECT_DIR$/src/com/nsu/bean/student/practice/PracticeSearchBean.java" />
+        <option value="$PROJECT_DIR$/webapp/WEB-INF/view/common/foot.jsp" />
+        <option value="$PROJECT_DIR$/webapp/WEB-INF/view/common/head.jsp" />
+        <option value="$PROJECT_DIR$/webapp/WEB-INF/view/student/classManage.jsp" />
+        <option value="$PROJECT_DIR$/src/com/nsu/listener/ServletContextListener.java" />
+        <option value="$PROJECT_DIR$/src/com/nsu/filter/CharacterFilter.java" />
+        <option value="$PROJECT_DIR$/src/com/nsu/interceptor/LoginInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/com/nsu/interceptor/RoleAuthorityInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/com/nsu/service/student/exam/Impl/ExamManageServiceImpl.java" />
+        <option value="$PROJECT_DIR$/resources/spring/springmvc-interceptor.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/software/java/apache-maven-3.3.9-bin/apache-maven-3.3.9" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="art-exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="art-exam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="art-exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="art-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="art-exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="art-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="nsu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="art-exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="art-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="nsu" type="462c0819:PsiDirectoryNode" />
+              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="art-exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="art-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="nsu" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/art-exam.iml" />
+    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
+    <property name="settings.editor.splitter.proportion" value="0.2634672" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.41724136" />
+    <property name="SearchEverywhereHistoryKey" value="pom&#9;FILE&#9;file://E:/study/项目组/workplace/art-exam/pom.xml&#10;Pra&#9;FILE&#9;file://E:/study/项目组/workplace/art-exam/src/com/nsu/service/student/practice/impl/PracticeServiceImpl.java&#10;practice.js&#9;FILE&#9;file://E:/study/项目组/workplace/art-exam/webapp/resources/js/student/practice.js&#10;PracticeD&#9;FILE&#9;file://E:/study/项目组/workplace/art-exam/src/com/nsu/dao/student/practice/PracticeDao.java&#10;ResourceHttpRequestHandler&#9;PSI&#9;JAVA://org.springframework.web.servlet.resource.ResourceHttpRequestHandler&#10;CommonException&#9;FILE&#9;file://E:/study/项目组/workplace/art-exam/src/com/nsu/exception/common/CommonException.java" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\study\项目组\workplace\art-exam\src\com\nsu\interceptor" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\study\项目组\workplace\art-exam\src\com\nsu\filter" />
+      <recent name="E:\study\项目组\workplace\art-exam\webapp\lib" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.TestClass.test">
+    <configuration name="Entry" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Entry" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration name="PracticeServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.nsu.service.student.practice.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.nsu.service.student.practice.impl.PracticeServiceImpl" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="art-exam" />
+      <envs />
+    </configuration>
+    <configuration name="TestClass.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.nsu.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="art-exam" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.nsu.test" />
+      <option name="MAIN_CLASS_NAME" value="com.nsu.test.TestClass" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="Unnamed" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M19" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80/" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="art-exam:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_art-exam_4" />
+        <option name="HTTP_PORT" value="80" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="59073" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="art-exam:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="art-exam" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" value="" />
+          <host-id />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Unnamed" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Entry" />
+      <item index="2" class="java.lang.String" itemvalue="Application.PracticeServiceImpl" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestClass.test" />
+    </list>
+    <recent_temporary>
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestClass.test" />
+        <item index="1" class="java.lang.String" itemvalue="Application.PracticeServiceImpl" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Entry" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration" myUseAcceleration="nothing" cleanupOnStartRun="true">
+    <configuration useDefault="false">C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+    <option name="FORCE_UPDATE" value="true" />
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\study\项目组\workplace\art-exam" />
+          <option name="myCopyRoot" value="E:\study\项目组\workplace\art-exam" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\study\项目组\workplace\art-exam" />
+          <option name="myCopyRoot" value="E:\study\项目组\workplace\art-exam" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1eb0aea2-57b5-4b06-8a13-6fb30cadabff" name="Default" comment="" />
+      <created>1502631983141</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1502631983141</updated>
+      <workItem from="1502632002959" duration="2202000" />
+      <workItem from="1502783988108" duration="10419000" />
+      <workItem from="1502860731743" duration="3563000" />
+      <workItem from="1502961234154" duration="6284000" />
+      <workItem from="1503303143286" duration="1835000" />
+      <workItem from="1503366025703" duration="32899000" />
+      <workItem from="1503455971463" duration="10555000" />
+      <workItem from="1503749649499" duration="354000" />
+      <workItem from="1505018090740" duration="2872000" />
+      <workItem from="1505090927003" duration="2609000" />
+      <workItem from="1505263855253" duration="7696000" />
+      <workItem from="1505287928190" duration="58000" />
+      <workItem from="1508461055996" duration="1508000" />
+      <workItem from="1509930215124" duration="338000" />
+    </task>
+    <task id="LOCAL-00001" summary="修改引入类名">
+      <created>1502632687116</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1502632687116</updated>
+    </task>
+    <task id="LOCAL-00002" summary="初步完成练习功能（需要等待redis可用后再次修改），删除无用的测试类，">
+      <created>1503459927102</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1503459927102</updated>
+    </task>
+    <task id="LOCAL-00003" summary="修正为redis版">
+      <created>1503749990162</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1503749990162</updated>
+    </task>
+    <task id="LOCAL-00004" summary="修正redis版">
+      <created>1505018488112</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1505018488112</updated>
+    </task>
+    <task id="LOCAL-00005" summary="提取公共导航栏和页脚">
+      <created>1505270486156</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1505270486156</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="TestClass_test - 2017.10.20 at 09h 17m 14s.xml">
+      <configuration name="TestClass.test" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="83192000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18637532" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26092544" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24093817" sideWeight="0.49298596" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26606685" sideWeight="0.50701404" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="SVN Properties" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="修改引入类名" />
+    <MESSAGE value="初步完成练习功能（需要等待redis可用后再次修改），删除无用的测试类，" />
+    <MESSAGE value="修正为redis版" />
+    <MESSAGE value="修正redis版" />
+    <MESSAGE value="提取公共导航栏和页脚" />
+    <option name="LAST_COMMIT_MESSAGE" value="提取公共导航栏和页脚" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/controller/student/exam/ExamResController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="57" column="35" lean-forward="true" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/resources/js/student/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9fbf81c6-552b-463d-a067-a32af4e910bd/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/software/java/jdk1.8.0_74/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="110" column="17" lean-forward="false" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/com/nsu/mapper/student/practice/PracticeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/common/mapper/JsonMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/bean/student/practice/QuestionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="121" column="1" lean-forward="true" selection-start-line="121" selection-start-column="1" selection-end-line="121" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/WEB-INF/view/student/practice.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="455" column="0" lean-forward="false" selection-start-line="455" selection-start-column="0" selection-end-line="465" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/controller/student/classmanage/ClassManagerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="55" column="35" lean-forward="false" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../后端/resource/jars/org/slf4j/slf4j-log4j12/1.7.25/slf4j-log4j12-1.7.25.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-155">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="27" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/utils/jedis/JedisClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/utils/jedis/JedisClientPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1525">
+          <caret line="63" column="22" lean-forward="false" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/spring/applicationContext-redis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../successful/software/图片重命名/Entry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="51" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/filter/TestFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1300">
+          <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="54" lean-forward="false" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/service/student/practice/PracticeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1600">
+          <caret line="68" column="12" lean-forward="false" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/service/student/practice/impl/PracticeServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="165" column="44" lean-forward="false" selection-start-line="165" selection-start-column="44" selection-end-line="165" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/controller/student/datadownload/DataDownloadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="111" column="23" lean-forward="false" selection-start-line="111" selection-start-column="23" selection-end-line="111" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/db.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/bean/student/practice/ExerciseSearchBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="13" column="111" lean-forward="true" selection-start-line="13" selection-start-column="111" selection-end-line="13" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/utils/VerifyUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/utils/V.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4605">
+          <caret line="382" column="17" lean-forward="true" selection-start-line="382" selection-start-column="17" selection-end-line="382" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/utils/InfoProtUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-191">
+          <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/utils/ResponseUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/bean/common/AjaxBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="19" column="12" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/common/annotation/ValidateAnnotation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-522">
+          <caret line="25" column="53" lean-forward="false" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/resources/js/student/practice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2125">
+          <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/common/annotation/InterceptorAnno.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/bean/student/practice/PracticeSearchBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/controller/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1475">
+          <caret line="71" column="24" lean-forward="false" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/dao/student/practice/PracticeDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/controller/student/practice/PracticeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2850">
+          <caret line="133" column="35" lean-forward="false" selection-start-line="133" selection-start-column="35" selection-end-line="133" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/WEB-INF/view/common/foot.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2300">
+          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/WEB-INF/view/common/head.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/WEB-INF/view/student/classManage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="254" column="52" lean-forward="false" selection-start-line="254" selection-start-column="52" selection-end-line="254" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/resources/js/student/classManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/resources/js/student/dataTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="44" column="51" lean-forward="true" selection-start-line="44" selection-start-column="51" selection-end-line="44" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/controller/student/exam/StudentExamController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/service/student/exam/IExamManageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/bean/teacher/information/InformationBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/listener/ServletContextListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/filter/CharacterFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/interceptor/LoginInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/interceptor/RoleAuthorityInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2475">
+          <caret line="113" column="5" lean-forward="true" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/test/TestClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="38" column="35" lean-forward="true" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/service/student/exam/Impl/ExamManageServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1600">
+          <caret line="80" column="37" lean-forward="false" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nsu/controller/student/exam/ExamManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="38" column="19" lean-forward="false" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/spring/springmvc-interceptor.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="16" column="40" lean-forward="false" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>art-exam:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.41724136" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>JPA</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>JPA|art-exam</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.41724136" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: com.alibaba:druid:1.1.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.437788" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

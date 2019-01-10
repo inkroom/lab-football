@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.teacher.exam.TExamManagerDao">
+	<insert id="insertExamInformation" parameterType="com.nsu.bean.teacher.TExamInformationBean">
+		insert into exam_information (E_I_ID, EXAM_LEVEL,START_TIME, END_TIME,
+		NUM_OF_QUES, TEST_NAME, SUBJECT,
+		GRADE, CREATE_BY, CREATE_DATE,
+		OPER_BY, OPER_DATE, TEST_STUTAS,
+		STUTAS, CLASS_ID, T_ID)
+		values (#{eIId,jdbcType=BIGINT},(#{ExamLevel,jdbcType=INTEGER} #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP},
+		#{problemId,jdbcType=VARCHAR}, #{testName,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR},
+		#{grade,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+		#{operBy,jdbcType=VARCHAR}, #{operDate,jdbcType=TIMESTAMP}, #{testStutas,jdbcType=VARCHAR},
+		#{stutas,jdbcType=INTEGER}, #{classId,jdbcType=BIGINT}, #{tId,jdbcType=BIGINT})
+	</insert>
+	<update id="updateExamInformationStatuts" >
+		update exam_information set  STUTAS = 2 where E_I_ID = #{eIId,jdbcType=BIGINT}
+	</update>
+	<select id="selectExamInformationList" resultType="com.nsu.bean.teacher.TExamInforBean">
+		select
+		E_I_ID, START_TIME, END_TIME,TEST_NAME, SUBJECT, GRADE , STUTAS, CLASS_ID, T_ID
+		from exam_information
+		where T_ID = #{tId,jdbcType=BIGINT} and STUTAS = 1
+	</select>
+	<select id="selectExamInformationListbyClass"  resultType="com.nsu.bean.teacher.TExamInforBean">
+		select
+		E_I_ID, START_TIME, END_TIME,TEST_NAME, SUBJECT, GRADE , STUTAS, CLASS_ID, T_ID
+		from exam_information
+		where CLASS_ID = #{classId,jdbcType=BIGINT}  and T_ID = #{tId,jdbcType=BIGINT} and STUTAS = 1
+	</select>
+	<select id="findCidByTid" resultType="java.lang.Long" >
+		select
+		CLASS_ID
+		from t_c_map
+		where T_ID=#{tid,jdbcType=BIGINT} and STUTAS = 1
+	</select>
+	<select id="findTidByAid" resultType="java.lang.Long">
+		SELECT
+		T_ID
+		from
+		teacher
+		where A_ID=#{aid,jdbcType=INTEGER} and STUTAS = 1
+	</select>
+
+</mapper> 

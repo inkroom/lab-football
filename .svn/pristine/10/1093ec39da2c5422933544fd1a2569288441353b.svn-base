@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.teacher.exam.TMarkScoreDao">
+    <select id="viewExamListByEiid" resultType="com.nsu.bean.teacher.TExamInforBean">
+        E_I_ID, START_TIME, END_TIME,TEST_NAME, SUBJECT, GRADE , STUTAS, CLASS_ID, T_ID
+        from exam_information
+        where E_I_ID = #{eIId,jdbcType=BIGINT} and STUTAS = 1
+    </select>
+    <update id="setOutActivityBySid">
+        UPDATE exam_record
+        set OUT_ACTIVITY= #{score,jdbcType=INTEGER}
+        WHERE E_I_ID = #{eIId,jdbcType=BIGINT} and S_ID=#{sid,jdbcType=BIGINT}
+    </update>
+    <update id="setStrongSkillBySid">
+        UPDATE exam_record
+        set STRONG_SKILL= #{score,jdbcType=INTEGER}
+        WHERE E_I_ID = #{eIId,jdbcType=BIGINT} and S_ID=#{sid,jdbcType=BIGINT}
+    </update>
+    <update id="setPracticeActivityBySid">
+        UPDATE exam_record
+        set PRACTICE_ACTIVITY= #{score,jdbcType=INTEGER}
+        WHERE E_I_ID = #{eIId,jdbcType=BIGINT} and S_ID=#{sid,jdbcType=BIGINT}
+    </update>
+    <select id="uploadByUid" resultType="com.nsu.entity.UploadFiles">
+      SELECT
+      U_ID, FILE_TYPE, DOWNLOAD,
+      GRADE, CERTIFICATE, STATUS,
+      CREATE_DATE, CREATE_BY, OPER_DATE,
+      OPER_BY, O_ID, A_ID, OTHER_ID,
+      SAVE_PATH
+      FROM upload_files
+      WHERE U_ID=#{uid,jdbcType=BIGINT}
+    </select>
+    <select id="findOcidByEiidAndSid" resultType="java.lang.Long">
+        SELECT O_C_ID FROM exam_record
+        WHERE  E_I_ID = #{eIId,jdbcType=BIGINT} and S_ID = #{sId,jdbcType=BIGINT}
+    </select>
+    <select id="findPcidByEiidAndSid" resultType="java.lang.Long">
+        SELECT P_C_ID FROM exam_record
+        WHERE  E_I_ID = #{eIId,jdbcType=BIGINT} and S_ID = #{sId,jdbcType=BIGINT}
+    </select>
+    <select id="findScidByEiidAndSid" resultType="java.lang.Long">
+        SELECT S_C_ID FROM exam_record
+        WHERE  E_I_ID = #{eIId,jdbcType=BIGINT} and S_ID = #{sId,jdbcType=BIGINT}
+    </select>
+</mapper>

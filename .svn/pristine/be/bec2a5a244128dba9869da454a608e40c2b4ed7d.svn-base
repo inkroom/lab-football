@@ -1,0 +1,88 @@
+package com.nsu.bean.student.practice;
+
+import java.util.List;
+
+/**
+ * @version 1.0
+ * @auther 墨盒
+ * @Date 2017/7/17
+ * @Time 9:43
+ * @Descorption
+ */
+public class QuestionBean {
+    private long id;
+    private String content;//题干
+    private int type;
+    private String choice;//选项
+    private List<String> select;
+    private String answer;//答案
+    private int score;
+
+    public List<String> getSelect() {
+        return select;
+    }
+
+    public void setSelect(List<String> select) {
+        this.select = select;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionBean{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", type=" + type +
+                ", choice='" + choice + '\'' +
+                ", answer='" + answer + '\'' +
+                ", score=" + score +
+                '}';
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getChoice() {
+        return choice;
+    }
+
+    public void setChoice(String choice) {
+        this.choice = choice;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+}

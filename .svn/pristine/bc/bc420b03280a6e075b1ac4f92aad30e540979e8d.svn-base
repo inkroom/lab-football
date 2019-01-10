@@ -1,0 +1,141 @@
+package com.nsu.service.student.practice.impl;
+
+import com.nsu.bean.student.practice.PracticeSearchBean;
+import com.nsu.bean.student.practice.QuestionBean;
+import com.nsu.common.mapper.JsonMapper;
+import com.nsu.dao.student.practice.PracticeDao;
+import com.nsu.service.student.practice.PracticeService;
+import com.nsu.utils.jedis.JedisClient;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.io.IOException;
+import java.util.*;
+
+/**
+ * @author 墨盒
+ * @version 1.0
+ * @Date 2017/7/17
+ * @Time 9:52
+ * @Descorption
+ */
+@Service
+public class PracticeServiceImpl implements PracticeService {
+    protected final Log log = LogFactory.getLog(getClass());
+    @Autowired
+    private JedisClient client;
+
+    @Resource
+    private PracticeDao practiceDao;
+
+    @Override
+    public List<QuestionBean> getAllQuestion(PracticeSearchBean search) throws Exception {
+        String client_search = client.get(EXERCISE_QUESTION_SEARCH_KEY);
+        String client_list = client.get(EXERCISE_QUESTION_LIST_KEY);
+        JsonMapper mapper = JsonMapper.getInstance();
+        List<QuestionBean> list;
+        if (client_search != null && client_list != null) {//缓存不为空
+            PracticeSearchBean searchBean = mapper.fromJson(client_search, PracticeSearchBean.class);
+            if (search.equals(searchBean)) {//搜索条件不变，从缓存里取数据
+                list = mapper.fromJson(client_list, mapper.createCollectionType(ArrayList.class, QuestionBean.class));
+                return list;
+            }
+        }
+        //缓存为空，或者搜索条件改变，从数据库重新获取数据
+        list = practiceDao.getAllQuestion(search.getType(), search.getDifficulty(), search.getSubject(), search.getPoint());
+
+        log.info("*** search json *** " + mapper.toJson(search));
+        client.set(EXERCISE_QUESTION_SEARCH_KEY, EXERCISE_SECENDS, mapper.toJson(search));
+        log.info("*** list json **" + mapper.toJson(list));
+        client.set(EXERCISE_QUESTION_LIST_KEY, EXERCISE_SECENDS, mapper.toJson(list));
+        return list;
+    }
+
+    @Override
+    public QuestionBean getAnswer(long questionId) throws Exception {
+        String client_list = client.get(EXERCISE_QUESTION_LIST_KEY);
+        JsonMapper mapper = JsonMapper.getInstance();
+        List<QuestionBean> list;
+        QuestionBean question = null;
+        if (client_list != null) {//缓存不为空
+            list = mapper.fromJson(client_list, mapper.createCollectionType(ArrayList.class, QuestionBean.class));
+            for (QuestionBean questionBean : list) {
+                if (questionBean.getId() == questionId) {
+                    question = questionBean;
+                }
+            }
+        } else {//缓存为空，从数据库获取题目
+            question = practiceDao.getOneQuestion(questionId);
+        }
+        return question;
+    }
+
+    @Override
+    public Boolean checkAnswer(long questionId, String answer) throws Exception {
+        QuestionBean question = getAnswer(questionId);
+        if (question != null) {
+            return question.getAnswer().equals(answer);
+        } else {//题目不存在
+            return null;
+        }
+    }
+
+    @Override
+    public boolean commit(long studentId, int score, boolean isRight) throws Exception {
+        return practiceDao.commit(studentId, score, isRight) >= 1;
+    }
+
+    @Override
+    public QuestionBean getOneQuestion(PracticeSearchBean search) throws Exception {
+        List<QuestionBean> list = getAllQuestion(search);
+        Random r = new Random();
+        return sortChoice(list.get(r.nextInt(list.size())));
+    }
+
+    /**
+     * 打乱选项部分
+     *
+     * @param question 题目
+     */
+    private QuestionBean sortChoice(QuestionBean question) {
+        if (question.getChoice() != null) {
+            JsonMapper mapper = JsonMapper.getInstance();
+            ArrayList map = convert(question);
+            if (map != null) {
+                Collections.shuffle(map);
+                question.setChoice(mapper.toJson(map));
+            }
+        }
+        return question;
+    }
+
+    private ArrayList convert(QuestionBean question) {
+        try {
+            return JsonMapper.getInstance().readValue(question.getChoice(), ArrayList.class);
+        } catch (IOException e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+//    @Test
+//    public void test() {
+//        String choice = "[{\"A\":\"3423中文\"},{\"B\":\",./;'\"},{\"C\":\",./;'\"},{\"D\":\",./;'\"}]";
+//        JsonMapper mapper = JsonMapper.getInstance();
+//        com.fasterxml.jackson.databind.JavaType t = mapper.createCollectionType(HashMap.class, String.class, String.class);
+//        ArrayList map = null;
+//        try {
+//            map = mapper.readValue(choice, ArrayList.class);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(((HashMap) map.get(0)));
+//        Collections.shuffle(map);
+//        System.out.println(mapper.toJson(map));
+//    }
+
+}

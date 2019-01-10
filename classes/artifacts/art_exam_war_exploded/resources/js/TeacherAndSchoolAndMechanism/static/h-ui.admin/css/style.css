@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* 你自己的样式 */
+
+.navbar-logo,.navbar-logo-m,.navbar-slogan,.navbar-userbar{color:#fff}/*logo 及 用户信息文字颜色*/
+.navbar-logo:hover,.navbar-logo-m:hover{color:#fff;text-decoration: none}
+.navbar-nav > ul > li, .navbar-nav > ul > li > a{ color:#fff}/*顶部导航文字颜色*/
+.navbar-userbar > ul> > li,.navbar-userbar > ul> > li > a{ color:#fff}
+.navbar {
+    background:#009688;
+}
+
+.Hui-aside .menu_dropdown dt .Hui-iconfont{
+    font-size: 22px;
+    color: rgba(61, 148, 173, 0.66);
+}
+.navbar-slogan {
+    color: white;
+    font-size: 24px;
+    font-family: cursive;
+}
+
+.Hui-aside{}/*侧边栏*/
+.Hui-aside .menu_dropdown dt{color:#333;    line-height: 45px;  }/*左侧二级导航菜单*/
+.Hui-aside .menu_dropdown dt:hover{color: rgba(13, 168, 147, 0.9);font-size: 16px;
+}
+
+.Hui-aside .menu_dropdown dt:hover [class^="icon-"]{ color:#7e8795}
+.Hui-aside .menu_dropdown li a{color:#666;border-bottom: 1px solid #e5e5e5}
+.Hui-aside .menu_dropdown li a:hover{color: #edf3f0;background-color: #009688}
+.Hui-aside .menu_dropdown li.current a,.menu_dropdown li.current a:hover{color:#148cf1}
+.Hui-aside .menu_dropdown dt .Hui-iconfont{ color:#a0a7b1}
+.Hui-aside .menu_dropdown dt .menu_dropdown-arrow{ color:#b6b7b8}
+.dislpayArrow a{background:url(icon_arrow.png) no-repeat 0 0}
+
+/*按钮*/
+.my-btn {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 18px;
+    background-color: #009688;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.teacher.exam.ViewStuScoreDao">
+
+	<select id="findStuScoreByCidEidList" resultType="com.nsu.bean.teacher.StudentRecordBean">
+ 	R_ID, STU_ANSWER, PRACTICE_ACTIVITY, STRONG_SKILL, OUT_ACTIVITY, EXAM, RECORD, ERROE_NO,
+    CORRECT_NO, O_C_ID, P_C_ID, S_C_ID,STATUS, S_ID, CLASS_ID, E_I_ID, U_ID
+	from exam_record
+    where E_I_ID = #{eIId,jdbcType=BIGINT} and CLASS_ID = #{classId,jdbcType=BIGINT}
+	</select>
+
+
+</mapper> 

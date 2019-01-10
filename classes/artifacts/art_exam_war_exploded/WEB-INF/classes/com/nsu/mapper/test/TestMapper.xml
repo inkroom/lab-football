@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.test.TestDao">
+
+	<select id="getUserByName" parameterType="String" resultType="map" >
+		select * from tbl_user_test where user_name = #{username}
+	</select>
+	<select id="pagingTest" resultType="map">
+		SELECT * FROM ACCOUNT WHERE STATUS=1
+	</select>
+
+</mapper>

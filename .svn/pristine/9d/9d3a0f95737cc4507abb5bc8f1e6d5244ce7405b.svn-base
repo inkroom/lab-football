@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.student.compute.ComputeDao">
+    <select id="getProblemAnswer"  resultType="com.nsu.bean.student.compute.ProblemBean">
+        SELECT P_ID AS problemId ,ANSWER AS answer,`VALUE` AS `value` FROM problem WHERE problem.P_ID IN
+        <foreach collection="list" item="item" open="(" separator="," close=")" index="index">
+            #{item}
+        </foreach>
+    </select>
+    <!--List:foreach中的collection属性类型是List,collection的值必须是:list,item的值可以随意,Dao接口中参数名字随意 -->
+    <update id="updateScore" parameterType="com.nsu.bean.student.compute.OtherScoreBean">
+        UPDATE exam_record SET EXAM=#{exam}, RECORD=#{record} WHERE E_I_ID=#{e_i_id}
+    </update>
+    <select id="getStudentAnswer" parameterType="java.lang.Long" resultType="java.lang.String">
+        SELECT STU_ANSWER FROM exam_record WHERE E_I_ID=#{E_I_ID}
+    </select>
+
+    <resultMap id="getScoreBe" type="com.nsu.bean.student.compute.ComputeViewBean">
+        <result column="RECORD" property="Score" jdbcType="DOUBLE"/>
+        <result column="TEST_NAME" property="ExamName" jdbcType="VARCHAR"/>
+        <result column="O_NAME" property="SchoolName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getScoreBean" parameterType="java.lang.Long" resultMap="getScoreBe">
+        SELECT exam_record.RECORD ,exam_information.TEST_NAME,org.O_NAME
+        FROM exam_record,exam_information,org,class
+        WHERE exam_record.S_ID=#{s_id} AND exam_information.E_I_ID=exam_record.E_I_ID
+        AND exam_record.CLASS_ID=class.CLASS_ID AND class.O_ID=org.O_ID
+    </select>
+
+    <select id="getOtherScore" parameterType="java.lang.Long" resultType="com.nsu.bean.student.compute.OtherScoreBean">
+        SELECT PRACTICE_ACTIVITY AS practiceActivity,STRONG_SKILL AS strongSkill,OUT_ACTIVITY AS outActivity FROM exam_record WHERE E_I_ID=#{E_I_ID}
+    </select>
+    <!--返回实体的大小写非常有关系 关联到你的set和get方法的问题，如果首字母大写的话，mybatis是按照get和set自动注入的,如果配置了resultmap的话是直接映射 再从get和set映射一次-->
+</mapper>

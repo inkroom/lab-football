@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.student.datadownload.DataDownloadDao">
+    <select id="getDataViewByPage" resultType="com.nsu.bean.student.datadownload.DataDownloadViewBean">
+        SELECT upload_files.U_ID AS id,
+        upload_files.DOWNLOAD AS downloadNum,
+        upload_files.GRADE AS grade,
+        upload_files.CERTIFICATE AS dataName,
+        upload_files.CREATE_DATE AS uploadTime,
+        account.USERNAME AS uploadAuthor
+        FROM upload_files,account
+        WHERE upload_files.STATUS=1
+        AND upload_files.A_ID=account.A_ID LIMIT #{startRow},#{limitPage}
+
+    </select>
+    <select id="getDataViewNum" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM upload_files;
+    </select>
+    <select id="SearchData" resultType="com.nsu.bean.student.datadownload.DataDownloadViewBean">
+        SELECT upload_files.U_ID AS id,
+        upload_files.DOWNLOAD AS downloadNum,
+        upload_files.GRADE AS grade,
+        upload_files.CERTIFICATE AS dataName,
+        upload_files.CREATE_DATE AS uploadTime,
+        account.USERNAME AS uploadAuthor
+        FROM upload_files,account
+        WHERE upload_files.STATUS=1 AND upload_files.A_ID=account.A_ID
+        AND upload_files.SAVE_PATH LIKE #{searchData}
+    </select>
+    <select id="getPathById" resultType="java.lang.String">
+        SELECT SAVE_PATH FROM upload_files WHERE U_ID=#{id}
+    </select>
+</mapper>

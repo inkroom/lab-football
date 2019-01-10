@@ -1,0 +1,210 @@
+/**
+ * Created by 墨盒 on 2017/8/10.
+ * 练习js
+ */
+$(function () {
+    $('#prev').on('click', function () {
+
+    });
+    $('#next').on('click', function () {
+
+    });
+    $('#submit').on('click', function () {
+
+    });
+    $('#exit').on('click', function () {
+
+    });
+    var $type = $('.type');
+    var $difficulty = $('.difficulty');
+    var $point = $('.point');
+    $type.on('change', function () {
+        $type.val($(this).val());
+    });
+    $difficulty.on('change', function () {
+        $difficulty.val($(this).val());
+    });
+    $point.on('change', function () {
+        $point.val($(this).val());
+    });
+
+    $('button[name=next]').on('click', function () {
+        $.ajax({
+            url: 'search.action',
+            type: 'get',
+            data: {
+                difficulty: $('.difficulty:eq(0)').val(),
+                type: $('.type:eq(0)').val(),
+                point: $('.point:eq(0)').val(),
+                subject: $('.subject:eq(0)').val(),
+                _csrf: $('#_csrf').val()
+            },
+            dataType: 'json',
+            success: function (result) {
+                if (result.status === 500 || result.status === "500") {
+                    layer.msg(result.msg);
+                } else if (result.status === 200 || result.status === "200") {
+                    loadQuestion(result.data.question);
+                    loadSelectThing();
+                }
+            },
+            error: function () {
+                layer.msg('网络错误！');
+            }
+        });
+    });
+    $('button[name=prev]').on('click', function () {
+
+    });
+    $('button[name=submit]').on('click', function () {
+        var answer = JSON.stringify(getSelect());
+    });
+    $('button[name=exit]').on('click', function () {
+
+    });
+    $('a[name=showAnswer]').on('click', function () {
+        var $answer = $('.answer');
+        var $this = $(this);
+        //显示答案
+        if ($answer.eq(0).css('display') === 'none') {
+            if ($answer.eq(0).find('span').eq(0).html() === '') {//没有答案
+                var result = loadAnswer();
+                if (!result)//没有加载成功答案
+                    return;
+            }
+            $answer.show();
+            $this.html('收起解析');
+        }
+        //隐藏答案
+        else {
+            $answer.hide();
+            $this.html('查看解析');
+        }
+    });
+});
+
+///获取题目答案和解析
+function loadAnswer() {
+    return false;
+}
+var questionIndex = ['A', 'B', 'C', 'D'];
+///加载题目
+function loadQuestion(question) {
+
+    $('.select-answer').html('');
+    for (var i = 0; i < question.select.length; i++) {
+        var $select = $('<div></div>');
+        var obj = JSON.parse(question.select[i]);
+        var xml = azyXml(obj.value);
+        if (xml !== null) {//引用了资源
+            $select.append('<span class="radio_btn1">'
+                + '<input type="' + getType(question.type)[1] + '" name="' + obj.key + '"/>'
+                + '<span></span></span>');
+            var html = '';
+            if (xml.type === "img") {
+                html += '<img class="img-responsive" src="../exam/res/' + xml.type + '/' + xml.id + '.action" />';
+            } else if (xml.type === "audio") {
+                html += '<audio controls="controls">' +
+                    '<source src="../exam/res/' + xml.type + '/' + xml.id + '.action" type="audio/mpeg">' +
+                    'Your browser does not support the audio element.</audio>';
+            } else if (xml.type === "video") {
+                html += '<audio controls="controls" width="150" height="160">' +
+                    '<source src="../exam/res/' + xml.type + '/' + xml.id + '.action" type="video/ogg">' +
+                    'Your browser does not support the audio element.</audio>';
+            }
+            $select.append('<label>' + questionIndex[i] + '.' + obj.value + '' + html +
+                '</label>');
+
+        } else {
+            $select.append('<label>' + questionIndex[i] + '.' + obj.value + '' +
+                '</label>');
+        }
+        $('.select-answer').append($select);
+    }
+//加载题目题干
+    loadTitle(question);
+}
+//加载题干
+function loadTitle(question) {
+    var xml = azyXml(question.content);
+    var $select_answer = $('.select-answer');
+    if (xml !== null) {//引用了资源
+        if (xml.type === "img") {
+            $select_answer.eq(0).parent().append('<div class="btn-block mb-30"  style="margin-top: -80px;margin-left: 110px">' +
+                '<img src="../exam/res/' + xml.type + '/' + xml.id + '.action" class="img-responsive"/></div>')
+            $select_answer.eq(1).parent().append('<div class="kstp">' +
+                '<img src="../exam/res/' + xml.type + '/' + xml.id + '.action" class="img-responsive"/></div>')
+            $select_answer.eq(2).parent().append('<div class="col-sm-4 f-r" style="margin-top: -70px">' +
+                '<img src="../exam/res/' + xml.type + '/' + xml.id + '.action" class="img-responsive"/></div>')
+        } else if (xml.type === "audio") {
+            $select_answer.eq(0).parent().append(' <div class="" >' +
+                '<audio controls="controls" style="width: 180px">' +
+                '<source src="../exam/res/' + xml.type + '/' + xml.id + '.action" type="audio/mpeg">' +
+                'Your browser does not support the video tag.</audio></div>')
+            $select_answer.eq(1).parent().append('<div style="margin-left: 650px;margin-top: -150px;margin-bottom: 150px" class="visible-lg">' +
+                '<audio controls="controls" style="width: 180px">' +
+                '<source src="../exam/res/' + xml.type + '/' + xml.id + '.action" type="audio/mpeg">' +
+                'Your browser does not support the video tag.</audio></div>')
+            $select_answer.eq(2).parent().append('<div class="mb-30">' +
+                '<audio controls="controls" style="width: 180px">' +
+                '<source src="../exam/res/' + xml.type + '/' + xml.id + '.action" type="audio/mpeg">' +
+                'Your browser does not support the video tag.</audio></div>')
+        } else if (xml.type === "video") {
+            $select_answer.eq(0).parent().append(' <div style="margin-left: 10px" >' +
+                '<video width="100" height="110" controls="controls">' +
+                '<source src="../exam/res/' + xml.type + '/' + xml.id + '.action" type="video/ogg">' +
+                'Your browser does not support the video tag.</video></div>')
+            $select_answer.eq(1).parent().append('<div style="margin-left: 660px;margin-top: -200px">' +
+                '<video width="100" height="110" controls="controls">' +
+                '<source src="../exam/res/' + xml.type + '/' + xml.id + '.action" type="video/ogg">' +
+                'Your browser does not support the video tag.</video></div>')
+            $select_answer.eq(2).parent().append('<div style="margin-left: 10px">' +
+                '<video width="100" height="110" controls="controls">' +
+                '<source src="../exam/res/' + xml.type + '/' + xml.id + '.action" type="video/ogg">' +
+                'Your browser does not support the video tag.</video></div>')
+        }
+    } else {
+        $('.title').html('<p class="f-26 mt-20 visible-lg visible-md title">'
+            + '<img src="/resources/img/考试.png" class="img-responsive hidden-xs"/>'
+            + question.content + '（' + getType(question.type)[0] + '）</p>');
+    }
+}
+function getType(type) {
+    switch (type) {
+        case 1:
+            return ["单选", "radio"];
+        case 2:
+            return ["多选", "checkbox"];
+        case 3:
+            return ["判断", "radio"];
+        default:
+            return ["错误类型", "radio"];
+    }
+}
+function azyXml(text) {
+    var result = text.match(/<(.*)>.*<\/\1>/);
+    if (result !== null) {
+        text.replace(result[0], '');
+        var res = {};
+        res.type = result[1];
+        res.id = text.match(/>([^</]+)<\//)[1];
+        return res;
+    }
+    return null;
+}
+///获取选中的选项
+function getSelect() {
+    var array = [];
+    var $input = $('input');
+    for (var i = 0; i < $input.length / 3; i++) {
+        if ($input.eq(i).prop('checked'))
+            array.push($input.eq(i).attr('name'));
+    }
+    return array;
+}
+///加载选项同步事件
+function loadSelectThing() {
+    $('input').on('change', function () {
+        $('input[name=' + $(this).attr('name') + ']').prop('checked', $(this).prop('checked'));
+    });
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.student.practice.PracticeDao">
+
+    <select id="getAllQuestion" statementType="PREPARED" resultType="com.nsu.bean.student.practice.QuestionBean">
+      SELECT P_ID AS id,p.PROBLEM AS content,p.`SELECT` AS choice,
+      p.VALUE AS score,ANSWER , point,p.TYPE,p.level AS difficulty
+      FROM problem AS p
+      WHERE TYPE=#{type} AND LEVEL=#{difficulty}
+      AND SUBJECT =#{subject} AND STATUS=1
+    </select>
+
+    <update id="commit" statementType="PREPARED">
+        UPDATE student
+        <set>
+            <if test="isRight">
+                INTEGRAL=INTEGRAL+#{score},
+            </if>
+            DO_NO=DO_NO+1,
+            OPER_BY='PanXiaoyu',
+            OPER_DATE=now()
+        </set>
+        WHERE student.S_ID = #{studentId}
+    </update>
+
+    <select id="getOneQuestion" statementType="PREPARED" resultType="com.nsu.bean.student.practice.QuestionBean">
+        SELECT P_ID AS id,p.PROBLEM AS content,p.`SELECT` AS choice,
+      p.VALUE AS score,ANSWER , point,p.TYPE,p.level AS difficulty
+        FROM problem AS p
+        WHERE P_ID=${id} limit 1
+    </select>
+
+</mapper>

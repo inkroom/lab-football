@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.student.classmanager.ClassManagerDao">
+
+    <resultMap id="classBean" type="com.nsu.bean.student.classmanager.ClassBean">
+        <result column="GRED" property="grade"/>
+        <result column="CLASS_NAME" property="name"/>
+        <result column="O_NAME" property="joinTime"/>
+        <result column="CH_STATUS" property="status"/>
+    </resultMap>
+
+    <select id="getAllClasses" resultType="com.nsu.bean.student.classmanager.ClassBean" statementType="PREPARED">
+        SELECT c.GRED AS grade,c.CLASS_NAME AS name,o.O_NAME AS  school,
+        scm.JOIN_TIME AS joinTime,scm.CH_STATUS AS status
+        FROM stu_class_map AS scm,class AS c,org AS o WHERE scm.S_ID=#{id}
+        AND scm.CLASS_ID=c.CLASS_ID AND c.O_ID = o.O_ID;
+    </select>
+    <!--&#45;&#45; SELECT c.GRED ,c.CLASS_NAME ,o.O_NAME,-->
+    <!--&#45;&#45;         scm.JOIN_TIME ,scm.CH_STATUS-->
+    <!--&#45;&#45;         FROM stu_class_map AS scm,class AS c,org AS o WHERE scm.S_ID=#{id}-->
+    <!--&#45;&#45;         AND scm.CLASS_ID=c.CLASS_ID AND c.O_ID = o.O_ID-->
+    <insert id="joinClass" statementType="PREPARED">
+        insert into stu_class_map (S_ID,CLASS_ID,CREATE_BY,CREATE_DATE) values (#{id},#{classId},'PanXiaoyu',now());
+    </insert>
+    <select id="checkKey" statementType="PREPARED" resultType="java.lang.Integer">
+        SELECT count(*) FROM class WHERE CLASS_ID=#{classId} AND KEY_WORD=#{key} limit 1
+    </select>
+    <select id="isStayClass" statementType="PREPARED" resultType="java.lang.Integer">
+        select count(*) from stu_class_map AS scm where scm.S_ID=#{id} AND scm.CH_STATUS=2 limit 1
+    </select>
+</mapper>

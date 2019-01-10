@@ -1,0 +1,45 @@
+package com.nsu.exception;
+
+import com.nsu.bean.common.AjaxBean;
+import com.nsu.common.annotation.InterceptorAnno;
+import com.nsu.utils.ResponseUtil;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.cache.jcache.interceptor.SimpleExceptionCacheResolver;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * @author 墨盒
+ * @version 1.0
+ * @Date 2017/7/18
+ * @Time 17:07
+ * @Descorption
+ */
+public class HandlerException implements HandlerExceptionResolver {
+    Log log = LogFactory.getLog(getClass());
+
+
+    @Override
+    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object obj, Exception e) {
+        if (obj instanceof HandlerMethod) {
+            HandlerMethod method = (HandlerMethod) obj;
+            InterceptorAnno anno = method.getMethodAnnotation(InterceptorAnno.class);
+            if (anno != null) {
+                if (anno.isAjax()) {
+                    ResponseUtil.write(httpServletResponse, new AjaxBean("500", e.getMessage()));
+                    return null;
+                }
+            }
+        }
+        log.info(" o = " + obj);
+        log.info(" e = " + e);
+
+        return new ModelAndView("test");
+    }
+}
