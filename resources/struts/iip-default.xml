@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="iip-default" extends="javadev-default" namespace="/">
+		<interceptors>
+			<interceptor-stack name="javadevDefaultStack">
+				<interceptor-ref name="servletConfig" />
+			    <interceptor-ref name="login" />
+			    <interceptor-ref name="roleAuthority" />
+			    <interceptor-ref name="token" /> 		
+				<interceptor-ref name="exception" />				
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="fileUpload" />
+				<interceptor-ref name="params" />
+				
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="javadevDefaultStack" />
+		
+		<global-results>
+			<result name="login" type="redirect">/fiveplan/fivePlanLogin!pageToTl.action</result>		
+		</global-results>
+	</package>
+	
+	<package name="iip-default-ispass" extends="javadev-default" namespace="/">
+		<interceptors>
+			<interceptor-stack name="javadevDefaultStack">
+				<interceptor-ref name="servletConfig" />
+			    <interceptor-ref name="login" />
+			    <interceptor-ref name="roleAuthority" />
+			    <interceptor-ref name="token" /> 		
+				<interceptor-ref name="exception" />				
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="fileUpload" />
+				<interceptor-ref name="params" />
+				<interceptor-ref name="isPass" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="javadevDefaultStack" />
+		
+		<global-results>
+			<result name="login" type="redirect">/fiveplan/fivePlanLogin!pageToTl.action</result>
+			
+			<result name="index" type="redirect">/fiveplan/viewFiveSum!intoViewFiveSum.action</result>		
+					
+		</global-results>
+	</package>
+	
+	
+	
+	
+	
+
+	<include file="struts/iip-ROOT.xml" />
+	<include file="struts/iip-test.xml" />
+	<include file="struts/iip-fiveplan.xml" />
+</struts>

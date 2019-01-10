@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="fiveplanview" extends="iip-default" namespace="/fiveplan">
+		
+	
+		<action name="viewFiveSum" class="javadev.iip.action.fiveplan.ViewFiveSumAction">
+			<result name="intointoViewFiveSum">viewSummary.ftl</result>
+		</action>
+		
+		<action name="fivePlanLogin" class="javadev.iip.action.fiveplan.FivePlanLoginAction">
+			<result name="pageToTl">fiveplanlogin.ftl</result>
+			<result name="fivePlanLogin" type="redirect">fiveplanmodifyPD!pageToTl.action</result>
+			<result name="fivePlanLoginError">fiveplanlogin.ftl</result>
+			<result name="fivePlanLoginout" type="redirect">
+			     <param name="location">fivePlanLogin!pageToTl.action</param>
+			     <param name="encode">true</param>
+			     <param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+		
+		<action name="downLoadExcel" class="javadev.iip.action.fiveplan.DownLoadExcelAction">
+			<result name="loading" type="redirect">viewFiveSum!intoViewFiveSum.action</result>
+			<result name="intoDownloading" type="redirect">viewFiveSum!intoViewFiveSum.action</result>
+		</action>
+		
+		<action name="auditStatus" class="javadev.iip.action.fiveplan.AuditStatusAction">
+			<result name ="intoStatus">auditStatus.ftl</result>
+		</action>
+		
+		<action name="fiveplanmodifyPD" class="javadev.iip.action.fiveplan.FivePlanModifyPDAction">
+		    <result name="pageToTl">fiveplanModifyPD.ftl</result>
+			<result name="updatePassword">fiveplanlogin.ftl</result>
+			<result name="updatePasswordError">fiveplanModifyPD.ftl</result>
+		</action>
+		
+	</package>
+
+	<package name="fiveplan" extends="iip-default-ispass" namespace="/fiveplan">
+	
+	
+	<!-- 这个是艺术专用教室达标及器材设备配置达标情况structs配置 -->
+		<action name="repostFormTwo" class="javadev.iip.action.fiveplan.RepostFromActionTwoAction">
+			<!-- 进入艺术专用教室达标情况表单 -->
+			<result name="intoRepostFormAction">repostFromtwo.ftl
+			</result>
+			<!-- 点击下一步 -->
+			<result name="uploadForm" type="redirect">plan.action</result>
+
+			<!-- 点击上一步 -->
+			<result name="topage1" type="redirect">
+			     <param name="location">pageOne!intoRepostForm.action</param>
+			     <param name="token">${newToken2}</param>
+			     <param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="pre" type="redirect">pageOne!intoRepostForm.action</result>
+			 
+			 
+			<!-- 提交出错 -->
+			<result name="error" type="redirect">repostFormTwo!intoRepostForm.action</result>
+		</action>
+					
+		<action name="sportsArtTeachEquip" class="javadev.iip.action.fiveplan.SportsArtTeachEquipAction">
+			<result name="uploadSportsArtTeachEquipForm" type="redirect" >viewFiveSum!intoViewFiveSum.action</result>
+			<result name="intoSportsArtTeachEquip">sportsArtTeachEquip.ftl</result>
+			<result name="pre" type="redirect"> plan.action</result>
+			<result name="topage1" type="redirect">
+			     <param name="location">pageOne!intoRepostForm.action</param>
+			     <param name="token">${newToken4}</param>
+			     <param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="topage3" type="redirect">
+			     <param name="location">plan.action</param>
+			     <param name="token">${newToken4}</param>
+			     <param name="errorInfo">${errorInfo}</param>
+			 </result>
+			<result name="topage2" type="redirect">
+				 <param name="location">repostFormTwo!intoRepostForm.action</param>
+			     <param name="token">${newToken4}</param>
+			     <param name="errorInfo">${errorInfo}</param>
+			 </result>
+		</action>
+		<!-- 
+		<action name="downLoadExcel" class="javadev.iip.action.fiveplan.DownLoadExcelAction">
+			<result name="loading" >fivedownloadexcel.ftl</result>
+			<result name="intoDownloading" >fivedownloadexcel.ftl</result>
+		</action>
+		 -->
+		
+		
+		<action name="downLoadWorld" class="javadev.iip.action.fiveplan.DownLoadWorldAction">
+			<result name="loading" >fivedownloadexcel.ftl</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		<action name="file" class="javadev.iip.action.fiveplan.FileAction">
+			<interceptor-ref name="fileUpload">
+                <param name="maximumSize">52428800</param> 
+            </interceptor-ref>
+		    <result name="pageToTl">file.ftl</result>
+		    
+		</action>
+		<action name="upload" class="javadev.iip.action.fiveplan.FileAction" method="upload">
+		    <result>file.ftl</result>
+		    <result name="ERROR">file.ftl</result>
+		</action>
+			
+		
+		
+		<action name="pageOne" class="javadev.iip.action.fiveplan.PageOneAction" >
+             <result name="uploadPageOneForm" type="redirect">
+                <param name="location">repostFormTwo!intoRepostForm.action</param>
+				<param name="token">${newToken1}</param>
+				<param name="errorInfo">${errorInfo}</param>
+             </result>
+             <result name="intoRepostForm">repostForm.ftl</result>
+             <result name="errorIn"  type="redirect">
+                <param name="location">pageOne!intoRepostForm.action</param>
+				<param name="token">${newToken1}</param>
+				<param name="errorInfo">${errorInfo}</param>
+             </result>
+        </action>
+        
+
+		<!--  **************五年计划体育美术音乐老师添加查询的action*****************-->
+        <action name="plan" class="javadev.iip.action.fiveplan.PhyMusicDrawTeacherAction" method="get">
+			<result name="success" >PhyMusicDrawTeacherFrom.ftl</result>
+			<result name="topage1" type="redirect">
+			     <param name="location">pageOne!intoRepostForm.action</param>
+			     <param name="token">${newToken1}</param>
+			     <param name="errorInfo">${errorInfo}</param>
+			</result>
+			<result name="topage2" type="redirect">
+				 <param name="location">repostFormTwo!intoRepostForm.action</param>
+			     <param name="token">${newToken1}</param>
+			     <param name="errorInfo">${errorInfo}</param>
+			 </result>
+		</action>	
+		<action name="savepmd" class="javadev.iip.action.fiveplan.PhyMusicDrawTeacherAction">
+			<result name="success" type="redirect">
+			    <param name="location">sportsArtTeachEquip!getAllOldData.action</param>
+			    <param name="token">${newToken1}</param>
+			</result>
+			<result name="error" type="redirect">
+				<param name="location">plan.action</param>
+				 <param name="token">${newToken1}</param>
+			     <param name="errorInfo">${errorInfo}</param>
+			</result>
+		</action>
+		<action name="deleteTeacher" class="javadev.iip.action.fiveplan.PhyMusicDrawTeacherAction">
+			<result name="success" type="redirect">plan.action</result>
+		</action>
+		
+		
+	
+	</package>
+</struts>

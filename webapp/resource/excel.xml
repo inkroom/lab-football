@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE EXCEL >
+<EXCEL ndex="">
+	<config type="copy">
+		<sourceFile>/excelModel/1.xls</sourceFile>
+		<targetFile>/plan.xls</targetFile>
+	</config>
+
+	<sheet name="四川省体育艺术五年行动计划年度推进情况统计表" index="1">
+	<!--第4张表的位置-->
+		<record column="0" rows="12">
+		<data type="" isArray="false">phy_teacher_exer</data>
+		</record>
+		<record column="1" rows="12">
+		<data type="" isArray="false">spend_phy_teacher_exer</data>
+		</record>
+		<record column="2" rows="12">
+		<data type="" isArray="false">music_teacher_exer</data>
+		</record>
+		<record column="3" rows="12">
+		<data type="" isArray="false">spend_music_teacher_exer</data>
+		</record>
+		<record column="4" rows="12">
+		<data type="" isArray="false">draw_teacher_exer</data>
+		</record>
+		<record column="5" rows="12">
+		<data type="" isArray="false">spend_draw_teacher_exer</data>
+		</record>
+		<!-- 第一张表 -->
+		<record column="0" rows="3">
+		<data type="" isArray="false">is_achieve_play_ground</data>
+		</record>
+		<record column="1" rows="3">
+		<data type="" isArray="false">add_play_ground</data>
+		</record>
+		<record column="2" rows="3">
+		<data type="" isArray="false">add_play_ground_area</data>
+		</record>
+		<record column="3" rows="3">
+		<data type="" isArray="false">spend_for_add_play_ground</data>
+		</record>
+		<record column="4" rows="3">
+		<data type="" isArray="false">extension_modify_play_ground</data>
+		</record>
+		<record column="5" rows="3">
+		<data type="" isArray="false">area_exten_modify_play_ground</data>
+		</record>
+		<record column="6" rows="3">
+		<data type="" isArray="false">spend_for_mod_play_ground</data>
+		</record>
+		<record column="7" rows="3">
+		<data type="" isArray="false">is_add_euqi_gro</data>
+		</record>
+		<record column="8" rows="3">
+		<data type="" isArray="false">spend_euqi_gro_totaL</data>
+		</record>
+		<!-- 第三张表 -->
+		<record column="0" rows="9">
+		<data type="" isArray="false">add_new_phy_teachers_full</data>
+		</record>
+		<record column="1" rows="9">
+		<data type="" isArray="false">retire_phy_teacher</data>
+		</record>
+		<record column="2" rows="9">
+		<data type="" isArray="false">growth_phy_teacher</data>
+		</record>
+		
+		<record column="3" rows="9">
+		<data type="" isArray="false">add_new_music_teachers_full</data>
+		</record>
+		<record column="4" rows="9">
+		<data type="" isArray="false">retire_music_teacher</data>
+		</record>
+		<record column="5" rows="9">
+		<data type="" isArray="false">growth_music_teacher</data>
+		</record>
+		
+		<record column="6" rows="9">
+		<data type="" isArray="false">add_new_draw_teachers_full</data>
+		</record>
+		<record column="7" rows="9">
+		<data type="" isArray="false">retire_draw_teacher</data>
+		</record>
+		<record column="8" rows="9">
+		<data type="" isArray="false">growth_draw_teacher</data>
+		</record>
+		
+	
+		
+		<!-- 第二张表 -->
+		<record column="0" rows="6">
+		<data type="" isArray="false">is_achieve_music_room</data>
+		</record>
+		<record column="1" rows="6">
+		<data type="" isArray="false">spend_for_music_equi</data>
+		</record>
+		<record column="2" rows="6">
+		<data type="" isArray="false">is_achieve_music_equi</data>
+		</record>
+		<record column="3" rows="6">
+		<data type="" isArray="false">spend_for_music_equit</data>
+		</record>
+		<record column="4" rows="6">
+		<data type="" isArray="false">is_achieve_draw_room</data>
+		</record>
+		<record column="5" rows="6">
+		<data type="" isArray="false">spend_for_draw_room</data>
+		</record>
+		<record column="6" rows="6">
+		<data type="" isArray="false">is_achieve_draw_equi</data>
+		</record>
+		<record column="7" rows="6">
+		<data type="" isArray="false">spend_for_draw_equi</data>
+		</record>
+
+</sheet>
+	
+	
+	<format name="1" border="all" font-size="20" color="black" border-style="medium" border-color="green"/>
+</EXCEL>

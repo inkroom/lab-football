@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-autowire="byName" default-merge="true">
+
+	<bean id="serviceManager" class="javadev.iip.service.ServiceManager" />
+
+	<!--cj here 这里是修改配置文件的示例，就像下面那样增加自己的Service -->
+	<bean id="userService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.UserService" />
+		</property>
+	</bean>
+	
+	<bean id="isPassService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.IsPassService" />
+		</property>
+	</bean>
+
+	<bean id="repostFormService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.test.RepostFormService" />
+		</property>
+	</bean>
+
+	<bean id="fivePlanLoginService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.fiveplan.FivePlanLoginService" />
+		</property>
+	</bean>
+	<bean id="sportsArtTeachEquipService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.fiveplan.SportsArtTeachEquipService" />
+		</property>
+	</bean>
+	<bean id="downLoadExcelService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.fiveplan.DownLoadExcelService" />
+		</property>
+	</bean>
+	<bean id="pageOneService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.fiveplan.PageOneService" />
+		</property>
+	</bean>
+	<bean id="auditStatusService" parent="baseTxService">
+		<property name="target">
+			<bean class ="javadev.iip.service.fiveplan.AuditStatusService" />
+		</property>
+	</bean>
+
+	<bean id="respostFromActionTwoService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.fiveplan.RespostFromActionTwoService" />
+		</property>
+	</bean>
+	<bean id="fivePlanModifyPDService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.fiveplan.FivePlanModifyPDService" />
+		</property>
+	</bean>
+	<bean id="fileService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.fiveplan.FileService" />
+		</property>
+	</bean>
+
+	<bean id="phyMusicDrawService" parent="baseTxService">
+		<property name="target">
+			<bean class="javadev.iip.service.fiveplan.PhyMusicDrawTeacherService"></bean>
+		</property>
+	</bean>
+
+</beans>

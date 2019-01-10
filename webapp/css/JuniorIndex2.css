@@ -1,0 +1,323 @@
+body{
+    
+}
+.div1{
+	background-position: center;
+    margin: auto;
+    width: 1200px;
+}
+nav{
+    position: relative;
+    background-image: url("../images/JuniorIndex/navBackImg.jpg");
+    background-position: center;
+    background-size: cover;
+    overflow: auto;
+    margin: 0 auto;
+    max-width: 100%;
+    min-height: 154px;
+}
+.right{
+    float: right;
+    background: url("../images/JuniorIndex2/RightBack.png") ;
+   /* background-size:10% auto;*/
+    width: 50%;
+    height: 1090px;
+    top: 0px;
+    left: 50%;
+    position: absolute;
+}
+.left{
+    float: left;
+    background: url("../images/JuniorIndex2/LeftBack.png") ;
+    /* background-size:10% auto;*/
+    width: 50%;
+    height: 1090px;
+    top: 0px;
+    right: 50%;
+    position: absolute;
+}
+.image1{
+    float:left;
+    margin-top: 22px;
+}
+.image2{
+    float:left;
+    margin-top: 22px;
+    height:74px;
+    width:400px;
+    background-image:url("../images/JuniorIndex/SchoolFootBallIcon.png");
+    background-repeat: no-repeat;
+}
+.title1 {
+    font-size:25px;
+    font-weight:600;
+    text-shadow:0 0 0.3em #fff,-0 -0 0.3em #fff;
+    position:relative;
+    top:10px;
+    left:97px;
+    font-family:FZShuTi;  "方正舒体";  "Microsoft Yahei";  "微软雅黑";
+}
+.H1{
+    position: relative;
+    float: right;
+    margin-top:30px;
+    margin-right: 0px;
+}
+.HStyle1{
+    font-family:"微软雅黑";
+    color: #79C469;
+    font-weight: bold;
+    font-size: 15px;
+}
+.H2{
+    position: relative;
+    float: right;
+    margin-top:50px;
+    margin-right: -60px;
+}
+.menu1{
+    float: left;
+    background: url("../images/JuniorIndex/NormalMenu.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+}
+.menuSelected{
+	 float: left;
+    background: url("../images/JuniorIndex/SelectedMenu.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+}
+.tu01{
+    background-position: 35px -0px;
+}
+.tu02{
+    background-position: -90px -0px;
+}
+.tu03{
+    background-position: -192px -0px;
+}
+.tu04{
+    background-position: -310px -0px;
+}
+.tu05{
+    background-position: -434px -0px;
+}
+.tu06{
+    background-position: -568px -0px;
+}
+.tu07{
+    background-position: -688px -0px;
+}
+.tu08{
+    background-position: -820px -0px;
+}
+#tu01 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png");
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: 35px -0px;
+}
+#tu02 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png") ;
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -90px -0px;
+}
+#tu03 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png") ;
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -192px -0px;
+}
+#tu04 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png");
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -310px -0px;
+}
+#tu05 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png");
+    /*background-repeat: no-repeat;*/
+   background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -434px -0px;
+}
+#tu06 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png") ;
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -568px -0px;
+}
+
+#tu07 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png") ;
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -688px -0px;
+}
+
+#tu08 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png") ;
+    /*background-repeat: no-repeat;*/
+   background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -820px -0px;
+}
+
+.leftNavigation{
+	float: left;
+	background-color: #C8F3BB;
+	background-repeat: no-repeat;
+    background-size:100% auto;
+    height: 120vh;
+    width: 18%;
+    position: relative;
+}
+.leftNavigation li{
+	list-style-type:none;
+	background: url(../images/JuniorIndex2/LeftBackMenu.png) no-repeat;
+	background-position: -150px 0px;
+	margin-top: 10px;
+	margin-left: 0px;
+	height: 50px;
+	width: 140px;
+}
+.leftNavigation li:hover{
+	background: url(../images/JuniorIndex2/123.png) no-repeat;
+	background-position: -0px 0px;
+	margin-top: 10px;
+	margin-left: 0px;
+	height: 50px;
+	width: 130px;
+}
+.leftNavigation a{
+	margin-top: 18px;
+	line-height: 58px;
+	margin-left: 35px;
+	font-size:18px;
+    font-weight:bold;
+    color: black;
+    text-shadow:0 0 0.3em #fff,-0 -0 0.3em #fff;
+    position:relative;
+    font-family:FZShuTi;  "方正舒体";  "Microsoft Yahei";  "微软雅黑";
+	width: 10%;
+	height: 10px;
+}
+.middleMenu{
+	float: left; height: 50px; margin-top: 10px;line-height: 50px;font-size: 20px; color: white;
+}
+.middleMenu a{
+	color: white;
+}
+.containerLast{
+	float: left;
+	margin-top: 0px; margin-left: -14px; width: 100%;height: 144px;background-color: white;border-bottom:1px solid gainsboro;
+}
+.containerLast img{
+	margin-top: 4px;
+	width: 200px;
+	height: 130px;
+}
+.containerLast div{
+	float: left;
+}
+.containerLast p{
+	font-size: 14px;word-break:break-all;text-indent:2em;
+}
+.containerLast a{
+	font-size: 15px;word-break:break-all;font-weight: bold;color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer1{
+	background-color: #C1E9C4;
+	margin-top: 10px;
+	left: 0px;
+	height:100px;
+	width: 100%;
+}
+.footerText{
+	text-align: right;
+	padding-top: 40px;
+}

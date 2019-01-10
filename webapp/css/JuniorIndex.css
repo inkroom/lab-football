@@ -1,0 +1,419 @@
+body{
+    
+}
+.div1{
+	background-position: center;
+    margin: auto;
+    width: 1200px;
+}
+nav{
+    position: relative;
+    background-image: url("../images/JuniorIndex/navBackImg.jpg");
+    background-position: center;
+    background-size: cover;
+    overflow: auto;
+    margin: 0 auto;
+    max-width: 100%;
+    min-height: 154px;
+}
+.right{
+    float: right;
+    background: url("../images/JuniorIndex/RightBack.png") ;
+   /* background-size:10% auto;*/
+    width: 50%;
+    height: 1338px;
+    top: 0px;
+    left: 50%;
+    position: absolute;
+}
+.left{
+    float: left;
+    background: url("../images/JuniorIndex/LeftBack.png") ;
+    /* background-size:10% auto;*/
+    width: 50%;
+    height: 1338px;
+    top: 0px;
+    right: 50%;
+    position: absolute;
+}
+.image1{
+    float:left;
+    margin-top: 22px;
+}
+.image2{
+    float:left;
+    margin-top: 22px;
+    height:74px;
+    width:400px;
+    background-image:url("../images/JuniorIndex/SchoolFootBallIcon.png");
+    background-repeat: no-repeat;
+}
+.title1 {
+    font-size:25px;
+    font-weight:600;
+    text-shadow:0 0 0.3em #fff,-0 -0 0.3em #fff;
+    position:relative;
+    top:10px;
+    left:97px;
+    font-family:FZShuTi;  "方正舒体";  "Microsoft Yahei";  "微软雅黑";
+}
+.H1{
+    position: relative;
+    float: right;
+    margin-top:30px;
+    margin-right: 0px;
+}
+.HStyle1{
+    font-family:"微软雅黑";
+    color: #79C469;
+    font-weight: bold;
+    font-size: 15px;
+}
+.H2{
+    position: relative;
+    float: right;
+    margin-top:50px;
+    margin-right: -60px;
+}
+.menu1{
+    float: left;
+    background: url("../images/JuniorIndex/NormalMenu.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+}
+.tu01{
+    background-position: 35px -0px;
+}
+.tu02{
+    background-position: -90px -0px;
+}
+.tu03{
+    background-position: -192px -0px;
+}
+.tu04{
+    background-position: -310px -0px;
+}
+.tu05{
+    background-position: -434px -0px;
+}
+.tu06{
+    background-position: -568px -0px;
+}
+.tu07{
+    background-position: -688px -0px;
+}
+.tu08{
+    background-position: -820px -0px;
+}
+#tu01 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png");
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: 35px -0px;
+}
+#tu02 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png") ;
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -90px -0px;
+}
+#tu03 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png") ;
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -192px -0px;
+}
+#tu04 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png");
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -310px -0px;
+}
+#tu05 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png");
+    /*background-repeat: no-repeat;*/
+   background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -434px -0px;
+}
+#tu06 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png") ;
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -568px -0px;
+}
+
+#tu07 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png") ;
+    /*background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -688px -0px;
+}
+
+#tu08 :hover{
+    float: left;
+    background: url("../images/JuniorIndex/MenuHover.png") ;
+    /*background-repeat: no-repeat;*/
+   background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-left: 20px;
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-position: -820px -0px;
+}
+.middle1{
+	float: left;
+	background: url("../images/JuniorIndex/middleBack.png") no-repeat;
+	/*background-size: cover;*/
+	margin: o auto;
+	margin-left: 20px;
+	height: 218px;
+	width: 370px;
+}
+.moreBox{
+	width: 50px;height: 30px; background-color: none; float: right;margin-right: 10px; 10px;margin-top: 18px;
+}
+.mi1{
+	background-position: 0px 0px;
+}
+.m1-2{
+	float: left;
+	background-image: url(../images/JuniorIndex/MiddleMenu.png);
+	background-position: -0px -0px;
+	margin-top: 60px;
+	height: 27px;
+	width: 27px;
+}
+.middleText{
+	float: left;
+	margin-top: 16px;
+	font-size: 15px;
+	width: 200px;
+	font-weight: bold;
+	color: #000000;
+	height: 20px;
+}
+.m1-4{
+	float: left;
+	background-image: url(../images/JuniorIndex/MiddleMenu.png);
+	background-position: -27px -0px;
+	text-align: center; 
+	height: 30px;
+	width: 27px;
+}
+.middleText2{
+	float: left;
+	margin-left: -18px;
+	text-indent:2em;
+	word-break: break-word;
+	margin-top: 0px;
+	font-size: 6px;
+	width: 200px;
+	height: 30px;
+}
+.middleText3{
+	float: left;
+	margin-top: 6px;
+	font-size: 17px;
+	color: #000000;
+	width: 320px;
+	height: 30px;
+	border-bottom:1px solid gainsboro;
+	
+}
+.m1-1{
+	float: left;
+	padding-top: 50px;
+}
+.m1-3{
+	float: left;
+	padding-top: 50px;
+	padding-left: 14px;
+}
+.mi2{
+	background-position: -370px 0px;
+}
+.mi3{
+	background-position: -730px 0px;
+}
+.mi4{
+	background-position: 0px -218px;
+}
+.mi5{
+	background-position: -370px -218px;
+}
+.mi6{
+	background-position: -730px -218px;
+}
+.bt{
+	margin-left: 22px;
+	height: 100px;
+	width: 122px;
+}
+.bt1{
+	float: left;
+	background:url(../images/JuniorIndex/Pictuer1.jpg) no-repeat;
+	background-size: cover;
+	margin-top: 8px;
+}
+.bt2{
+	background-color: gainsboro;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt3{
+	background:url(../images/JuniorIndex/Video.jpg) no-repeat;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt4{
+	background-color: greenyellow;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt5{
+	background:url(../images/JuniorIndex/Pictuer1.jpg) no-repeat;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt6{
+	background-color: orange;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt7{
+	background:url(../images/JuniorIndex/Video.jpg) no-repeat;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt8{
+	background-color: #5FBFE7;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.videoImage{
+	display:block;
+	margin: 0 auto;
+	padding-top: 32px;
+}
+.bt9{
+	background:url(../images/JuniorIndex/Video.jpg) no-repeat;
+	background-size: cover;
+	margin-top: 8px;
+	
+}
+.bt10{
+	background-color:#0064B6;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt11{
+	background:url(../images/JuniorIndex/Video.jpg) no-repeat;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt12{
+	background-color:yellow;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt13{
+	background:url(../images/JuniorIndex/Video.jpg) no-repeat;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt14{
+	background-color:#EC1272;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt15{
+	background:url(../images/JuniorIndex/Video.jpg) no-repeat;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.bt16{
+	background-color:#c4f834;
+	background-size: cover;
+	margin-top: 8px;
+	margin-left: 24px;
+}
+.footer1{
+	background-color: lightskyblue;
+	margin-top: 20px;
+	left: 20px;
+	height:130px;
+	width: 98%;
+}
+.footerText{
+	text-align: right;
+	padding-top: 40px;
+}
