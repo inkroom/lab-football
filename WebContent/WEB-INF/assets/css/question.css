@@ -1,0 +1,112 @@
+body{
+	position: relative;
+	min-height: 800px;
+	min-width: 600px;
+}
+.header{
+	width: 100%;
+	height: 10%;
+	height: 30px;
+	background: red;
+}
+.header .item{
+	display: inline-block;
+	width: 32%;
+	height: 100%;
+	margin-left: 0.5%;
+	margin-right: 0.5%;
+	text-align: center;
+	color: white;
+	font-size: 18px;
+}
+#question{
+	width: 80%;
+	margin:0 auto;
+	margin-top: 3%;
+}
+#question ul{
+	list-style-type: none;
+}
+#question ul li {
+	font-size: 18px;
+	margin-top: 2%;
+	margin-left: 1%;
+}
+#question .title{
+	margin-top: 2%;
+	margin-bottom: 2%;
+	padding-left: 2%;
+}
+#question .title p{
+	height: 5%;
+	font-size: 25px;
+}
+#question .title input[type=text]{
+	border: none;
+	border-bottom: black solid thin;
+	/*border-left: none;*/
+	/*border-right:none;*/
+	background: #EEEEEE;
+	margin: 0 5px;
+	padding: 0 3px;
+}
+#buttonGroup{
+	/*text-align: center;*/
+	/*margin-top:3%;*/
+	/*width: 100%;*/
+	width: 100%;
+	position: fixed;
+	bottom: 10%;
+	display:none;/*初始状态为不可见*/
+}
+#buttonGroup div{
+	display: inline-block;
+	width: 48%;
+	text-align: center;
+}
+
+/*.buttonGroup a{
+	margin-left: 10%;
+	height: 5%;
+	line-height: 220%;
+}*/
+#pre{
+	/*display: block;
+	float: left;*/
+	margin-left: 30%;
+}
+#next{
+	margin-right:30%;
+}
+label{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.end{
+	text-align: center;
+	margin-top:16%;
+}
+
+#startWindow{
+	position: fixed;
+	top: 0px;
+	left:0px;
+	height: 100%;
+	width: 100%;
+	background: black;
+	z-index: 11000;
+	padding: 12%;
+	opacity: 0.6;
+}
+
+#endWindow{
+	position: fixed;
+	top: 0px;
+	left:0px;
+	height: 100%;
+	width: 100%;
+	background: black;
+	z-index: 11000;
+	padding: 12%;
+	opacity: 0.6;
+
+}

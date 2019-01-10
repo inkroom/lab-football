@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+
+    <!-- 确定前后缀 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!-- MVC驱动 -->
+    <mvc:annotation-driven/>
+    <!-- 自动扫描Controller -->
+    <context:component-scan base-package="cn.nsu.ccl"/>
+
+    <!--配置拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/student/**/"/>
+            <bean class="cn.nsu.ccl.student.interceptors.StudentInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <mvc:resources mapping="/assets/**" location="/WEB-INF/assets/"/>
+</beans>

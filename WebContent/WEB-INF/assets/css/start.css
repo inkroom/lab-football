@@ -1,0 +1,28 @@
+a{
+	text-decoration: none;
+}
+.content{
+	vertical-align: middle;
+	padding-top: 7%;
+}
+.con{
+	width: 60%;
+	margin: 0 auto;
+	padding: 2%;
+	padding-top: 1%;
+	/*background: red;*/
+	border:2px solid white;
+	border-radius: 10px;
+	color: yellow;
+}
+.con h1{
+	text-align: center;
+}
+ol li{
+	margin-top: 2.5%;
+	font-size:18px;
+}
+.join{
+	margin-top: 3%;
+	text-align: center;
+}
