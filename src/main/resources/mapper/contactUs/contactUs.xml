@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.inkroom.web.money.gate.daos.jdbc.ContactUs.ContactUsDAO">
+
+    <!--&lt;!&ndash;联系我们所有信息&ndash;&gt;-->
+    <!--<select id="getContactUs" resultMap="cn.inkroom.web.money.gate.beans.contactUs.ContactUsBean">-->
+        <!--SELECT * FROM cooperator-->
+    <!--</select>-->
+
+
+</mapper>

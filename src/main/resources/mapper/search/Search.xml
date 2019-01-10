@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.inkroom.web.money.gate.daos.jdbc.Common.SearchDao">
+    <!--&#45;&#45; limit #{start},#{count}-->
+    <select id="searchHtml" statementType="PREPARED" resultType="cn.inkroom.web.money.gate.beans.common.SearchResultBean">
+        SELECT title,concat(url,concat('?index=',type)) as url,create_time,content
+         FROM html WHERE content LIKE "%"#{key}"%" AND flag =1 ORDER BY create_time
+    </select>
+    <select id="searchNews" statementType="PREPARED" resultType="cn.inkroom.web.money.gate.beans.common.SearchResultBean">
+        SELECT nc_id AS id,nc_title AS  title,nc_date AS createTime,nc_content AS content,nc_type AS type
+        FROM news_center WHERE nc_content LIKE "%"#{key}"%" AND nc_flag = 1
+        ORDER BY nc_date desc
+    </select>
+    <select id="searchProATe" statementType="STATEMENT" resultType="cn.inkroom.web.money.gate.beans.common.SearchResultBean">
+        SELECT ${prefix}_id AS id,${prefix}_name AS title,${prefix}_html AS content,${prefix}_date AS create_time
+        FROM ${table} WHERE ${prefix}_flag = 1 AND ${prefix}_html LIKE "%${key}%" ORDER BY ${prefix}_date
+    </select>
+    <select id="searchContactUs" statementType="PREPARED" resultType="cn.inkroom.web.money.gate.beans.common.SearchResultBean">
+        SELECT title,concat(url,concat('?index=',type)) as url,create_time,content
+        FROM html WHERE content LIKE "%"#{key}"%" AND flag =1 ORDER BY create_time
+    </select>
+</mapper>

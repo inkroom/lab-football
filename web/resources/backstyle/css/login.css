@@ -1,0 +1,36 @@
+h1 {
+	text-align: center;
+}
+
+.backg {
+	width: 100%;
+	height: 100%;
+	background: url(../../img/image001.jpg);
+	background-size: 100% 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.board {
+	width: 400px;
+	height: 310px;
+	top: 200px;
+	z-index: 1;
+	margin-top: -100px;
+}
+
+.login {
+	padding: 4px 20px 14px;
+}
+
+.box {
+	filter: alpha(Opacity=90);
+	-moz-opacity: 0.9;
+	opacity: 0.9;
+	background-color: white;
+	height: 310px;
+	width: 400px;
+	z-index: -1;
+	position: absolute;
+}

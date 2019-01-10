@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.inkroom.web.money.gate.daos.jdbc.prodandtech.TechnicalDao">
+    <select id="settech"  resultMap="settechnical">
+        SELECT * from technical_set
+    </select>
+
+    <resultMap type="cn.inkroom.web.money.gate.beans.prodandtech.TechnicalSetBean" id="settechnical">
+    <id property="ts_id" column="ts_id"/>
+    <result property="ts_name" column="ts_name"/>
+</resultMap>
+
+
+
+    <select id="techs"  parameterType="Integer" resultMap="technicals">
+        SELECT * from technical where te_set=#{te_set} AND te_flag=1
+    </select>
+
+    <select id="techname"  parameterType="Integer" resultType="String">
+        SELECT ts_name from technical_set WHERE  ts_id=#{te_set}
+    </select>
+
+
+
+    <delete id="deletetech" parameterType="Integer">
+        DELETE  FROM technical where te_id=#{te_id}
+    </delete>
+
+    <delete id="deleteset" parameterType="Integer">
+        DELETE  FROM technical_set where ts_id=#{ts_id}
+    </delete>
+
+    <select id="alltechs"  resultMap="technicals">
+        SELECT * from technical where te_flag=1
+     </select>
+
+    <select id="find"  parameterType="String" resultMap="technicals">
+        SELECT * from technical where te_flag=1 AND  te_name=#{te_name}
+    </select>
+
+    <insert id="addset" parameterType="String">
+        INSERT INTO technical_set(ts_name) VALUES(#{ts_name})
+    </insert>
+
+    <insert id="addtechnical">
+        INSERT INTO technical(te_name,te_html,te_set,te_date,te_flag) VALUES(#{te_name},#{te_html},#{te_set},#{te_date,typeHandler=cn.inkroom.web.money.gate.handler.mybatis.DateHandler},1)
+    </insert>
+    <select id="gettechnical"  parameterType="Integer" resultMap="technicals">
+        SELECT * from technical where te_flag=1 AND  te_id=#{te_id}
+    </select>
+    <update id="updatetech">
+        UPDATE technical SET te_name=#{te_name},te_html=#{te_html},te_set=#{te_set},te_date=#{te_date,typeHandler=cn.inkroom.web.money.gate.handler.mybatis.DateHandler} WHERE te_id=#{te_id}
+    </update>
+    <resultMap type="cn.inkroom.web.money.gate.beans.prodandtech.TechnicalBean" id="technicals">
+        <id property="te_id" column="te_id"/>
+        <result property="te_name" column="te_name"/>
+        <result property="te_html" column="te_html"/>
+        <result property="te_set" column="te_set"/>
+        <result property="te_date" column="te_date"/>
+        <association property="te_setname" column="te_set" select="cn.inkroom.web.money.gate.daos.jdbc.prodandtech.TechnicalDao.techname"></association>
+    </resultMap>
+
+</mapper>

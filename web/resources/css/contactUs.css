@@ -1,0 +1,49 @@
+h4,
+p {
+	text-align: center;
+}
+
+p {
+	margin-bottom: 2px;
+}
+.middle{
+	min-height:400px;
+}
+.middle div {
+	border-bottom: 2px solid #04A4E1;
+}
+
+.middle .contactBody {
+	background: white;
+	width: 20%;
+	height: 160px;
+	margin: -10px 20px;
+}
+
+.middle .contactBody .title {
+	background: #04A4E1;
+	margin-bottom: 10px;
+}
+
+.middle .title h4 {
+	margin: 0;
+	padding: 10px;
+	color: white;
+}
+.top-img{
+
+	display: flex;
+	/* 使子元素水平居中 */
+	justify-content: center;
+	/* 使子元素垂直居中 */
+	align-items: center;
+}
+.top-img-title{
+
+	height: 80px;
+	width: 64%;
+	background: white;
+	margin-top: 40px;
+	border: 1px solid #04A4E1;
+	border-radius: 20px;
+}

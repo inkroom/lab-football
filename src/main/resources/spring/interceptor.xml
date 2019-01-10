@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--全局异常处理器-->
+    <bean class="cn.inkroom.web.money.gate.handler.spring.ExceptionHandler"/>
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <!--登录拦截器-->
+        <mvc:interceptor>
+            <!--<mvc:mapping path="/**"/>-->
+            <!--<mvc:exclude-mapping path="/**/login"/>-->
+
+            <mvc:mapping path="/backstage/**"/>
+            <mvc:mapping path="/editor"/>
+
+            <mvc:mapping path="/html/set"/>
+            
+            <mvc:mapping path="/contact"/>
+            <mvc:mapping path="/changepsw"/>
+            <!--新闻中心后台设置状态-->
+            <mvc:mapping path="/news/setFlag"/>
+            <mvc:mapping path="/news/add"/>
+            <mvc:mapping path="/news/set"/>
+
+            <!--联系我们-->
+            <mvc:mapping path="/contactDelete"/>
+            <mvc:mapping path="/contactEdit"/>
+            <mvc:mapping path="/contactAdd"/>
+            <bean class="cn.inkroom.web.money.gate.interceptors.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+
+</beans>

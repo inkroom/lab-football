@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.inkroom.web.money.gate.daos.jdbc.prodandtech.ProductDao">
+    <select id="selpro"  resultMap="selproduct" parameterType="Integer">
+        SELECT * from product where pr_set=#{pr_set} AND pr_flag=1
+    </select>
+    <select id="allprod"  resultMap="selproduct" >
+        SELECT * from product where pr_flag=1
+    </select>
+
+
+    <select id="setname" resultType="String" parameterType="Integer">
+        SELECT ps_name FROM product_set WHERE ps_id=#{pr_set}
+    </select>
+
+    <select id="setpro"  resultMap="setproduct">
+    SELECT * from product_set
+    </select>
+
+
+    <delete id="deleteprod" parameterType="Integer">
+        DELETE  FROM product where pr_id=#{pr_id}
+    </delete>
+
+    <select id="find"  parameterType="String" resultMap="selproduct">
+        SELECT * from product WHERE  pr_name=#{pr_name} AND pr_flag=1
+    </select>
+
+
+    <insert id="addset" parameterType="String">
+        INSERT INTO product_set(ps_name) VALUES(#{ps_name})
+    </insert>
+    <insert id="addproduct">
+        INSERT INTO product(pr_name,pr_html,pr_photo,pr_set,pr_date,pr_flag) VALUES(#{pr_name},#{pr_html},#{pr_photo},#{pr_set},#{pr_date,typeHandler=cn.inkroom.web.money.gate.handler.mybatis.DateHandler},1)
+    </insert>
+    <insert id="updateprod">
+     UPDATE product SET pr_name=#{pr_name},pr_html=#{pr_html},pr_photo=#{pr_photo},pr_set=#{pr_set},pr_date=#{pr_date,typeHandler=cn.inkroom.web.money.gate.handler.mybatis.DateHandler},pr_flag=1 WHERE pr_id=#{pr_id}
+    </insert>
+    <select id="getproduct"  parameterType="Integer" resultMap="selproduct">
+        SELECT  * FROM product WHERE pr_id=#{pr_id} AND pr_flag=1
+    </select>
+
+    <delete id="deleteset" parameterType="Integer">
+        DELETE  FROM product_set where ps_id=#{ps_id}
+    </delete>
+    <select id="getnextid" resultType="Integer">
+        SELECT Auto_increment FROM information_schema.`TABLES` WHERE Table_Schema='gate' AND table_name = 'product' limit 1;
+    </select>
+    <resultMap type="cn.inkroom.web.money.gate.beans.prodandtech.ProductBean" id="selproduct">
+        <id property="pr_id" column="pr_id"/>
+        <result property="pr_name" column="pr_name"/>
+        <result property="pr_html" column="pr_html"/>
+        <result property="pr_photo" column="pr_photo"/>
+        <result property="pr_set" column="pr_set"/>
+        <result property="pr_date" column="pr_date"/>
+        <association property="pr_setname" column="pr_set" select="cn.inkroom.web.money.gate.daos.jdbc.prodandtech.ProductDao.setname"></association>
+    </resultMap>
+     <resultMap type="cn.inkroom.web.money.gate.beans.prodandtech.ProductSetBean" id="setproduct">
+          <id property="ps_id" column="ps_id"/>
+          <result property="ps_name" column="ps_name"/>
+          </resultMap>
+
+        </mapper>

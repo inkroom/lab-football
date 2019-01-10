@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.inkroom.web.money.gate.daos.jdbc.news.NewsDao">
+
+
+    <select id="getAllNews" statementType="PREPARED" resultType="cn.inkroom.web.money.gate.beans.news.NewsBean">
+        select nc_id AS id,nc_title AS title ,nc_date AS createTime,nc_content AS content,nc_type AS  type,nc_flag AS flag
+        from news_center
+        <where>
+            <if test="flag == 1 or flag == 0">
+                nc_flag = #{flag}
+            </if>
+            <if test="type != -1">
+                nc_type = #{type}
+            </if>
+        </where>
+        ORDER BY nc_date DESC
+    </select>
+
+    <select id="getNews" statementType="PREPARED" resultType="cn.inkroom.web.money.gate.beans.news.NewsBean">
+       select nc_id AS id,nc_title AS title ,nc_date AS createTime,nc_content AS content,nc_type AS  type,nc_flag AS flag
+        from news_center WHERE nc_id = #{id} limit 1;
+    </select>
+
+    <insert id="insertNews" statementType="PREPARED" useGeneratedKeys="true" keyColumn="nc_id" keyProperty="n.id">
+        INSERT INTO news_center (nc_title, nc_content, nc_date, nc_type, nc_flag) VALUES (#{n.title},#{n.content},#{n.createTime},#{n.type},1)
+    </insert>
+
+    <update id="updateNews" statementType="PREPARED">
+        UPDATE news_center SET nc_title = #{n.title},nc_type=#{n.type},nc_content=#{n.content},nc_date=#{n.createTime},nc_flag = 1
+        WHERE nc_id = #{n.id}
+    </update>
+
+    <update id="setFlag" statementType="PREPARED">
+        update news_center set nc_flag = #{newFlag} where nc_flag = #{oldFlag};
+    </update>
+
+    <update id="setFlagById" statementType="PREPARED">
+        update news_center set nc_flag = #{flag} where nc_id = #{id};
+    </update>
+</mapper>

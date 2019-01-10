@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.inkroom.web.money.gate.daos.jdbc.cooperator.CooperatorDao">
+    <select id="getCooperatorList"  resultMap="cooperator">
+        SELECT * from cooperator WHERE co_status=1;
+    </select>
+
+    <resultMap type="cn.inkroom.web.money.gate.beans.cooperator.CooperatorBean" id="cooperator">
+        <id property="id" column="co_id"/>
+        <result property="name" column="co_name"/>
+        <result property="url" column="co_url"/>
+        <result property="content" column="co_content"/>
+        <result property="date" column="co_date"/>
+        <result property="status" column="co_status"/>
+    </resultMap>
+
+
+    <select id="getCooperator" statementType="PREPARED" resultMap="cooperator">
+        select * from cooperator WHERE co_id=#{id} AND co_status = #{status} limit 1;
+    </select>
+
+    <update id="updateCooperator" statementType="PREPARED" >
+        update cooperator set co_content = #{c.content},co_name = #{c.name},co_date = now(),co_status = 1 where co_id  = #{c.id};
+    </update>
+
+    <update id="deleteCooperator" statementType="PREPARED">
+        UPDATE cooperator SET co_status = 0 WHERE co_id=#{id}
+    </update>
+
+    <insert id="addCooperator" statementType="PREPARED">
+        insert into cooperator (co_name,  co_content, co_date, co_status) values (#{c.name},#{c.content},now(),1);
+    </insert>
+    <!--<delete id="deleteCooperator" statementType="PREPARED">-->
+        <!--DELETE FROM cooperator WHERE co_id = #{id};-->
+    <!--</delete>-->
+
+</mapper>

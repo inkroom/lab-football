@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.inkroom.web.money.gate.daos.jdbc.html.HtmlDao">
+
+
+    <select id="getUnion" statementType="PREPARED" resultType="cn.inkroom.web.money.gate.beans.common.HtmlBean">
+        select id,content,type,title,create_time AS createTime
+        from html alias where alias.id = #{id} limit 1;
+    </select>
+    <!--
+            SELECT * FROM html as a
+            WHERE create_time = (SELECT MAX(b.create_time)
+            FROM max_create_time as b WHERE a.`type` = b.`type` AND a.owner = b.owner)
+            AND a .owner = #{owner}
+    -->
+    <!--待充分测试-->
+    <select id="getAllTypeUnion" statementType="PREPARED" resultType="cn.inkroom.web.money.gate.beans.common.HtmlBean">
+
+      SELECT id FROM html WHERE html.flag = '1' AND owner = #{owner} ORDER BY type
+
+    </select>
+    
+    
+    <select id="getAllTitleUnion" statementType="PREPARED" resultType="cn.inkroom.web.money.gate.beans.common.HtmlBean">
+
+      SELECT type,title,url,create_time FROM html WHERE html.flag = '1' AND owner = #{owner} ORDER BY create_time
+
+    </select>
+
+
+    <select id="getHtml" statementType="PREPARED" resultType="cn.inkroom.web.money.gate.beans.common.HtmlBean">
+        SELECT content FROM html WHERE html.flag = '1' AND owner = #{owner} AND type=#{type} limit 1;
+    </select>
+
+    <update id="setFlag" statementType="PREPARED" >
+        UPDATE html SET flag = #{newFlag} WHERE owner = #{owner} AND type = #{type} AND flag = #{oldFlag};
+    </update>
+
+    <insert id="addHtml" statementType="PREPARED">
+        INSERT INTO html (content, type, create_time, owner, flag, url, title)
+         VALUES (#{content},#{type},now(),#{owner},'1',#{url},#{title});
+    </insert>
+</mapper>
