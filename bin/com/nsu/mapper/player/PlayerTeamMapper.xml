@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.player.PlayerTeamDao">
+	<select id="getPlayerTeam" resultType="map">
+		SELECT 
+  			A_NAME
+		FROM
+  			ACCOUNT 
+  		LEFT JOIN PLAYER 
+    		ON PLAYER.`A_ID` = ACCOUNT.`A_ID` 
+  		LEFT JOIN MID_PLAYER_TEAM 
+    		ON MID_PLAYER_TEAM.`P_ID` = PLAYER.`P_ID` 
+  		LEFT JOIN TEAM 
+    		ON TEAM.`TEAM_ID` = MID_PLAYER_TEAM.`TEAM_ID` 
+		WHERE TEAM.`TEAM_ID` = #{TEAM_ID}
+		AND ACCOUNT.A_STATUS = 1
+		AND PLAYER.P_STATUS = 1
+		AND MID_PLAYER_TEAM.TEAM_PLAYER_STATUS = 1
+		AND TEAM.TEAM_STATUS = 1
+	</select>
+	<select id="getTeamInfoById" resultType="map">
+	SELECT
+	TEAM_NAME,
+	TEAM.`TEAM_ID`,
+	TEAM_NUM,
+	TEAM_BADGE,
+	TEAM_AFFILIATION,
+	TEAM_LEADER,
+	TEAM_PHONE_NUM
+	FROM
+	TEAM
+	WHERE TEAM.`TEAM_ID` = #{TEAM_ID}
+	AND TEAM.TEAM_STATUS = 1
+	</select>
+	<select id="getTeamMatchInfo" resultType="map">
+	SELECT
+	TS_SCHOOL_VICTOR,
+	TS_SCHOOL_DRAW,
+	TS_SCHOOL_LOSE,
+	TS_COUNTRY_VICTOR,
+	TS_COUNTRY_DRAW,
+	TS_COUNTRY_LOSE,
+	TS_CITY_VICTOR,
+	TS_CITY_DRAW,
+	TS_CITY_LOSE,
+	TS_PROVINCE_VICTOR,
+	TS_PROVINCE_DRAW,
+	TS_PROVINCE_LOSE,
+	TS_OTHER_WIN,
+	TS_OTHER_LOSS,
+	TS_OTHER_ALL
+	FROM
+	TEAM_SCORE
+	WHERE TEAM_SCORE.`TEAM_ID` = #{TEAM_ID}
+	AND TEAM_SCORE.`TS_STATUS` = 1
+	</select>
+	<select id="getTeamName" resultType="map">
+	SELECT DISTINCT
+	TEAM.`TEAM_ID`,
+	TEAM_NAME
+	FROM
+	ACCOUNT
+	JOIN PLAYER
+	ON ACCOUNT.`A_ID` = PLAYER.`A_ID`
+	JOIN MID_PLAYER_TEAM
+	ON PLAYER.`P_ID` = MID_PLAYER_TEAM.`P_ID`
+	JOIN TEAM
+	ON TEAM.`TEAM_ID` = MID_PLAYER_TEAM.`TEAM_ID`
+	WHERE TEAM.`TEAM_STATUS` = 1
+	AND MID_PLAYER_TEAM.`TEAM_PLAYER_STATUS` = 1
+	AND ACCOUNT.`A_ID` = #{A_ID} 
+	</select>
+	<select id="getCoachName" resultType="map">
+	SELECT
+	A_NAME AS COACH_NAME
+	FROM
+	MID_COACH_TEAM
+	JOIN COACH
+	ON COACH.`COACH_ID` = MID_COACH_TEAM.`COACH_ID`
+	JOIN ACCOUNT
+	ON ACCOUNT.`A_ID` = COACH.`A_ID`
+	WHERE MID_COACH_TEAM.`TEAM_ID` = #{TEAM_ID}
+	AND MID_COACH_TEAM.`COACH_TEAM_STATSU` = 1
+	</select>
+	<select id="getTeamPhoneNumber" resultType="string">
+	SELECT
+	A_PHONE AS PHONE_NUM
+	FROM
+	ACCOUNT
+	JOIN TEAM
+	ON ACCOUNT.`A_ID` = TEAM.`A_ID`
+	WHERE TEAM.`TEAM_ID` = #{TEAM_ID}
+	</select>
+</mapper>

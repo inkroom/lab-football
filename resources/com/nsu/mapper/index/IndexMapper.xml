@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.index.IndexDao">
+
+
+	<select id="getCountAll" resultType="map">
+		select * from (select count(P_ID)  as player from PLAYER )  player,(SELECT count(COACH_ID) as coach FROM COACH) coach,(SELECT count(COM_ID) as com FROM COMPETITION_NOTICE) com,(SELECT count(TEAM_ID) as team FROM TEAM ) team;
+	</select>
+
+
+	<select id="getLink" parameterType="String" resultType="LinkBean">
+		SELECT LINK_ID as id,LINK_NAME as linkName,NUM as num,LINK_ADDR as linkAddr,LINK_TYPE as linkType,OPER_DATE as operDate,CREATE_DATE as createDate FROM INDEX_LINK WHERE LINK_TYPE = #{linkType} and STATUS = 1 ORDER BY NUM DESC;
+	</select>
+
+	<select id="getPolicyLink" resultType="PolicyBean">
+		SELECT POLICY_ID as id,POLICY_TIT as title,POLICY_CONTENT as content,OPER_DATE as operDate,CREATE_DATE as createDate FROM INDEX_POLICY where STATUS = 1  order by create_date desc limit 0,7;
+	</select>
+
+	<select id="getPolicyById" resultType="PolicyBean">
+		SELECT POLICY_ID as id,POLICY_TIT as title,POLICY_CONTENT as content,OPER_DATE as operDate,CREATE_DATE as createDate FROM INDEX_POLICY where STATUS = 1 AND POLICY_ID = #{id};
+	</select>
+
+	<select id="getPolicyList" resultType="PolicyBean">
+		SELECT POLICY_ID as id,POLICY_TIT as title,POLICY_CONTENT as content,OPER_DATE as operDate,CREATE_DATE as createDate FROM INDEX_POLICY where STATUS = 1 ORDER BY NUM DESC;
+	</select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.common.UpdateEmailDao">
+	
+	<select id="getEmailById" parameterType="int" resultType="String" >
+		SELECT A_EMAIL FROM ACCOUNT where A_ID = #{id} 
+	</select>
+	
+	<update id="updateEmailCheckCode" parameterType="java.util.HashMap">
+		UPDATE  ACCOUNT SET	 A_EMAIL_CHECK_CODE = #{code} WHERE A_ID = #{id}
+	</update>
+	
+	<update id="updateEmail" parameterType="java.util.HashMap">
+		UPDATE  ACCOUNT SET	 A_EMAIL = #{email} WHERE A_ID = #{id}
+	</update>
+
+    <select id="getEmailCheckCode" parameterType="int"  resultType="String" >
+		SELECT A_EMAIL_CHECK_CODE FROM ACCOUNT WHERE A_ID = #{A_ID}
+	</select>
+
+</mapper>

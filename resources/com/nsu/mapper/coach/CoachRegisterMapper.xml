@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.coach.CoachRegisterDao">
+	<!-- 通过手机号获取account中的a_id -->
+	<select id="getCoachAId" resultType="java.lang.String">
+		SELECT A_ID FROM ACCOUNT
+		WHERE A_PHONE=#{phone,jdbcType=VARCHAR} AND A_TYPE = 2;
+	</select>
+	<!-- 检验手机号是否已经被使用 -->
+	<select id="checkCoachRegPhone" resultType="java.lang.Integer">
+		SELECT COUNT(A_ID)
+		FROM ACCOUNT WHERE A_PHONE=#{phone,jdbcType=VARCHAR} AND A_TYPE=2
+	</select>
+	<!-- 检验身份证是否已经被使用 -->
+	<select id="checkCoachRegIdNum" resultType="java.lang.Integer">
+		SELECT COUNT(A_ID)
+		FROM ACCOUNT WHERE A_ID_CARD=#{IdNum,jdbcType=VARCHAR} AND A_TYPE=2
+	</select>
+	<!-- 添加教练员到account表 -->
+	<insert id="addCoachToAccount" parameterType="java.lang.String">
+		INSERT INTO ACCOUNT
+		(`A_PASSWORD`,A_USERNAME,A_ID_CARD,A_PHONE,A_TYPE,A_STATUS,A_CREATE_DATE) VALUES
+		(#{passwd,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{idNum,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},2,1,SYSDATE());
+	</insert>
+	<!-- 添加教练员到coach表,省份证截取的出生日期在这里面插入 -->
+	<insert id="addCoachToCoach" parameterType="java.lang.String">
+		INSERT INTO COACH
+		(COACH.A_ID,COACH.COACH_CREATE_DATE,COACH_BIRTHDAY) VALUES
+		(#{AId,jdbcType=INTEGER},SYSDATE(),#{birth,jdbcType=INTEGER});
+	</insert>
+	<select id="selectCoachID" resultType="java.lang.String">
+	select COACH.coach_id from COACH
+	join ACCOUNT on ACCOUNT.a_id=COACH.a_id
+	 where ACCOUNT.A_PHONE=#{phone,jdbcType=VARCHAR}
+	</select>
+	<!-- 注册时启用coach_score的状态 -->
+<insert id="addCoachScoreStauts" parameterType="java.lang.String">
+insert into COACH_SCORE
+(COACH_SCORE.COACH_ID,COACH_SCORE.CS_STATUS) VALUES
+(#{coachId,jdbcType=VARCHAR},1)
+
+</insert>
+</mapper> 

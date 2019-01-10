@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.organization.OrgModifyMatchDao">
+	<!-- 查询一个添加过且可以修改的赛事，返回为map -->
+	<resultMap id="matchMap" type="java.util.Map">
+		<id column="com_id" property="match_id" />
+		<result column="org_id" property="o_id" />
+		<result column="com_name" property="match_name" />
+		<result column="com_type" property="person_sex" />
+		<result column="com_level" property="match_level" />
+		<result column="com_issuer" property="match_creator" />
+		<result column="com_end" property="match_endDate" />
+		<result column="com_third" property="match_third" />
+		<result column="com_second" property="match_second" />
+		<result column="com_winner" property="match_winner" />
+		<result column="com_start" property="match_startDate" />
+		<result column="com_orgazition" property="match_org" />
+		<result column="com_start_time" property="enroll_startDate" />
+		<result column="com_end_time" property="enroll_endDate" />
+		<result column="com_opear_by" property="oper_by" />
+		<result column="com_opear_date" property="oper_date" />
+		<result column="com_create_by" property="create_by" />
+		<result column="com_create_date" property="create_date" />
+		<result column="com_status" property="status" />
+		<result column="com_group" property="person_num" />
+		<result column="com_big_level" property="match_big_level" />
+		<result column="org_name" property="o_name" />
+		<result column="org_level_code" property="o_level_code" />
+		<result column="org_parent_id" property="o_parent_id" />
+		<result column="a_name" property="a_name" />
+
+	</resultMap>
+	<!-- 将添加过的赛事id查询出来，以备发送消息时使用 -->
+	<select id="getEffectiveMatchList" resultMap="matchMap">
+		SELECT c.COM_ID  ,
+		c.ORG_ID ,
+		c.COM_NAME ,
+		c.COM_TYPE ,
+		c.COM_LEVEL,
+		c.COM_ISSUER,
+		date_format(COM_END, '%Y-%c-%e %T')COM_END,
+			c.COM_THIRD,
+			c.COM_SECOND,
+			c.COM_WINNER,
+			FROM_UNIXTIME(UNIX_TIMESTAMP(COM_START), '%Y-%m-%d %H:%i:%S'),
+			
+			c.COM_ORGAZITION,
+			date_format(COM_START_TIME, '%Y-%c-%e %T')COM_START_TIME,
+			date_format(COM_END_TIME, '%Y-%c-%e %T')COM_END_TIME,
+			c.COM_OPEAR_BY
+			,c.COM_OPEAR_DATE,
+			c.COM_CREATE_BY,
+			date_format(COM_CREATE_DATE, '%Y-%c-%e %T')COM_CREATE_DATE ,
+			c.COM_STATUS,
+			c.COM_GROUNP,c.COM_BIG_LEVEL,o.ORG_NAME,o.ORG_LEVEL_CODE,o.ORG_PARENT_ID,a.A_NAME
+		FROM COMPETITION_NOTICE c
+		JOIN ORGANIZATION o ON c.ORG_ID = o.ORG_ID
+		JOIN ACCOUNT a ON a.ORG_ID = o.ORG_ID
+		WHERE c.ORG_ID = #{o_id} 
+		AND a.A_TYPE = 3
+		ORDER BY c.COM_STATUS ASC,c.COM_OPEAR_DATE DESC
+	</select>
+    <select id="selectByMatchName" resultMap="matchMap">
+   	SELECT c.COM_ID  ,
+		c.ORG_ID ,
+		c.COM_NAME ,
+		c.COM_TYPE ,
+		c.COM_LEVEL,
+		c.COM_ISSUER,
+		date_format(COM_END, '%Y-%c-%e %T')COM_END,
+			c.COM_THIRD,
+			c.COM_SECOND,
+			c.COM_WINNER,
+			FROM_UNIXTIME(UNIX_TIMESTAMP(COM_START), '%Y-%m-%d %H:%i:%S'),
+			
+			c.COM_ORGAZITION,
+			date_format(COM_START_TIME, '%Y-%c-%e %T')COM_START_TIME,
+			date_format(COM_END_TIME, '%Y-%c-%e %T')COM_END_TIME,
+			c.COM_OPEAR_BY
+			,c.COM_OPEAR_DATE,
+			c.COM_CREATE_BY,
+			date_format(COM_CREATE_DATE, '%Y-%c-%e %T')COM_CREATE_DATE ,
+			c.COM_STATUS,
+			c.COM_GROUNP,c.COM_BIG_LEVEL,o.ORG_NAME,o.ORG_LEVEL_CODE,o.ORG_PARENT_ID,a.A_NAME
+		FROM COMPETITION_NOTICE c
+		JOIN ORGANIZATION o ON c.ORG_ID = o.ORG_ID
+		JOIN ACCOUNT a ON a.ORG_ID = o.ORG_ID
+		WHERE c.ORG_ID = #{o_id,jdbcType=BIGINT} AND c.COM_NAME=#{match_name,jdbcType=VARCHAR}
+		AND a.A_TYPE = 3
+    </select>
+	<delete id="deleteMatch" parameterType="java.lang.Integer">
+		<!-- DELETE FROM COMPETITION_NOTICE WHERE COM_ID = #{match_id}; -->
+		UPDATE COMPETITION_NOTICE SET COM_STATUS = 3 WHERE COM_ID = #{match_id};
+	</delete>
+
+	<select id="getMatchByMatchId" resultType="java.util.Map">
+		SELECT COM_ID,ORG_ID,COM_NAME,COM_TYPE,COM_LEVEL,COM_ISSUER,
+			date_format(COM_END, '%Y-%c-%e %T')COM_END,COM_THIRD,COM_SECOND,COM_WINNER,
+			date_format(COM_START, '%Y-%c-%e %T')COM_START,COM_ORGAZITION,
+			date_format(COM_START_TIME, '%Y-%c-%e %T')COM_START_TIME,
+			date_format(COM_END_TIME, '%Y-%c-%e %T')COM_END_TIME,COM_OPEAR_BY,COM_OPEAR_DATE,
+			COM_CREATE_BY,COM_CREATE_DATE,COM_STATUS,COM_GROUNP,COM_BIG_LEVEL
+		FROM COMPETITION_NOTICE WHERE COM_ID = #{match_id};
+	</select>
+
+	<update id="modifyMatchInfo">
+		UPDATE COMPETITION_NOTICE SET
+		COM_NAME = #{match_info.match_name},
+		COM_TYPE = #{match_info.person_sex},
+		COM_LEVEL = #{match_info.match_level},
+		COM_END = #{match_info.match_endDate},
+		COM_START = #{match_info.match_startDate},
+		COM_START_TIME = #{match_info.enroll_startDate},
+		COM_END_TIME = #{match_info.enroll_endDate},
+		COM_GROUNP = #{match_info.person_num},
+		COM_BIG_LEVEL = #{match_info.match_big_level},
+		COM_OPEAR_DATE = NOW()
+		WHERE COM_ID = #{match_id};
+	</update>
+	<!-- 在修改赛事成功之后，发布一条推送消息 -->
+	<insert id="addMatchMsg">
+		INSERT INTO SYSTEM_MSG VALUES(
+			NULL,#{a_id},#{msg_type},#{msg_title},#{msg_text},now(),1,#{o_id},now(),#{o_id},now(),#{match_id});
+	</insert>
+	
+	<select id="isDuplicationMatchName" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM COMPETITION_NOTICE 
+		WHERE ORG_ID = #{o_id} AND COM_NAME = #{match_name} AND COM_STATUS = 1 AND COM_ID != #{com_id};
+	</select>
+	
+	<select id="isChangeMatch" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM COMPETITION_NOTICE
+		WHERE COM_NAME = #{match_info.match_name}
+		AND COM_TYPE = #{match_info.person_sex}
+		AND COM_LEVEL = #{match_info.match_level}
+		AND COM_END = #{match_info.match_endDate}
+		AND COM_START = #{match_info.match_startDate}
+		AND COM_START_TIME = #{match_info.enroll_startDate}
+		AND COM_END_TIME = #{match_info.enroll_endDate}
+		AND COM_GROUNP = #{match_info.person_num}
+		AND COM_BIG_LEVEL = #{match_info.match_big_level}
+		AND COM_ID = #{com_id}
+	</select>
+	
+	<update id="updateTime">
+		UPDATE COMPETITION_NOTICE SET
+		COM_OPEAR_DATE = NOW()
+		WHERE COM_ID = #{match_id}
+	</update>
+	
+	<select id="getScheduleCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM RACE_DETAILS WHERE COM_ID = #{match_id} AND ( R_STATUS = 1 OR R_STATUS = 2);
+	</select>
+</mapper> 

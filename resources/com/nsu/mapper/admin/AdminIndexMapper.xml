@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.admin.AdminIndexDao">
+
+	<select id="getRollImg" resultType="ImgBean">
+		SELECT IMG_ID as id,IMG_ADDR as imgAddr,IMG_TYPE AS imgType,OPER_DATE AS operDate FROM INDEX_IMG WHERE STATUS = 1 ORDER BY IMG_ID ASC limit 0,5;
+	</select>
+
+	<update id="updateRollImg">
+		UPDATE INDEX_IMG SET IMG_ADDR=#{imgPath},CREATE_DATE=NOW(),OPER_DATE=NOW() WHERE IMG_ID=#{imgId} AND STATUS = 1;
+	</update>
+
+	<update id="savePolicy" parameterType="PolicyBean">
+		<if test="id == null or id == ''">
+			INSERT INTO INDEX_POLICY (POLICY_TIT,POLICY_CONTENT,CREATE_DATE, OPER_DATE,STATUS) VALUES ( #{title}, #{content}, now(), now(),1);
+		</if>
+
+		<if test="id != null and id != ''">
+			UPDATE INDEX_POLICY SET
+			<if test="status == null or status == ''">
+				POLICY_TIT = #{title}, POLICY_CONTENT = #{content} ,
+			</if>
+			<if test="status != null and status ==0">
+				STATUS = 0,
+			</if>
+
+			OPER_DATE = now() WHERE POLICY_ID = #{id} AND STATUS = 1;
+		</if>
+
+	</update>
+
+	<select id="getPolicyAll" resultType="PolicyBean" >
+		SELECT POLICY_ID as id,POLICY_TIT as title,POLICY_CONTENT as content,OPER_DATE as operDate,CREATE_DATE as createDate FROM INDEX_POLICY WHERE STATUS =1 ORDER BY CREATE_DATE DESC
+	</select>
+
+	<select id="getPolicyById" resultType="PolicyBean" parameterType="PolicyBean" >
+		SELECT POLICY_ID as id,POLICY_TIT as title,POLICY_CONTENT as content,OPER_DATE as operDate,CREATE_DATE as createDate FROM INDEX_POLICY WHERE POLICY_ID = #{id} AND STATUS = 1;
+	</select>
+
+
+	<update id="saveLink" parameterType="LinkBean">
+		<if test="id == null or id == ''" >
+			INSERT INTO INDEX_LINK (LINK_NAME, LINK_ADDR, LINK_TYPE, CREATE_DATE,OPER_DATE,STATUS,NUM) VALUES (#{linkName}, #{linkAddr},#{linkType}, now(),now(),'1',nextval(#{linkType}));
+		</if>
+		<if test="id != null and id != ''" >
+			UPDATE INDEX_LINK SET LINK_NAME=#{linkName}, LINK_ADDR=#{linkAddr},LINK_TYPE=#{linkType} ,OPER_DATE = now() WHERE LINK_ID=#{id} AND STATUS = 1;
+		</if>
+	</update>
+
+	<select id="getLinkPageAll" resultType="LinkBean" >
+		SELECT LINK_ID as id,LINK_NAME as linkName,LINK_ADDR as linkAddr,LINK_TYPE as linkType,OPER_DATE as operDate,CREATE_DATE as createDate FROM INDEX_LINK
+		 <where>
+			 <if test="type != null and type != ''">
+				 LINK_TYPE = #{type} AND
+			 </if>
+			 STATUS = 1
+		 </where>
+		 ORDER BY NUM DESC
+	</select>
+
+	<select id="getLinkById" resultType="LinkBean" parameterType="LinkBean" >
+		SELECT LINK_ID as id,LINK_NAME as linkName,NUM as num,LINK_ADDR as linkAddr,LINK_TYPE as linkType,OPER_DATE as operDate,CREATE_DATE as createDate FROM INDEX_LINK WHERE LINK_ID = #{id} AND STATUS = 1;
+	</select>
+
+	<update id="deleteLinkById" >
+		UPDATE INDEX_LINK SET STATUS = 0  WHERE LINK_ID=#{id} AND STATUS = 1;
+	</update>
+
+	<update id="toTopLinkById" >
+		UPDATE INDEX_LINK SET NUM = nextval(#{linkType})  WHERE LINK_ID=#{id} AND STATUS = 1;
+	</update>
+
+
+
+
+</mapper>

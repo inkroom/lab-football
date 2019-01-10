@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.publicity.TeamInfoDao">
+	<!-- 查询球队信息 -->
+	<select id="getTeamAll" resultType="com.nsu.bean.publicity.TeamInfoBean" >
+		SELECT 
+			TEAM.TEAM_ID AS teamNum,
+			TEAM_NAME AS teamName,
+			TEAM_LEADER AS leaderName,
+			TEAM_AFFILIATION AS organization,
+			DATE_FORMAT(TEAM_CREATE_DATE,'%Y-%m-%d') AS createDate
+		FROM TEAM
+		WHERE TEAM_STATUS = 1 AND TEAM_NAME IS NOT NULL
+		ORDER BY TEAM_OPER_DATE DESC
+	</select>
+	
+	<!-- 查询球队信息（机构） -->
+	<select id="getTeamAllOrg" resultType="com.nsu.bean.publicity.TeamInfoBean" parameterType="java.lang.Long" >
+		SELECT 
+			TEAM.TEAM_ID AS teamNum,
+			TEAM_NAME AS teamName,
+			TEAM_LEADER AS leaderName,
+			TEAM_AFFILIATION AS organization,
+			DATE_FORMAT(TEAM_CREATE_DATE,'%Y-%m-%d') AS createDate
+		FROM TEAM
+		WHERE TEAM_STATUS = 1 AND TEAM_INSID = #{id}
+		ORDER BY TEAM_OPER_DATE DESC
+	</select>
+	
+	<!-- 根据队名查询球队信息 -->
+	<select id="getTeamByName" resultType="com.nsu.bean.publicity.TeamInfoBean" parameterType="java.lang.String">
+		SELECT 
+			TEAM.TEAM_ID AS teamNum,
+			TEAM_NAME AS teamName,
+			TEAM_LEADER AS leaderName,
+			TEAM_AFFILIATION AS organization,
+			DATE_FORMAT(TEAM_CREATE_DATE,'%Y-%m-%d') AS createDate
+		FROM TEAM
+		WHERE TEAM_STATUS = 1 AND TEAM_NAME = #{name}
+	</select>
+	
+	<!-- 查询球队详细信息 -->
+	<select id="getTeamDetail" resultType="com.nsu.bean.publicity.TeamInfoBean" parameterType="java.lang.String" >
+		SELECT 
+			TEAM.TEAM_ID AS teamNum,
+			TEAM_NAME AS teamName,
+			TEAM_LEADER AS leaderName,
+			TEAM_AFFILIATION AS organization,
+			TEAM_RANK AS LEVEL,
+			TEAM_TYPE AS TYPE,
+			TEAM_ISPIRATION_LOGO AS logo,
+			TEAM_REGION AS region,
+			DATE_FORMAT(TEAM_CREATE_DATE,'%Y-%m-%d') AS createDate
+		FROM TEAM
+		WHERE TEAM.TEAM_ID = #{id} AND TEAM_STATUS = 1
+	</select>
+	
+	<!-- 查询教练员 -->
+	<select id="getCoach" resultType="com.nsu.bean.publicity.CoachPubBean" parameterType="java.lang.String" >
+		SELECT
+			ACCOUNT.`A_NAME` AS NAME,
+			COACH_SEX AS sex,
+			ACCOUNT.`A_ID_CARD` AS birthday
+		FROM MID_COACH_TEAM LEFT JOIN COACH
+		ON MID_COACH_TEAM.`COACH_ID`=COACH.`COACH_ID` 
+		LEFT JOIN ACCOUNT
+		ON COACH.`A_ID` = ACCOUNT.`A_ID`
+		WHERE MID_COACH_TEAM.TEAM_ID = #{id} AND COACH_TEAM_STATSU = 1 AND COACH_STATUS = 1 AND A_STATUS = 1
+	</select>
+	
+	<!-- 查询球员 -->
+	<select id="getPlayer" resultType="com.nsu.bean.publicity.PlayerPubBean" parameterType="java.lang.String" >
+		SELECT 
+			A_NAME AS name,
+			P_SEX AS sex,
+			(YEAR(UTC_DATE())-YEAR(P_BIRTHDAY)) AS age
+		FROM MID_PLAYER_TEAM LEFT JOIN PLAYER
+		ON MID_PLAYER_TEAM.`P_ID` = PLAYER.`P_ID`
+		LEFT JOIN ACCOUNT
+		ON PLAYER.`A_ID`=ACCOUNT.`A_ID`
+		WHERE MID_PLAYER_TEAM.TEAM_ID = #{id} AND TEAM_PLAYER_STATUS = 1
+	</select>
+	
+	<!-- 首页显示 -->
+	<select id="showTeam" resultType="com.nsu.bean.publicity.TeamInfoBean">
+		SELECT 
+			TEAM.TEAM_ID AS teamNum,
+			TEAM_NAME AS teamName,
+			TEAM_AFFILIATION AS organization,
+			DATE_FORMAT(TEAM_CREATE_DATE,'%Y-%m-%d') AS createDate
+		FROM TEAM
+		WHERE TEAM_STATUS = 1
+		ORDER BY TEAM_OPER_DATE DESC LIMIT 7
+	</select>
+</mapper> 

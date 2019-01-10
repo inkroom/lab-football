@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.team.TeamRegisterDao">
+
+<!-- 查询球队管理员身份证是否存在 需要修改 -->
+	<select id="findTeamIDCardIsAvailable" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) FROM ACCOUNT WHERE A_ID_CARD=#{idCard} AND A_STATUS=1 AND A_TYPE=4	
+	</select>
+<!--查询手机号在数据库中的类型为球队管理员的数量-->
+	<select id="findPhoneNum" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) FROM ACCOUNT WHERE A_USERNAME=#{phone} AND A_STATUS=1 AND A_TYPE=4	
+	</select>
+	
+<!--查询球队编号是否唯一-->
+	<select id="findIsOnlyCode" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) FROM TEAM WHERE TEAM_NUM=#{code} AND TEAM_STATUS=1 	
+	</select>	
+
+<!-- 向account表插入数据  返回插入的主键 -->
+	<insert id="insertTeamRegisterInfoIntoAccount"  parameterType="com.nsu.bean.team.TeamRegisterDO" useGeneratedKeys="true" keyProperty="A_ID">
+		INSERT INTO ACCOUNT(A_ID_CARD, A_USERNAME, A_PASSWORD, A_PHONE, A_STATUS, A_TYPE, A_CREATE_BY, A_CREATE_DATE, A_OPER_BY, A_OPER_DATE) 
+			VALUES(#{user}, #{Phone}, #{passwd}, #{Phone}, 1, 4, #{Phone}, now(), #{Phone}, now())
+	</insert>
+	
+<!-- 向team表插入数据  返回插入的主键 -->
+	<insert id="insertTeamTable"  parameterType="String" useGeneratedKeys="true" keyProperty="TEAM_ID">
+		INSERT INTO TEAM(A_ID, TEAM_AUDIT, TEAM_STATUS, TEAM_NUM, TEAM_CREATE_BY, TEAM_CREATE_DATE, TEAM_OPER_BY, TEAM_OPER_DATE) 
+			VALUES(#{A_ID}, 2, 1, #{teamNum},#{Phone}, now(), #{Phone}, now())
+	</insert>
+	
+<!-- 向teamscore表插入数据   -->
+	<insert id="insertTeamScoreTable"  parameterType="String">
+		INSERT 
+			INTO TEAM_SCORE(TEAM_ID, TS_CREATE_DATE, TS_CREATE_BY, TS_OPER_DATE, TS_OPER_BY) 
+			VALUES(#{teamID}, NOW(), #{account}, NOW(), #{account}) 
+	</insert>	
+
+	
+</mapper> 

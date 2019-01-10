@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.organization.OrgLoginDao">
+
+    <select id="findUser"  resultType="map">
+
+        SELECT  * FROM `ACCOUNT`
+
+        INNER  JOIN `ORGANIZATION`
+
+        ON
+
+        `ORGANIZATION`.ORG_ID=`ACCOUNT`.ORG_ID
+
+        WHERE `ACCOUNT`.ORG_ID=#{username}
+
+        AND  ACCOUNT.A_TYPE=3
+
+        AND  ACCOUNT.A_STATUS=1
+
+        AND  ORGANIZATION.ORG_STAUS=1
+
+    </select>
+
+    <update id="insertTime" parameterType="map" >
+        UPDATE
+        `ACCOUNT`
+
+        SET
+
+        `A_RECENT_LOGIN`=NOW()
+
+        WHERE `ACCOUNT`.ORG_ID=#{username}
+
+
+    </update>
+
+
+    <!-- 更新手机信息 -->
+    <update id="updateMobileInfo" parameterType="map">
+        UPDATE ACCOUNT SET A_DEVICE_INFO=#{deviceInfo},A_PUSH_INFO=#{pushInfo} WHERE A_USERNAME =#{username} AND A_TYPE=3
+    </update>
+
+    <select id="mobileFindUser" resultType="map">
+
+          SELECT  * FROM `ACCOUNT`
+
+         INNER  JOIN `ORGANIZATION`
+
+         ON
+
+         `ORGANIZATION`.ORG_ID=`ACCOUNT`.ORG_ID
+
+         WHERE `ACCOUNT`.ORG_ID=#{username}
+
+         AND  ACCOUNT.A_TYPE=3
+
+         AND  ACCOUNT.A_STATUS=1
+
+         AND  ORGANIZATION.ORG_STAUS=1
+
+
+
+
+    </select>
+
+    <!--手机查询机构的所有赛事-->
+    <select id="mobileFindAllComp" resultType="map">
+        SELECT
+
+        `COMPETITION_NOTICE`.COM_NAME,
+        `COMPETITION_NOTICE`.COM_ID
+        FROM
+        `COMPETITION_NOTICE`
+
+        INNER  JOIN
+        `ORGANIZATION`
+        ON
+        `ORGANIZATION`.ORG_ID=`COMPETITION_NOTICE`.ORG_ID
+
+        INNER  JOIN
+        `ACCOUNT`
+        ON
+        `ACCOUNT`.ORG_ID=`ORGANIZATION`.ORG_ID
+        WHERE
+        `ACCOUNT`.ORG_ID=#{org_id}
+
+        AND COM_STATUS=1
+
+        AND  A_TYPE=3
+
+    </select>
+
+    <!--手机查询赛事下有哪些赛程-->
+    <select id="mobileFindRaceDetails" resultType="map">
+
+        SELECT
+
+        RACE_DETAILS.R_H_TEAM_ID,
+        RACE_DETAILS.R_V_TEAM_ID,
+        RACE_DETAILS.R_START_TIME,
+        RACE_DETAILS.R_END_TIME
+
+        FROM
+
+        RACE_DETAILS
+
+        INNER  JOIN
+
+        `SCENE`
+
+        ON
+        `SCENE`.SE_ID=`RACE_DETAILS`.SE_ID
+
+        INNER   JOIN
+
+        `ACCOUNT`
+        ON
+        `SCENE`.SE_ID=`ACCOUNT`.SE_ID
+
+        WHERE  COM_ID=#{com_id}
+
+
+        AND ACCOUNT.ORG_ID=#{org_id}
+
+        AND  `RACE_DETAILS`.R_STATUS=1
+
+    </select>
+
+
+    <select id="findMobileInfo" resultType="map">
+
+        SELECT
+
+           ORG_NAME,
+           A_PHONE,
+           A_NAME
+
+        FROM `ACCOUNT`
+
+        INNER  JOIN `ORGANIZATION`
+
+        ON
+
+       `ORGANIZATION`.ORG_ID=`ACCOUNT`.ORG_ID
+
+        WHERE `ACCOUNT`.A_USERNAME=#{username}
+
+        AND  ACCOUNT.A_TYPE=3
+
+        AND  ACCOUNT.A_STATUS=1
+
+
+
+    </select>
+
+    <!--通过用户ID拿到球队名称-->
+    <select id="findTeamName"  resultType="String">
+
+        SELECT  TEAM_NAME  FROM TEAM  WHERE  TEAM_ID =#{team_id}
+
+
+    </select>
+</mapper>

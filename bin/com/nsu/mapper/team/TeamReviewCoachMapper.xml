@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.team.TeamCoachDao">
+    <!-- 查询球队所有教练信息 -->
+	<select id="selectCoachInfo" parameterType="java.lang.Object" resultType="com.nsu.bean.team.TeamCoachDO" >    	
+        SELECT COACH.COACH_ID,A_NAME AS COACH_NAME,A_ID_CARD AS ID_CARD,COACH_SEX,COACH_TEAM_STATSU AS COACH_STATUS,TIME,MID_COACH_TEAM.TEAM_ID
+		FROM MID_COACH_TEAM
+		LEFT JOIN COACH ON (COACH.`COACH_ID` = MID_COACH_TEAM.`COACH_ID` AND COACH_STATUS=1)
+		LEFT JOIN ACCOUNT ON (COACH.`A_ID` = ACCOUNT.`A_ID` AND ACCOUNT.A_STATUS=1)
+		WHERE MID_COACH_TEAM.TEAM_ID = #{TEAM_ID}
+		AND (COACH_TEAM_STATSU=0 OR COACH_TEAM_STATSU=1 OR COACH_TEAM_STATSU=2)
+		ORDER BY TIME DESC
+		limit #{startIndex},#{pageSize}
+	</select>
+	<!-- 根据名字查询-->
+	<select id="selectCoachInfoByName" parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamCoachDO" >    	
+		SELECT COACH.COACH_ID,A_NAME AS COACH_NAME,A_ID_CARD AS ID_CARD,COACH_SEX,COACH_TEAM_STATSU AS COACH_STATUS
+		FROM ACCOUNT
+		LEFT JOIN COACH ON(COACH_STATUS=1 AND ACCOUNT.A_ID=COACH.A_ID)
+		LEFT JOIN MID_COACH_TEAM ON COACH.`COACH_ID` = MID_COACH_TEAM.`COACH_ID`
+		WHERE COACH.COACH_ID IN (SELECT COACH_ID FROM MID_COACH_TEAM WHERE TEAM_ID=#{TEAM_ID})
+		AND (COACH_TEAM_STATSU=0 OR COACH_TEAM_STATSU=1 OR COACH_TEAM_STATSU=2) AND A_NAME=#{COACH_NAME}
+	</select>
+	<!-- 查询弹框HRD-->
+		<!-- 修改了coach表 的left join，将其COACH.`COACH_ID`=COACH_SCORE.`COACH_ID`修改为ACCOUNT.`A_ID` = COACH.`A_ID` 
+				原因：保证可以在COACH_SCORE表无数据时能够查询出教练员有的信息LJL -->
+	<select id="selectCoachInfoByCOACHID" parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamCoachDO" >    	
+		SELECT DISTINCT COACH_PHOTO,A_NAME AS COACH_NAME,COACH_SEX,A_ID_CARD AS ID_CARD,COACH.COACH_ID,CS_PRCVINCE_WIN
+		,CS_CITY_WIN,CS_COUNTRY_WIN,CS_SCHOOL_WIN,CS_PRCVINCE_LOSE,CS_CITY_LOSE,CS_COUNTRY_LOSE,CS_SCHOOL_LOSS
+		,COACH_JOB,COACH_EXP,COACH_TEAM_STATSU,CS_OTHER_WIN,CS_OTHER_LOSS,COACH_PHOTO
+		FROM ACCOUNT 
+		LEFT JOIN COACH ON ACCOUNT.`A_ID` = COACH.`A_ID` AND COACH.`COACH_STATUS` = 1
+		LEFT JOIN COACH_SCORE ON COACH.`COACH_ID` = COACH_SCORE.`COACH_ID`AND COACH_SCORE.CS_STATUS = 1
+		LEFT JOIN MID_COACH_TEAM ON COACH_SCORE.COACH_ID = MID_COACH_TEAM.`COACH_ID`
+		WHERE COACH.COACH_ID = #{COACH_ID} AND COACH_TEAM_STATSU = #{COACH_STATUS}
+	</select>
+	
+	<!-- 修改状态位通过 -->
+	<update id="updatecoachone" parameterType="java.lang.String">
+        UPDATE MID_COACH_TEAM 
+ 	    SET COACH_TEAM_STATSU=1
+	    WHERE TEAM_ID=#{TEAM_ID} AND COACH_ID=#{COACH_ID} AND COACH_TEAM_STATSU = 0
+	</update>
+	
+	<!-- 修改状态位不通过 -->
+	<update id="updatecoachtwo" parameterType="java.lang.String">
+        UPDATE MID_COACH_TEAM 
+ 	    SET COACH_TEAM_STATSU=2
+	    WHERE TEAM_ID=#{TEAM_ID} AND COACH_ID=#{COACH_ID} AND COACH_TEAM_STATSU = 0
+	</update>
+	
+	<!-- 本队教练人数 -->
+	<select id="selectCoachCount" parameterType="java.lang.String" resultType="int" >
+		SELECT COUNT(*)
+		FROM MID_COACH_TEAM
+		LEFT JOIN COACH ON COACH.`COACH_ID` = MID_COACH_TEAM.`COACH_ID` AND COACH_STATUS=1
+		LEFT JOIN ACCOUNT ON (COACH.`A_ID` = ACCOUNT.`A_ID` AND ACCOUNT.A_STATUS=1)
+		WHERE MID_COACH_TEAM.TEAM_ID = #{TEAM_ID}
+		AND (COACH_TEAM_STATSU=0 OR COACH_TEAM_STATSU=1 OR COACH_TEAM_STATSU=2)
+	</select>	
+
+</mapper>

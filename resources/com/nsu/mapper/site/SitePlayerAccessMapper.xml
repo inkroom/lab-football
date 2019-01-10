@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.site.SitePlayerAccessMapper">
+
+    <select id="getPlayerByAId" parameterType="Integer" resultType="map">
+        SELECT *
+        FROM
+            TEAM_PLAYER_LU
+        WHERE
+            SCENE_AID = #{AId};
+    </select>
+
+    <update id="updatePlayerStatus">
+        UPDATE MID_TEAM_RACE
+        SET CHECK_IDCARD = #{Status}
+        WHERE MID_TEAM_RACE.START_IN_ID = (SELECT P_ID
+                                           FROM PLAYER
+                                           WHERE A_ID = #{AId});
+    </update>
+
+</mapper> 

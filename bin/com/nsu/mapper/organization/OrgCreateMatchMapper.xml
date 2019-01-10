@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.organization.OrgCreateMatchDao">
+
+	<!-- 将添加过的赛事id查询出来，以备发送消息时使用 -->
+	<select id="selectMatchID" resultType="java.lang.Integer">
+		SELECT COM_ID FROM COMPETITION_NOTICE 
+		WHERE ORG_ID = #{o_id} AND COM_NAME = #{match_name} AND COM_STATUS = 1;
+	</select>
+	
+	<select id="isDuplicationMatchName" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM COMPETITION_NOTICE 
+		WHERE ORG_ID = #{o_id} AND COM_NAME = #{match_name} AND COM_STATUS = 1;
+	</select>
+	
+	<!-- 添加一场赛事 -->
+	<insert id="addMatchInfo">
+		INSERT INTO COMPETITION_NOTICE VALUES(
+			NULL,#{o_id},#{match_info.match_name},#{match_info.person_sex},#{match_info.match_level},
+			#{o_id},#{match_info.match_endDate},NULL,NULL,NULL,#{match_info.match_startDate},#{o_id},
+			#{match_info.enroll_startDate},#{match_info.enroll_endDate},#{o_id},now(),
+			#{o_id},now(),1,#{match_info.person_num},#{match_info.match_big_level});
+	</insert>
+	
+	<!-- 在赛事成功添加之后，发布一条推送消息 -->
+	<insert id="addMatchMsg">
+		INSERT INTO SYSTEM_MSG VALUES(
+			NULL,#{a_id},#{msg_type},#{msg_title},#{msg_text},now(),1,#{o_id},now(),#{o_id},now(),#{com_id});
+	</insert>
+</mapper> 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.message.MessageDao">
+
+
+	<select id="getUnreadMessageById" parameterType="int"
+		resultType="com.nsu.bean.message.MessageBean">
+		SELECT
+		SYSTEM_MSG.SM_ID,SYSTEM_MSG.A_ID,SYSTEM_MSG.SM_TYPE,SYSTEM_MSG.SM_TITLE,SYSTEM_MSG.SM_TEXT,SYSTEM_MSG.SM_DATE,SYSTEM_MSG.COM_ID
+		FROM SYSTEM_MSG
+		WHERE SYSTEM_MSG.SM_TYPE != 3
+		AND SYSTEM_MSG.SM_ID NOT IN (
+		SELECT
+		SYSTEM_MSG.SM_ID
+		FROM USER_MSG LEFT
+		JOIN SYSTEM_MSG ON USER_MSG.SM_ID = SYSTEM_MSG.SM_ID
+		WHERE
+		USER_MSG.A_ID = #{id} and USER_MSG.UM_TYPE = 1) Order By SYSTEM_MSG.SM_DATE Desc
+	</select>
+
+	
+
+	
+	<select id="getMessageReadById" parameterType="int"
+		resultType="com.nsu.bean.message.MessageReadBean">
+		SELECT SYSTEM_MSG.SM_ID ID ,SM_TEXT TEXT ,SM_DATE DATE ,SM_TITLE TITLE,UM_TYPE  FROM USER_MSG 
+LEFT JOIN SYSTEM_MSG ON(USER_MSG.SM_ID=SYSTEM_MSG.SM_ID)
+WHERE USER_MSG.A_ID = #{id} AND UM_TYPE=1
+UNION
+SELECT PERSON_MSG.PS_ID ID,PS_TEXT TEXT ,PS_DATE DATE ,PS_TITLE TITLE,UM_TYPE FROM USER_MSG 
+LEFT JOIN PERSON_MSG ON(USER_MSG.PS_ID=PERSON_MSG.PS_ID)
+WHERE USER_MSG.A_ID = #{id} AND UM_TYPE=2 Order By DATE DESC 
+	</select>
+	
+	
+
+	<select id="getMessageContentById" parameterType="String"
+		resultType="map">
+		SELECT
+		SYSTEM_MSG.SM_ID,SYSTEM_MSG.A_ID,SYSTEM_MSG.SM_TYPE,SYSTEM_MSG.SM_TITLE,SYSTEM_MSG.SM_TEXT,SYSTEM_MSG.SM_DATE
+		FROM SYSTEM_MSG
+		WHERE SM_ID = #{id} 
+	</select>
+
+	<insert id="insertUserMessage">
+		INSERT INTO USER_MSG
+		SELECT NULL,#{A_ID},NULL,#{SM_ID},NOW(),1 FROM dual WHERE NOT EXISTS (SELECT
+		A_ID,SM_ID FROM USER_MSG WHERE A_ID = #{A_ID} AND SM_ID = #{SM_ID})
+	</insert>
+	
+	<insert id="insertPersonMsg">
+	INSERT INTO USER_MSG
+		SELECT NULL,#{A_ID},#{PS_ID},NULL,NOW(),2 FROM dual WHERE NOT EXISTS (SELECT
+		A_ID,PS_ID FROM USER_MSG WHERE A_ID = #{A_ID} AND PS_ID = #{PS_ID})
+	</insert>
+	
+	<insert id="allReadMessagePerson">
+	INSERT INTO USER_MSG (A_ID,PS_ID,UM_DATE,UM_TYPE) 
+   SELECT #{A_ID},PS_ID, NOW(),2 FROM PERSON_MSG WHERE PERSON_MSG.PS_RECEIVE=#{A_ID} AND PS_ID NOT IN 
+    (select USER_MSG.PS_ID FROM USER_MSG WHERE USER_MSG.A_ID=#{A_ID} AND USER_MSG.UM_TYPE=2)
+	</insert>
+	
+	<select id="getMessageContentPersonById" parameterType="String"
+		resultType="map">
+		SELECT
+		PERSON_MSG.PS_ID, PERSON_MSG.PS_DATE, PERSON_MSG.PS_RECEIVE, PERSON_MSG.PS_TEXT, PERSON_MSG.PS_TITLE 
+		FROM PERSON_MSG
+		WHERE PS_ID = #{id} 
+	</select>
+	
+	<select id="getPersonMsgByID" parameterType="int"
+		resultType="com.nsu.bean.message.MessagePersonBean">
+		SELECT
+		PERSON_MSG.PS_ID, PERSON_MSG.PS_DATE, PERSON_MSG.PS_RECEIVE, PERSON_MSG.PS_TEXT, PERSON_MSG.PS_TITLE 
+		FROM PERSON_MSG
+		WHERE PERSON_MSG.PS_RECEIVE = #{A_ID}
+		AND PERSON_MSG.PS_ID NOT IN (
+		SELECT
+		PERSON_MSG.PS_ID
+		FROM USER_MSG LEFT
+		JOIN PERSON_MSG ON USER_MSG.PS_ID = PERSON_MSG.PS_ID
+		WHERE
+		USER_MSG.A_ID = #{A_ID} and USER_MSG.UM_TYPE = 2) Order By PERSON_MSG.PS_DATE Desc
+	</select>
+	
+	
+	
+	<insert id="allReadMessage">
+	INSERT INTO USER_MSG (A_ID,SM_ID,UM_DATE,UM_TYPE) 
+   SELECT #{A_ID},SM_ID, NOW(),1 FROM SYSTEM_MSG WHERE SM_ID NOT IN 
+    (select USER_MSG.SM_ID FROM USER_MSG WHERE USER_MSG.A_ID=#{A_ID} AND USER_MSG.UM_TYPE=1)
+	</insert>
+	
+	<insert id="insertPersonMessage">
+		INSERT INTO PERSON_MSG VALUES(
+			NULL,#{PS_RECEIVE},#{PS_SEND_ID},#{PS_TITLE},#{PS_TEXT},now(),now(),#{PS_SEND_ID},NULL,NULL,NULL);
+	</insert>
+	
+	<insert id ="insertTrainingMessage" parameterType="com.nsu.bean.message.MessagePersonBean" >
+             insert into PERSON_MSG
+             (PS_RECEIVE, PS_SEND_ID, PS_TITLE, PS_TEXT,PS_DATE,PS_CREATE_DATE,PS_CREATE_BY)
+             values
+             <foreach collection ="list" item="MessagePersonBean" index= "index" separator =",">
+                 (
+                 #{MessagePersonBean.PS_RECEIVE},  #{MessagePersonBean.PS_SEND_ID}, #{MessagePersonBean.PS_TITLE},#{MessagePersonBean.PS_TEXT},now(),now(), #{MessagePersonBean.PS_SEND_ID}
+                                )
+            </foreach >
+      </insert >
+</mapper>

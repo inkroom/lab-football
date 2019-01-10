@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.demo.DemoDao">
+	
+	<select id="findAll" resultType="com.nsu.bean.demo.JacksonDemoBean" >
+		SELECT 
+			TEAM_ID AS "teamId",
+			TEA_NAME AS "teamName",
+			TEA_LEADER AS "teamLeader",
+			TEA_CREATE_TIME AS "createTime"
+		FROM TEAM_NOTICE 
+	</select>
+	
+</mapper> 

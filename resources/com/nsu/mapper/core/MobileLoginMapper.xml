@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.core.MobileLoginDao">
+
+	<select id="getUserByUserName" parameterType="string" resultType="map">
+		SELECT
+		ACCOUNT.`A_ID`,
+		A_USERNAME,
+		A_PASSWORD,
+		A_TYPE
+		FROM
+		ACCOUNT
+		<where>
+
+			<if test="roleType == 1 or roleType == 2 or roleType == 4">
+				ACCOUNT.A_USERNAME = #{userName}
+				AND ACCOUNT.A_TYPE = #{roleType}
+				AND A_STATUS = 1
+			</if>
+
+			<if test="roleType == 3 or roleType == 5">
+				ACCOUNT.A_PHONE = #{userName}
+				AND ACCOUNT.A_TYPE = #{roleType}
+				AND A_STATUS = 1
+			</if>
+
+
+		</where>
+
+	</select>
+
+	<update id="updateDeviceInfo" parameterType="string">
+		UPDATE ACCOUNT SET A_DEVICE_INFO=#{deviceInfo} WHERE A_ID=#{a_id}
+	</update>
+
+
+
+	<update id="setDeviceInfo">
+		UPDATE ACCOUNT SET A_PUSH_INFO=NULL,A_DEVICE_INFO=NULL WHERE A_ID=#{a_id}
+	</update>
+</mapper> 

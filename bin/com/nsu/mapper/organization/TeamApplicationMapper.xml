@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.organization.TeamApplicationDao">
+
+	<!-- 球队申请机构管理 -->
+	<select id="findAll" parameterType="java.lang.Long" resultType="map">
+			SELECT
+				TEAM.TEAM_NAME,
+				TEAM.TEAM_LEADER,
+				TEAM.TEAM_AFFILIATION,
+				TEAM.TEAM_AUDIT,
+				TEAM.TEAM_CREATE_DATE,
+				TEAM.TEAM_ID
+			FROM
+				TEAM
+			WHERE
+				TEAM.TEAM_INSID = #{ORG_ID} AND TEAM.TEAM_STATUS = 1
+			ORDER BY
+				TEAM_AUDIT ASC,TEAM_CREATE_DATE DESC 
+	</select>
+
+	<!-- 搜索查球队申请管理 -->
+	<select id="findone"  resultType="map">
+		SELECT
+			TEAM.TEAM_ID,
+			TEAM.TEAM_NAME,
+			TEAM.TEAM_LEADER,
+			TEAM.TEAM_AFFILIATION,
+			TEAM.TEAM_AUDIT
+		FROM
+			TEAM
+		WHERE
+			TEAM_INSID= #{ORG_ID}
+		AND TEAM_NAME = #{comName} AND TEAM.TEAM_STATUS = 1
+			
+	</select>
+
+
+	<!-- 查看球队详情 -->
+	<select id="findTeamMessage" parameterType="java.lang.Long" resultType="map">
+			SELECT
+				A_ID,
+				TEAM_NUM,
+				TEAM_NAME,
+				TEAM_LEADER,
+				TEAM_AUDIT,
+				TEAM_AFFILIATION,
+				TS_SCHOOL_VICTOR,
+				TS_SCHOOL_LOSE,
+				TS_COUNTRY_VICTOR,
+				TS_COUNTRY_LOSE,
+				TS_CITY_VICTOR,
+				TS_CITY_LOSE,
+				TS_PROVINCE_VICTOR,
+				TS_PROVINCE_LOSE,
+				TS_SCHOOL_DRAW,
+				TS_COUNTRY_DRAW,
+				TS_CITY_DRAW,
+				TS_PROVINCE_DRAW,
+				TS_OTHER_WIN,
+				TS_OTHER_LOSS,
+				TEAM_BADGE
+			FROM
+				TEAM
+			LEFT JOIN TEAM_SCORE ON TEAM.TEAM_ID = TEAM_SCORE.TEAM_ID
+			LEFT JOIN RACE_DETAILS ON TEAM.TEAM_ID = R_H_TEAM_ID
+			WHERE
+				 TEAM.TEAM_ID = #{team_id} AND TEAM.TEAM_STATUS = 1
+	</select>
+
+	<!-- 通过球队ID查球队教练员 -->
+	<select id="selectCoachByTeamID" parameterType="java.lang.Long" resultType="String">
+		SELECT
+				A_NAME
+			FROM
+				ACCOUNT
+			WHERE
+				A_ID IN (
+					SELECT
+						A_ID
+					FROM
+						COACH
+					WHERE
+						COACH_ID IN (
+							SELECT
+								COACH_ID
+							FROM
+								MID_COACH_TEAM
+							JOIN TEAM ON TEAM.TEAM_ID = MID_COACH_TEAM.TEAM_ID
+							AND TEAM.TEAM_STATUS = 1
+							AND TEAM.TEAM_ID = #{team_id}  AND MID_COACH_TEAM.COACH_TEAM_STATSU = 1
+						)
+				) 
+			AND A_TYPE = 2 AND A_STATUS = 1
+	
+	</select>
+
+
+	<!-- 查看球队中球员的信息 -->
+	<select id="findPlayerMessage" parameterType="java.lang.Long" resultType="map">
+			SELECT
+				ACCOUNT.A_NAME,
+				P_POSITION,
+				P_BIRTHDAY,
+				PS_CITY_WIN,
+				PS_CITY_FLAT,
+				PS_CITY_LOSE,
+				PS_PROVINE_WIN,
+				PS_PROVINE_FLAT,
+				PS_PROVINE_LOSE,
+				PS_COUNTY_WIN,
+				PS_COUNTY_FLAT,
+				PS_COUNTY_LOSE,
+				PS_SCHOOL_WIN,
+				PS_SCHOOL_FLAT,
+				PS_SCHOOL_LOSE,
+				PS_OTHER_WIN,
+				PS_OTHER_LOSS
+			FROM
+				PLAYER
+			LEFT JOIN ACCOUNT ON (
+				ACCOUNT.A_ID = PLAYER.A_ID
+				AND ACCOUNT.A_STATUS = 1
+			)
+			LEFT JOIN TEAM ON (
+				TEAM.TEAM_ID = #{team_id}
+				AND TEAM_STATUS = 1
+			)
+			LEFT JOIN PLAYER_SCORE ON (
+				PLAYER.P_ID = PLAYER_SCORE.P_ID
+				AND PLAYER_SCORE.PS_STUTAS = 1
+			)
+			WHERE
+				PLAYER.P_ID IN (
+					SELECT
+						P_ID
+					FROM
+						MID_PLAYER_TEAM
+					WHERE
+						MID_PLAYER_TEAM.TEAM_ID = #{team_id}
+					AND TEAM_PLAYER_STATUS = 1
+				)
+	AND PLAYER.P_STATUS = 1
+	
+	</select>
+	<!-- 更新通过球队状态 -->
+	<update id="updateTeamStatus" parameterType="java.lang.Long" >
+				UPDATE TEAM
+				SET TEAM_AUDIT = 1
+				WHERE
+					TEAM_ID = #{team_id}
+	</update>
+
+	<!-- 更新不通过球队状态 -->
+	<update id="updateTeam" parameterType="java.lang.Long" >
+			 	UPDATE TEAM
+				SET TEAM_AUDIT = 2
+				WHERE
+					TEAM_ID = #{team_id}
+	</update>
+	<!-- 根据球队名称查球队ID -->
+	<update id="updateTeamOrgID" parameterType="java.lang.Long">
+			UPDATE TEAM
+			SET ORG_ID = #{org_id}
+			WHERE
+				TEAM_ID = #{team_id}
+	</update>
+
+	<!-- 根据机构ID更新球队所属机构 -->
+	<update id="updateTeamAffiliation" parameterType="java.lang.Long">
+		UPDATE TEAM
+		SET TEAM_AFFILIATION = (
+			SELECT
+				ORG_NAME
+			FROM
+				ORGANIZATION
+			WHERE
+				ORG_ID = #{ORG_ID}
+			AND ORG_STAUS = 1
+		)
+		WHERE
+			TEAM_INSID = #{ORG_ID}
+		AND TEAM_STATUS = 1
+	</update>
+
+	<select id="selectAId" parameterType="java.lang.Long" resultType="int">
+		SELECT A_ID FROM ACCOUNT WHERE ORG_ID = #{org_id} AND A_TYPE = 3
+	</select>
+
+	<select id="selectOrgName" parameterType="java.lang.Long" resultType="String">
+			SELECT ORG_NAME FROM ORGANIZATION WHERE ORG_ID = #{org_id} AND ORG_STAUS = 1
+	</select>
+
+	<!-- 根据球队ID查球队参加赛事的客场总数 -->
+	<select id="selectR_V_TEAM" parameterType="java.lang.Long" resultType="int">
+		SELECT  count(*) FROM RACE_DETAILS WHERE R_V_TEAM_ID = #{team_id} AND R_STATUS = 2 
+	</select>
+
+	<!-- 根据球队ID查球队参加赛事的主场总数 -->
+	<select id="selectR_H_TEAM" parameterType="java.lang.Long" resultType="int">
+		SELECT  count(*) FROM RACE_DETAILS WHERE R_H_TEAM_ID = #{team_id} AND R_STATUS = 2 
+	</select>
+
+	<!-- 根据球队ID查球队参加赛事的主场赢球总数 -->
+	<select id="selectR_H_TEAM_WIN" parameterType="java.lang.Long" resultType="int">
+		SELECT  count(*) FROM RACE_DETAILS WHERE R_H_TEAM_ID = #{team_id} AND R_WIN_STATUS = 0 AND R_STATUS = 2 
+	</select>
+
+	<!-- 根据球队ID查球队参加赛事的客场赢球总数 -->
+	<select id="selectR_V_TEAM_WIN" parameterType="java.lang.Long" resultType="int">
+		SELECT  count(*) FROM RACE_DETAILS WHERE R_V_TEAM_ID = #{team_id} AND R_WIN_STATUS = 1 AND R_STATUS = 2
+	</select>
+
+</mapper> 

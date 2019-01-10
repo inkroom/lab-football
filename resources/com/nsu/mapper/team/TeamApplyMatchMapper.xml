@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.team.TeamApplyMatchDao">
+
+	<!-- 查询所有赛事基本信息和球队申请了的正在进行中的赛事 -->
+	<select id="findTeamMatchs" parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamApplyMatchBean" >
+		SELECT COMPETITION_NOTICE.COM_ID comID, COM_NAME comName, COM_TYPE comType, COM_LEVEL comLevel, COM_GROUNP comGroup  
+		, date_format(COM_END, '%Y-%c-%e') comEnd, date_format(COM_START, '%Y-%c-%e') comStart, date_format(COM_END_TIME, '%Y-%c-%e %T') comEndTime
+		,TEAM_COM_STATUS  comStatus, COM_BIG_LEVEL comBigLevel
+		FROM COMPETITION_NOTICE 
+		LEFT JOIN MID_TEAM_COM ON(MID_TEAM_COM.COM_ID=COMPETITION_NOTICE.COM_ID AND TEAM_ID=#{teamID} AND TEAM_COM_STATUS!=3)
+		WHERE NOW()>=COM_START_TIME AND COM_END>=NOW() AND COM_STATUS=1 
+	</select>
+
+	<select id="findOneMatch" parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamApplyMatchBean">
+		SELECT COM_LEVEL as comLevel,COM_END as comEnd,COM_TYPE as comType,
+		COM_START as comStart ,COM_END_TIME as comEndTime
+		FROM COMPETITION_NOTICE WHEN COM_ID = #{comID} limit 1
+	</select>
+
+	<!-- s根据赛事名查询所有赛事基本信息和球队申请了的正在进行中的赛事 -->
+	<select id="findTeamMatchsByMatchName" parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamApplyMatchBean" >
+		SELECT COMPETITION_NOTICE.COM_ID comID, COM_NAME comName, COM_TYPE comType, COM_LEVEL comLevel, COM_GROUNP comGroup  
+			, date_format(COM_END, '%Y-%c-%e') comEnd, date_format(COM_START, '%Y-%c-%e') comStart, date_format(COM_END_TIME, '%Y-%c-%e %T') comEndTime
+			,TEAM_COM_STATUS  comStatus, COM_BIG_LEVEL comBigLevel
+		FROM COMPETITION_NOTICE 
+			LEFT JOIN MID_TEAM_COM ON(MID_TEAM_COM.COM_ID=COMPETITION_NOTICE.COM_ID AND TEAM_ID=#{teamID} AND TEAM_COM_STATUS!=3)
+		WHERE (((COM_END_TIME-NOW()>0) OR (SELECT COUNT(*) FROM MID_TEAM_COM WHERE TEAM_ID=#{teamID} AND MID_TEAM_COM.COM_ID=COMPETITION_NOTICE.COM_ID AND (TEAM_COM_STATUS=1 OR TEAM_COM_STATUS=0))>0))
+			AND NOW()>=COM_START_TIME AND COM_END>=NOW() AND COM_STATUS=1 AND INSTR(COM_NAME,#{matchName})>0 ORDER BY FIELD(TEAM_COM_STATUS,NULL,2,1,0)
+	</select>
+
+	<!-- 根据赛事ID查询赛事报名截止时间是否已过 -->
+	<select id="findMathContinue" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) FROM COMPETITION_NOTICE 
+			WHERE COM_ID=#{comID} AND COM_STATUS=1 AND COM_END_TIME-NOW()>0
+	</select>
+
+	<!--  查询球队是否申请过当前赛事-->
+	<select id="findTeamAlreadyApply" parameterType="java.util.Map" resultType="java.lang.String">
+		SELECT TEAM_COM_STATUS teamComStatus 
+		FROM MID_TEAM_COM 
+		WHERE COM_ID=#{comID} AND TEAM_ID=#{teamID} AND TEAM_COM_STATUS!=3
+	</select>
+
+	<!-- 根据teamID和comID更新MID_TEAM_COM表状态位为0：待审核 -->
+	<update id="updateApplyMatchRecord"  parameterType="java.util.Map">
+		UPDATE MID_TEAM_COM 
+		SET TEAM_COM_STATUS=0 
+		WHERE COM_ID=#{comID} AND TEAM_ID=#{teamID}
+	</update>
+
+	<!-- 向MID_TEAM_COM表插入一条新的球队申请记录 -->
+	<insert id="insertApplyMatchRecord"  parameterType="java.util.Map">
+		INSERT INTO 
+		MID_TEAM_COM(COM_ID, TEAM_ID, TEAM_COM_STATUS) 
+		VALUES(#{comID}, #{teamID}, 0)
+	</insert>
+
+	<!--  （分页使用）查询所有赛事基本信息和球队申请了的正在进行中的赛事的数量 -->
+	<select id="findTeamApplyMatchTotalRecordsNum" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*)
+		FROM COMPETITION_NOTICE 
+		LEFT JOIN MID_TEAM_COM ON(MID_TEAM_COM.COM_ID=COMPETITION_NOTICE.COM_ID AND TEAM_ID=#{teamID} AND TEAM_COM_STATUS!=3)
+		WHERE (((COM_END_TIME-NOW()>0) OR (SELECT COUNT(*) FROM MID_TEAM_COM WHERE TEAM_ID=#{teamID} AND MID_TEAM_COM.COM_ID=COMPETITION_NOTICE.COM_ID AND TEAM_COM_STATUS=1)>0))  
+			AND NOW()>=COM_START_TIME AND COM_END>=NOW() AND COM_STATUS=1 
+	</select>
+
+
+	<!-- 分页查询所有赛事基本信息和球队申请了的正在进行中的赛事	 -->
+	<select id="findTeamApplyMatchPageRecords" parameterType="java.lang.Object" resultType="com.nsu.bean.team.TeamApplyMatchBean" >
+		SELECT * FROM
+			(SELECT COMPETITION_NOTICE.COM_ID comID, COM_NAME comName, COM_TYPE comType, COM_LEVEL comLevel,COM_GROUNP comGroup  
+			, date_format(COM_END, '%Y-%c-%e %k:%i') comEnd, date_format(COM_START, '%Y-%c-%e %k:%i') comStart, date_format(COM_END_TIME, '%Y-%c-%e %T') comEndTime
+			,TEAM_COM_STATUS  comStatus, COM_BIG_LEVEL comBigLevel 
+			FROM COMPETITION_NOTICE 
+			LEFT JOIN MID_TEAM_COM ON(MID_TEAM_COM.COM_ID=COMPETITION_NOTICE.COM_ID AND TEAM_ID=#{teamID} AND TEAM_COM_STATUS!=3)
+			WHERE (((COM_END_TIME-NOW()>0) OR (SELECT COUNT(*) FROM MID_TEAM_COM WHERE TEAM_ID=#{teamID} AND MID_TEAM_COM.COM_ID=COMPETITION_NOTICE.COM_ID AND (TEAM_COM_STATUS=1 OR TEAM_COM_STATUS=0))>0)) 
+				AND NOW()>=COM_START_TIME AND COM_END>=NOW() AND COM_STATUS=1 ORDER BY FIELD(TEAM_COM_STATUS,NULL,2,1,0))
+		M 
+		ORDER BY FIELD(comStatus,NULL,2,1,0), (comEndTime)
+		LIMIT #{startIndex}, #{pageSize}
+	</select>
+
+
+</mapper> 

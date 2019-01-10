@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.publicity.RaceInfoDao">
+	<!-- 查询赛程信息 -->
+	<select id="getRaceAll" resultType="com.nsu.bean.publicity.RaceInfoBean" >
+		SELECT 
+			R_ID AS raceNum,
+			R_H_TEAM_ID AS teamOne,
+			R_V_TEAM_ID AS teamTwo,
+			COM_NAME AS gameName,
+			R_REFEREE AS referee,
+			R_WIN_T AS winTeam,
+			R_REGULAR_H_T_S AS formalScoreOne,
+			R_REGULAR_V_T_S AS formalScoreTwo,
+			R_OVERTIME_H_T_S AS overScoreOne,
+			R_OVERTIME_V_T_S AS overScoreTwo,
+			R_PENA_H_T_S AS spotScoreOne,
+			R_PENA_V_T_S AS spotScoreTwo,
+			R_LIVE_TYPE AS status
+		FROM 
+			RACE_DETAILS LEFT JOIN COMPETITION_NOTICE
+		ON 
+			RACE_DETAILS.COM_ID=COMPETITION_NOTICE.COM_ID
+		WHERE COM_STATUS = 1
+		order by R_OPER_DATE desc
+	</select>
+	
+	<!-- 根据赛程名查询赛程信息 -->
+	<select id="getRaceByName" resultType="com.nsu.bean.publicity.RaceInfoBean" parameterType="java.lang.String">
+		SELECT
+			R_ID AS raceNum, 
+			R_H_TEAM_ID AS teamOne,
+			R_V_TEAM_ID AS teamTwo,
+			COM_NAME AS gameName,
+			R_FIELD_NUM AS fieldNum,
+			R_REGULAR_H_T_S AS formalScoreOne,
+			R_REGULAR_V_T_S AS formalScoreTwo,
+			R_OVERTIME_H_T_S AS overScoreOne,
+			R_OVERTIME_V_T_S AS overScoreTwo,
+			R_PENA_H_T_S AS spotScoreOne,
+			R_PENA_V_T_S AS spotScoreTwo,
+			R_LIVE_TYPE AS status
+		FROM 
+			RACE_DETAILS LEFT JOIN COMPETITION_NOTICE
+		ON 
+			RACE_DETAILS.COM_ID=COMPETITION_NOTICE.COM_ID
+		WHERE COM_NAME = #{name} AND COM_STATUS = 1
+		order by R_OPER_DATE desc
+	</select>
+	
+	<!-- 查询赛程详情 -->
+	<select id="getRaceDetail" resultType="com.nsu.bean.publicity.RaceInfoBean" parameterType="java.lang.String">
+		SELECT 
+			COM_NAME AS gameName,
+			R_REGION AS raceRegion,
+			R_REFEREE AS referee,
+			R_WIN_T AS winTeam,
+			R_START_TIME AS startTime,
+			R_END_TIME AS endTime,
+			R_LIVE_TYPE AS status,
+			R_RED_C_TEXT AS textRed,
+			R_PENA_TEXT AS textPunish,
+			R_WRONG_TEXT AS textVerify,
+			R_H_TEAM_ID AS teamOne,
+			R_V_TEAM_ID AS teamTwo,
+			R_REGULAR_H_T_S AS formalScoreOne,
+			R_REGULAR_V_T_S AS formalScoreTwo,
+			R_OVERTIME_H_T_S AS overScoreOne,
+			R_OVERTIME_V_T_S AS overScoreTwo,
+			R_PENA_H_T_S AS spotScoreOne,
+			R_PENA_V_T_S AS spotScoreTwo,
+			R_LIVE_TYPE AS status
+		FROM 
+			RACE_DETAILS LEFT JOIN COMPETITION_NOTICE
+		ON 
+			RACE_DETAILS.COM_ID=COMPETITION_NOTICE.COM_ID
+		WHERE R_ID = #{id} AND COM_STATUS = 1
+	</select>
+	
+	<!-- 查询队名 -->
+	<select id="getTeamName" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT TEAM_NAME FROM TEAM WHERE TEAM_ID = #{id} AND TEAM_STATUS = 1
+	</select>
+</mapper> 

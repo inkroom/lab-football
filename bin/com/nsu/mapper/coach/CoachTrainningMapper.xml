@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.coach.CoachTrainingDao">
+
+	<insert id="coachTrainingIssue" parameterType="String">
+		INSERT into COACH_TRAINING (TRAINING_PLACE,
+		COACH_ID,
+		TRAINING_TEAM_ID,
+		TRAINING_NAME,TRAINING_TIME,TRAINING_TYPS,TRAINING_CREAT_DATE,TRAINING_STATUS,TRAINING_CREAT_BY,TRAINING_OPERATION_DATE,TRAINING_OPERATION_BY)
+		VALUES(
+		#{trainPlace},#{coachId},#{trainTeamid},#{trainName},#{trainTime},#{trainTyps},now(),1,#{coachId},now(),#{coachId}
+		)
+
+	</insert>
+	<!-- 获取教练所带的所有球队id -->
+	<select id="getCoachTeams" resultType="java.util.HashMap">
+		SELECT
+		TEAM.TEAM_ID,TEAM.TEAM_NAME FROM TEAM WHERE TEAM.TEAM_STATUS=1 and TEAM.TEAM_ID IN( SELECT
+		TEAM_ID FROM MID_COACH_TEAM WHERE COACH_ID = #{coachID} AND
+
+		COACH_TEAM_STATSU=1)
+	</select>
+	<insert id="coachSystemIssue" >
+	INSERT into SYSTEM_MSG (A_ID,SM_TYPE,SM_TITLE,SM_TEXT,SM_DATE,SM_STATUS,SM_CREATE_BY,SM_CREATE_DATE,SM_OPER_BY,SM_OPER_DATE)
+	VALUES(
+	#{A_ID,jdbcType=VARCHAR},#{SM_TYPE,jdbcType=INTEGER},#{SM_TITLE,jdbcType=VARCHAR},#{SM_TEXT,jdbcType=VARCHAR},#{SM_DATE,jdbcType=VARCHAR},#{SM_STATUS,jdbcType=INTEGER}
+	,#{coachId},now(),#{coachId},now())
+	
+	</insert>
+	<select id="ByTeamidSelectPlayerid" resultType="String">
+
+	SELECT ACCOUNT.A_ID from ACCOUNT 
+ join PLAYER  on PLAYER.A_ID=ACCOUNT.A_ID
+join MID_PLAYER_TEAM on MID_PLAYER_TEAM.P_ID=PLAYER.P_ID
+
+WHERE MID_PLAYER_TEAM.TEAM_ID=#{team_id,jdbcType=VARCHAR} 
+and MID_PLAYER_TEAM.TEAM_PLAYER_STATUS=1
+ AND PLAYER.P_STATUS=1 
+ and ACCOUNT.A_TYPE=1 
+ and ACCOUNT.A_STATUS=1
+union 
+SELECT ACCOUNT.A_ID from ACCOUNT 
+ JOIN  COACH on COACH.A_ID=ACCOUNT.A_ID
+ JOIN  MID_COACH_TEAM  on MID_COACH_TEAM.COACH_ID=COACH.COACH_ID
+WHERE MID_COACH_TEAM.TEAM_ID=#{team_id,jdbcType=VARCHAR} 
+ and MID_COACH_TEAM.COACH_TEAM_STATSU=1
+ AND COACH.COACH_STATUS=1
+ AND ACCOUNT.A_TYPE=2
+ and ACCOUNT.A_STATUS=1
+UNION
+SELECT ACCOUNT.A_ID FROM ACCOUNT
+JOIN TEAM on TEAM.A_ID=ACCOUNT.A_ID
+where TEAM.TEAM_ID=#{team_id,jdbcType=VARCHAR} 
+and  TEAM.TEAM_STATUS=1  
+and ACCOUNT.A_TYPE=4 
+and ACCOUNT.A_STATUS=1
+	</select>
+	<select id="ByPlayerSelectdeviceInfo" parameterType="String" resultType="String">
+	select ACCOUNT.A_PUSH_INFO
+	from ACCOUNT 
+	WHERE ACCOUNT.A_ID=#{string} and A_TYPE=1
+	</select>
+</mapper>

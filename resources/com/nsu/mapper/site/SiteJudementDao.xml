@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.site.SiteJudementDao">
+
+	<select id="selectInfo" resultType="map">
+		select
+		R_NAME,R_REGION,date_format(R_END_TIME, '%Y-%c-%e %T')R_END_TIME,
+		date_format(R_START_TIME, '%Y-%c-%e %T')R_START_TIME,
+		R_H_TEAM_ID,
+		R_V_TEAM_ID,R_FIELD_NUM from RACE_DETAILS
+		left join SCENE on
+		RACE_DETAILS.SE_ID = SCENE.SE_ID
+		left join ACCOUNT on SCENE.SE_ID =
+		ACCOUNT.SE_ID
+		where ACCOUNT.A_ID = #{A_ID}
+	</select>
+
+	<select id="selectNameById" resultType="java.lang.String">
+		select TEAM_NAME from
+		TEAM where TEAM_ID = #{T_ID}
+	</select>
+
+	<insert id="insertPlayer">
+		insert into R_PLAYERS (
+		R_PLAYER_NAME,
+		R_PLAYER_NUM,
+		R_PLAYER_POSITION,
+		R_PLAYER_TEAM,
+		R_ID,
+		R_P_STATUS
+		) VALUES (
+		#{playerName},
+		#{playerNum},
+		#{playerPlace},
+		#{playerTeam},
+		#{R_ID},
+		1
+		)
+	</insert>
+
+	<insert id="insertAlternate">
+		insert into ALTERNATE (
+		B_I_NAME,
+		B_I_NUM,
+		B_O_NAME,
+		B_O_NUM,
+		B_TIME,
+		B_TEAM,
+		R_ID,
+		B_STATUS
+		) VALUES (
+		#{playerInName},
+		#{playerInNum},
+		#{playerOutName},
+		#{playerOutNum},
+		#{time},
+		#{playerTeam},
+		#{R_ID},
+		1
+		)
+	</insert>
+
+	<insert id="insertWran">
+		insert into WARNINGS (
+		W_NAME,
+		W_NUM,
+		W_TIME,
+		W_REASON,
+		W_TEAM,
+		R_ID,
+		W_STATUS
+		) VALUES (
+		#{playerName},
+		#{playerNum},
+		#{time},
+		#{reason},
+		#{teamName},
+		#{R_ID},
+		1
+		)
+	</insert>
+
+	<insert id="insertOut">
+		insert into SEND_OFF (
+		S_NAME,
+		S_NUM,
+		S_TIME,
+		S_REASON,
+		S_TEAM,
+		R_ID,
+		S_STATUS
+		) VALUES (
+		#{playerName},
+		#{playerNum},
+		#{time},
+		#{reason},
+		#{teamName},
+		#{R_ID},
+		1
+		)
+	</insert>
+
+	<insert id="insertInBall">
+		INSERT INTO BALL_IN(
+			PLAYER_NAME,
+			PLAYER_NUM,
+			BALL_IN.TIME,
+			PLAYER_TEAM,
+			Player_ID,
+			R_ID,
+			STATUS
+		)VALUES (
+			#{playerName},
+			#{playerNum},
+			#{time},
+			#{teamNum},
+		  	#{playerID},
+			#{R_ID},
+			1
+		)
+
+	</insert>
+	<update id="updateDetails">
+		UPDATE RACE_DETAILS
+		SET R_FIELD_NUM = #{fileNum},
+		R_REGION = #{gamePlace},
+		R_REGULAR_H_T_S = #{HTeamregular},
+		R_REGULAR_V_T_S = #{VTeamregular},
+		R_OVERTIME_H_T_S = #{HTeamExtra},
+		R_OVERTIME_V_T_S = #{VTeamExtra},
+		R_PENA_H_T_S = #{HTeamPenalty},
+		R_PENA_V_T_S = #{VTeamPenalty},
+		R_WIN_STATUS = #{winStatus},
+		R_WIN_T =#{winTeam},
+		R_RED_C_TEXT = #{redText},
+		R_PENA_TEXT = #{wranText},
+		R_WRONG_TEXT = #{errorText},
+		R_REFEREE_PHONE = #{refPhone},
+		R_REFEREE =#{refName},
+		R_STATUS = 2
+		WHERE R_ID = #{R_ID}
+	</update>
+
+	<select id="selectPlayerList" resultType="java.util.HashMap">
+		select
+		R_PLAYER_NAME,R_PLAYER_POSITION,R_PLAYER_NUM from R_PLAYERS
+		where R_ID
+		= #{R_ID} and R_PLAYER_TEAM=#{teamNum,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectAlternateList" resultType="java.util.HashMap">
+		select
+		B_I_NAME,B_I_NUM,B_O_NAME,B_O_NUM,B_TIME from ALTERNATE
+		where R_ID =
+		#{R_ID} and B_TEAM=#{teamNum,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectInBall" resultType="java.util.HashMap">
+		select PLAYER_NAME,PLAYER_NUM,BALL_IN.TIME FROM  BALL_IN
+		where R_ID =#{R_ID} and PLAYER_TEAM=#{teamNum,jdbcType=INTEGER}
+	</select>
+
+
+	<select id="selectWranList" resultType="java.util.HashMap">
+		select
+		W_NAME,W_NUM,W_TIME,W_REASON,W_TEAM from WARNINGS
+		where R_ID = #{R_ID}
+	</select>
+
+	<select id="selectOutList" resultType="java.util.HashMap">
+		select
+		S_NAME,S_NUM,S_TIME,S_REASON,S_TEAM from SEND_OFF
+		where R_ID = #{R_ID}
+	</select>
+
+	<select id="selectDetails" resultType="java.util.HashMap">
+		select
+		R_REGION,R_FIELD_NUM,R_REGULAR_H_T_S,R_REGULAR_V_T_S,R_OVERTIME_H_T_S,
+		R_OVERTIME_V_T_S,R_PENA_H_T_S,R_PENA_V_T_S,R_WIN_STATUS,R_WIN_T,R_RED_C_TEXT,
+		R_PENA_TEXT,R_WRONG_TEXT,R_REFEREE_PHONE,R_REFEREE from RACE_DETAILS
+		where R_ID = #{R_ID}
+	</select>
+
+	<delete id="deletePlayer">
+		DELETE from R_PLAYERS where R_ID = #{R_ID}
+	</delete>
+	<delete id="deleteAlter">
+		DELETE from ALTERNATE where R_ID = #{R_ID}
+	</delete>
+	<delete id="deleteWran">
+		DELETE from WARNINGS where R_ID = #{R_ID}
+	</delete>
+	<delete id="deleteOut">
+		DELETE from SEND_OFF where R_ID = #{R_ID}
+	</delete>
+	<delete id="deleteInBall">
+		DELETE  FROM  BALL_IN  where R_ID = #{R_ID}
+	</delete>
+	<update id="updateTeamInfo">
+		UPDATE TEAM_SCORE
+		<set>
+			<if test="item == 'TS_SCHOOL_VICTOR'">
+				TS_SCHOOL_VICTOR=TS_SCHOOL_VICTOR+1
+			</if>
+			<if test="item == 'TS_SCHOOL_LOSE'">
+				TS_SCHOOL_LOSE=TS_SCHOOL_LOSE+1
+			</if>
+			<if test="item == 'TS_COUNTRY_VICTOR'">
+				TS_COUNTRY_VICTOR=TS_COUNTRY_VICTOR+1
+			</if>
+			<if test="item == 'TS_CITY_VICTOR'">
+				TS_CITY_VICTOR=TS_CITY_VICTOR+1
+			</if>
+			<if test="item == 'TS_COUNTRY_LOSE'">
+				TS_COUNTRY_LOSE=TS_COUNTRY_LOSE+1
+			</if>
+			<if test="item == 'TS_CITY_LOSE'">
+				TS_CITY_LOSE=TS_CITY_LOSE+1
+			</if>
+			<if test="item == 'TS_PROVINCE_VICTOR'">
+				TS_PROVINCE_VICTOR=TS_PROVINCE_VICTOR+1
+			</if>
+			<if test="item == 'TS_PROVINCE_LOSE'">
+				TS_PROVINCE_LOSE=TS_PROVINCE_LOSE+1
+			</if>
+			<if test="item == 'TS_OTHER_WIN'">
+				TS_OTHER_WIN=TS_OTHER_WIN+1
+			</if>
+			<if test="item == 'TS_OTHER_LOSS'">
+				TS_OTHER_LOSS=TS_OTHER_LOSS+1
+			</if>
+		</set>
+		WHERE TEAM_ID = #{T_ID}
+	</update>
+
+	<update id="updateCoachInfo">
+		UPDATE COACH_SCORE
+		<set>
+			<if test="item == 'CS_PRCVINCE_WIN'">
+				CS_PRCVINCE_WIN=CS_PRCVINCE_WIN+1
+			</if>
+			<if test="item == 'CS_PRCVINCE_LOSE'">
+				CS_PRCVINCE_LOSE=CS_PRCVINCE_LOSE+1
+			</if>
+			<if test="item == 'CS_CITY_WIN'">
+				CS_CITY_WIN=CS_CITY_WIN+1
+			</if>
+			<if test="item == 'CS_CITY_LOSE'">
+				CS_CITY_LOSE=CS_CITY_LOSE+1
+			</if>
+			<if test="item == 'CS_COUNTRY_WIN'">
+				CS_COUNTRY_WIN=CS_COUNTRY_WIN+1
+			</if>
+			<if test="item == 'CS_COUNTRY_LOSE'">
+				CS_COUNTRY_LOSE=CS_COUNTRY_LOSE+1
+			</if>
+			<if test="item == 'CS_SCHOOL_WIN'">
+				CS_SCHOOL_WIN=CS_SCHOOL_WIN+1
+			</if>
+			<if test="item == 'CS_SCHOOL_LOSS'">
+				CS_SCHOOL_LOSS=CS_SCHOOL_LOSS+1
+			</if>
+			<if test="item == 'CS_OTHER_WIN'">
+				CS_OTHER_WIN=CS_OTHER_WIN+1
+			</if>
+			<if test="item == 'CS_OTHER_LOSS'">
+				CS_OTHER_LOSS=CS_OTHER_LOSS+1
+			</if>
+		</set>
+		where COACH_ID = #{coachID}
+	</update>
+
+	<update id="updatePlayerInfo">
+		UPDATE PLAYER_SCORE
+		<set>
+			<if test="item == 'PS_CITY_WIN'">
+				PS_CITY_WIN=PS_CITY_WIN+1
+			</if>
+			<if test="item == 'PS_CITY_LOSE'">
+				PS_CITY_LOSE=PS_CITY_LOSE+1
+			</if>
+			<if test="item == 'PS_PROVINE_WIN'">
+				PS_PROVINE_WIN=PS_PROVINE_WIN+1
+			</if>
+			<if test="item == 'PS_PROVINE_LOSE'">
+				PS_PROVINE_LOSE=PS_PROVINE_LOSE+1
+			</if>
+			<if test="item == 'PS_COUNTY_WIN'">
+				PS_COUNTY_WIN=PS_COUNTY_WIN+1
+			</if>
+			<if test="item == 'PS_COUNTY_LOSE'">
+				PS_COUNTY_LOSE=PS_COUNTY_LOSE+1
+			</if>
+			<if test="item == 'PS_SCHOOL_WIN'">
+				PS_SCHOOL_WIN=PS_SCHOOL_WIN+1
+			</if>
+			<if test="item == 'PS_SCHOOL_LOSE'">
+				PS_SCHOOL_LOSE=PS_SCHOOL_LOSE+1
+			</if>
+			<if test="item == 'PS_OTHER_WIN'">
+				PS_OTHER_WIN=PS_OTHER_WIN+1
+			</if>
+			<if test="item == 'PS_OTHER_LOSS'">
+				PS_OTHER_LOSS=PS_OTHER_LOSS+1
+			</if>
+		</set>
+		 where P_ID = #{playerID}
+	</update>
+
+	<select id="selectGamePlayers" resultType="java.lang.Integer">
+		SELECT P_T_NUM FROM MID_PLAYER_TEAM WHERE TEAM_ID=#{T_ID} AND P_ID=#{P_ID} AND TEAM_PLAYER_STATUS = 1
+	</select>
+	<select id="selectCoachs" resultType="java.lang.Long">
+		SELECT COACH_ID FROM  MID_COACH_TEAM where TEAM_ID = #{T_ID}
+	</select>
+
+	<select id="selectPlayers" resultType="java.lang.Long">
+		SELECT  START_IN_ID FROM  MID_TEAM_RACE where R_ID = #{R_ID} and TEAM_ID=#{T_ID} and CHECK_IDCARD = 1
+	</select>
+	
+	<select id="selectLevel" resultType="java.lang.Integer">
+		SELECT COM_BIG_LEVEL FROM  COMPETITION_NOTICE
+		LEFT JOIN RACE_DETAILS on COMPETITION_NOTICE.COM_ID = RACE_DETAILS.COM_ID
+		WHERE  R_ID = #{R_ID}
+	</select>
+	
+	
+	<select id="selectPlayerNameByID" resultType="java.lang.String">
+		SELECT A_NAME FROM ACCOUNT 
+		LEFT JOIN PLAYER ON PLAYER.A_ID = ACCOUNT.A_ID
+		where PLAYER.P_ID = #{playerId}
+	</select>
+
+	<select id="selectPlayerId" resultType="java.lang.Long">
+		SELECT  P_ID FROM MID_PLAYER_TEAM WHERE
+		TEAM_ID = #{T_ID} AND P_T_NUM=#{number} and TEAM_PLAYER_STATUS = 1
+	</select>
+
+	<select id="selectHTeamId" resultType="java.lang.Integer">
+		SELECT R_H_TEAM_ID FROM RACE_DETAILS WHERE R_ID = #{R_ID}
+	</select>
+
+	<select id="selectVTeamId" resultType="java.lang.Integer">
+		SELECT R_V_TEAM_ID FROM RACE_DETAILS WHERE R_ID = #{R_ID}
+	</select>
+</mapper> 

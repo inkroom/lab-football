@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.publicity.GameInfoDao">
+	<!-- 查询赛事信息 -->
+	<select id="getGameAll" resultType="com.nsu.bean.publicity.GameInfoBean" >
+		SELECT
+			COM_ID AS gameNum,
+			COM_NAME AS gameName,
+			ORG_NAME AS organization,
+			COM_START AS startTime,
+			COM_END AS endTime
+		FROM COMPETITION_NOTICE LEFT JOIN ORGANIZATION
+		ON COMPETITION_NOTICE.`ORG_ID` = ORGANIZATION.`ORG_ID`
+		WHERE COM_STATUS = 1 AND ORG_STAUS = 1
+		ORDER BY COM_OPEAR_DATE DESC
+	</select>
+	
+	<!-- 查询赛事信息（机构） -->
+	<select id="getGameAllOrg" resultType="com.nsu.bean.publicity.GameInfoBean" parameterType="java.lang.Long" >
+		SELECT
+			COM_ID AS gameNum,
+			COM_NAME AS gameName,
+			ORG_NAME AS organization,
+			COM_START AS startTime,
+			COM_END AS endTime
+		FROM COMPETITION_NOTICE LEFT JOIN ORGANIZATION
+		ON COMPETITION_NOTICE.`ORG_ID` = ORGANIZATION.`ORG_ID`
+		WHERE COM_STATUS = 1 AND ORG_STAUS = 1 AND COMPETITION_NOTICE.ORG_ID = #{id}
+		ORDER BY COM_OPEAR_DATE DESC
+	</select>
+	
+	<!-- 根据赛事名查询赛事信息 -->
+	<select id="getGameByName" resultType="com.nsu.bean.publicity.GameInfoBean" parameterType="java.lang.String">
+		SELECT
+			COM_ID AS gameNum,
+			COM_NAME AS gameName,
+			ORG_NAME AS organization,
+			COM_START AS startTime,
+			COM_END AS endTime
+		FROM COMPETITION_NOTICE LEFT JOIN ORGANIZATION
+		ON COMPETITION_NOTICE.`ORG_ID` = ORGANIZATION.`ORG_ID`
+		WHERE COM_STATUS = 1 AND ORG_STAUS = 1 AND COM_NAME = #{name}
+	</select>
+	
+	<!-- 查询赛事详细信息 -->
+	<select id="getGamedetail" resultType="com.nsu.bean.publicity.GameInfoBean" parameterType="java.lang.String">
+		SELECT
+			COM_ID AS gameNum,
+			COM_NAME AS gameName,
+			COM_START AS startTime,
+			COM_END AS endTime,
+			COM_START_TIME AS enrollStartTime,
+			COM_END_TIME AS enrollEndTime,
+			COM_TYPE AS TYPE,
+			COM_LEVEL AS grade,
+			ORG_NAME AS organization,
+			COM_GROUNP AS gro,
+			COM_BIG_LEVEL AS LEVEL
+		FROM COMPETITION_NOTICE LEFT JOIN ORGANIZATION
+		ON COMPETITION_NOTICE.`ORG_ID` = ORGANIZATION.`ORG_ID`
+		WHERE COM_STATUS = 1 AND ORG_STAUS = 1 AND COM_ID = #{id}
+	</select>
+	
+	<!-- 查询参赛球队 -->
+	<select id="getTeam" resultType="com.nsu.bean.publicity.TeamInfoBean" parameterType="java.lang.String">
+		SELECT 
+			TEAM_NAME AS teamName,
+			TEAM_LEADER AS leaderName
+		FROM MID_TEAM_COM LEFT JOIN TEAM
+		ON MID_TEAM_COM.TEAM_ID=TEAM.TEAM_ID
+		WHERE COM_ID = #{id} AND TEAM_COM_STATUS = 1 AND TEAM_STATUS = 1
+	</select>
+	
+	<!-- 首页显示 -->
+	<select id="showGame" resultType="com.nsu.bean.publicity.GameInfoBean">
+		SELECT
+			COM_ID AS gameNum,
+			COM_NAME AS gameName,
+			ORG_NAME AS organization,
+			DATE_FORMAT(COM_CREATE_DATE,'%Y-%m-%d') AS createTime
+		FROM COMPETITION_NOTICE LEFT JOIN ORGANIZATION
+		ON COMPETITION_NOTICE.`ORG_ID` = ORGANIZATION.`ORG_ID`
+		WHERE COM_STATUS = 1 AND ORG_STAUS = 1
+		ORDER BY COM_OPEAR_DATE DESC LIMIT 7
+	</select>
+	
+</mapper> 

@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.organization.OrgCompetitionScheduleDao">
+
+
+
+    <select id="checkWouldEndCom" resultType="boolean">
+        SELECT  COUNT(*) FROM RACE_DETAILS WHERE COM_ID = #{comId} AND R_STATUS = 1;
+    </select>
+
+
+    <select id="checkHaveRaceCom" resultType="boolean">
+        SELECT COUNT(*) FROM RACE_DETAILS WHERE COM_ID = #{comId} AND R_STATUS != 3;
+    </select>
+
+    <!-- 1  2  查询机构的所有赛事 START-->
+    <resultMap id="getQueryAllMap" type="com.nsu.bean.organization.CompetitionBean">
+
+        <id column="COM_ID" property="com_id"/>
+        <result column="COM_LEVEL" property="com_level"/>
+        <result column="COM_GROUNP" property="com_grounp"/>
+        <result column="COM_NAME" property="com_name"/>
+        <result column="COM_START" property="com_start"/>
+        <result column="COM_END" property="com_end"/>
+        <result column="COM_BIG_LEVEL" property="com_big_level"/>
+        <result column="COM_STATUS" property="com_status"/>
+
+    </resultMap>
+
+    <select id="findQueryAll" resultMap="getQueryAllMap">
+        SELECT
+        `COMPETITION_NOTICE`.COM_LEVEL,
+        `COMPETITION_NOTICE`.COM_GROUNP,
+        `COMPETITION_NOTICE`.COM_BIG_LEVEL,
+        `COMPETITION_NOTICE`.COM_NAME,
+        `COMPETITION_NOTICE`.COM_START,
+        `COMPETITION_NOTICE`.COM_END,
+        `COMPETITION_NOTICE`.COM_ID,
+        `COMPETITION_NOTICE`.COM_STATUS
+        FROM
+        `COMPETITION_NOTICE`
+
+        INNER JOIN
+        `ORGANIZATION`
+        ON
+        `ORGANIZATION`.ORG_ID=`COMPETITION_NOTICE`.ORG_ID
+
+        INNER JOIN
+        `ACCOUNT`
+        ON
+        `ACCOUNT`.ORG_ID=`ORGANIZATION`.ORG_ID
+        <where>
+            <choose>
+                <when test="parameter!=null and parameter!='' ">
+                    `COMPETITION_NOTICE`.COM_NAME LIKE CONCAT(CONCAT('%', #{parameter}),'%')
+                    AND `COMPETITION_NOTICE`.ORG_ID=#{org_id}
+                    AND A_TYPE=3
+                    ORDER BY COM_STATUS ASC,COM_OPEAR_DATE DESC
+
+                </when>
+                <otherwise>
+                    AND `ACCOUNT`.ORG_ID=#{org_id}
+                    AND A_TYPE=3
+                    AND A_STATUS=1
+                    ORDER BY COM_STATUS ASC,COM_OPEAR_DATE DESC
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+    <!-- 1  2  查询机构的所有赛事 END-->
+
+    <!--2.2插入第一名、第二名、第三名    START-->
+
+
+    <update id="updateEndPrize" parameterType="map">
+
+        UPDATE `COMPETITION_NOTICE`
+
+        SET
+        <if test="COM_WINNER !=null and COM_WINNER != ''">
+            `COM_WINNER` = #{COM_WINNER},
+        </if>
+        <if test="COM_SECOND !=null and COM_SECOND!=''">
+            `COM_SECOND` = #{COM_SECOND},
+        </if>
+        <if test=" COM_THIRD !=null and COM_THIRD !=''">
+            `COM_THIRD` = #{COM_THIRD},
+        </if>
+
+        `COM_STATUS`=2,
+        `COM_OPEAR_DATE`= NOW()
+        WHERE
+        COM_ID=#{com_id}
+        AND
+        ORG_ID=#{org_id}
+
+    </update>
+
+    <!--2.2插入第一名、第二名、第三名    END-->
+
+
+
+    <!-- 3.搜索改赛事下所有赛事信息  ,可通过赛程地区进行模糊搜素  START-->
+
+    <!--查询单个赛程的详细信息-->
+    <resultMap type="com.nsu.bean.organization.ScheduleBean" id="getSchduleBean">
+
+        <id column="R_ID" property="r_id"/>
+        <result column="R_START_TIME" property="r_start_time"/>
+        <result column="R_END_TIME" property="r_end_time"/>
+        <result column="R_H_TEAM_ID" property="r_h_team_id"/>
+        <result column="R_V_TEAM_ID" property="r_v_team_id"/>
+        <result column="R_REGION" property="r_region"/>
+        <result column="TEAM_H_BADGE" property="team_h_badge"/>
+        <result column="TEAM_V_BADGE" property="team_v_badge"/>
+        <result column="A_USERNAME" property="a_username"/>
+        <result column="R_STATUS" property="r_status"/>
+        <result column="R_REGULAR_H_T_S" property="r_regular_h_t_s"/>
+        <result column="R_REGULAR_V_T_S" property="r_regular_v_t_s"/>
+        <result column="R_OVERTIME_H_T_S" property="r_overtime_h_t_s"/>
+        <result column="R_OVERTIME_V_T_S" property="r_overtime_v_t_s"/>
+        <result column="R_PENA_H_T_S" property="r_pena_h_t_s"/>
+        <result column="R_PENA_V_T_S" property="r_pena_v_t_s"/>
+    </resultMap>
+
+    <select id="searchSchedule" resultMap="getSchduleBean">
+
+        SELECT
+        R_ID,
+        (SELECT TEAM_NAME FROM TEAM WHERE TEAM_ID = R_H_TEAM_ID) AS R_H_TEAM_NAME,
+        (SELECT TEAM_NAME FROM TEAM WHERE TEAM_ID = R_V_TEAM_ID) AS R_V_TEAM_NAME ,
+        (SELECT TEAM_BADGE FROM TEAM WHERE TEAM_ID = R_H_TEAM_ID) AS TEAM_H_BADGE,
+        (SELECT TEAM_BADGE FROM TEAM WHERE TEAM_ID = R_V_TEAM_ID) AS TEAM_V_BADGE,
+        (SELECT  ACCOUNT.A_USERNAME FROM  ACCOUNT WHERE
+             ACCOUNT.A_ID= (SELECT  A_ID FROM  SCENE WHERE  SCENE.SE_ID=RACE_DETAILS.SE_ID) ) AS A_USERNAME,
+        R_REGULAR_H_T_S,
+        R_REGULAR_V_T_S,
+        R_OVERTIME_H_T_S,
+        R_OVERTIME_V_T_S,
+        R_PENA_H_T_S,
+        R_PENA_V_T_S,
+        R_START_TIME,
+        R_END_TIME,
+        R_REGION,
+        R_STATUS
+        FROM
+        RACE_DETAILS
+
+        INNER JOIN
+
+        COMPETITION_NOTICE
+        ON
+        COMPETITION_NOTICE.COM_ID=RACE_DETAILS.COM_ID
+
+        <where>
+            <choose>
+                <when test="parameter!=null and parameter!='' ">
+
+                      RACE_DETAILS.R_REGION LIKE CONCAT(CONCAT('%', #{parameter}),'%')
+
+                    AND COMPETITION_NOTICE.ORG_ID=#{org_id}
+                    AND RACE_DETAILS.COM_ID=#{com_id}
+                    AND COMPETITION_NOTICE.COM_LEVEL=#{stage}
+                    AND COM_STATUS=1
+                    ORDER BY R_STATUS ASC ,RACE_DETAILS.R_OPER_DATE DESC
+
+                </when>
+                <otherwise>
+
+                    AND COMPETITION_NOTICE.ORG_ID=#{org_id}
+                    AND RACE_DETAILS.COM_ID=#{com_id}
+                    AND COMPETITION_NOTICE.COM_LEVEL=#{stage}
+                    AND COM_STATUS=1
+                    ORDER BY R_STATUS ASC ,RACE_DETAILS.R_OPER_DATE DESC
+                </otherwise>
+            </choose>
+        </where>
+
+    </select>
+
+    <!-- 3.搜索改赛事下所有赛事信息  ,可通过赛程地区进行模糊搜素  END-->
+
+
+    <!--4.1_1查询参加赛事的  球队的ID集合  START -->
+
+    <select id="findScheduleTeamID" resultType="map">
+
+            SELECT
+
+                         `MID_TEAM_COM`.TEAM_ID
+
+            FROM
+
+                         `MID_TEAM_COM`
+
+            INNER  JOIN
+
+                         `COMPETITION_NOTICE`
+            ON
+
+                         `MID_TEAM_COM`.COM_ID=`COMPETITION_NOTICE`.COM_ID
+
+            INNER JOIN
+                         `ORGANIZATION`
+
+            ON
+                         `COMPETITION_NOTICE`.ORG_ID=`ORGANIZATION`.ORG_ID
+
+            WHERE
+
+
+                      `ORGANIZATION`.ORG_ID=#{org_id}
+            AND       `MID_TEAM_COM`.COM_ID=#{com_id}
+            AND       `COMPETITION_NOTICE`.COM_LEVEL=#{stage}
+
+            AND        COMPETITION_NOTICE.COM_STATUS=1
+            AND        ORGANIZATION.ORG_STAUS=1
+            AND        MID_TEAM_COM.TEAM_COM_STATUS=1
+
+
+            </select>
+
+    <!--4.1_1查询参加赛事的  球队的ID集合  END -->
+
+
+    <!--4.1_2 通过参加赛事的球队ID 获取球队的基本信息  START  -->
+
+    <select id="findTeamInfo" resultType="map">
+
+        SELECT * FROM
+
+        `TEAM`
+        <where>
+
+            `TEAM`.TEAM_ID
+            IN
+            <foreach item="item" collection="list" separator="," open="(" close=")">
+                #{item.TEAM_ID}
+            </foreach>
+
+        </where>
+
+    </select>
+    <!--4.1_2 通过参加赛事的球队ID 获取球队的基本信息  END  -->
+
+
+    <!--4.2赛程发布信息添加至数据库-->
+
+    <!-- 4.2_1 提交赛程  主队编号 开始时间，结束时间  客队编号  操作时间-->
+    <insert id="addScheduleArrangement" keyProperty="R_ID" useGeneratedKeys="true">
+
+        INSERT INTO
+
+        RACE_DETAILS(R_START_TIME,R_END_TIME,R_H_TEAM_ID,R_V_TEAM_ID,R_OPER_DATE,COM_ID,R_LIVE_TYPE,R_STATUS,R_REGION)
+
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+
+            (#{item.R_START_TIME},#{item.R_END_TIME},#{item.R_H_TEAM_ID},#{item.R_V_TEAM_ID},NOW(),#{com_id},1,1,#{item.R_REGION})
+
+        </foreach>
+
+
+    </insert>
+
+    <!--4.2_2生成  现场管理员账号 密码-->
+
+    <!--4.2_2SCENE 表插入现场管理员ID R_ID  返回SE_ID-->
+    <insert id="addSceneID" useGeneratedKeys="true" keyProperty="SE_ID">
+
+
+                INSERT  INTO  SCENE
+
+
+                      (R_ID,SE_OPER_DATE,SE_STATUS,SE_CREATE_DATE,SE_CREATE_BY)
+
+                VALUES
+
+                <foreach collection="list" item="item" index="index" separator=",">
+                       (#{item.R_ID},NOW(),1,NOW(),#{item.R_ID})
+                </foreach>
+
+            </insert>
+
+
+    <!--4.2_3 更新赛程表中的 现场管理员ID-->
+
+    <update id="updateSceneID">
+
+                    UPDATE
+
+                            RACE_DETAILS
+
+                    SET
+
+                            SE_ID=#{se_username}
+
+                    WHERE
+
+                             R_ID=#{r_id}
+
+         </update>
+
+
+    <!--4_2_4.Account表 插入现场管理员 ID Password -->
+
+    <insert id="addAccountSceneIDPwd" useGeneratedKeys="true" keyProperty="A_ID">
+
+
+                INSERT  INTO
+
+                `ACCOUNT`
+
+                      (`ACCOUNT`.A_USERNAME,`ACCOUNT`.A_PASSWORD,`ACCOUNT`.ORG_ID,`ACCOUNT`.A_TYPE,`ACCOUNT`.A_STATUS,SE_ID)
+
+                 VALUES
+
+               <foreach collection="list" item="item" index="index" separator=",">
+
+                       (#{item.SE_USERNAME},#{item.SE_PASSWORD},#{item.ORG_ID},5,1,#{item.SE_ID})
+
+               </foreach>
+        </insert>
+
+    <!--4_2_5通过用户ID拿到球队名称-->
+    <select id="findTeamNameByID" resultType="String">
+
+            SELECT  TEAM_NAME  FROM TEAM  WHERE  TEAM_ID =#{team_id}
+
+        </select>
+
+
+
+
+    <!--4_2_6 通过机构ID 获取机构名-->
+    <select id="findOrgName"  resultType="String">
+
+        SELECT
+
+                ORG_NAME
+
+        FROM
+                ORGANIZATION
+
+        WHERE
+                ORG_ID=#{org_id}
+        AND
+                ORG_STAUS=1
+
+
+    </select>
+
+    <!--4_2_7 SYSTEM_MSG 插入一条赛程发布消息-->
+    <insert id="addSysMsgInfo">
+
+        INSERT  INTO
+
+        SYSTEM_MSG
+
+        (A_ID, SM_TYPE, SM_TITLE, SM_TEXT, SM_DATE, SM_STATUS, SM_CREATE_BY, SM_CREATE_DATE, SM_OPER_BY, SM_OPER_DATE, COM_ID)
+
+        VALUES
+
+        (#{a_id},2,#{SM_TITLE},#{SM_TEXT},NOW(),1,#{a_id},NOW(),#{a_id},NOW(),#{com_id})
+
+    </insert>
+
+    <!--4_2_8 更新表中 SCENE表中 A_ID-->
+    <update id="updateSceneA_ID" >
+
+
+
+                    UPDATE
+
+                             SCENE
+
+                    SET
+
+                             A_ID=#{a_id}
+
+                    WHERE
+
+                             SE_ID=#{se_id}
+
+    </update>
+
+    <!--5 查询单个赛程的详细信息-->
+    <select id="findScheduleInfo" resultMap="getSchduleBean">
+
+            SELECT
+
+            R_H_TEAM_ID,
+            R_V_TEAM_ID,
+            R_START_TIME,
+            R_END_TIME,
+            R_REGION
+            FROM
+            RACE_DETAILS
+
+            WHERE
+            R_ID=#{r_id}
+            AND
+            R_STATUS=1
+        </select>
+
+    <!-- 6. 编辑单个赛程信息-->
+    <update id="updateSchedule" parameterType="map">
+
+        UPDATE RACE_DETAILS
+        SET
+
+        <if test="R_H_TEAM_ID !=null and R_H_TEAM_ID != ''">
+            R_H_TEAM_ID = #{R_H_TEAM_ID},
+        </if>
+        <if test="R_V_TEAM_ID !=null and R_V_TEAM_ID!=''">
+            R_V_TEAM_ID = #{R_V_TEAM_ID},
+        </if>
+        <if test=" R_START_TIME !=null and R_START_TIME !=''">
+            R_START_TIME = #{R_START_TIME},
+        </if>
+        <if test=" R_END_TIME !=null and R_END_TIME !=''">
+            R_END_TIME = #{R_END_TIME},
+        </if>
+        <if test=" R_REGION !=null and R_REGION !=''">
+            R_REGION = #{R_REGION},
+        </if>
+
+        R_OPER_DATE= NOW()
+        WHERE
+        R_ID=#{R_ID}
+        AND
+        R_STATUS=1
+
+    </update>
+
+    <!--7. 删除单个赛事信息-->
+    <delete id="deleteSchedule">
+
+        UPDATE  RACE_DETAILS
+        SET
+        R_STATUS=3
+
+        WHERE
+
+        R_ID=#{r_id}
+
+    </delete>
+
+
+    <!--8. 通过队名查到队旗-->
+    <select id="findPicAdress" resultType="String">
+        SELECT
+
+        `TEAM`.TEAM_BADGE
+
+        FROM
+
+        `TEAM`
+
+        WHERE
+
+        `TEAM`.TEAM_ID=#{team_id}
+
+        AND  TEAM_STATUS=1
+
+    </select>
+
+    <!--手机端1. 手机查询用户信息是否存在-->
+    <select id="findUserInfo" resultType="map">
+
+
+        SELECT  * FROM `ACCOUNT`
+
+        INNER  JOIN `ORGANIZATION`
+
+        ON
+
+        `ORGANIZATION`.ORG_ID=`ACCOUNT`.ORG_ID
+
+        WHERE `ACCOUNT`.ORG_ID=#{username}
+
+        AND  ACCOUNT.A_TYPE=3
+
+        AND  ACCOUNT.A_STATUS=1
+
+        AND  ORGANIZATION.ORG_STAUS=1
+    </select>
+
+
+    <!--手机端2. 手机得倒所有的赛程信息-->
+
+
+    <resultMap type="com.nsu.bean.organization.MobileScheduleBean" id="mobile_raceinfo">
+
+        <result column="R_START_TIME" property="r_start_time"/>
+        <result column="R_END_TIME" property="r_end_time"/>
+        <result column="R_H_TEAM_NAME" property="r_h_team_name"/>
+        <result column="R_V_TEAM_NAME" property="r_v_team_name"/>
+
+    </resultMap>
+    <select id="getRaceInfo" resultMap="mobile_raceinfo">
+        SELECT
+            (SELECT  TEAM_NAME  FROM TEAM  WHERE  TEAM_ID = R_H_TEAM_ID) AS R_H_TEAM_NAME,
+            (SELECT  TEAM_NAME  FROM TEAM  WHERE  TEAM_ID = R_V_TEAM_ID) AS R_V_TEAM_NAME ,
+            R_START_TIME,
+            R_END_TIME
+        FROM
+
+         RACE_DETAILS
+
+        INNER  JOIN
+
+        COMPETITION_NOTICE
+
+        ON
+
+        COMPETITION_NOTICE.COM_ID=RACE_DETAILS.COM_ID
+
+        WHERE
+
+        RACE_DETAILS.COM_ID=#{com_id}
+
+        AND
+
+        COMPETITION_NOTICE.ORG_ID=#{a_username}
+
+
+    </select>
+
+    <!--获得球队 A_ID 插入赛程发布信息-->
+    <select id="findTeamA_ID" resultType="String" >
+        SELECT
+
+            A_ID
+        FROM
+
+            TEAM
+
+        WHERE
+           TEAM_ID=#{id}
+           AND
+           TEAM_STATUS=1
+
+    </select>
+
+    <!--重置现场管理员密码-->
+    <update id="updateScheulePwd" parameterType="com.nsu.bean.organization.ScheduleAcountPwdBean" >
+        UPDATE ACCOUNT
+        SET
+              ACCOUNT.A_PASSWORD=#{a_password}
+        WHERE
+               ACCOUNT.A_USERNAME=#{a_username}
+        AND
+             ACCOUNT.A_TYPE=5
+        AND
+             ACCOUNT.A_STATUS=1
+    </update>
+
+    <select id="getComEndTime" resultType = "String">
+        SELECT date_format(COM_END_TIME, '%Y-%c-%e %T')COM_END_TIME FROM COMPETITION_NOTICE WHERE COM_ID=#{COM_ID}
+    </select>
+</mapper>
+
+

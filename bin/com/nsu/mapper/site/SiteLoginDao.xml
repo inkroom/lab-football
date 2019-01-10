@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.site.SiteLoginDao">
+	<!-- 登录查询账号是否存在 -->
+	<select id="selectName" resultType="java.lang.String">
+		select
+		A_USERNAME from ACCOUNT where A_TYPE=5
+	</select>
+
+	<!-- 根据账号查询密码 -->
+	<select id="selectPasswordByName" resultType="java.lang.String">
+		select A_PASSWORD from ACCOUNT where A_USERNAME = #{name}
+		AND A_STATUS
+		= 1
+	</select>
+
+	<select id="selectSEID" resultType="java.lang.Long">
+		select SE_ID from ACCOUNT where A_ID = #{AID}
+	</select>
+	<select id="selectAIDByName" resultType="java.lang.Integer">
+		select A_ID from ACCOUNT
+		where A_USERNAME = #{name}
+		AND A_STATUS = 1
+	</select>
+
+	<select id="selectInfoByAID" resultType="map">
+		select A_NAME,A_PHONE from ACCOUNT where A_ID = #{A_ID}
+	</select>
+
+	<insert id="insertPreInfo">
+		UPDATE ACCOUNT SET A_NAME = #{name},A_PHONE=#{phone}
+		where A_ID = #{A_ID}
+	</insert>
+
+	<select id="getUserInfo" resultType="java.util.Map">
+		SELECT
+		ACCOUNT.A_ID,A_NAME,
+		A_PHONE,COMPETITION_NOTICE.COM_NAME,
+		RACE_DETAILS.R_START_TIME,
+		RACE_DETAILS.R_REGION,
+		(select TEAM_NAME from TEAM where TEAM_ID=R_H_TEAM_ID) hname,
+		(select TEAM_NAME from TEAM where TEAM_ID=R_V_TEAM_ID) vname
+		from ACCOUNT
+		left
+		join RACE_DETAILS on ACCOUNT.SE_ID = RACE_DETAILS.SE_ID
+		left join
+		COMPETITION_NOTICE on RACE_DETAILS.COM_ID=COMPETITION_NOTICE.COM_ID
+		WHERE A_USERNAME =#{userName} and ACCOUNT.A_TYPE = 5 and ACCOUNT.A_STATUS = 1
+	</select>
+	<update id="updateMobileInfo">
+		UPDATE ACCOUNT SET
+		A_DEVICE_INFO=#{mobile.deviceInfo},A_PUSH_INFO=#{mobile.pushInfo}
+		WHERE A_USERNAME =#{mobile.username}
+	</update>
+
+
+	<select id="selectStatus" resultType="java.lang.Integer">
+		select SE_STATUS from SCENE
+		left join ACCOUNT on SCENE.SE_ID=ACCOUNT.SE_ID
+		where ACCOUNT.A_USERNAME
+		= #{userName}
+	</select>
+
+	<select id="selectUserName" resultType="java.lang.String">
+		select A_NAME from
+		ACCOUNT where A_ID = #{A_ID}
+	</select>
+</mapper> 

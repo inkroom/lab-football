@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.team.TeamLoginDao">
+
+<!-- 查询用户信息 -->	
+	<select id="findTeamUserInfo" flushCache="true" useCache="false" parameterType="java.lang.String" resultType="java.util.Map" >
+		SELECT A_USERNAME USERNAME,A_NAME aName,TEAM_TYPE, A_EMAIL email, A_PASSWORD PASSWORD, TEAM.A_ID, A_TYPE, TEAM.TEAM_ID teamID, TEAM_LEADER leader, TEAM_BADGE, TEAM_FLAG, date_format(A_CREATE_DATE, '%Y-%c-%e %T') teamCreateDate
+			FROM ACCOUNT LEFT JOIN TEAM ON(ACCOUNT.A_ID=TEAM.A_ID AND TEAM.TEAM_STATUS=1)
+			WHERE A_TYPE=4 AND A_STATUS=1 AND A_USERNAME=#{username}
+	</select>
+	
+<!--查询球队领队名字 -->	
+	<select id="findTeamLeader" parameterType="java.lang.String" resultType="java.lang.String" >
+		SELECT TEAM_LEADER leader  
+			FROM TEAM 
+			WHERE TEAM_STATUS=1 AND A_ID=#{A_ID}
+	</select>
+<!-- 更新手机信息 -->	
+	<update id="updateMobileInfo">
+		UPDATE ACCOUNT SET A_DEVICE_INFO=#{mobile.deviceInfo},A_PUSH_INFO=#{mobile.pushInfo} WHERE A_USERNAME =#{mobile.username} AND A_TYPE=4
+	</update>
+
+<!-- 手机端使用，查询球队用户基本信息  -->	
+	<select id="getUserInfo" parameterType="java.lang.String" resultType="java.util.Map" >
+		SELECT ACCOUNT.A_ID, TEAM.TEAM_ID teamID, ACCOUNT.A_NAME, TEAM_NUM, TEAM_PHONE_NUM, TEAM_NAME, TEAM_FLAG 
+			, TEAM_LEADER, TEAM_ISPIRATION_LOGO, TEAM_RANK, TEAM_TYPE, TEAM_AFFILIATION 
+		FROM ACCOUNT 
+		LEFT JOIN TEAM ON(ACCOUNT.A_ID=TEAM.A_ID AND TEAM.TEAM_STATUS=1)
+		WHERE ACCOUNT.A_USERNAME=#{username} AND ACCOUNT.A_STATUS=1 AND ACCOUNT.A_TYPE=4
+	</select>
+	
+<!-- 手机端使用 , 根据球队ID查询球队教练信息-->	
+	<select id="getTeamCoachsInfo" parameterType="java.lang.Object" resultType="java.util.Map" >
+		SELECT COACH.COACH_ID, A_NAME, A_PHONE   
+		FROM COACH LEFT JOIN ACCOUNT ON(ACCOUNT.A_ID=COACH.A_ID AND A_STATUS=1)
+		WHERE COACH_STATUS=1 
+			AND COACH.COACH_ID IN(SELECT COACH_ID 
+									FROM MID_COACH_TEAM 
+									WHERE COACH_TEAM_STATSU=1 AND MID_COACH_TEAM.TEAM_ID=#{teamID})
+	</select>
+	
+<!-- 手机端使用 , 根据球队ID查询队员信息-->		
+	<select id="getTeamPlayersInfo" parameterType="java.lang.Object" resultType="java.util.Map">
+		SELECT PLAYER.P_ID pid, ACCOUNT.A_NAME playerName, P_POSITION position, P_PEROSONAL_PHOTO photo, P_SEX sex, P_SCHOOL school
+		FROM PLAYER LEFT JOIN ACCOUNT ON(ACCOUNT.A_ID=PLAYER.A_ID AND A_STATUS=1)
+		WHERE PLAYER.P_STATUS=1 
+				AND PLAYER.P_ID IN (SELECT P_ID
+									FROM MID_PLAYER_TEAM 
+									WHERE TEAM_PLAYER_STATUS=1 AND MID_PLAYER_TEAM.TEAM_ID=#{teamID})
+	</select>
+	
+<!-- 手机端使用 , 根据队员id查询比赛信息-->	
+	<select id="findTeamPlayerScore" parameterType="java.lang.Object" resultType="java.util.Map">
+		SELECT * FROM 
+		PLAYER_SCORE 
+		WHERE P_ID=#{pid} AND PS_STUTAS=1 LIMIT 1
+	</select>
+	
+</mapper> 

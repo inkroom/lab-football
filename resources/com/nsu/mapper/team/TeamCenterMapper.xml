@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.team.TeamCenterDao">
+
+<!-- 查询球队基础信息 -->
+	<select id="findFootballTeamDao" parameterType="java.lang.String" resultType="java.util.Map">
+	SELECT TEAM.TEAM_ID teamID, TEAM_NAME,TEAM.TEA_ID,TEAM_LEADER,TEAM_TYPE,TEAM_ISPIRATION_LOGO,
+        TEAM_PHONE_NUM,TS_SCHOOL_VICTOR,TS_COUNTRY_VICTOR,TS_CITY_VICTOR,TS_PROVINCE_VICTOR,
+        TS_SCHOOL_LOSE,TS_COUNTRY_LOSE,TS_CITY_LOSE,TS_PROVINCE_LOSE,TEAM_NUM,
+        TS_OTHER_WIN,TS_OTHER_LOSS,TEAM_AUDIT
+        FROM TEAM
+        LEFT JOIN TEAM_SCORE ON TEAM_SCORE.TEAM_ID=TEAM.TEAM_ID AND TS_STATUS = 1
+        WHERE TEAM.TEAM_ID=#{TEAM_ID}
+	</select>
+	
+<!-- 查询球队所有球员 htd -->
+	<!-- 查询球队所有球员 ljl 添加队员主键ID P_ID-->
+	<select id="findTeamplayerDao"  parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamCenterDO">
+		SELECT PLAYER.A_ID, P_BIRTHDAY, PLAYER.P_ID pID, ACCOUNT.A_ID_CARD idCard, A_NAME AS PLAYER_NAME,A_PHONE AS PLAYER_PHONE,P_SEX pSex,P_POSITION,P_GRADE_TABLE_ID,PLAYER.P_ID 
+		FROM PLAYER
+		LEFT JOIN ACCOUNT ON(A_STATUS=1 AND ACCOUNT.A_ID=PLAYER.A_ID)
+		WHERE PLAYER.P_ID IN (SELECT P_ID FROM MID_PLAYER_TEAM WHERE TEAM_ID=#{TEAM_ID} AND TEAM_PLAYER_STATUS=1)
+	</select>
+	
+<!-- 查询一个球队已经结束的比赛总数 -->
+    <select id="findMatchTeamNUM"  parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) 
+		FROM RACE_DETAILS 
+		WHERE (R_H_TEAM_ID = #{TEAM_ID} OR R_V_TEAM_ID = #{TEAM_ID}) AND R_STATUS = 2
+	</select>
+	
+<!-- 查询一个球队已经结束的比赛获胜场数 -->
+    <select id="findMatchTeamWIN"  parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) 
+		FROM RACE_DETAILS 
+		WHERE (R_H_TEAM_ID = #{TEAM_ID} AND R_WIN_STATUS=0) OR (R_V_TEAM_ID = #{TEAM_ID} AND R_WIN_STATUS=1)  AND R_STATUS = 2
+	</select>
+	
+	
+<!-- 查询球队所有教练员 -->
+	<select id="findTeamCoachDao" resultType="com.nsu.bean.team.TeamCenterDO">
+        SELECT A_NAME AS "COACH_NAME",COACH.COACH_ID,COACH.`COACH_PHOTO`
+        FROM ACCOUNT
+        LEFT JOIN COACH ON(COACH_STATUS=1 AND ACCOUNT.A_ID=COACH.A_ID) 
+        WHERE COACH.COACH_ID IN (SELECT COACH_ID FROM MID_COACH_TEAM WHERE TEAM_ID=#{TEAM_ID}  AND COACH_TEAM_STATSU=1)
+	</select>
+	
+<!-- 查询球队球员数量 ljl -->
+	<select id="findTeamPlayersNum" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) FROM MID_PLAYER_TEAM WHERE TEAM_PLAYER_STATUS=1 AND TEAM_ID=#{teamID}
+	</select>
+
+<!-- 查询球队的；队名、类型、领队名、手机号、励志标语、图片、音乐、等级 ljl -->
+	<select id="findTeamBasicInfo" parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamBasicInfoBean">
+		SELECT TEAM_ID teamID, TEAM_PHONE_NUM teamLeaderPhone, TEAM_NAME teamName, TEAM_LEADER teamLeader, TEAM_RANK teamRank
+			, TEAM_ISPIRATION_LOGO teamInspirationalSlogan, TEAM_TYPE teamType, TEAM_BADGE teamLogo, TEAM_FLAG teamFlag, TEAM_MUSIC teamMusic 
+		FROM TEAM 
+		WHERE TEAM_STATUS=1 AND TEAM_ID=#{teamID}
+	</select>		
+	<select id="findTeamEmail" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT ACCOUNT.A_EMAIL email FROM TEAM 
+		LEFT JOIN ACCOUNT on(ACCOUNT.A_ID=TEAM.A_ID and ACCOUNT.A_STATUS=1)
+		WHERE TEAM.TEAM_STATUS=1 AND TEAM.TEAM_ID=#{teamID}
+	</select>
+<!--  查询教练员信息 -->
+	<select id="findTeamCoachsInfo" parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamCoachBean" >
+		SELECT ACCOUNT.A_NAME coachName, ACCOUNT.A_PHONE phone,  COACH.COACH_PHOTO photo, COACH.COACH_ID coachID 
+			FROM COACH LEFT JOIN ACCOUNT ON(ACCOUNT.A_ID=COACH.A_ID AND ACCOUNT.A_STATUS=1)
+			WHERE COACH.COACH_STATUS=1 
+				AND COACH.COACH_ID IN (SELECT COACH_ID FROM MID_COACH_TEAM WHERE COACH_TEAM_STATSU=1 AND TEAM_ID=#{teamID})
+	</select>
+	
+<!-- 更新球队在team表的基本信息 ljl-->
+	<update id="updateTeamBasicInfo" parameterType="com.nsu.bean.team.TeamBasicInfoBean">
+		UPDATE TEAM 
+			SET TEAM_PHONE_NUM=#{teamLeaderPhone}, TEAM_LEADER=#{teamLeader}
+				,TEAM_ISPIRATION_LOGO=#{teamInspirationalSlogan}, TEAM_TYPE=#{teamType}, TEAM_OPER_BY=#{account}, TEAM_OPER_DATE=NOW()
+				,TEAM_STATUS=1, TEAM_NAME=#{teamName}, TEAM_RANK=#{teamRank} 
+			WHERE TEAM_ID=#{teamID} AND TEAM_STATUS=1
+	</update>
+	
+<!-- 更新球队在account表的a_name ljl-->	
+	<update id="updateTeamANameInAccount" parameterType="java.util.Map">
+		UPDATE ACCOUNT 
+			SET A_NAME=#{A_NAME}, A_OPER_BY=#{A_OPER_BY}, A_OPER_DATE=NOW() WHERE A_ID=#{A_ID} AND A_STATUS=1
+	</update>
+	<update id="updateTeamAEmailInAccount" parameterType="java.util.Map">
+		UPDATE ACCOUNT 
+			SET A_EMAIL=#{A_EMAIL}, A_OPER_BY=#{A_OPER_BY}, A_OPER_DATE=NOW() WHERE A_ID=#{A_ID} AND A_STATUS=1
+	</update>
+	
+<!-- 向teamNotice 表插入球队的信息，用于历史记录以前的信息 ljl-->	
+	<insert id="insertIntoTeamNoticeTble" parameterType="com.nsu.bean.team.TeamBasicInfoBean">
+		INSERT INTO TEAM_NOTICE (TEAM_ID, TEA_NAME, TEA_COACH_NAME, TEA_LEADER, TEA_NUM
+			, TEA_CREATE_TIME, TEA_OPERTAION_BY, TEA_OPERATION_DATE, TEA_CREATE_BY, TEA_CREATE_DATE)
+		VALUES(#{teamID}, #{teamName}, #{teamCoach}, #{teamLeader}, #{teamPlayerNum}
+			, #{teamCreateTime}, #{account}, NOW(), #{account}, NOW())
+	</insert>
+
+<!-- 更新球队队徽 -->	
+	<update id="updateTeamLogo" parameterType="java.lang.String">
+		UPDATE TEAM 
+		SET TEAM_BADGE=#{filePath} 
+		WHERE TEAM_ID=#{teamID} AND TEAM_STATUS=1
+	</update>
+<!-- 更新球队队旗 -->	
+	<update id="updateTeamFlag" parameterType="java.lang.String">
+		UPDATE TEAM 
+		SET TEAM_FLAG=#{filePath} 
+		WHERE TEAM_ID=#{teamID} AND TEAM_STATUS=1
+	</update>
+
+<!-- 更新球队队歌 -->	
+	<update id="updateTeamSong" parameterType="java.lang.Object">
+		UPDATE TEAM 
+		SET TEAM_MUSIC=#{songPath} 
+		WHERE TEAM_ID=#{teamID} AND TEAM_STATUS=1
+	</update>
+	
+	<!-- 查询球队所有球员以及待审核球员  -->
+	<select id="findTeamplayerCheckDao" resultType="com.nsu.bean.team.TeamCenterDO">
+        SELECT DISTINCT PLAYER.P_ID, A_NAME AS PLAYER_NAME,A_PHONE AS PLAYER_PHONE,P_SEX,P_AGE,P_POSITION,P_GRADE_TABLE_ID,ACCOUNT.A_ID,MID_PLAYER_TEAM.`TEAM_PLAYER_STATUS` FROM PLAYER
+        LEFT JOIN ACCOUNT ON(A_STATUS=1 AND ACCOUNT.A_ID=PLAYER.A_ID)
+        LEFT JOIN MID_PLAYER_TEAM ON MID_PLAYER_TEAM.P_ID=ACCOUNT.P_ID
+        WHERE PLAYER.P_ID IN (SELECT P_ID FROM MID_PLAYER_TEAM WHERE TEAM_ID=#{TEAM_ID} AND (TEAM_PLAYER_STATUS=1 OR TEAM_PLAYER_STATUS=0))
+	</select>
+	
+	
+    <!-- 查询球队所有教练员以及待审核教练员 -->
+	<select id="findTeamCoachCheckInfo" resultType="com.nsu.bean.team.TeamCenterDO">
+        SELECT DISTINCT A_NAME AS "COACH_NAME",ACCOUNT.A_ID,MID_COACH_TEAM.COACH_TEAM_STATSU
+        FROM ACCOUNT
+        LEFT JOIN COACH ON(COACH_STATUS=1 AND ACCOUNT.A_ID=COACH.A_ID)
+        LEFT JOIN MID_COACH_TEAM ON MID_COACH_TEAM.COACH_ID = COACH.COACH_ID 
+        WHERE COACH.COACH_ID IN (SELECT COACH_ID FROM MID_COACH_TEAM WHERE TEAM_ID=#{TEAM_ID}  AND (COACH_TEAM_STATSU=1 OR COACH_TEAM_STATSU=0))
+	</select>
+	
+	<!-- 查询球队所属机构信息 -->
+	<select id="findTeamOrgDao" resultType="com.nsu.bean.team.TeamCenterDO">
+       SELECT TEAM_ID,ORGANIZATION.ORG_ID,ORG_NAME 
+       FROM ORGANIZATION 
+       LEFT JOIN TEAM ON ORGANIZATION.`ORG_ID` = TEAM.`TEAM_INSID` AND ORG_STAUS = 1
+       WHERE TEAM_ID = #{TEAM_ID} AND TEAM_AUDIT = 1
+	</select>
+	
+	<!-- 查询所有机构信息 -->
+	<select id="findALLOrgDao" resultType="com.nsu.bean.team.TeamCenterDO">
+       SELECT ORG_ID,ORG_NAME 
+       FROM ORGANIZATION 
+       WHERE ORG_ID = #{ORG_ID} 
+	</select>
+	
+	
+    <!-- 修改球队申请机构账号以及申请状态 -->
+	<update id="updateOrgStatus" parameterType="java.lang.String">
+        UPDATE TEAM
+        SET TEAM_INSID=#{ORG_ID},
+        TEAM_AUDIT = 0
+        WHERE TEAM_ID=#{TEAM_ID} 
+	</update>
+	
+	<!-- 根据P_ID查询A_ID -->
+	<select id="findAIDBYPID" parameterType="java.lang.String" resultType="int">
+      SELECT  A_ID
+      FROM PLAYER WHERE P_ID = #{P_ID}
+	</select>
+	
+	<!-- 根据COACH_ID查询A_ID -->
+	<select id="findAIDBYCOACHID" parameterType="java.lang.String" resultType="int">
+      SELECT  A_ID
+      FROM COACH WHERE COACH_ID = #{COACH_ID}
+	</select>
+	
+	<!-- 根据TEAM_ID查询A_ID和TEAM_NAME -->
+	<select id="findAIDBYTEAM" resultType="com.nsu.bean.team.TeamCenterDO">
+	 SELECT  A_ID,TEAM_NAME
+	 FROM TEAM WHERE TEAM_ID = #{TEAM_ID}
+	</select>
+	
+	
+	<!-- 根据ORG_ID查询A_ID和 -->
+	<select id="findAIDBYORG" parameterType="java.lang.String" resultType="int">
+	 SELECT A_ID
+	 FROM ACCOUNT
+	 LEFT JOIN ORGANIZATION ON ACCOUNT.`ORG_ID` = ORGANIZATION.`ORG_ID`
+	 WHERE ORGANIZATION.`ORG_ID` = #{ORG_ID} AND A_TYPE = 3
+	</select>
+</mapper> 

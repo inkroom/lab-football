@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.organization.OrgDao">
+	
+	<select id="getRoleAuthority" resultType="map" >
+		select * from ORGANIZATION where ORG_ID = #{name} and  = #{url}
+	</select>
+	
+</mapper> 

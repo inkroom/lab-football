@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.publicity.CoachPubDao">
+	<!-- 查询教练员信息 -->
+	<select id="getCoachAll" resultType="com.nsu.bean.publicity.CoachPubBean" >
+		SELECT
+			COACH.COACH_ID AS id,
+			A_NAME AS name,
+			COACH_SEX AS sex,
+			ACCOUNT.`A_ID_CARD` AS birthday
+		FROM COACH LEFT JOIN ACCOUNT
+		ON COACH.A_ID = ACCOUNT.A_ID
+		WHERE COACH_STATUS = 1 AND COACH_SEX IS NOT NULL
+		order by COACH_OPER_DATE desc
+	</select>
+	
+	<!-- 根据教练员名查询教练员信息 -->
+	<select id="getCoachByName" resultType="com.nsu.bean.publicity.CoachPubBean" parameterType="java.lang.String">
+		SELECT
+			COACH.COACH_ID AS id,
+			A_NAME AS name,
+			COACH_SEX AS sex,
+			ACCOUNT.`A_ID_CARD` AS birthday
+		FROM COACH LEFT JOIN ACCOUNT
+		ON COACH.A_ID = ACCOUNT.A_ID
+		WHERE A_NAME = #{name} AND COACH_STATUS = 1
+	</select>
+	
+	<!-- 查询教练员详细信息 -->
+	<select id="getCoachDetail" resultType="com.nsu.bean.publicity.CoachPubBean" parameterType="java.lang.String" >
+		SELECT
+			A_NAME AS name,
+			COACH_SEX AS sex,
+			ACCOUNT.`A_ID_CARD` AS birthday,
+			COACH_HEIGHT AS height,
+			COACH_WEIGHT AS weight,
+			COACH_HEAILTY AS healthy,
+			COACH_JOB AS job,
+			COACH_EXP AS exp,
+			COACH_PHOTO AS photo
+		FROM COACH LEFT JOIN ACCOUNT
+		ON COACH.A_ID = ACCOUNT.A_ID
+		WHERE COACH.COACH_ID = #{id}
+	</select>
+	
+	<!-- 查询教练员所属的球队 -->
+	<select id="getCoachTeam" resultType="java.lang.String" parameterType="java.lang.String" >
+		SELECT DISTINCT
+			TEAM_NAME 
+		FROM MID_COACH_TEAM LEFT JOIN TEAM
+		ON MID_COACH_TEAM.`TEAM_ID` = TEAM.`TEAM_ID`
+		WHERE MID_COACH_TEAM.`COACH_ID` = #{id} AND MID_COACH_TEAM.`COACH_TEAM_STATSU` = 1 AND TEAM.`TEAM_STATUS` = 1
+	</select>
+	
+	<!-- 查询教练员积分 -->
+	<select id="getCoachScore" resultType="com.nsu.bean.publicity.CoachPubBean" parameterType="java.lang.String" >
+		SELECT 
+			CS_PRCVINCE_WIN AS pWin,
+			CS_PRCVINCE_ALL AS pAll,
+			CS_PRCVINCE_LOSE AS pLose,
+			CS_CITY_WIN AS cityWin,
+			CS_CITY_ALL AS cityAll,
+			CS_CITY_LOSE AS cityLose,
+			CS_COUNTRY_WIN AS counWin,
+			CS_COUNTRY_ALL AS counAll,
+			CS_COUNTRY_LOSE AS counLose,
+			CS_SCHOOL_WIN AS scWin,
+			CS_SCHOOL_ALL AS scAll,
+			CS_SCHOOL_LOSS AS scLose,
+			CS_OTHER_WIN AS otherWin,
+			CS_OTHER_ALL AS otherAll,
+			CS_OTHER_LOSS AS otherLose
+		FROM COACH_SCORE
+		WHERE COACH_ID = #{id} AND CS_STATUS = 1
+	</select>
+	
+	<!-- 首页显示 -->
+	<select id="showCoach" resultType="com.nsu.bean.publicity.CoachPubBean">
+		SELECT
+			COACH.COACH_ID AS id,
+			A_NAME AS name,
+			DATE_FORMAT(COACH_CREATE_DATE,'%Y-%m-%d') AS createTime,
+			COACH_SEX AS sex
+		FROM COACH LEFT JOIN ACCOUNT
+		ON COACH.A_ID = ACCOUNT.A_ID
+		WHERE COACH_STATUS = 1
+		ORDER BY COACH_OPER_DATE DESC LIMIT 7
+	</select>
+</mapper> 

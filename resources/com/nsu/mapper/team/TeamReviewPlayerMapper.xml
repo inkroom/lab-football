@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.team.TeamReviewPlayerDao">
+
+<!-- 查询申请了的所有球员信息 -->	
+	<select id="findApplyPlayersByTeamID" parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamCenterDO" >
+		SELECT MID_PLAYER_TEAM.TEAM_PLAYER_ID, MID_PLAYER_TEAM.TEAM_ID, MID_PLAYER_TEAM.P_ID pID, TEAM_PLAYER_STATUS
+ 			,P_POSITION, A_ID_CARD idCard, P_SCHOOL pSchool, A_NAME PLAYER_NAME, PLAYER.P_SEX pSex 
+ 			FROM MID_PLAYER_TEAM LEFT JOIN PLAYER ON(PLAYER.P_ID=MID_PLAYER_TEAM.P_ID AND PLAYER.P_STATUS=1) 
+ 			LEFT JOIN ACCOUNT ON(ACCOUNT.A_ID=PLAYER.A_ID AND ACCOUNT.A_STATUS=1)
+		WHERE MID_PLAYER_TEAM.TEAM_ID =#{teamID} AND TEAM_PLAYER_STATUS!=3
+	</select>
+
+<!-- 查询球员比赛信息 -->	
+	<select id="getPlayerInfo" parameterType="java.lang.String" resultType="map">
+		SELECT
+			PS_SCHOOL_WIN,
+			PS_SCHOOL_FLAT,
+			PS_SCHOOL_LOSE,
+			PS_COUNTY_WIN,
+			PS_COUNTY_FLAT,
+			PS_COUNTY_LOSE,
+			PS_CITY_WIN,
+			PS_CITY_FLAT,
+			PS_CITY_LOSE,
+			PS_PROVINE_WIN,
+			PS_PROVINE_FLAT,
+			PS_PROVINE_LOSE,
+			PS_OTHER_WIN,
+			PS_OTHER_LOSS,
+			PS_OTHER_ALL
+		FROM
+			ACCOUNT
+		LEFT JOIN PLAYER ON ACCOUNT.`A_ID` = PLAYER.`A_ID`
+		LEFT JOIN PLAYER_SCORE ON PLAYER_SCORE.`P_ID` = PLAYER.`P_ID`
+		WHERE ACCOUNT.`A_ID` = #{A_ID} AND PLAYER.P_STATUS = 1 AND PLAYER_SCORE.PS_STUTAS = 1
+	</select>
+<!--  根据pid查询球员所有信息-->
+	<select id="findApplyPlayersByPID" parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamReviewPlayerBean" >
+		SELECT PLAYER.P_ID pid,
+		  	  PLAYER.A_ID aid,
+			  A_ID_CARD idCard,
+			  ACCOUNT.A_NAME playerName,
+			  P_PLAYER_HEIGHT playerHight,
+			  P_PLAYER_WEIGHT playerWeight,
+			  P_SEX playerSex,
+			  P_BIRTHDAY playerBirthday,
+			  P_STUDENT_ID playerStuID,
+			  P_MATCHS_PLAY playerMatchPlay,
+			  P_AVG_WIN avgWin,
+			  P_POSITION position,
+			  P_WIN_SESSION winSession,
+			  P_LOSE_SESSION loseSesion,
+			  P_GRADE_TABLE_ID integral,
+			  P_GOLD_MODAL_COUNT goldModalCount,
+			  P_SLIVER_MODEL_COUNT sliverModalCount,
+			  P_BREZON_MODEL_COUNT brezonModelCount,
+			  P_PEROSONAL_PHOTO photo,
+			  P_CLASS_HONORS classHonors,
+			  P_SCHOOL_HONORS schoolHonrs,
+			  P_COUNTRY_HONORS countryHonrs,
+			  P_CITY_HOURS cityHours,
+			  P_LOSE lose,
+			  P_WIN win,
+			  P_SHOOT_COUNT shootCount,
+			  P_GOAL_COUNT goalCount,
+			  P_FOAL_COUNT foalCount,
+			  P_T_NUM ptNum
+		FROM PLAYER 
+		LEFT JOIN ACCOUNT ON(ACCOUNT.A_ID=PLAYER.A_ID AND ACCOUNT.A_STATUS=1)
+		LEFT JOIN MID_PLAYER_TEAM ON(MID_PLAYER_TEAM.P_ID=PLAYER.P_ID AND MID_PLAYER_TEAM.TEAM_ID=#{teamID} AND TEAM_PLAYER_STATUS=1)
+		WHERE P_STATUS=1 AND PLAYER.P_ID=#{pid}
+	</select>
+<!-- 更新审核状态位 -->	
+	<update id="updatePlayerAuditStatus" parameterType="java.lang.String">
+		UPDATE MID_PLAYER_TEAM 
+			SET TEAM_PLAYER_STATUS=#{operType}, P_T_NUM=#{ptNum} 
+			WHERE TEAM_ID=#{teamID} AND P_ID=#{pid} AND TEAM_PLAYER_STATUS=0
+	</update>
+	
+<!-- 查询当前申请加入这个球队的球员数目 -->	
+	<select id="findApplyJoinTeamPlayersTotalRecordsNum" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) 
+		FROM MID_PLAYER_TEAM
+		WHERE TEAM_ID=#{teamID} AND TEAM_PLAYER_STATUS!=3
+	</select>
+	
+<!--  分页查询 根据球队主键ID查询申请加入球队的球员基本信息	 -->
+	<select id="findApplyJoinTeamPlayersPageRecords" parameterType="java.lang.Object" resultType="com.nsu.bean.team.TeamCenterDO">
+		SELECT * FROM
+			(SELECT MID_PLAYER_TEAM.TEAM_PLAYER_ID, MID_PLAYER_TEAM.TEAM_ID, MID_PLAYER_TEAM.P_ID pID, TEAM_PLAYER_STATUS
+	 			,P_POSITION, A_ID_CARD idCard, STUDENT.STU_SCHOOL_NAME pSchool, A_NAME PLAYER_NAME, PLAYER.P_SEX pSex
+	 			, date_format(TIME, '%Y-%c-%e %H:%i') tpTime 
+	 			FROM MID_PLAYER_TEAM 
+	 			LEFT JOIN PLAYER ON(PLAYER.P_ID=MID_PLAYER_TEAM.P_ID AND PLAYER.P_STATUS=1) 
+	 			LEFT JOIN ACCOUNT ON(ACCOUNT.A_ID=PLAYER.A_ID AND ACCOUNT.A_STATUS=1)
+	 			LEFT JOIN STUDENT ON(PLAYER.STU_ID=STUDENT.STU_ID)
+			WHERE MID_PLAYER_TEAM.TEAM_ID =#{teamID} AND TEAM_PLAYER_STATUS!=3 ORDER BY (TIME-NOW()) DESC) MID_PLAYERS
+		ORDER BY (MID_PLAYERS.tpTime-date_format(NOW(), '%Y-%c-%e %H:%i')) DESC, MID_PLAYERS.TEAM_PLAYER_ID DESC
+		limit #{startIndex},#{pageSize}
+	</select>
+	
+<!-- 根据球队主键ID和球员名字查询申请加入球队的球员基本信息	 -->
+	<select id="findApplyJoinTeamPlayersByPlayerNamePageRecords" parameterType="java.lang.String" resultType="com.nsu.bean.team.TeamCenterDO">
+		SELECT MID_PLAYER_TEAM.TEAM_PLAYER_ID, MID_PLAYER_TEAM.TEAM_ID, MID_PLAYER_TEAM.P_ID pID, TEAM_PLAYER_STATUS
+ 			,P_POSITION, A_ID_CARD idCard, STUDENT.STU_SCHOOL_NAME pSchool, A_NAME PLAYER_NAME, PLAYER.P_SEX pSex
+ 			, date_format(TIME, '%Y-%c-%e %H:%i') tpTime  
+ 			FROM MID_PLAYER_TEAM 
+ 			LEFT JOIN PLAYER ON(PLAYER.P_ID=MID_PLAYER_TEAM.P_ID AND PLAYER.P_STATUS=1) 
+ 			LEFT JOIN ACCOUNT ON(ACCOUNT.A_ID=PLAYER.A_ID AND ACCOUNT.A_STATUS=1)
+ 			LEFT JOIN STUDENT ON(PLAYER.STU_ID=STUDENT.STU_ID)
+		WHERE MID_PLAYER_TEAM.TEAM_ID =#{teamID} AND TEAM_PLAYER_STATUS!=3 AND INSTR(ACCOUNT.A_NAME,#{playerName})>0
+	</select>
+
+<!-- 根据球队ID查询球队号数量 -->	
+	<select id="findJerseyNumberNum" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) 
+		FROM MID_PLAYER_TEAM
+		WHERE TEAM_ID=#{teamID} AND P_T_NUM=#{ptNum} AND TEAM_PLAYER_STATUS=1
+	</select>
+	
+	<!-- 根据A_ID查询球员的学校 -->	
+	<select id="findPlyaerSchoolByAid" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT STU_NUM
+		FROM PLAYER 
+		LEFT JOIN STUDENT ON(PLAYER.STU_ID=STUDENT.STU_ID)
+		WHERE A_ID=#{aid} AND P_STATUS=1
+	</select>
+	
+	<!-- 根据A_ID查询球员的学校 、学号-->	
+	<select id="findPlyaerStuIDAndSchool" parameterType="java.lang.String" resultType="map">
+		SELECT STUDENT.STU_NUM stuID,  STUDENT.STU_SCHOOL_NAME school
+		FROM PLAYER 
+		LEFT JOIN STUDENT ON(PLAYER.STU_ID=STUDENT.STU_ID)
+		WHERE A_ID=#{aid} AND P_STATUS=1
+	</select>
+	
+</mapper> 

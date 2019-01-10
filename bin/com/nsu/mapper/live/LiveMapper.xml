@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nsu.dao.live.LiveDao">
+	<resultMap type="java.util.Map" id="resultjcm">
+		<result property="FLD_NUMBER" column="FLD_NUMBER"  javaType="double" jdbcType="NUMERIC"/>
+		<result property="FLD_VARCHAR" column="FLD_VARCHAR" javaType="string" jdbcType="VARCHAR"/>
+		<result property="FLD_DATE" column="FLD_DATE" javaType="java.sql.Date" jdbcType="DATE"/>
+		<result property="FLD_INTEGER" column="FLD_INTEGER"  javaType="int" jdbcType="INTEGER"/>
+		<result property="FLD_DOUBLE" column="FLD_DOUBLE"  javaType="double" jdbcType="DOUBLE"/>
+		<result property="FLD_LONG" column="FLD_LONG"  javaType="long" jdbcType="INTEGER"/>
+		<result property="FLD_CHAR" column="FLD_CHAR"  javaType="string" jdbcType="CHAR"/>
+		<result property="FLD_BLOB" column="FLD_BLOB"  javaType="[B" jdbcType="BLOB" />
+		<result property="FLD_CLOB" column="FLD_CLOB"  javaType="string" jdbcType="CLOB"/>
+		<result property="FLD_FLOAT" column="FLD_FLOAT"  javaType="float" jdbcType="FLOAT"/>
+		<result property="FLD_TIMESTAMP" column="FLD_TIMESTAMP" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+	</resultMap>
+
+	<select id="findCity" resultType="map">
+		SELECT
+			ORG_NAME AS "name",
+			ORG_D_CODE AS "dCode",
+			ORG_C_CODE AS "cCode"
+		FROM ORGANIZATION WHERE ORG_LEVEL_CODE=2
+	</select>
+	<select id="findGames" resultType="com.nsu.bean.live.ContestBean" parameterType="com.nsu.bean.live.ContestBean">
+		SELECT
+			c.COM_ID AS "competitionId",
+			c.COM_NAME AS "competitionName",
+			r.R_ID AS "raceId",
+			r.R_H_TEAM_ID AS "homeTeamId",
+			r.R_V_TEAM_ID AS "visitingTeamId",
+			r.R_REGULAR_H_T_S AS "regularHomeTeamScore",
+			r.R_REGULAR_V_T_S AS "regularVisitingTeamScore",
+			r.R_OVERTIME_H_T_S AS "overtimeHomeTeamScore",
+			r.R_OVERTIME_V_T_S AS "overtimeVisitingTeamScore",
+			r.R_PENA_H_T_S AS "penaHomeTeamScore",
+			r.R_PENA_V_T_S AS "penaVisitingTeamScore",
+			DATE_FORMAT(r.R_START_TIME,'%Y-%m-%d %T') AS "startTime",
+			DATE_FORMAT(r.R_END_TIME,'%Y-%m-%d %T') AS "endTime",
+			r.R_LIVE_TYPE AS "raceLiveType",
+			c.COM_LEVEL AS "competitionLevel",
+			o.ORG_C_CODE AS "competitonCityCode"
+		FROM RACE_DETAILS r LEFT JOIN COMPETITION_NOTICE c ON r.COM_ID = c.COM_ID
+		LEFT JOIN ORGANIZATION o ON c.ORG_ID = o.ORG_ID
+		<where>
+			o.ORG_STAUS = 1 AND r.R_STATUS != 3 AND c.COM_STATUS != 3
+			<if test="competitionCityCode != 0">
+				AND o.ORG_C_CODE= #{competitionCityCode}
+			</if>
+			<if test="competitionLevel != null and competitionLevel != '' ">
+				AND c.COM_LEVEL=#{competitionLevel} <!--comLevel 赛事级别：1小学，2中学，3高中，4大学  ，5不限-->
+			</if>
+			<if test="raceLiveType == 1">
+				AND r.R_LIVE_TYPE IN (1,2)
+				AND NOW() >= r.R_START_TIME
+				AND r.R_END_TIME >NOW()
+-- 				比赛状态也就是R_LIVE_TYPE为4时表示已经提交过裁判判决书，因为程序如果不提交比赛一直是未结束的状态
+				-- AND TO_DAYS(r.R_START_TIME) = TO_DAYS(NOW()),源码中没有将状态置为2的方法，所以加上时间验证,显示已经开始的比赛
+			</if>
+			<if test="raceLiveType == 2">
+			AND r.R_LIVE_TYPE>=3
+			</if>
+			order by r.R_START_TIME DESC,c.COM_ID DESC
+		</where>
+	</select>
+	<select id="findNoLiveGames"  resultType="com.nsu.bean.live.ContestBean" parameterType="com.nsu.bean.live.ContestBean">
+		SELECT
+		c.COM_ID AS "competitionId",
+		c.COM_NAME AS "competitionName",
+		r.R_ID AS "raceId",
+		r.R_H_TEAM_ID AS "homeTeamId",
+		r.R_V_TEAM_ID AS "visitingTeamId",
+		r.R_REGULAR_H_T_S AS "regularHomeTeamScore",
+		r.R_REGULAR_V_T_S AS "regularVisitingTeamScore",
+		r.R_OVERTIME_H_T_S AS "overtimeHomeTeamScore",
+		r.R_OVERTIME_V_T_S AS "overtimeVisitingTeamScore",
+		r.R_PENA_H_T_S AS "penaHomeTeamScore",
+		r.R_PENA_V_T_S AS "penaVisitingTeamScore",
+		DATE_FORMAT(r.R_START_TIME,'%Y-%m-%d %T') AS "startTime",
+		DATE_FORMAT(r.R_END_TIME,'%Y-%m-%d %T') AS "endTime",
+		r.R_LIVE_TYPE AS "raceLiveType",
+		c.COM_LEVEL AS "competitionLevel",
+		o.ORG_C_CODE AS "competitonCityCode"
+		FROM RACE_DETAILS r LEFT JOIN COMPETITION_NOTICE c ON r.COM_ID = c.COM_ID
+		LEFT JOIN ORGANIZATION o ON c.ORG_ID = o.ORG_ID
+		<where>
+			o.ORG_STAUS = 1 AND r.R_STATUS != 3 AND c.COM_STATUS != 3 AND r.R_LIVE_TYPE = 1 AND r.R_START_TIME >= NOW()
+			<if test="competitionCityCode != 0">
+				AND o.ORG_C_CODE= #{competitionCityCode}
+			</if>
+			order by r.R_START_TIME DESC,c.COM_ID DESC
+		</where>
+
+	</select>
+	<select id="findLiveOverData" resultType="map">
+		SELECT
+			c.COM_NAME AS "competitionName",
+			r.R_NAME AS "raceName",
+			r.R_H_TEAM_ID AS "homeTeamId",
+			r.R_V_TEAM_ID AS "visitingTeamId",
+			DATE_FORMAT(r.R_START_TIME,'%Y-%m-%d %T') AS "startTime",
+			DATE_FORMAT(r.R_END_TIME,'%Y-%m-%d %T') AS "endTime",
+			r.R_REGULAR_H_T_S AS "regularHomeTeamScore",
+			r.R_REGULAR_V_T_S AS "regularVisitingTeamScore",
+			r.R_OVERTIME_H_T_S AS "overtimeHomeTeamScore",
+			r.R_OVERTIME_V_T_S AS "overtimeVisitingTeamScore",
+			r.R_PENA_H_T_S AS "penaHomeTeamScore",
+			r.R_PENA_V_T_S AS "penaVisitingTeamScore",
+			r.R_ID AS "regularId"
+
+		 FROM RACE_DETAILS r LEFT JOIN COMPETITION_NOTICE c ON r.COM_ID=c.COM_ID WHERE r.R_ID=#{raceId}
+
+	</select>
+
+	<select id="findOverGamesData" resultType="map" parameterType="map">
+		SELECT
+			RL_TEXT AS "liveText",
+			RL_IMAGES AS "liveImages",
+			RL_ST AS "lvieType",
+			DATE_FORMAT(RL_TIME,'%T') AS "liveTime"
+		FROM RACE_LIVE WHERE  R_ID=#{raceId}
+		<if test="liveType == 1 ">
+			order by RL_TIME ASC
+		</if>
+		<if test="liveType == 2 ">
+			order by RL_TIME DESC
+		</if>
+	</select>
+
+	<select id="findTeamData" resultType="map">
+		SELECT
+			TEAM_NAME AS "teamName",
+			TEAM_BADGE AS "teamBadge"
+		FROM TEAM WHERE TEAM_ID=#{teamId}
+
+	</select>
+
+	<select id="findLiveScore" resultType="map">
+		SELECT
+			RL_H_T_SCORE AS "hNowScore",
+			RL_V_T_SCORE AS "vNowScore"
+		 FROM RACE_LIVE WHERE RL_TIME AND R_ID=#{raceId} ORDER BY RL_TIME DESC LIMIT 1
+
+	</select>
+
+</mapper>
