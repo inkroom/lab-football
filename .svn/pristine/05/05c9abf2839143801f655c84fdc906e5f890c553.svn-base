@@ -1,0 +1,152 @@
+/**
+ * Created by 灵魂都在冒香气的神 on 2018/3/28.
+ */
+
+match = null;
+idSchedule = null;
+selectData = '<option teamId="{id}">{name}</option>';
+selectSch = null;
+context = {
+    error: false
+};
+
+
+function getSelect()
+{
+    ajax({
+        async: false,
+        url: getRootPath() + "/getSch/" + idSchedule,
+        type: "POST",
+        dataType: "json",
+        success: function (data)
+        {
+            selectSch = data.schedule;   //this指针
+        }
+    });
+}
+function initTeam(match) {
+    ajax({
+        url: getRootPath() + "/schedule/getTeam?matchId=" + match,
+        type: "GET",
+        dataType: "json",
+        error: function () {
+            $("#teamA select").append('<option>未获取到队伍信息</option>');
+            $("#teamB select").append('<option>未获取到队伍信息</option>');
+            context.error = true;
+        },
+        success: function (teamData, status) {
+            if (teamData.status == 1) {
+                $("#teamA select").append('<option>未获取到队伍信息</option>');
+                $("#teamB select").append('<option>未获取到队伍信息</option>');
+                context.error = true;
+                return;
+            }
+            var len = teamData.data.team.length;
+            var allTeam = teamData.data.team;
+            for (var i = 0; i < len; i++) {
+                $("#teamA select").append(selectData.replace("{name}", allTeam[i].name).replace("{id}", allTeam[i].idTeam));
+                $("#teamB select").append(selectData.replace("{name}", allTeam[i].name).replace("{id}", allTeam[i].idTeam));
+            }
+        }
+    });
+}
+
+$(document).ready(function () {
+    match = $("#secret").attr("match");
+    idSchedule = $("#secret").attr("idSchedule");
+    getSelect();
+    initTeam(match);
+    if (context.error) {
+        $("#submit").click(function () {
+            alert("获取队伍信息失败");          //记得还原
+        });
+        return;
+    }
+    $("#teamA select option").each(function ()
+    {
+        var id = $(this).attr("teamId");
+        if (selectSch.teamA == id)
+        {
+            this.attr("selected", true);
+        }
+    });
+    $("#teamB select option").each(function ()
+    {
+        var id = $(this).attr("teamId");
+        if (selectSch.teamB == id)
+        {
+            this.attr("selected", true);
+        }
+    });
+    $("#submit").click(function () {
+        var teamA = $("#teamA select").find("option:selected").attr("teamId");
+        var teamB = $("#teamB select").find("option:selected").attr("teamId");
+        var teamNameA = $("#teamA select").val();
+        var teamNameA = $("#teamB select").val();
+        if (teamA === teamB) {
+            alert("不能选择相同的队伍");
+            return;
+        }
+        var goalA = $("#goalA").val();
+        var goalB = $("#goalB").val();
+        if (goalA < 0 || goalB < 0 || goalA == "" || goalB == "") {
+            alert("请填写正确的比分");
+            return;
+        }
+        var tmp = $("#time").val();
+        var time = Date.parse(tmp);
+        if (time == "") {
+            alert("请选择开赛时间");
+            return;
+        }
+        var place = $("#place").val();
+        if (place == "") {
+            alert("请选择比赛地点");
+            return;
+        }
+        var status = $("#status").find("option:selected").attr("status");
+        // var json = {
+        //     // "teamNameA":teamNameA,
+        //     // "teamNameB":teamNameB,
+        //     "matchId": match,    //fuck
+        //     "teamA": teamA,
+        //     "teamB": teamB,
+        //     "idSchedule": idSchedule,    //fuck
+        //     "goalA": goalA,
+        //     "goalB": goalB,
+        //     "time": time,
+        //     "place": place,
+        //     "status": status
+        // };
+        ajax({
+            url: getRootPath() + "/schedule/modify",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json;charset=UTF-8",
+            data: JSON.stringify({
+                "matchId": match,
+                "teamA": teamA,
+                "teamB": teamB,
+                "idSchedule": idSchedule,
+                "goalA": goalA,
+                "goalB": goalB,
+                "time": time,
+                "place": place,
+                "status": status,
+                "token": $('#token').val().trim()
+            }),
+            error: function () {
+                alert("修改失败");
+            },
+            success: function (backData, status) {
+                if (backData.status == 0) {
+                    alert("修改成功");
+                    window.location.href = "/match/turnDetailsAdmin/?id=" + match    //刚才的页面
+                }
+                else {
+                    alert("修改失败");
+                }
+            }
+        })
+    })
+});

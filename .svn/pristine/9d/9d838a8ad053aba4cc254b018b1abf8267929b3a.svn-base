@@ -1,0 +1,51 @@
+package cn.nsu.edu.web.four.filters;
+
+import cn.nsu.edu.web.four.enums.Role;
+import cn.nsu.edu.web.four.utils.http.RequestUtil;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class XssFilter extends OncePerRequestFilter {
+	
+	private final Log log = LogFactory.getLog(getClass());
+
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+
+		Map<String,Object> map = new HashMap<>();
+		map.put("schId",1);
+		map.put("matchId",1);
+		map.put("refereeId",1);
+		map.put("match","测试杯");
+		map.put("name","裁判员");
+		map.put("phone","18161202826");
+		map.put("idcard","510322199926024587");
+
+		RequestUtil.login(request,map, Role.REFEREE);
+
+
+
+
+		try{
+			XSSRequestWrapper xssRequestWrapper = new XSSRequestWrapper(request);
+			filterChain.doFilter(xssRequestWrapper, response);
+		}catch(Exception e){
+			log.error(e.getMessage());
+		}
+		
+	}
+
+	
+
+	
+}

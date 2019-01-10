@@ -1,0 +1,53 @@
+package cn.nsu.edu.web.four.services.team.Impl;
+
+
+import cn.nsu.edu.web.four.beans.teams.Team;
+import cn.nsu.edu.web.four.daos.jdbc.team.CreateTeamDao;
+import cn.nsu.edu.web.four.services.team.CreateTeamService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
+
+
+@Service
+public class CreateTeamServiceImpl implements CreateTeamService {
+
+    @Autowired
+    private CreateTeamDao createTeamDao;
+
+    public void createTeam(Team team) {
+
+        try {
+            createTeamDao.createTeam(team);
+        } catch (Exception e){
+            e.printStackTrace();
+            throw  new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public void addPlayer(List list, int id_team, int status, Date time)  {
+
+        try {
+            createTeamDao.addPlayer(list,id_team,status,time);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw  new RuntimeException(e);
+        }
+    }
+
+
+    public void addCoach(int id_team, int coach_id, int status, Date time) {
+
+        try {
+            createTeamDao.addCoach(id_team,coach_id,status,time);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw  new RuntimeException(e);
+        }
+    }
+}

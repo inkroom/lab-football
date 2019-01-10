@@ -1,0 +1,97 @@
+$(function () {
+    /*入场验证*/
+    $('.img').click(function () {
+        if ($(this).hasClass('img')) {
+            $(this).addClass("scorer");
+            $(this).removeClass("img");
+        } else {
+            $(this).addClass("img");
+            $(this).removeClass("scorer");
+        }
+    })
+});
+
+function submit1() {
+    // var m = 0;
+    // var n = 0;
+    // var aa =[];
+    // var bb =[];
+    var playerIdA = [];
+    var playerIdB = [];
+
+    $('#master .scorer').each(function (index) {
+        playerIdA.push($(this).attr('playerId'));
+
+    })
+
+    $('#servlet .scorer').each(function (index) {
+        playerIdB.push($(this).attr('playerId'));
+
+    })
+    // $('.home img').each(function(){
+    //     if($(this).hasClass('scorer')) {
+    //         aa[m] = $(this).attr("playerId1");
+    //         m++;
+    //     }
+    // });
+
+    // for(i =0 ; i < aa.length; i++){
+    //     console.log(aa[i]);
+    // }
+    // if(m===0){
+    //     $('#select-home').removeClass('invisible');
+    // }else{
+    //     $('#select-home').addClass('invisible');
+    // }
+    // $('.visiting img').each(function(index){
+    //     if($(this).hasClass('scorer')){
+    //         bb[n]=$(this).attr("playerId2");
+    //         n++;
+    //     }
+    // });
+    // for(var i =0 ; i < bb.length; i++){
+    //     console.log(bb[i]);
+    // }
+    //
+    // if(n===0){
+    //     $('#select-visiting').removeClass('invisible');
+    // }else{
+    //     $('#select-visiting').addClass('invisible');
+    // }
+    // playerIdA = aa.join("-");
+    // playerIdB = bb.join("-");
+
+    console.log(playerIdA);
+    console.log(playerIdB);
+
+    layer.open({
+        content: '您确定要提交选中的球员吗？'
+        , btn: ['确定', '取消']
+        , yes: function (index) {
+            layer.close(index);
+
+            ajax({
+                url: getRootPath() + "/referee/check",
+                dataType: "json",
+                data: {
+                    "playerIdA": JSON.stringify(playerIdA),
+                    "playerIdB": JSON.stringify(playerIdB),
+                    token: $('#token').val()
+                },
+                type: "post",
+                success: function (result) {
+                    switch (result.status) {
+                        case 0 :
+                            msg('球员加入赛程成功！');
+                            break;
+                        case 1 :
+                            msg('球员加入赛程失败！');
+                    }
+                }
+            });
+        }
+    });
+
+
+}
+

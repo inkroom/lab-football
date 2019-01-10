@@ -1,0 +1,48 @@
+package cn.nsu.edu.web.four.controllers.team;
+
+
+import cn.nsu.edu.web.four.annotation.Security;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.enums.Role;
+import cn.nsu.edu.web.four.services.team.Impl.OperateInfoServiceImpl;
+import org.omg.CORBA.Request;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Date;
+
+@Controller
+@RequestMapping(value = "breakTeam")
+public class BreakTeamController {
+
+
+    @Autowired
+    private OperateInfoServiceImpl operateInfoService;
+
+    private org.slf4j.Logger log = LoggerFactory.getLogger(getClass());
+
+    @RequestMapping(value = "index")
+    @ResponseBody
+    @Security(roles = Role.ORGANIZATION,checkToken = true)
+    public MessageDto retireTeam(@RequestParam("idTeam") Integer idTeam){
+        if (idTeam == null){
+            return  new MessageDto(Result.FAIL);
+        }
+        MessageDto dto = new MessageDto(Result.SUCCESS);
+
+        int status = 1;
+        if (operateInfoService.retireTeam(idTeam,status,new Date()) == 0){
+            return new MessageDto(Result.FAIL);
+        }
+        return dto;
+    }
+
+
+
+}

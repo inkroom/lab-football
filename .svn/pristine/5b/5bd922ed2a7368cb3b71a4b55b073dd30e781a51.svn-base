@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>球队管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--为了让 Bootstrap 开发的网站对移动设备友好，确保适当的绘制和触屏缩放，需要在网页的 head 之中添加 viewport meta 标签，-->
+    <link href="${pageContext.request.contextPath}/resources/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}//resources/css/style.1.0.css"/>
+</head>
+
+<body>
+
+<!-- <nav class="nav-bg navbar" >
+        <div class="container">
+            <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+                <img src="img/logo足球项目组.png"/>
+                <span>四川省青少年校园足球信息网</span>
+            </div>
+            <div class="nav-b hidden-lg hidden-md col-sm-1 hidden-xs">
+                <button type="button" class="btn">菜单</button>
+            </div>
+            <div class="nav-w col-lg-8 col-md-7 hidden-sm hidden-xs">
+                <ul>
+                    <li><a href="#">赛事赛程</a></li>
+                    <li><a href="#">教练管理</a></li>
+                    <li><a href="#">球员管理</a></li>
+                    <li><a href="#">球队管理</a></li>
+                    <li><a href="#">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+<div class="container" style="width:1002px;">
+    <ul class="breadcrumb">
+        <li><a href="${pageContext.request.contextPath}/display/index">球队预览</a><span class="divider">/</span></li>
+        <li class="active">球队创建</li>
+    </ul>
+    <!--导航结束-->
+    <div class="row">
+        <div class="span6">
+            <table class="table table-bordered table-hover messageCard">
+                <tr class="success">
+                    <td>球队基本信息</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><span class="muted">队&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</span>
+                            <input type="text" style="height:20px;width:190px;"></p>
+                        <p><span class="muted">球队类型:</span>
+                            <select id="myInput" style="width:204px;">
+                                <option value="小学一年级">小学一年级</option>
+                                <option value="小学二年级">小学二年级</option>
+                                <option value="小学三年级">小学三年级</option>
+                                <option value="小学四年级">小学四年级</option>
+                                <option value="小学五年级">小学五年级</option>
+                                <option value="小学六年级">小学六年级</option>
+                                <option value="初中一年级">初中一年级</option>
+                                <option value="初中二年级">小学二年级</option>
+                                <option value="初中三年级">小学三年级</option>
+                                <option value="混合(年级)">混合(年级)</option>
+                                <option value="混合(年级)">混合(校级)</option>
+                            </select></p>
+                        <p><span class="muted">球队状态:</span>
+                            <input type="radio" name="TEAM_STATUS" checked="checked" value="在役"> 在役
+                            <input type="radio" name="TEAM_STATUS" value="退役"> 退役
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="span6">
+            <table class="table table-bordered table-hover messageCard" style="margin-left:60px;">
+                <tr class="success">
+                    <td>教练信息</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="margin-top:6px;"><span
+                                class="muted">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名: <span>233</span></span></p>
+                        <p style="margin-top:32px;"><span class="muted">教练编号:</span></p>
+                        <hr style="margin:0 0 9px 0;">
+                        <a href="#myModal1" role="button" class="btn btn-info" data-toggle="modal">添加教练</a>
+                        <!-- <button type="button" class="btn btn-default btn-info ">添加教练</button> -->
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="pull-right" style="width:98%;">
+            <table class="table table-bordered table-hover messageCard">
+                <tr class="success">
+                    <td>球员信息</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <div class="zhazhazha">
+                                <img class="clo" src="../../../resources/img/22.png" style="width:100%;">
+                                <a><b>x</b></a>
+                                <p class="muted zhazhahui">
+                                    <span>渣渣渣</span><br><span>123456</span>
+                                </p>
+                            </div>
+
+                        </div>
+                        <hr style="clear:both;margin-left:38px;">
+                        <a href="#myModal2" role="button" class="btn btn-info" data-toggle="modal"
+                           style="margin-left:38px;">添加球员</a>
+                        <!-- <button type="button" class="btn btn-default btn-info" style="margin-left:38px;">添加球员</button> -->
+                    </td>
+                </tr>
+            </table>
+            <center>
+                <button type="button" class="btn btn-default btn-info ">提交</button>
+                <button type="button" class="btn btn-default ">取消</button>
+            </center>
+        </div>
+    </div>
+
+
+</div>
+<!-- first Modal -->
+<div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">添加教练</h3>
+    </div>
+    <div class="modal-body"><!--模态中部开始-->
+        <div class="row">
+            <div class="span2">
+                <div class="input-group">
+                    <input type="text" class="form-control" style="width:142px;border-radius: 5px;"
+                           placeholder="请输入球员姓名">
+                </div>
+                <!-- /input-group -->
+            </div>
+            <div class="span2">
+									<span class="input-group-btn">
+																<button class="btn btn-default" type="button"
+                                                                        style="border-radius: 5px;">搜索</button>
+														</span>
+                <!-- /input-group -->
+            </div>
+            <!-- /.col-lg-6 -->
+        </div>
+
+        <table class="table table-striped table-hover" style="margin-top:15px;">
+            <tr class="info">
+                <th>姓名</th>
+                <th>编号</th>
+                <th>性别</th>
+                <th style="padding-left:28px;">操作</th>
+            </tr>
+
+            <tr style="padding-top:5px;">
+                <td>张三</td>
+                <td>123456</td>
+                <td>女</td>
+                <td>
+                    <div class="checkbox" style="margin-top:-3px;">
+                        <label>
+                            <input type="radio" name="coch_select" id="checkboxSuccess" value="option1">
+                            添加
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div><!--模态中部结束-->
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+        <button class="btn btn-primary">确定</button>
+    </div>
+</div>
+<!-- first model end -->
+<!-- 模态框2Modal -->
+<div id="myModal2" class="modal hide fade" style="width:1002px;margin-left:-500px;" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">添加球员</h3>
+    </div>
+    <div class="modal-body"><!--模态框中部开始-->
+        <div class="row">
+            <div class="span2">
+                <div class="input-group">
+                    <select id="myInput" class="form-control" style="width:142px;border-radius: 5px;">
+                        <option value="小学一年级">小学一年级</option>
+                        <option value="小学二年级">小学二年级</option>
+                        <option value="小学三年级">小学三年级</option>
+                        <option value="小学四年级">小学四年级</option>
+                        <option value="小学五年级">小学五年级</option>
+                        <option value="小学六年级">小学六年级</option>
+                        <option value="初中一年级">初中一年级</option>
+                        <option value="初中二年级">小学二年级</option>
+                        <option value="初中三年级">小学三年级</option>
+                        <option value="混合(年级)">混合(年级)</option>
+                        <option value="混合(年级)">混合(校级)</option>
+                    </select>
+                </div>
+                <!-- /input-group -->
+            </div>
+            <div class="span2">
+                <div class="input-group">
+                    <!--<input type="text" placeholder="Text input">-->
+                    <input type="text" class="form-control" style="width:142px;border-radius: 5px;"
+                           placeholder="请输入球员班级">
+                </div>
+                <!-- /input-group -->
+            </div>
+            <div class="span2">
+                <div class="input-group">
+                    <input type="text" class="form-control" style="width:142px;border-radius: 5px;"
+                           placeholder="请输入球员姓名">
+                </div>
+                <!-- /input-group -->
+            </div>
+            <div class="span2">
+										<span class="input-group-btn">
+											        		<button class="btn btn-default" type="button"
+                                                                    style="border-radius: 5px;">搜索</button>
+											      	</span>
+                <!-- /input-group -->
+            </div>
+            <div class="span2">
+                <div class="input-group">
+                    <input type="text" class="form-control" style="width:142px;border-radius: 5px;"
+                           placeholder="请输入球员姓名">
+                </div>
+                <!-- /input-group -->
+            </div>
+            <div class="span2">
+										<span class="input-group-btn">
+											        		<button class="btn btn-default" type="button"
+                                                                    style="border-radius: 5px;">搜索</button>
+											      	</span>
+                <!-- /input-group -->
+            </div>
+            <!-- /.col-lg-6 -->
+        </div>
+
+        <table class="table table-striped table-hover" style="margin-top:15px;text-align: center;">
+            <tr class="info">
+                <th>姓名</th>
+                <th>编号</th>
+                <th>性别</th>
+                <th>身份证号</th>
+                <th><input type="checkbox" id="all" style="margin-bottom:-2px;">&nbsp;全选</th>
+            </tr>
+            <tr style="padding-top:5px;">
+                <td>张三</td>
+                <td>123456</td>
+                <td>男</td>
+                <td>510704199601014614</td>
+                <td><input type="checkbox" name="check">添加</td>
+            </tr>
+
+        </table>
+    </div><!--模态框中部结束-->
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+        <button class="btn btn-primary">确定</button>
+    </div>
+</div>
+<!-- 模态框2Modal结束 -->
+<!--container end-->
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="${pageContext.request.contextPath}/resources/lib/jquery/jquery-1.11.3.js  "></script>
+<!-- <script src="js/jquery-3.1.1.min.js"></script> -->
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="${pageContext.request.contextPath}/resources/lib/bootstrap/bootstrap.min.js"></script>
+</body>
+
+</html>

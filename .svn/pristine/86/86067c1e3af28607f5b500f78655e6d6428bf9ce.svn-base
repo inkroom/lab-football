@@ -1,0 +1,33 @@
+package cn.nsu.edu.web.four.services.schedule;
+
+import cn.nsu.edu.web.four.beans.schedule.CurrentTeam;
+import cn.nsu.edu.web.four.beans.schedule.Memchanism;
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by 灵魂都在冒香气的神 on 2018/3/20.
+ */
+public interface ScheduleBaseService
+{
+    Boolean createSchedule(Schedule schedule);    //创建赛程
+
+    List<Memchanism> getMemchanism();    //获取机构列表
+
+    List<CurrentTeam> getTeam(Integer org_id);    //获取机构所在队伍列表
+
+    Boolean modifySchedule(Schedule schedule);     //修改赛程
+
+    Boolean deleteSchedule(Integer idSchedule);   //删除赛程
+
+    ArrayList<Schedule> getScheduleByMatchID(Integer idMatch);    //根据赛事ID获取赛程列表
+
+    /**
+     *  通过赛程ID获取赛程信息
+     * @param schId 赛程ID
+     * @return 赛程信息
+     */
+    Schedule getScheduleInfoById(Integer schId);
+}

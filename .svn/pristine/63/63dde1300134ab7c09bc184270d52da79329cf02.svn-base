@@ -1,0 +1,16 @@
+package cn.nsu.edu.web.four.daos.jdbc.organization;
+
+import cn.nsu.edu.web.four.beans.organization.Organization;
+import cn.nsu.edu.web.four.beans.player.Player;
+
+/**
+ * @Author : 王新璋
+ * @Date : 2018/3/21 9:23
+ * @Description :机构的注册登录
+ **/
+public interface OrganizationDao {
+
+
+    //添加机构信息：注册机构
+    int insertOrganization(Organization organization) throws Exception;
+}

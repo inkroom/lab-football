@@ -1,0 +1,23 @@
+package cn.nsu.edu.web.four.daos.jdbc.schedule;
+
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+import org.springframework.stereotype.Repository;
+import java.util.ArrayList;
+
+@Repository
+public interface ScheduleMapper {
+    int deleteById(Integer idSchedule);
+
+    int insert(Schedule record);
+
+    int insertSelective(Schedule record);
+
+    Schedule selectById(Integer idSchedule);
+
+    ArrayList<Schedule>selectByMatchID(Integer idMatch);
+
+    int updateByIdSelective(Schedule record);
+
+    int updateById(Schedule record);
+
+}

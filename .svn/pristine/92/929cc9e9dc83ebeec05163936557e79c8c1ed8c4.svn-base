@@ -1,0 +1,180 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>赛事修改</title>
+    <link rel="stylesheet" type="text/css" href="../../../resources/lib/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/match/style.1.0.css"/>
+
+    <script src="../../../resources/js/match/respond.js"></script>
+    <script src="../../../resources/lib/jquery/jquery-1.11.3.js"></script>
+    <script type="application/javascript" src="../../../resources/js/match/bootstrap2.min.js"></script>
+    <script type="application/javascript" src="../../../resources/js/match/utils.js"></script>
+    <script src="../../../resources/js/index.js"></script>
+
+</head>
+<body>
+
+<jsp:include page="../common/head.jsp"/>
+<input hidden id="mid" value="${mid}"/>
+<input hidden id="token" value="${token}">
+<div class="container mo-h">
+    修改赛事
+</div>
+<div class="container">
+    <form id="modifyMatchForm" class="form-horizontal">
+        <div class="form-group">
+            <label for="matchName" class="col-sm-2 control-label">赛事名称</label>
+            <div class="col-sm-10">
+                <input type="text" value="Fate英灵赛" id="matchName" name="name" class="form-control"
+                       placeholder="请填写赛事名称">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="matchLevel" class="col-sm-2 control-label">赛事级别</label>
+            <div class="col-sm-10">
+                <select id="matchLevel" name="level" class="form-control input-sm">
+                    <option value="0">校级</option>
+                    <option value="1">县级</option>
+                    <option value="2">市级</option>
+                    <option value="3">省级</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="matchNumPlayer" class="col-sm-2 control-label">赛制</label>
+            <div class="col-sm-10">
+                <select id="matchNumPlayer" name="numPlayer" class="form-control input-sm">
+                    <option value="5">5人制</option>
+                    <option value="7">7人制</option>
+                    <option value="11">11人制</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="matchStartTime" class="col-sm-2 control-label">赛事时间</label>
+            <div class="col-sm-10">
+                <input type="date" value="2018-03-27" class="form-control" id="matchStartTime" name="startDate"
+                       placeholder="请填写比赛时间">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="matchDeadLine" class="col-sm-2 control-label">报名截止时间</label>
+            <div class="col-sm-10">
+                <input type="date" value="2018-04-27" class="form-control" id="matchDeadLine" name="applyDeadline"
+                       placeholder="请填写报名截止时间">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="matchStatus" class="col-sm-2 control-label">状态</label>
+            <div class="col-sm-10">
+                <select id="matchStatus" class="form-control input-sm">
+                    <option value="0">报名阶段</option>
+                    <option value="1">进行中</option>
+                    <option value="2">已结束</option>
+                    <option value="3">删除赛事</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="button" onclick=" modifyMatch();return false;" class="btn btn-default" value="确认"/>
+                <a href="/match/turnDetailsAdmin/?id=${mid}">
+                    <button id="falseBtn" type="button" class="btn btn-default">取消</button>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script type="application/javascript">
+    var matchId;
+    var token;
+    $(document).ready(function () {
+        matchId = document.getElementById("mid").value
+        setFormInfo(matchId);
+    });
+
+    function modifyMatch() {
+        var postData = new FormData(document.getElementById("modifyMatchForm"));
+        postData.append("idMatch", matchId);
+        $.ajax({
+            type: "post",//方法类型
+            url: "/match/modifyMatch",//url
+            data: postData,
+            headers: {token: token},
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                if (result.status == 0) {
+                alert("修改成功");   //TODO 做成功失败提醒
+                window.location.href = '/match/turnDetailsAdmin/?id=${mid}';
+                }
+                else alert("修改失败")
+            },
+            error: function () {
+                alert("Fail");
+                ajax(6);
+            }
+        });
+    }
+
+    function setFormInfo(match) {
+        $.ajax({
+                url: "/match/MatchInfo/" + match,
+                success: function (matchInfo) {
+                    token = matchInfo.token;
+                    $("#matchName").val(matchInfo.data.matchInfo.name);
+                    $('#matchLevel').val(matchInfo.data.matchInfo.level);
+                    $('#matchNumPlayer').val(matchInfo.data.matchInfo.numPlayer);
+                    $("#matchStartTime").val(parseTime(matchInfo.data.matchInfo.startDate));
+                    $("#matchDeadLine").val(parseTime(matchInfo.data.matchInfo.applyDeadline));
+                    $("#matchStatus").val(matchInfo.data.matchInfo.status);
+                }
+            }
+        );
+    }
+
+    modify = function () {
+        var place = document.getElementById('place').value;
+        //是否为空
+        if (place === '') {
+            alert('请输入比赛地点，比赛地点不能为空');
+            document.getElementById('place').focus;
+            return false;
+        }
+        //校验长度，类型
+        else if (place.length > 50) {
+            alert('最大为50位');
+            document.getElementById('idcard').focus;
+            return false;
+        }
+        alert('OK');
+        return true;
+    };
+
+    checkplace = function () {
+        var place = document.getElementById('place').value;
+        //是否为空
+        if (place === '') {
+            alert('请输入比赛地点，比赛地点不能为空');
+            document.getElementById('place').focus;
+            return false;
+        }
+        //校验长度，类型
+        else if (place.length > 50) {
+            alert('最大为50位');
+            document.getElementById('idcard').focus;
+            return false;
+        }
+        alert('OK');
+        return true;
+    };
+
+</script>
+</html>
+
+

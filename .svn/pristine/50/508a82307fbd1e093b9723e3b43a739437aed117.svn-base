@@ -1,0 +1,208 @@
+*{margin: 0px; padding: 0px;}
+html { width: 100%; height: 100%;font-size:100px}
+body, div, ul, ol, li, form,input, button, textarea, p,{ margin: 0; padding: 0; }
+table { border-collapse: collapse; border-spacing: 0; font-size: inherit; font: 100%; }
+img { vertical-align: middle }
+a { text-decoration: none; cursor:pointer;}
+a:link, a:visited, a:active, a:hover { text-decoration: none; color: #fff; }
+img { border: 0; }
+address, em, strong, th, var { font-style: normal; font-weight: normal; }
+caption, th { text-align: left; }
+textarea, select { font-family: inherit; font-size: inherit; font-weight: inherit; }
+li { list-style: none; }
+img, object { max-width: 100%; }
+input{border-width: 0px; text-align: center;}
+
+/* 导航栏
+ 2018/03/18*/
+.nav-bg{
+	background-color: #080615;
+	font-size: 16px;
+	height: 60px;
+	margin: 0;
+}
+.logo-w{
+	padding: 0;
+	float: left;
+}
+.logo-w img{
+	height: 60px;
+	width: 60px;
+}
+.logo-w span{
+	font-size: 18px;
+	color: #fff;
+}
+.nav-b-1 button{
+	padding: 0;
+	margin: 10px 0;
+	background-color: #3e3e59;
+	color: #FFFFFF;
+	width: 60px;
+	height: 40px;
+}
+.nav-w ul li{
+	text-align: center;
+	float: left;
+	width: 20%;
+	line-height: 60px;
+    list-style: none;
+}
+.nav-w ul li a{
+	color: #999;
+}
+.nav-w ul li:hover{
+	border-left: #e2374d 2px solid;
+	color: #fff;
+	background-color: #3e3e59;
+	text-align: center;
+	transform:skew(-30deg);   
+	-webkit-transform: skew(-30deg);   
+	-moz-transform: skew(-30deg);   
+	-o-transform:skew(-30deg);   
+	-ms-transform:skew(-30deg);
+}
+.nav-w ul li:hover a{
+	font-size: 16px;
+	color: #fff;
+	text-decoration: none;
+}
+
+/**
+ * 修改比分
+ */
+.panel-distance{
+	margin-top: 15px;
+}
+.spinner.input-group .input-group-addon a.spin-up,.spinner.input-group .input-group-addon a.spin-down{
+	/*height:20px;
+	width:20px;*/
+	font-size:20px;
+	overflow:hidden;
+	/*display:block;*/
+	text-align:center;
+	text-decoration:none;
+	position:relative;
+	color:#999;
+}
+.spinner.input-group .input-group-addon a.spin-up .icon-sort-down,.spinner.input-group .input-group-addon a.spin-down .icon-sort-down{
+	position:relative;
+	top:-6px;
+}
+.spinner.input-group .input-group-addon a.spin-up:hover,.spinner.input-group .input-group-addon a.spin-down:hover{color:#555}.spinner.input-group input{text-align:center}.spinner.input-group.input-group-lg .input-group-addon a.spin-up,.spinner.input-group.input-group-lg .input-group-addon a.spin-down{
+	font-size:16px;
+	height:12px;
+}
+.spinner.input-group.input-group-sm .input-group-addon a.spin-up,.spinner.input-group.input-group-sm .input-group-addon a.spin-down{
+	font-size:12px;
+	height:9px;
+}
+.col-center{
+	font-size: 25px;
+}
+.fa{
+	margin-right: 8px;
+}
+.btn-distance{
+	margin-bottom: 100px;
+}
+/* 常规赛比分*/
+[class *= col-]{
+	padding-right: 0px;
+	padding-left: 0px;	  
+}
+/*输入框*/
+.input-score{
+	width: 20px;
+	border-bottom: thin solid #000000;
+}
+.input-write{
+	width: 80%;
+}
+.input-time{
+	width: 55px;
+}
+.input-team{
+	width: 35px;
+}
+/* 表格*/
+.table th, .table td{
+	text-align: center;
+	vertical-align: middle !important;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 0px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+/*完善个人信息*/
+.vertical-center{
+	margin-top: 100px;
+}
+.text-distance{
+	margin-bottom: 25px; 
+	margin-top: 10px;
+}
+.input-width{
+	width: 80%;
+	border-bottom: 1px solid #000000;
+}
+/*今日赛程*/
+.font-color{
+	color: red;
+}
+.col-label{
+	height: 60px; 
+	background: #F2F2F2;
+	line-height: 60px;
+	margin-top: 20px;
+}
+.font-size1{
+	font-size:15px;
+}
+.font-size2{
+	font-size: 25px;
+}
+.row-img{
+	width: 12%; 
+	height: 12%;
+	margin: 0px auto; 
+	margin-top: 20px;
+}
+.row-top{
+	margin-top: 50px;
+}
+.row-bottom{
+	margin-top: 30px; 
+	margin-bottom: 100px;
+}
+
+/*.vertical-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}*/
+
+/*添加页面*/
+.add-page{
+	width: 80%; 
+	display: none; 
+	position: fixed;
+	top: 50%; 
+	left: 10%; 
+	transform: translate(0,-50%);
+}
+.show-hide{
+	display: block;
+}
+/*入场验证*/
+.scorer{
+	border:1px solid red;
+}

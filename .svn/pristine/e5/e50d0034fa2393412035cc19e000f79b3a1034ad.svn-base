@@ -1,0 +1,200 @@
+/**
+ * Created by 灵魂都在冒香气的神 on 2018/3/30.
+ */
+//重写
+teamData = '<div id="{id}" size={size} tabId="{tabId}" onmouseover="changeTab(this)"><div class="t-h-n">{teamName}</div></div>';
+playerData = '<tr><td>{name}</td></tr>';
+liData = '<li tabId="{tabId}" onclick="pageClick(this)"><a href="#">{page}</a></li>';
+teamList = null;
+
+lastSelect = null;
+
+
+playerData = new function ()
+{
+};     //全局数据对象
+//playerData{"palyerId":{},
+
+function changeTab(cur_this)
+{
+    if (cur_this !== lastSelect)
+    {
+        $(lastSelect).attr("class", "");   //select失去焦点
+        $("#" + $(lastSelect).attr("tabId")).attr("class", "");    //隐藏tab
+        lastSelect = cur_this;
+        $(cur_this).attr("class", "selected");    //select获取焦点
+        $("#" + $(cur_this).attr("tabId")).attr("class", "show");   //显示tab
+    }
+}
+
+function playerCheck(cur_this)    //选择或取消运动员
+{
+    var playerId = $(cur_this).attr("playerId");
+    if (cur_this.checked)    //选择
+    {
+        $(cur_this).parent().parent().addClass('warning');
+        var player = $(cur_this).attr("data");
+        if (playerData[playerId] === undefined)
+        {
+            playerData[playerId] = player;//    若字典里面没有，则更新数据
+        }
+    }
+    else      //取消选中
+    {
+        $(cur_this).parent().parent().removeClass('warning');
+        delete playerData[playerId];    //数据卸载，playerData[playerId]===undefined
+    }
+}
+
+function showTab(tabId, page)
+{
+    var size = Number($("#" + tabId).attr("size"));
+    var num = Number(tabId.split("")[1]);  //list下标
+    var tbodyTmp = $("#" + tabId + " " + "tbody");
+    var start = (page - 1) * 9;
+    if (start >= size)
+    {
+        return;
+    }
+    var end = start + 9;
+    if (end > size)
+    {
+        end = start + (size % 9);
+    }
+    var players = teamList[num].teamMap.playerList;
+    tbodyTmp.empty();   //必须先清空
+    for (var i = start; i < end; i++)   //按行添加
+    {
+        var tmpDom = "<tr><td><input type='checkbox' playerId='{playerId}' onclick='playerCheck(this)' data='{data}' name='checkItem'/></td><td>" + players[i].playerName + "</td></tr>";
+        var dataObj = {
+            "matchId": players[i].matchId,
+            "orgId": players[i].orgId,
+            "teamId": players[i].teamId,
+            "playerId": players[i].playerId
+        };
+        tmpDom = tmpDom.replace("{playerId}", players[i].playerId);    //记录下players[i].playerId,方便访问
+        var data = JSON.stringify(dataObj);
+        var dom = tmpDom.replace("{data}", data);   //保存队员数据
+        tbodyTmp.append(dom);
+    }
+    for (var playerId in playerData)     //恢复跳页之前的选中状态，通用
+    {
+        var selector = "[playerId=" + playerId;
+        $(selector).click();
+    }
+}
+
+function pageClick(cur_this)
+{
+    $(cur_this).siblings(".active").removeClass("active");
+    $(cur_this).attr("class", "active");
+    var tabId = $(cur_this).attr("tabId");
+    var page = Number($(cur_this).find("a").html());
+    showTab(tabId, page);
+}
+
+function submit()   //提交数据
+{
+    if (Object.keys(playerData) === 0)
+    {
+        alert("请选择参赛运动员");
+        return;
+    }
+    var data = [];
+    for (var playerId in playerData)
+    {
+        data.push(playerData[playerId]);
+    }
+    var postData = JSON.stringify(data);
+    ajax({
+        url: "/match/addPlayer",
+        type: "POST",
+        data: postData,
+        dataType: "json",
+        error: function ()
+        {
+            alert("报名失败");
+            //这里需要处理
+        },
+        success: function (data)
+        {
+            alert("报名成功")
+            //这里需要处理
+        }
+    })
+}
+
+
+function init()
+{
+    teamList = $("#teamList").attr("value");
+    for (var i = 0, len = teamList.length; i < len; i++)
+    {
+        var id = "t" + String(i);
+        var tabId = "c" + String(i);
+        var teamMap = teamList[i].teamMap;
+        var tmp = teamData.replace("{teamName}", teamMap.teamName)
+            .replace("{id}", id).replace("{tabId}", tabId);   //队名添加
+        $("#teamNameList").append(tmp);   //显示队名列表
+        var tabDom = $("#cache").clone();
+        var size = teamMap.playerList.length;
+        tabDom.attr("id", tabId);
+        tabDom.attr("size", size);     //队员数量
+        $(".t-c").append(tabDom);   //先把tab更新到页面
+
+
+        //分页初始化,直接显示完所有的分页按钮
+        if (Number(size / 9) === 0)   //不分页
+        {
+            return;
+        }
+
+        var pageNum = Number(size / 9) + (size % 9 !== 0);    //分页数量
+        for (var j = 1; j <= pageNum; j++)
+        {
+            var tmp = liData.replace("{page}", String(j)).replace("{tabId}", tabId);
+            $(tabId + " " + "page-Previous").after(tmp);
+        }
+        $(tabId + " " + "page-Previous li").eq(1).attr("class", "active");  //第一页按钮激活
+        if (i === 0)
+        {
+            showTab("c0", 1);// 优化，第一时间显示第一支队伍的第一个页面.改善体验
+        }
+    }
+
+    $(".page-Previous").click(function ()   //上一页
+    {
+        $(this).children("a").css("background-color", "white");
+        var last = $(this).nextAll(".active");
+        var next = last.prev();
+        var flag = (next.length !== 0) && (next.attr("class") != "page-Previous");
+        if (flag)
+        {
+            last.attr("class", "");
+            next.attr("class", "active");
+            next.click();   //调用对应分页按钮的点击事件
+        }
+    });
+
+    $(".page-Next").click(function ()     //下一页
+    {
+        $(this).children("a").css("background-color", "white");
+        var last = $(this).prevAll(".active");
+        var next = last.next();
+        var flag = (next.length !== 0) && (next.attr("class") != "page-Next");
+        if (flag)
+        {
+            last.attr("class", "");
+            next.attr("class", "active");
+            next.click();   //调用对应分页按钮的点击事件
+        }
+    });
+
+    lastSelect = document.getElementById("t0")  //初始化第一个队名列表
+}
+
+
+$(document).ready(function ()
+{
+    init();
+});

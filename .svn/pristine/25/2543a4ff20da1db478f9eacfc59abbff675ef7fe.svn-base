@@ -1,0 +1,97 @@
+package cn.nsu.edu.web.four.controllers.live;
+
+import cn.nsu.edu.web.four.beans.live.LiveMessageBean;
+import cn.nsu.edu.web.four.config.BaseStatic;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.dto.stc.referee.ScheduleInformationDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.handler.socket.LiveWebSocket;
+import cn.nsu.edu.web.four.services.live.LiveService;
+
+import cn.nsu.edu.web.four.services.referee.RefereeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@Controller
+@RequestMapping("/live/")
+public class LiveController {
+
+    private Logger log = LoggerFactory.getLogger(getClass());
+    @Autowired
+    private HttpServletRequest request;
+    @Autowired
+    private LiveService service;
+    @Autowired
+    private RefereeService refereeService;
+
+    @RequestMapping(value = {"/{sch:[1-9]+[0-9]*}/m/index", "/{sch:[1-9]+[0-9]*}/index"})
+    public String live(@PathVariable int sch) throws Exception {
+
+//        if (sch == null) {
+//            return "forward:";
+//        }
+        // TODO: 18-3-16 获取赛程信息
+        log.info("schId = " + sch);
+
+        //获取赛程信息
+        ScheduleInformationDto information = (ScheduleInformationDto) request.getSession().getAttribute(BaseStatic.KEY_SESSION_SCHEDULE_INFORMATION);
+//        ScheduleInformationDto information = refereeService.getScheduleInformation(sch);
+        if (information == null || information.getScheduleInformation() == null) {
+            return "/common/404";
+        }
+        request.getSession().setAttribute(BaseStatic.KEY_SESSION_SCHEDULE_INFORMATION, information);
+        request.setAttribute("info", information);
+        //获取直播信息
+        List<LiveMessageBean> messages = service.getAllMessage(sch);
+        request.setAttribute("messages", messages);
+
+        if (request.getRequestURI().contains("m")) {//是否是手机端
+            return "/live/liveMobile";
+        } else {//pc端
+            return "";
+        }
+
+    }
+
+    @RequestMapping("{sch:[1-9]+[0-9]*}/send")
+//    @SendTo("/live")
+    @ResponseBody
+    public MessageDto sendLiveMessage(String content, @PathVariable int sch) {
+        String phone = (String) request.getSession().getAttribute(BaseStatic.KEY_SESSION_LIVE_PHONE);
+        //判断是否完成手机验证
+        if (phone != null) {
+            if (content != null && !content.isEmpty()) {
+                // TODO: 18-3-16 获取赛程信息，帕努单是否存在赛程
+
+                LiveMessageBean result = service.addMessage(sch, phone, content);
+                if (result != null) {
+//                request.getSession().setAttribute("temp_liveMessage", bean);
+                    MessageDto dto = new MessageDto(Result.SUCCESS);
+                    dto.put("message", result);
+                    dto.put("type", 1);//发送消息
+                    dto.put("schId", sch);
+                    LiveWebSocket.sendMessage(dto.toString());
+                    return dto;
+                } else {
+                    return new MessageDto(Result.FAIL);
+                }
+            } else {
+                return new MessageDto(Result.PARAM_NOT_SUIT);
+            }
+        } else {
+            return new MessageDto(Result.NO_AUTHORITY);
+        }
+
+
+    }
+
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.team.CoachInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.nsu.edu.web.four.beans.teams.CoachInfo" >
+        <id column="name" property="coachName" />
+        <result column="id_coach" property="idCoach"  />
+        <result column="sex" property="sex" />
+        <result column="idcard" property="idCard" />
+    </resultMap>
+
+
+    <select id="selectAllCoaches" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT name,id_coach,sex
+        FROM Coach
+        WHERE 1=1
+        <if test="orgId != null and orgId != ''">
+            AND org_id = #{orgId}
+        </if>
+    </select>
+
+    <select id="findCoachByName" resultMap="BaseResultMap" >
+        SELECT name,id_coach,sex,idcard
+        FROM Coach
+        WHERE name LIKE  CONCAT('%',#{coachName},'%')
+        <if test="orgId != null and orgId != ''">
+            AND org_id = #{orgId}
+        </if>
+    </select>
+
+
+    <select id="selectCoachById" resultMap="BaseResultMap" parameterType="Integer">
+            SELECT name,id_coach
+            FROM Coach
+            WHERE id_coach = #{idCoach}
+    </select>
+
+
+</mapper>

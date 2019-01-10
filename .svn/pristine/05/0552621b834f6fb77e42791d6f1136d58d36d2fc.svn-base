@@ -1,0 +1,78 @@
+package cn.nsu.edu.web.four.controllers.live;
+
+import cn.nsu.edu.web.four.beans.live.LiveMessageBean;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.services.live.LiveService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.List;
+
+@Controller
+@RequestMapping("/live/")
+public class LiveController {
+
+    private Logger log = LoggerFactory.getLogger(getClass());
+    @Autowired
+    private HttpServletRequest request;
+    @Autowired
+    private LiveService service;
+
+    @RequestMapping(value = {"/{sch:[1-9]+[0-9]*}/m/index", "/{sch:[1-9]+[0-9]*}/index"})
+    public String live(@PathVariable long sch) {
+
+//        if (sch == null) {
+//            return "forward:";
+//        }
+        // TODO: 18-3-16 获取赛程信息
+
+        //获取直播信息
+        List<LiveMessageBean> messages = service.getAllMessage(sch);
+        request.setAttribute("messages", messages);
+
+        if (request.getRequestURI().contains("m")) {//是否是手机端
+            return "";
+        } else {//pc端
+            return "";
+        }
+
+    }
+
+    @RequestMapping("{sch:[1-9]+[0-9]*}/send")
+    @SendTo("/live")
+    public MessageDto sendLiveMessage(String content, @PathVariable long sch) {
+
+        if (content != null && !content.isEmpty()) {
+            // TODO: 18-3-16 获取赛程信息，帕努单是否存在赛程
+
+
+            LiveMessageBean bean = new LiveMessageBean();
+            bean.setTime(new Date());
+            bean.setContent(content);
+            bean.setPhone(request.getSession().getAttribute("").toString());
+
+            boolean result = service.addMessage(sch, bean);
+            if (result) {
+//                request.getSession().setAttribute("temp_liveMessage", bean);
+                MessageDto dto = new MessageDto(Result.SUCCESS);
+                dto.put("message", bean);
+                return dto;
+            } else {
+                return new MessageDto(Result.FAIL);
+            }
+        } else {
+            return new MessageDto(Result.PARAM_NOT_SUIT);
+        }
+    }
+
+}

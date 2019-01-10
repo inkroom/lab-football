@@ -1,0 +1,308 @@
+package cn.nsu.edu.web.four.controllers.match;
+
+import cn.nsu.edu.web.four.annotation.Security;
+import cn.nsu.edu.web.four.beans.match.*;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.enums.Role;
+import cn.nsu.edu.web.four.services.match.MatchService;
+import cn.nsu.edu.web.four.utils.http.RequestUtil;
+import cn.nsu.edu.web.four.utils.string.ParseUtil;
+import cn.nsu.edu.web.four.utils.time.TimeJudge;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static cn.nsu.edu.web.four.beans.match.MatchStatic.*;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.controllers.match
+ * @date 2018/3/20 11:25
+ * @description
+ **/
+@Controller
+@RequestMapping(value = "match")
+public class MatchController {
+    @Autowired
+    MatchService service;
+
+    @Autowired
+    HttpServletRequest request;
+
+    private Logger log = LoggerFactory.getLogger(getClass());
+
+    /**
+     * @param
+     * @return void
+     * @author 痞老板
+     * @description 测试用 上线后注掉
+     * @date 2018/4/1 15:35
+     */
+    @Security
+    @ModelAttribute
+    public void sessionSet() {
+        Map<String, Object> account = new HashMap<>();
+        account.put(KEY_ORGANIZATION_ID, "10000");
+        RequestUtil.login(request, account, Role.ORGANIZATION);
+    }
+
+
+    /**
+     * @param num
+     * @return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     * @author 痞老板
+     * @description 异步获取分页list 需要获取请求页码和索引值（导航栏上面给点击事件 1为未参加赛事 2为发布赛事 3为已参加赛事）
+     * 返回的pageinfo 对象是封装分页对象 在前端可以参考http://blog.csdn.net/maoyuanming0806/article/details/77720754 来取值
+     * @date 2018/3/22 10:37
+     */
+    @ResponseBody
+    @RequestMapping(value = "/listMatch")
+    public MessageDto listMatch(@RequestParam(required = false, defaultValue = "1", value = "pn") Integer pn,
+                                @RequestParam(required = false, defaultValue = "-1", value = "num") Integer num) {
+        List<Match> list;
+        Integer orgId = ParseUtil.parseInt(RequestUtil.getLogin(request).get(KEY_ORGANIZATION_ID));
+        if (orgId == null) {
+            return new MessageDto(Result.LOGIN_NOT);
+        }
+        PageHelper.startPage(pn, MATCH_PAGE_DATA_COUNT);
+        switch (num) {
+            case 1:
+                list = service.selectByStaffOther(orgId);
+                break;
+            case 2:
+                list = service.selectByStaff(orgId);
+                break;
+            case 3:
+                list = service.selectByIdWithOrg(orgId);
+                break;
+            default:
+                return new MessageDto(Result.FAIL);
+        }
+        PageInfo<Match> pageInfo = new PageInfo(list, MATCH_NAVIGATE_PAGES);
+        MessageDto dto;
+        if (list == null || list.isEmpty()) {
+            log.info("赛事列表为空");
+            return new MessageDto(Result.FAIL);
+        }
+        //2表示已结束 1正在进行 0正在报名
+        for (Match match : pageInfo.getList()) {
+//            if (TimeJudge.compareTime(match.getEndDate())){
+//                match.setStatus(2);
+//            }
+            if (!TimeJudge.compareTime(match.getApplyDeadline())) {
+                match.setStatus(MATCH_STATUS_DURING);
+            } else {
+                match.setStatus(MATCH_STATUS_SIGN_UP);
+            }
+        }
+        log.info("赛事列表获取成功");
+        dto = new MessageDto(Result.SUCCESS);
+        dto.put("pageInfo", pageInfo);
+        return dto;
+    }
+
+
+    /**
+     * @param model
+     * @param mathcid
+     * @return java.lang.String
+     * @author 痞老板
+     * @description 报名表列表 列出球队和球员 注意数据结构为 teamlist->teamMap->teamName,playerList->MatchPlayer
+     * @date 2018/3/22 20:38
+     */
+    @RequestMapping(value = "/listSign")
+    public String listTeamAndPlayer(Model model, @RequestParam(required = false, defaultValue = "0", value = "id") Integer mathcid) {
+        Integer orgId = ParseUtil.parseInt(RequestUtil.getLogin(request).get(KEY_ORGANIZATION_ID));
+        if (mathcid == 0 || orgId == null) {
+            return "common/404";
+        }
+        model.addAttribute("matchid", mathcid);
+        model.addAttribute("teamList", service.listTeamAndPlayer(orgId));
+        return "match/matchSignUp";
+    }
+
+    /**
+     * @param model
+     * @return java.lang.String
+     * @author 痞老板
+     * @description 批量上传队员信息 注意 上传字段只需要:matchId,orgId,teamId,playerId
+     * @date 2018/3/22 20:43
+     */
+    @ResponseBody
+    @RequestMapping(value = "/addPlayer")
+    public MessageDto insertPlayer(ModelList model) {
+        if (model.getPlayers().size()!=0){
+        service.insertPlayer(model.getPlayers());
+            return new MessageDto(Result.SUCCESS);
+        } else {
+            return new MessageDto(Result.FAIL);
+        }
+    }
+
+    /**
+     *@author 痞老板
+     *@description
+     *@param matchId, model
+     *@return java.lang.String
+     *@date 2018/3/30 15:33
+     */
+    @RequestMapping(value = "/turnDetailsAdmin")
+    public String turnDetailsAdmin(@RequestParam("id") Integer matchId, Model model) {
+        model.addAttribute("mid", matchId);
+        log.info("转到赛事详情展示页");
+        return "match/matchDetailsAdmin";
+    }
+
+    @RequestMapping(value = "turnUpdate")
+    public String turnUpdateMatch(@RequestParam("id") Integer mid, Model model) {
+        model.addAttribute("mid", mid);
+        return "match/modifyMatch";
+    }
+
+    @RequestMapping(value = "turnAddSch")
+    public String turnAddSch(@RequestParam("id") Integer mid, Model model) {
+        model.addAttribute("mid", mid);
+        return "match/addSch";
+    }
+
+
+    @RequestMapping(value = "/turnDetails")
+    public String turnDetails(@RequestParam("id") Integer matchId, Model model) {
+        model.addAttribute("mid", matchId);
+        log.info("转到赛事详情管理员页");
+        return "match/matchDetails";
+    }
+
+
+    /**
+     * @param matchId
+     * @return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     * @author 痞老板
+     * @description 赛事审核列表
+     * @date 2018/3/29 10:07
+     */
+    @ResponseBody
+    @RequestMapping(value = "/listExamine")
+    public MessageDto listExamine(@RequestParam("mid") Integer matchId) {
+
+        List<MatchExamine> list = service.listExamine(matchId);
+        if (list == null || list.isEmpty()) {
+            log.info("审核列表为空");
+            return new MessageDto(Result.FAIL);
+        }
+        log.info("审核列表获取成功");
+        MessageDto messageDto = new MessageDto(Result.SUCCESS);
+        messageDto.put("examine", list);
+        return messageDto;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/listExaminePlayer")
+    public MessageDto listExaminePlayer(@RequestParam("oid") Integer orgid,
+                                        @RequestParam(required = false, defaultValue = "1", value = "pn") Integer pn) {
+        PageHelper.startPage(pn, MATCH_PAGE_DATA_COUNT);
+        List<MatchPlayer> list = service.listExaminePlayer(orgid);
+        if (list == null || list.isEmpty()) {
+            log.info("审核列表为空");
+            return new MessageDto(Result.FAIL);
+        }
+        PageInfo<MatchExamine> pageInfo = new PageInfo(list, 5);
+        MessageDto messageDto = new MessageDto(Result.SUCCESS);
+        messageDto.put("playerPage", pageInfo);
+        return messageDto;
+    }
+
+    /**
+     * @param org_id
+     * @return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     * @author 痞老板
+     * @description 通过审核修改状态
+     * @date 2018/3/22 20:51
+     */
+    @ResponseBody
+    @RequestMapping(value = "/setExamine")
+    public MessageDto setExamine(@RequestParam("id") Integer org_id, @RequestParam("status") Integer status) {
+        service.updateStaffStatus(status, org_id);
+        log.info("修改审核状态");
+        return new MessageDto(Result.SUCCESS);
+    }
+
+    /**
+     * @param match
+     * @return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     * @author Xuing
+     * @description 创建赛事
+     * @date 2018-3-26 20:59:07
+     */
+
+    @ResponseBody
+    @RequestMapping(value = "/createMatch", method = {RequestMethod.GET, RequestMethod.POST})
+    public MessageDto insertMatch(Match match) {
+        Integer orgId = ParseUtil.parseInt(RequestUtil.getLogin(request).get(KEY_ORGANIZATION_ID));
+        if (orgId == 0) {
+            return new MessageDto(Result.LOGIN_NOT);
+        }
+        match.setOrgStaff(new Staff(orgId));
+        match.setStatus(MATCH_STATUS_SIGN_UP);
+        if (service.insertMatch(match)) {
+            log.info("创建赛事成功");
+            return new MessageDto(Result.SUCCESS);
+        } else {
+            log.info("创建赛事失败");
+            return new MessageDto(Result.FAIL);
+        }
+    }
+
+    /**
+     * @param match
+     * @return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     * @author Xuing
+     * @description 修改赛事信息
+     * @date 2018-3-28 09:30:56
+     */
+    @ResponseBody
+    @RequestMapping(value = "/modifyMatch")
+    public MessageDto modifyMatchInfo(Match match) {
+        if (service.modifyMatch(match)) {
+            log.info("修改赛事成功");
+            return new MessageDto(Result.SUCCESS);
+        } else {
+            log.info("修改赛事失败");
+            return new MessageDto(Result.FAIL);
+        }
+    }
+
+    /**
+     *
+     *
+     * @param id
+     * @return cn.nsu.edu.web.four.dto.ctv.MessageDto
+     * @author Xuing
+     * @description 通过ID获取赛事信息 /MatchInfo/{id}
+     * @date 2018-3-28 09:08:20
+     */
+    @ResponseBody
+    @RequestMapping(value = "/MatchInfo/{id:[1-9]+[0-9]*}")
+    public MessageDto getMatchInfoByid(@PathVariable Integer id) {
+        MessageDto dto = new MessageDto(Result.FAIL);
+        Match matchInfo = service.getMatchInfoById(id);
+        if (matchInfo != null) {
+            dto = new MessageDto(Result.SUCCESS);
+            dto.put("matchInfo", matchInfo);
+        }
+        return dto;
+    }
+
+}

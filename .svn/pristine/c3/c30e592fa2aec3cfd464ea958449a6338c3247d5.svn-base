@@ -1,0 +1,26 @@
+/*入场验证*/
+.scorer{
+	opacity: 1.0;
+}
+.img{
+	opacity: 0.3;
+}
+.btn-distance{
+	margin-bottom: 100px;
+}
+.font-color{
+	color: red;
+}
+.text-top{
+	margin: 5px 0;
+}
+.img1-float{
+	float: left;
+	margin-left: 10px;
+}
+.img2-float{
+	float: left;
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 10px;
+}

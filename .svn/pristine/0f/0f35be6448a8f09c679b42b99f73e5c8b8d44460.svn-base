@@ -1,0 +1,59 @@
+package cn.nsu.edu.web.four.daos.jdbc.match;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+import cn.nsu.edu.web.four.beans.match.MatchExamine;
+import cn.nsu.edu.web.four.beans.match.MatchPlayer;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
+
+public interface MatchDao {
+    int deleteById(Integer idMatch) throws Exception;
+
+    /**
+     * 插入赛事（基本信息）
+     *
+     * @param match（org_id, `name`,start_date, num_player, apply_deadline, `level`, status） id_Match,end_date可选
+     * @return int
+     * @throws Exception
+     */
+    int insert(Match match) throws Exception;
+
+    /**
+     * 通过赛事ID查赛事信息
+     *
+     * @param idMatch 赛事ID
+     * @return Match对象，包含赛事信息
+     * @throws Exception
+     */
+    Match selectById(Integer idMatch) throws Exception;
+
+    /**
+     * 通过Id更新对应Match
+     *
+     * @param match 新的赛事Bean
+     * @return 影响行数
+     * @throws Exception
+     */
+    int updateById(Match match) throws Exception;
+
+    List<Match> selectByIdWithOrg(int orgId);
+
+    List<Match> selectByStaff(int orgId);
+
+    List<Match> selectByStaffOther(int orgId);
+
+    List<MatchPlayer> selectPlayerByOrgId(int orgId);
+
+    List<Map<String,Object>> listTeamIdByorgId(int orgId);
+
+    void insertPlayer(List<MatchPlayer> list);
+
+    List<MatchExamine> selectOrgNameAndTeamName(int matchId);
+
+    void updateStaffStatus(@Param("status") int status, @Param("orgid") int orgId);
+
+    Integer getLevel(int matchId);
+
+}

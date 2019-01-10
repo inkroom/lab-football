@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--全局异常处理器-->
+    <bean class="cn.nsu.edu.web.four.handler.spring.ExceptionHandler"/>
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <!--后缀拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/resources/**"/>
+            <bean class="cn.nsu.edu.web.four.interceptors.SuffixInterceptor"/>
+        </mvc:interceptor>
+
+        <!--自动登录拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/referee/**"/>
+            <mvc:exclude-mapping path="/referee/login"/>
+            <bean class="cn.nsu.edu.web.four.interceptors.AutoLoginInterceptor"/>
+        </mvc:interceptor>
+        <!--权限拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+
+            <mvc:exclude-mapping path="/**/login"/>
+            <mvc:exclude-mapping path="/resources/**"/>
+            <bean class="cn.nsu.edu.web.four.interceptors.SecurityInterceptor" p:tokenErrorUrl="tokenError"
+                  p:roleErrorUrl="roleError"/>
+        </mvc:interceptor>
+
+        <!--裁判完善身份拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/referee/**"/>
+
+            <mvc:exclude-mapping path="/**/login"/>
+            <mvc:exclude-mapping path="/resources/**"/>
+
+            <mvc:exclude-mapping path="/referee/consummate"/>
+            <mvc:exclude-mapping path="/referee/consummateIndex"/>
+            <bean class="cn.nsu.edu.web.four.interceptors.RefereeInterceptor"/>
+        </mvc:interceptor>
+
+        <!--赛程结束拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/referee/**"/>
+
+
+            <!--直播url-->
+            <mvc:mapping path="/live/**"/>
+
+            <mvc:exclude-mapping path="/live/ssss"/>
+
+            <mvc:exclude-mapping path="/referee/login"/>
+
+            <bean class="cn.nsu.edu.web.four.interceptors.ScheduleInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+</beans>

@@ -1,0 +1,164 @@
+package cn.nsu.edu.web.four.services.team.Impl;
+
+import cn.nsu.edu.web.four.beans.coach.Coach;
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.beans.teams.Team;
+import cn.nsu.edu.web.four.daos.jdbc.team.FindInfoDao;
+import cn.nsu.edu.web.four.services.team.FindInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
+
+@Service
+public class FindInfoServiceImpl implements FindInfoService {
+
+    @Autowired
+    private FindInfoDao findInfoDao;
+
+    //球队教练信息查询
+
+    @Override
+    public Integer findTeamIdByCoachid(int idCoach, int status) {
+
+        try {
+            return   findInfoDao.findTeamByCoachid(idCoach,status);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public Date findCoachJoinTeamTime(int idCoach, int status) {
+
+        try {
+          return   findInfoDao.findCoachJoinTeamTime(idCoach,status);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public Date findCoachOutTeamTime(int idCoach, int status) {
+
+        try {
+           return findInfoDao.findCoachOutTeamTime(idCoach,status);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    //球队球员信息查询
+
+    @Override
+    public Integer findTeamIdByPlayerid(int idPlayer, int status) {
+
+        try {
+            return  findInfoDao.findTeamByPlayerid(idPlayer,status);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public Date findPlayerJoinTeamTime(int idPlayer, int status) {
+
+        try {
+           return  findInfoDao.findPlayerJoinTeamTime(idPlayer,status);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public Date findPlayerOutTeamTime(int idPlayer, int status) {
+
+        try {
+           return findInfoDao.findPlayerOutTeamTime(idPlayer,status);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public Integer findCoachIdByIdTeam(int idTeam, int staus) {
+        try {
+            return findInfoDao.findCoachIdByIdTeam(idTeam,staus);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Integer> findPlayerIdByIdTeam(int idTeam, int staus) {
+        try {
+            return findInfoDao.findPlayerIdByIdTeam(idTeam,staus);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    //球队
+
+    @Override
+    public List<Player> findSameOrgAllPlayer(int idOrg, int status)  {
+
+        try {
+            return  findInfoDao.findSameOrgAllPlayer(idOrg,status);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public List<Coach> findSameOrgAllCoach(int idOrg, int status)  {
+
+        try {
+            return  findInfoDao.findSameOrgAllCoach(idOrg,status);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Team> findSameOrgAllTeam(int idOrg, int status)  {
+
+        try {
+            return  findInfoDao.findSameOrgAllTeam(idOrg,status);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Team findTeamInfo(int idTeam)  {
+
+        try {
+            return  findInfoDao.findTeamInfo(idTeam);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+}

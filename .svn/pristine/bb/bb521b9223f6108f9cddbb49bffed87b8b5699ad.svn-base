@@ -1,0 +1,233 @@
+/**
+ * Created by 灵魂都在冒香气的神 on 2018/4/10.
+ */
+
+
+/**
+ * title是队员名字，teamName为队伍名字，value是队员ID:teamName
+ * @type {string}
+ */
+teamTab = '<div onclick="selectTeam(this)" onmouseover="move(this)" onmouseout="out(this)" style="cursor: pointer"><div class="t-h-n">{teamName}</div></div>';
+player = '<a title="{name}" teamName="{team}" value="{idAndTeam}" onclick="selectOne(this)" href="#"><span>{name}</span><em></em></a>';
+teamMap = {};    //格式化后的数据，队名为key
+tmPalyer = {};    //待选人员，已选人员缓存   {teamName:{playerId:xxx}},最后提交的时候记得判断队伍为空
+cur_team = null;
+
+
+function move(cur_this)
+{
+    $(cur_this).find(".t-h-n").css("background-color", "rgb(141, 144, 149)");
+}
+
+function out(cur_this)
+{
+    var a = $(cur_this).find(".t-h-n").html();
+    var b = $(cur_team).find(".t-h-n").html();
+    if (a != b)
+    {
+        $(cur_this).find(".t-h-n").css("background-color", "rgb(56, 50, 72)");
+    }
+}
+
+/**
+ * 全选/取消全选按钮事件
+ */
+
+function slectAll()
+{
+    if ($(this).attr("s") == 1)
+    {
+        $("#real_wait a").click();
+        $("#select_all_flag").attr("class", "glyphicon glyphicon-triangle-bottom");
+        $(this).attr("s", "0");
+
+        // //调用了上面的函数之后,生成了dom。此时绑定事件
+        // $("#real_player em").click(cancel);
+    }
+    else
+    {
+        $("#real_player em").click();
+        $("#select_all_flag").attr("class", "glyphicon glyphicon-triangle-top");
+        $(this).attr("s", "1");
+    }
+}
+
+/**
+ * 单个选中事件
+ */
+function selectOne(cur_this)
+{
+    var id = $(cur_this).attr("value").split(":")[0];
+    var teamName = $(cur_this).attr("teamName");    //队名唯一
+    if (tmPalyer[teamName][id])   //若此队队伍中此队员已经被选中
+    {
+        return;
+    }
+    var list = teamMap[teamName];  //找到目标所在队伍
+    var one = null;
+    for (var i = 0, len = list.length; i < len; i++)
+    {
+        if (list[i].playerId == id)    //找到目标运动员信息
+        {
+            one = {
+                "matchId": document.getElementById("mid").value,
+                "orgId": list[i].orgId,
+                "teamId": list[i].teamId,
+                "playerId": id
+            };
+            break;
+        }
+    }
+    tmPalyer[teamName][id] = one;
+}
+
+/**
+ * 单个取消事件
+ */
+function cancel()
+{
+    var value = $("#real_player em").parent().attr("value").split(":");
+    delete tmPalyer[value[1]][value[0]];
+}
+
+/**
+ * 选择队伍列表
+ */
+function selectTeam(cur_this)
+{
+    $(cur_this).find(".t-h-n").css("background-color", "rgb(141, 144, 149)");
+    if (cur_team != null)
+    {
+        $(cur_team).find(".t-h-n").css("background-color", "rgb(56, 50, 72)")
+    }
+    cur_team = cur_this;
+
+
+    var teamName = $(cur_this).find(".t-h-n").html();
+    var playerList = teamMap[teamName];
+    $("#real_player").empty();
+    $("#real_wait").empty();   //必须清空
+    for (var j = 0, len = playerList.length; j < len; j++)
+    {
+        if (playerList[j].status != 0)
+        {
+            continue;
+        }
+        var id = playerList[j].playerId;
+        var name = playerList[j].playerName;
+        var value = id + ":" + teamName;
+        var tmp = player.replace("{name}", name)
+            .replace("{name}", name)
+            .replace("{id}", id)
+            .replace("{team}", teamName)
+            .replace("{idAndTeam}", value);
+        $("#real_wait").append(tmp);
+        if (tmPalyer[teamName][id])
+        {
+            var value = "[value=" + id + "\\:" + teamName + "]";
+            $("#real_wait").find(value).click()
+        }
+    }
+}
+
+/**
+ * 解析数据，队名为key
+ * @param data
+ */
+function parseData(data)
+{
+    var tmp = JSON.parse(data);
+    for (var i = 0, len = tmp.length; i < len; i++)
+    {
+        teamMap[tmp[i].teamName] = tmp[i].playerList;
+        tmPalyer[tmp[i].teamName] = {};
+    }
+}
+
+/**
+ * 初始化队名选项列表
+ */
+function initTeamTab()
+{
+    for (var name in teamMap)
+    {
+        var div = teamTab.replace("{teamName}", name);
+        $("#teamNameList").append(div);
+    }
+}
+
+/**
+ * 绑定some事件
+ */
+function initEvent()
+{
+    $("#select_all").click(slectAll);
+    $(document).on("click", "#real_player em", cancel);   //必须绑定动态dom事件,1.9以上用on
+    $("#submit").click(submit);
+}
+
+
+/**
+ * 提交数据
+ */
+function submit()
+{
+    var tmp = {players: []};
+    for (var team in tmPalyer)
+    {
+        var a = tmPalyer[team];
+        for (var player in a)
+        {
+            tmp.players.push(a[player]);
+        }
+    }
+    if (tmp.players.length === 0)
+    {
+        layer.alert("请选择队员");
+    }
+    var json = JSON.stringify(tmp);
+    ajax({
+        async: false,
+        url: "/match/addPlayer",
+        type: "POST",
+        data: json,
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
+        headers: {token: token},
+        error: function ()
+        {
+            layer.alert('报名失败', {
+                offset: 't',
+                closeBtn: 0,
+                btn: ['确定']
+                , yes: function (index, layero)
+                {
+                    window.location.href = getRootPath() + "/match/turnMatchList";
+                }
+            });
+            // alert(222);
+        },
+        success: function (data)
+        {
+            layer.alert('报名成功', {
+                offset: 't',
+                closeBtn: 0,
+                btn: ['确定']
+                , yes: function (index, layero)
+                {
+                    window.location.href = getRootPath() + "/match/turnMatchList";
+                }
+            });
+            // alert("1111");
+        }
+    });
+}
+
+$(function ()
+{
+    initEvent();
+    parseData(teamList);
+    initTeamTab();
+
+    $("#teamNameList").children().eq(0).click()    //选中一个队伍
+});

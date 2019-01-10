@@ -1,0 +1,157 @@
+package cn.nsu.edu.web.four.controllers.team;
+
+import cn.nsu.edu.web.four.beans.coach.Coach;
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.beans.teams.Team;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.services.coach.CoachService;
+import cn.nsu.edu.web.four.services.player.impl.PlayerServiceImpl;
+import cn.nsu.edu.web.four.services.team.Impl.CreateTeamServiceImpl;
+import cn.nsu.edu.web.four.services.team.Impl.FindInfoServiceImpl;
+import cn.nsu.edu.web.four.services.team.Impl.OperateInfoServiceImpl;
+import com.sun.org.apache.bcel.internal.generic.NEW;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.naming.Name;
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@Controller
+@RequestMapping(value = "updateTeam")
+public class UpdateTeamController {
+
+    private org.slf4j.Logger log = LoggerFactory.getLogger(getClass());
+
+   @Autowired
+    OperateInfoServiceImpl operateInfoService;
+
+   @Autowired
+   private FindInfoServiceImpl findInfoService;
+
+   @Autowired
+   private PlayerServiceImpl playerService;
+
+   @Autowired
+   private CoachService coachService;
+
+   @Autowired
+   private CreateTeamServiceImpl createTeamService;
+
+
+   @RequestMapping(value = "index")
+    public  String UpdateAction(HttpServletRequest request,@RequestParam("idTeam")int idTeam){
+       log.info("页面跳转");
+       request.getSession().setAttribute("idTeam",idTeam);
+       return "/team/update";
+   }
+
+   @RequestMapping(value = "findInfo")
+   @ResponseBody
+    public MessageDto getTeamInfo(@RequestParam("idTeam") int idTeam,HttpServletRequest request){
+       String sex = null;
+        int status = 0;
+        MessageDto dto = new MessageDto(Result.SUCCESS);
+        List<Player> players = new ArrayList<Player>();
+        Team team = findInfoService.findTeamInfo(idTeam);
+       Coach coach = coachService.getCoach(findInfoService.findCoachIdByIdTeam(idTeam,status));
+       if (coach.getSex() == 1){
+             sex = "男";
+       }else {
+           sex = "女";
+       }
+        List<Integer> playerIdList = findInfoService.findPlayerIdByIdTeam(idTeam,status);
+       for (Integer p : playerIdList) {
+           players.add(playerService.selectPlayerByIdStatus(p,status));
+       }
+       dto.put("team",team);
+       dto.put("coach",coach);
+       dto.put("sex",sex);
+       dto.put("players",players);
+        return dto;
+   }
+
+
+    @RequestMapping(value = "deletePlayer")
+    @ResponseBody
+    public  MessageDto delectPlayer(@RequestParam("idTeam")int idTeam,
+                                    @RequestParam("playerId")int playerId){
+        int status = 1;
+        MessageDto dto = new MessageDto(Result.SUCCESS);
+        boolean flag = operateInfoService.updatePlayer(idTeam,playerId,status,new Date());
+        if (!flag){
+            dto.setStatus(Result.EXCEPTION);
+        }
+        return dto;
+    }
+
+    @RequestMapping(value = "findPlayers")
+    @ResponseBody
+    public  MessageDto findPlays(@RequestParam("idTeam")int idTeam,@RequestParam("type")int type,
+                                 @RequestParam("name") String name){
+        int status = 0;
+        MessageDto dto = new MessageDto(Result.SUCCESS);
+        Team team = findInfoService.findTeamInfo(idTeam);
+        int orgId = team.getOrgId();
+        List<Integer> classes = new ArrayList<Integer>();
+        List<Integer> grades = findInfoService.findGradeByIdOrg(orgId,status);
+
+        for (Integer grade:grades){
+            classes = findInfoService.findClassByGrade(grade);
+        }
+
+        List<Player> players= findInfoService.findPlayers(orgId,status,type,name);
+        dto.put("players",players);
+        return  dto;
+    }
+
+    @RequestMapping(value = "insert")
+    @ResponseBody
+    public  MessageDto insertInfo(Integer idTeam,String name,Integer type ,Integer preId,Integer newId,String arrPlayer ){
+            log.info(idTeam+"");
+        int status = 0;
+        MessageDto dto = new MessageDto(Result.SUCCESS);
+        String[] playerIds= arrPlayer.split(",");
+        Team team = new Team();
+        team.setIdTeam(idTeam);
+        team.setStatus(0);
+        team.setName(name);
+        team.setCreateTime(new Date());
+        team.setType(type);
+        List<Integer> idplayers = new ArrayList<Integer>();
+
+        if(operateInfoService.upDateTeamInfo(team)){
+            if (preId != newId){
+                operateInfoService.updateCoach(idTeam,preId,1,new Date());
+                createTeamService.addCoach(idTeam,newId,status,new Date());
+            }
+
+            for (String playerid : playerIds){
+                if (!findInfoService.findSameIdTeamAndPlayerId(idTeam,Integer.parseInt(playerid))) {
+                    idplayers.add(Integer.parseInt(playerid));
+                }else {
+                    operateInfoService.updatePlayer(idTeam,Integer.parseInt(playerid),status,new Date());
+                }
+            }
+            if (!idplayers.isEmpty()) {
+                createTeamService.addPlayer(idplayers, idTeam, status, new Date());
+            }
+
+        }else {
+            dto.setStatus(Result.EXCEPTION);
+        }
+        return dto;
+
+    }
+
+
+
+}

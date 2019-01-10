@@ -1,0 +1,324 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<html>
+<head>
+    <title>修改球员信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="${path}/resources/css/player/updatelist.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="${path}/resources/lib/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/player/playerupdate.css" />
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/player/innerupdate.css" />
+</head>
+<body>
+<nav class="nav-bg navbar">
+    <div class="container">
+        <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+            <img src="${path}/resources/img/player/logoImage.png" />
+            <span>四川省青少年校园足球信息网</span>
+        </div>
+        <div class="nav-b hidden-lg hidden-md col-sm-1 hidden-xs">
+            <button type="button" class="btn">菜单</button>
+        </div>
+        <div class="nav-w col-lg-8 col-md-7 hidden-sm hidden-xs">
+            <ul>
+                <li>
+                    <a href="#">赛事赛程</a>
+                </li>
+                <li>
+                    <a href="#">教练管理</a>
+                </li>
+                <li>
+                    <a href="#">球员管理</a>
+                </li>
+                <li>
+                    <a href="#">球队管理</a>
+                </li>
+                <li>
+                    <a href="#">个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <form class="form-horizontal"  method="post">
+        <h2>球员信息修改</h2>
+        <div class="control-group">
+            <label class="control-label" for="name">姓名</label>
+            <div class="controls">
+                <input type="text" id="name" placeholder="姓名" value="${item.name}">
+            </div>
+        </div>
+        <br/>
+        <div class="control-group">
+            <div class="controls">
+                <label for="boy" class="sex">男</label>
+                <input type="radio"  id="boy" class="sex1" value="0" name="sex">
+                <label for="girl" class="sex">女</label>
+                <input type="radio"  id="girl" class="sex1" value="1" name="sex">
+            </div>
+        </div>
+        <br/>
+        <div class="control-group">
+            <label class="control-label" for="idcard">身份证号</label>
+            <div class="controls">
+                <input type="text" id="idcard" placeholder="身份证号" value="${item.idCard}"  maxlength="18">
+            </div>
+        </div>
+        <br/>
+        <div class="control-group">
+            <label class="control-label" for="password1">原密码</label>
+            <div class="controls">
+                <input type="password" id="password1" placeholder="原密码" name="oldPassword">
+            </div>
+        </div>
+        <br/>
+        <div class="control-group">
+            <label class="control-label" for="newPassword">新密码</label>
+            <div class="controls">
+                <input type="password" id="newPassword" placeholder="新密码" name="password">
+            </div>
+        </div>
+        <br/>
+        <div class="control-group">
+            <label class="control-label" for="city">地区</label>
+            <div class="controls" style="width: 100%">
+                <select class="select2" id="city" >
+                    <option value="">选择市</option>
+                </select>
+                <select class="select2" id="area" >
+                    <option value="">选择县</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+
+        <div class="control-group">
+            <label class="control-label" for="school" >学校信息</label>
+            <div class="controls" style="width: 100%">
+                <select class="select1" id="school"   onclick="getOrg();return false;">
+                    <option value="">选择学校</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <div class="control-group">
+            <label class="control-label" for="grade">班级信息</label>
+            <div class="controls">
+                <select id="grade">
+                    <option value="1">1年级</option>
+                    <option value="2">2年级</option>
+                    <option value="3">3年级</option>
+                    <option value="4">4年级</option>
+                    <option value="5">5年级</option>
+                    <option value="6">6年级</option>
+                    <option value="7">7年级</option>
+                    <option value="8">8年级</option>
+                    <option value="9">9年级</option>
+                </select>
+                <input type="text" id="classes" placeholder="班" value="${item.classes}">
+            </div>
+        </div>
+        <br/>
+        <div class="control-group">
+            <div class="controls submitbtn">
+                <p  class="btn" onclick="reg();return false;">确定</p>
+            </div>
+        </div>
+    </form>
+    <input type="hidden" id="token" value="${token}">
+</div>
+<script src="${path}/resources/lib/jquery/jquery-3.1.1.min.js"></script>
+<script src="${path}/resources/lib/bootstrap/bootstrap.min.js"></script>
+<script src="${path}/resources/lib/jquery/jquery-1.11.3.js"></script>
+<script src="${path}/resources/lib/bootstrap/bootstrap.min.js"></script>
+<script src="${path}/resources/js/player/District.js"></script>
+<script src="${path}/resources/lib/layer/layer.js"></script>
+<script src="${path}/resources/js/index.js"></script>
+</body>
+<script>
+    function reg(){
+        if (this.checkInput()){
+            doSubmit();
+        }
+    }
+    function checkInput(){
+        /*数字*/
+        var reg = /[1-9]+[0-9]*/;
+        /*中文*/
+        var reg1 = /^[\u4E00-\u9FA5]*$/;
+        /*正则-数字字母*/
+        var reg2 = /^[0-9a-zA-Z]+$/;
+        /*身份证号*/
+        var reg3 = /^[1-9][0-9]{5}(19[0-9]{2}|200[0-9]|2010)(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[0-9]{3}[0-9xX]$/;
+
+        var name=$("#name").val();
+        var sex = $("input[name='sex']:checked").val();
+        var idcard=$("#idcard").val();
+        var city=$("#city").val();
+        var area=$("#area").val();
+        var schoolcode=$("#school").val();
+        var oldpassword=$("#password1").val();
+        var newpassword=$("#newPassword").val();
+        var classes=$("#classes").val();
+        var grade=$("#grade").val();
+
+
+        if(name==""){
+            layer.msg("姓名不能为空");
+            return false;
+        }
+        else if(!reg1.test(name)){
+            layer.msg("姓名不是中文");
+            return false;
+        }
+        else if(sex != 1&& sex != 0){
+            layer.msg("没有选择性别");
+            return false;
+        }
+        else if(idcard==""){
+            layer.msg("身份证号不能为空");
+            return false;
+        }
+        else if(idcard.length<18){
+            layer.msg("身份证号位数不足18位");
+            return false;
+        }
+        else if(!reg3.test(idcard)){
+            layer.msg("身份证号格式错误");
+            return false;
+        }
+        else if(oldpassword==""){
+            layer.msg("原密码不能为空");
+            return false;
+        }
+        else if(!reg2.test(oldpassword)){
+            layer.msg("密码格式错误");
+            return false;
+        }
+        else if(oldpassword.length<6){
+            layer.msg("密码位数不足");
+            return false;
+        }
+        else if(newpassword==""){
+            layer.msg("新密码不能为空");
+            return false;
+        }
+        else if(newpassword.length<6){
+            layer.msg("密码位数不足");
+            return false;
+        }
+        else if(!reg2.test(newpassword)){
+            layer.msg("新密码有非法字符");
+            return false;
+        }
+        else if(city==""){
+            layer.msg("市下拉框没有选择");
+            return false;
+        }
+        else if(!reg.test(city)){
+            layer.msg("市格式错误");
+            return false;
+        }
+        else if(area==""){
+            layer.msg("区县下拉框没有选择");
+            return false;
+        }
+        else if(!reg.test(city)){
+            layer.msg("区县格式错误");
+            return false;
+        }
+        else if(schoolcode==""){
+            layer.msg("学校下拉框没有选择");
+            return false;
+        }
+        else if(!reg.test(schoolcode)){
+            layer.msg("学校下拉框没有选择");
+            return false;
+        }
+        else if(grade==""){
+            layer.msg("年级不能为空");
+            return false;
+        }
+        else if(!reg.test(grade)){
+            layer.msg("年级格式错误");
+            return false;
+        }
+        else if(classes==""){
+            layer.msg("班级不能为空");
+            return false;
+        }
+        else if(!reg.test(classes)){
+            layer.msg("班级格式错误");
+            return false;
+        }
+        return true;
+
+    }
+    function doSubmit() {
+        ajax({
+            type: "POST",   //提交的方法
+            url:"${path}/player/update", //提交的地址
+            data:{
+                name:$("#name").val(),
+                idCard:$("#idcard").val(),
+                password:$("#newPassword").val(),
+                grade:$("#grade").val(),
+                classes:$("#classes").val(),
+                schoolCode:$("#school").val(),
+                oldPassword:$("#password1").val(),
+                sex:$("input[name='sex']:checked").val(),
+                token:$("#token").val()
+
+            },
+            dataType:'json',
+            success: function(data) {  //成功
+                switch(data.status){
+                    case 0:
+                        layer.msg("球员信息更新成功");
+                        setTimeout(function(){
+                            window.location.href="${path}/player/list";
+                        },3000);
+                        break;
+                    case 6:
+                        layer.msg("参数错误");
+                        break;
+                }
+            },
+            error:function(){
+                layer.msg("请求异常");
+            }
+
+        });
+    }
+    function getOrg(){
+        var countryCode = $("#city option:selected").val();
+        var villageCode = $("#area option:selected").val();
+        if(countryCode==""||villageCode==""){
+            layer.msg("请选择市和区县");
+            return false;
+        }
+        ajax({
+            type: "POST",   //提交的方法
+            url:"${path}/organization/showorg", //提交的地址
+            data:{
+                "countrycode":countryCode,
+                "villagecode":villageCode
+            },
+            dataType:'json',
+            success: function(data) {
+                $("#school").empty();
+                $.each( data.data.OrgList,function(index,item){
+                    $("#school").append("<option value='"+item.schoolCode+"'>"+item.name+"</option>");
+                });
+            },
+            error: function(data) {  //失败的话
+                console.log(data);
+            }
+        });
+    }
+</script>
+
+</html>

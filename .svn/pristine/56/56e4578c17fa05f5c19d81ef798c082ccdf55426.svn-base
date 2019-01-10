@@ -1,0 +1,148 @@
+package cn.nsu.edu.web.four.beans.player;
+
+/**
+ * @author :王新璋
+ * @Description: 球员的实体类
+ * @date :18.01 2018/3/15
+ */
+
+public class Player {
+
+    private int idPlayer;//球员编号
+
+    private String name;//球员姓名
+
+    private String password;//球员密码
+
+    private String headPic;//球员头像
+
+    private String salt;//是否加密
+
+    private int orgId;//机构编号
+
+    private int grade;//球员年级（例如2015）
+
+    private String classes;//球员班级
+
+    private int status;//球员状态
+
+    private int score;//球员个人积分
+
+    private String  sex;//球员性别
+
+    private String idCard;
+
+    public int getIdPlayer() {
+        return idPlayer;
+    }
+
+    public void setIdPlayer(int idPlayer) {
+        this.idPlayer = idPlayer;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getHeadPic() {
+        return headPic;
+    }
+
+    public void setHeadPic(String headPic) {
+        this.headPic = headPic;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public int getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(int orgId) {
+        this.orgId = orgId;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "idPlayer=" + idPlayer +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", headPic='" + headPic + '\'' +
+                ", salt='" + salt + '\'' +
+                ", orgId=" + orgId +
+                ", grade=" + grade +
+                ", classes='" + classes + '\'' +
+                ", status=" + status +
+                ", score=" + score +
+                ", sex='" + sex + '\'' +
+                ", idCard='" + idCard + '\'' +
+                '}';
+    }
+}

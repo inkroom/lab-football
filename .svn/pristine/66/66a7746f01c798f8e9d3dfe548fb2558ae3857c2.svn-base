@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--<bean id="zooKeeperConfigWatch" class="cn.nsu.edu.web.common.zookeeper.ZooKeeperConfigWatch"/>-->
+
+    <!--<bean class="org.apache.zookeeper.ZooKeeper">-->
+        <!--<constructor-arg name="connectString" value="10.14.4.29:2181"/>-->
+        <!--<constructor-arg name="sessionTimeout" value="5000"/>-->
+        <!--<constructor-arg name="watcher" ref="zooKeeperConfigWatch"/>-->
+    <!--</bean>-->
+</beans>

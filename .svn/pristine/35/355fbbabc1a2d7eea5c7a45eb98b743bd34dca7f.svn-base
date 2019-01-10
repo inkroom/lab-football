@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.team.OperateInfoDao">
+    <update id="updatePlayer" >
+        UPDATE  m_team_player
+        SET status = #{status},out_time = #{time}
+        WHERE team_id = #{id_team}and player_id = #{id_player}
+    </update>
+
+    <update id="updateCoach">
+        UPDATE  m_team_coach
+        SET status = #{status},out_time = #{time}
+        WHERE team_id = #{id_team}
+        AND coach_id = #{id_coach}
+    </update>
+
+
+    <update id="retireTeam">
+        UPDATE  team
+        SET  status = #{status},retire_time = #{retire_time}
+        WHERE  id_team = #{id_team}
+    </update>
+
+    <update id="upDateTeamInfo">
+        UPDATE team
+        SET
+        name = #{team.name},
+        type = #{team.type},
+        coach_id = # {team.coach_id}
+        org_id = # {team.org_id},
+        WHERE id_team = #{team.id_team}
+    </update>
+</mapper>

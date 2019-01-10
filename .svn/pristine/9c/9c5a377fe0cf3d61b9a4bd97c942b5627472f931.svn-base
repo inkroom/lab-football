@@ -1,0 +1,177 @@
+package cn.nsu.edu.web.four.beans.match;
+
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
+public class Match {
+    private Integer idMatch;
+
+    private Staff orgStaff;
+
+    private String name;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date startDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date endDate;
+
+    private Integer numPlayer;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date applyDeadline;
+
+    //下面三个Time为前端传回字段只用于前端交互 因此表单对应以下字段
+    private Long startTime;
+
+    private Long endTime;
+
+    private Long applyTime;
+
+    private Integer level;
+
+    private Integer status;
+
+    private Integer exstatus;
+
+    public Integer getExstatus() {
+        return exstatus;
+    }
+
+    public void setExstatus(Integer exstatus) {
+        this.exstatus = exstatus;
+    }
+
+    public Integer getIdMatch() {
+        return idMatch;
+    }
+
+    public void setIdMatch(Integer idMatch) {
+        this.idMatch = idMatch;
+    }
+
+    public Staff getOrgStaff() {
+        return orgStaff;
+    }
+
+    public void setOrgStaff(Staff orgStaff) {
+        this.orgStaff = orgStaff;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Integer getNumPlayer() {
+        return numPlayer;
+    }
+
+    public void setNumPlayer(Integer numPlayer) {
+        this.numPlayer = numPlayer;
+    }
+
+    public Date getApplyDeadline() {
+        return applyDeadline;
+    }
+
+    public void setApplyDeadline(Date applyDeadline) {
+        this.applyDeadline = applyDeadline;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Long startTime) {
+        this.startDate=new Date(startTime);
+        this.startTime = startTime;
+    }
+
+    public Long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Long endTime) {
+        this.endDate=new Date(endTime);
+        this.endTime = endTime;
+    }
+
+    public Long getApplyTime() {
+        return applyTime;
+    }
+
+    public void setApplyTime(Long applyTime) {
+        this.applyDeadline=new Date(applyTime);
+        this.applyTime = applyTime;
+    }
+
+//    public Match(Staff orgStaff, String name, Date startDate, Date endDate, Integer numPlayer, Date applyDeadline, Integer level, Integer status) {
+//        this.orgStaff = orgStaff;
+//        this.name = name;
+//        this.startDate = startDate;
+//        this.endDate = endDate;
+//        this.numPlayer = numPlayer;
+//        this.applyDeadline = applyDeadline;
+//        this.level = level;
+//        this.status = status;
+//    }
+
+
+    @Override
+    public String toString() {
+        return "Match{" +
+                "idMatch=" + idMatch +
+                ", orgStaff=" + orgStaff +
+                ", name='" + name + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", numPlayer=" + numPlayer +
+                ", applyDeadline=" + applyDeadline +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", applyTime=" + applyTime +
+                ", level=" + level +
+                ", status=" + status +
+                ", exstatus=" + exstatus +
+                '}';
+    }
+}

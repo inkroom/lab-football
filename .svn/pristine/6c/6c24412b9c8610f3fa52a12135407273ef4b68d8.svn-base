@@ -1,0 +1,98 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>创建裁判员</title>
+    <link rel="stylesheet" type="text/css" href="../../../resources/lib/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/match/style.1.0.css"/>
+
+    <script src="../../../resources/js/match/respond.js"></script>
+    <script src="../../../resources/lib/jquery/jquery-1.11.3.js"></script>
+    <script type="application/javascript" src="../../../resources/js/match/bootstrap2.min.js"></script>
+    <script type="application/javascript" src="../../../resources/js/match/utils.js"></script>
+    <script src="../../../resources/js/index.js"></script>
+
+</head>
+<body>
+<jsp:include page="../common/head.jsp"/>
+<div class="container mo-h">
+    创建裁判员
+</div>
+<div class="container">
+    <form id="createRefereeForm" class="form-horizontal">
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-10">
+                <input type="text" id="username" name="username" class="form-control" placeholder="请填写用户名">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input type="password" id="password" name="password" class="form-control" placeholder="请填写密码">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone" class="col-sm-2 control-label">电话</label>
+            <div class="col-sm-10">
+                <input type="text" id="phone" name="phone" class="form-control" placeholder="请填写手机号">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">姓名</label>
+            <div class="col-sm-10">
+                <input type="text" id="name" name="name" class="form-control" placeholder="请填写姓名">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="idcard" class="col-sm-2 control-label">身份证账号</label>
+            <div class="col-sm-10">
+                <input type="text" id="idcard" name="idcard" class="form-control" placeholder="请填写用户名">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="button" onclick="createReferee();return false;" class="btn btn-success" value="确认"/>
+                <a href="${path}/match/turnDetailsAdmin/?id=${mid}">
+                    <button type="button" class="btn btn-danger">取消</button>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    var idSch = 1; //TODO 动态获取
+    function createReferee() {
+        var postData = new FormData(document.getElementById("createRefereeForm"));
+        postData.append("idSch", idSch);
+        $.ajax({
+            type: "post",//方法类型
+            url: "/schedule/createReferee",//url
+            data: postData,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                alert("恭喜 恭喜");   //TODO 做成功失败提醒
+            },
+            error: function () {
+                alert("Fail");
+            }
+        });
+    }
+
+    function test() {
+        $("#username").val("xuing" + Math.round(Math.random() * 20));
+        $("#password").val("xuing" + Math.round(Math.random() * 20));
+        $("#phone").val("123456789");
+        $("#name").val("嘀哩嘀哩");
+        $("#idcard").val("123456789012345678");
+    }
+</script>
+</html>
+
+

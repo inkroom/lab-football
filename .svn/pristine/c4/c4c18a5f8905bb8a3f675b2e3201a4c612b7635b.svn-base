@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title>二维码</title>
+		<link rel="stylesheet" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.1.0.css"/>
+		<link rel="stylesheet" type="text/css" href="css/public.css">
+		<link rel="stylesheet" type="text/css" href="css/qrCode.css">
+	</head>
+	<body>
+		<!--导航-->
+		<nav class="nav-bg navbar">
+			<div class="container">
+				<div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+					<img src="img/logo.png"/>
+					<span>四川省青少年校园足球信息网</span>
+				</div>
+			</div>
+		</nav>
+		<!--内容-->
+		<div class="container">
+			<div class="row text-center row-distance">
+				<h3>直播二维码</h3>
+			</div>
+			<div class="row">
+				<div class="phone-qr" id="qrcode1">
+			</div>	
+			<div class="row text-center panel-distance">
+				<a href="#">手机端链接</a>
+			</div>
+			
+			<div class="row panel-distance">
+				<div class="phone-qr" id="qrcode2">
+			</div>	
+			<div class="row text-center panel-distance btn-distance">
+				<a href="#">PC端链接</a>
+			</div>
+		</div>
+        <!--底部-->
+		<div class="bottom_box">
+           	<div class="tab_bar" id="index" onclick="document.location.href='index.html';">
+           		<img src="img/index-on.png" />
+           		<p>后台首页</p>
+           	</div>
+           	<div class="tab_bar" id="identity" onclick="document.location.href='test.html';">
+           		<img src="img/identity.png"/>
+           		<p>入场验证</p>
+           	</div>
+           	<div class="tab_bar" id="QRcode" onclick="document.location.href='qrCode.html';">
+           		<img src="img/QRcode1.png"/>
+           		<p style="color: #5496F9;">二维码</p>
+           	</div>
+           	<div class="tab_bar" id="revisel" onclick="document.location.href='score.html';">
+           		<img src="img/revise.png"/>
+           		<p>修改比分</p>
+           	</div>
+        </div>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/qrcode.js"></script>
+        <script src="js/qr.js"></script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+/**
+ * @author :mengyixin
+ * @Description:
+ *  2018/3/23
+ */
+package cn.nsu.edu.web.four.controllers.referee;
+
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+import cn.nsu.edu.web.four.services.referee.ModifyscoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@RequestMapping("/referee")
+public class ModifyscoreController {
+    @Autowired
+    ModifyscoreService modifyscoreService;
+
+    @RequestMapping(value = "modifyScore",method = RequestMethod.PUT)
+    public String midifyScore(Schedule schedule){
+        modifyscoreService.modifyScore(schedule);
+        return "";
+    }
+
+}

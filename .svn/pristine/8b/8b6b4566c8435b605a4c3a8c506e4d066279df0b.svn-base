@@ -1,0 +1,47 @@
+package cn.nsu.edu.web.four.beans.match;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.beans.match
+ * @date 2018/3/20 10:05
+ * @description
+ **/
+public class MatchPlayer {
+    private int match_id;
+    private int org_id;
+    private int team_id;
+    private int player_id;
+
+    public int getMatch_id() {
+        return match_id;
+    }
+
+    public void setMatch_id(int match_id) {
+        this.match_id = match_id;
+    }
+
+    public int getOrg_id() {
+        return org_id;
+    }
+
+    public void setOrg_id(int org_id) {
+        this.org_id = org_id;
+    }
+
+    public int getTeam_id() {
+        return team_id;
+    }
+
+    public void setTeam_id(int team_id) {
+        this.team_id = team_id;
+    }
+
+    public int getPlayer_id() {
+        return player_id;
+    }
+
+    public void setPlayer_id(int player_id) {
+        this.player_id = player_id;
+    }
+}

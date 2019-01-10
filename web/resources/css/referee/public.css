@@ -1,0 +1,35 @@
+
+*{margin: 0px; padding: 0px;font-family: "微软雅黑";}
+html { width: 100%; height: 100%;font-size:100px;}
+body, div, ul, ol, li, form,input, button, textarea, p{ margin: 0; padding: 0; }
+table { border-collapse: collapse; border-spacing: 0; font-size: inherit; font: 100%; }
+img { vertical-align: middle }
+a { text-decoration: none; cursor:pointer;}
+img { border: 0; }
+address, em, strong, th, var { font-style: normal; font-weight: normal; }
+caption, th { text-align: left; }
+textarea, select { font-family: inherit; font-size: inherit; font-weight: inherit; }
+li { list-style: none; }
+img, object { max-width: 100%; }
+input{border-width: 0px; text-align: center;}
+/*bottom*/
+
+.bottom_box{
+    width: 100%;
+    height: 73px;
+    position: fixed;
+    bottom: 0px;
+    border-top: 1px solid #E7E7E7;
+    display: flex;
+    background: #FFFFFF;
+}
+
+.tab_bar{
+    flex: 1;
+    text-align: center;
+}
+
+#index img{height: 0.5rem;margin-top: 0.11rem;}
+#identity img{height: 0.5rem;margin-top: 0.11rem;}
+#QRcode img{height: 0.5rem;margin-top: 0.11rem;}
+#revisel img{height: 0.5rem;margin-top: 0.11rem;}

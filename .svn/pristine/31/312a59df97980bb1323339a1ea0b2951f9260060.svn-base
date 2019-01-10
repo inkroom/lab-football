@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nsu.edu.web.four.beans.schedule.Schedule">
+
+    <update id="modifyScore" statementType="PREPARED" parameterType="cn.nsu.edu.web.four.beans.schedule.Schedule">
+        UPDATE `schedule` SET goal_A =#{gA} , goal_B=#{gB} WHERE id_schedule=#{sId}
+    </update>
+
+</mapper>

@@ -1,0 +1,92 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>赛程修改</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/lib/bootstrap/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/match/style.1.0.css"/>
+        <script src="../../../resources/js/match/respond.js"></script>
+        <script src="../../../resources/js/match/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="../../../resources/js/match/bootstrap2.min.js"></script>
+        <script src="../../../resources/js/match/modifySchedule.js"></script>
+        <script src="../../../resources/js/index.js"></script>
+
+    </head>
+    <body>
+    <input hidden id="token" value="${token}">
+    <input id="secret" hidden idSchedule=${idSchedule} match="${match}">
+    <jsp:include page="../common/head.jsp"/>
+        <div class="container mo-h">
+            修改赛程
+        </div>
+        <div class="container">
+            <form class="form-horizontal" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="teamA" class="col-sm-2 control-label">主队</label>
+                    <div id="teamA" class="col-sm-10">
+                        <select name="teamA" class="form-control input-sm">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="teamB" class="col-sm-2 control-label">客队</label>
+                    <div id="teamB" class="col-sm-10">
+                        <select name="teamB" class="form-control input-sm">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="goalA" class="col-sm-2 control-label">主队分数</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="goalA" id="goalA" placeholder="请填写更正比分">
+                    </div>
+                </div>
+                <div class="form-group has-success">
+                    <label for="goalB" class="col-sm-2 control-label">客队分数</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="goalB" id="goalB" placeholder="请填写更正比分">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="time" class="col-sm-2 control-label">开赛时间</label>
+                    <div class="col-sm-10">
+                        <input type="datetime-local" class="form-control" name="time" id="time" placeholder="请填写比赛时间">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="place" class="col-sm-2 control-label">开赛地点</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="place" id="place" placeholder="请填写比赛地点">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="status" class="col-sm-2 control-label">状态</label>
+                    <div class="col-sm-10">
+                        <select id="status" class="form-control input-sm">
+                            <option status="0">正在准备</option>
+                            <option status="1">正在比赛</option>
+                            <option status="2">比赛结束</option>
+                            <option status="3">已删除</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a href="#">
+                            <button id="submit" type="button" class="btn btn-default">确认</button>
+                        </a>
+                        <a href="${path}/match/turnDetailsAdmin/?id=${match}">
+                            <button id="back" type="button" class="btn btn-default">取消</button>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,36 @@
+package cn.nsu.edu.web.four.dto.stc.referee;
+
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+import cn.nsu.edu.web.four.beans.teams.Team;
+
+import java.util.List;
+
+public class ScheduleInformationDto {
+    private Schedule scheduleInformation;
+    private Team teamA;
+    private Team teamB;
+
+    public Schedule getScheduleInfomation() {
+        return scheduleInformation;
+    }
+
+    public void setScheduleInfomation(Schedule scheduleInformation) {
+        this.scheduleInformation = scheduleInformation;
+    }
+
+    public Team getTeamA() {
+        return teamA;
+    }
+
+    public void setTeamA(Team teamA) {
+        this.teamA = teamA;
+    }
+
+    public Team getTeamB() {
+        return teamB;
+    }
+
+    public void setTeamB(Team teamB) {
+        this.teamB = teamB;
+    }
+}

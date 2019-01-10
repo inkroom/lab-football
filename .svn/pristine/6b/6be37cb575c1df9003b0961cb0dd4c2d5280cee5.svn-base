@@ -1,0 +1,12 @@
+package cn.nsu.edu.web.four.daos.jdbc.staff;
+
+import org.springframework.stereotype.Repository;
+
+/**
+ * Created by 灵魂都在冒香气的神 on 2018/3/28.
+ */
+@Repository
+public interface MatchStaffDao
+{
+    Integer getOrgIdByMatch(Integer matchId);
+}

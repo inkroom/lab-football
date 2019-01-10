@@ -1,0 +1,191 @@
+$(function () {
+    $('.col-right').height($('.col-left').height());
+
+    // $('#messages').onePageNav();
+
+    // $('#messages').pageScroller({
+    //     // navigation:['1','2','3'],
+    //     sectionClass:'div-border'
+    // });
+
+    // console.log(pageScroller.sections);
+    $('#nextB').click = function (e) {
+        // e.preventDefault();
+        // pageScroller.next();
+    }
+
+    function transDate(value) {
+        var date = new Date(value);
+        return date.getHours() + ':' + (date.getMinutes() + 1) + ':' + date.getMinutes();
+    }
+
+    function scroll() {
+        $('#messages').append("<div id='hash'></div>");
+        location.hash = '#hash';
+        $('#hash').remove();
+        location.hash = '';
+        // pageScroller.next();
+    }
+
+    var prefix = $('#prefix').val().trim();
+
+    //创建文件选择器
+    function createFileChooser() {
+        $('#image').remove();
+        $('#buttons').append(' <input type="file" style="display: none" name="file" id="image" accept="image/*" >');
+        $('#image').on('change', function () {
+            $('#img').attr('disabled', true).addClass('disabled');
+            $.ajaxFileUpload({
+                url: upload,
+                secureuri: false,
+                fileElementId: 'image',
+                dataType: 'json',
+                success: function (data, status) {
+                    createFileChooser();
+                    $('#img').removeAttr('disabled').removeClass('disabled');
+                    // $(this).attr('disabled', true).addClass('disabled');
+                    if (data.status === 0) {
+                        msg('图片上传成功')
+                        var $idedit = $('#idEdit');
+                        $idedit.html("<img src='" + getRootPath() + "/" + prefix + "/" + data.data.path + "'/>" + $idedit.html());
+                    } else if (data.status === 1) {
+                        msg('图片上传失败');
+                    }
+                },
+                error: function (data, status, e)//服务器响应失败处理函数
+                {
+                    createFileChooser();
+                    $('#img').removeAttr('disabled').removeClass('disabled');
+                    msg(e);
+                }
+            })
+        })
+    }
+
+    createFileChooser();
+    //获取发送url
+    var sendUrl = "send";
+    var upload = "image";
+    if (location.href.indexOf("m") > -1) {
+        sendUrl = "../" + sendUrl;
+        upload = "../" + upload;
+    }
+    $('#send').click(function () {
+
+        var content = $('#idEdit').html().trim();
+        if (content.length <= 0 || content.length > 300) {
+            msg('内容限制为1-300字')
+            return;
+        }
+
+
+        ajax({
+            url: sendUrl,
+            data: {
+                content: content
+            },
+            dataType: 'json',
+            success: function (result) {
+                $('#img').removeAttr('disabled').removeClass('disabled');
+                switch (result.status) {
+                    case 0:
+                        msg('发送成功');
+                        $('#idEdit').html('');
+                        break;
+                    case 1:
+                        msg('发送失败');
+                        break;
+                }
+            },
+            error: function () {
+                $('#img').removeAttr('disabled').removeClass('disabled');
+            }
+        })
+
+    });
+    $('#img').click(function () {
+        // $('#nextB').trigger('click');
+        $('#image').trigger('click');
+    });
+
+    var $messages = $('#messages');
+    // console.log($messages.scrollTop());
+    // console.log($messages.height());
+    // $messages.scrollTop($messages.height()+'px');
+    // console.log($messages.scrollTop());
+
+    // $messages.animate({scrollTop: $('#hash').offset().top}, 1000)
+    // location.hash='#hash';
+    scroll();
+    if ($("#status").html().trim().indexOf("正在比赛") > -1) {
+        //创建web socket
+        if (!("WebSocket" in window)) {
+            msg('您的浏览器版本过低，暂不支持观看直播')
+        } else {
+            var socket = new WebSocket('ws://' + location.host + getRootPath() + '/test');
+            socket.onmessage = function (evt) {
+                var message = JSON.parse(evt.data);
+                if (message.status === 0 && message.data.schId === getSch()) {
+                    if (message.data.type === 1) {//消息
+
+                        if (message.data.message.imgPath !== null && message.data.message.imgPath !== '') {//图文
+                            $messages.append(' <div class="div-border">\n' +
+                                '                            <div class="row">\n' +
+                                '                                <div class="col-xs-6 text-right">' + message.data.message.phone + '</div>\n' +
+                                '                                <div class="col-xs-6">' + transDate(message.data.message.time) + '</div>\n' +
+                                '                            </div>\n' +
+                                '                            <div class="row">\n' +
+                                '                                    <div class="col-xs-4 col-left">\n' +
+                                '                                        <div>\n' +
+                                '                                            <img class="float" src="' + getRootPath() + '/' + prefix + '/' + message.data.message.imgPath + '"/>\n' +
+                                '                                        </div>\n' +
+                                '                                    </div>\n' +
+                                '                                    <div class="col-xs-8 col-right">\n' +
+                                '                                        <p class="text-style">' + message.data.message.content + '</p>\n' +
+                                '                                    </div>\n' +
+                                '                            </div>\n' +
+                                '                        </div>');
+                        } else {//纯文本
+                            $messages.append('<div class="div-border">\n' +
+                                '                            <div class="row">\n' +
+                                '                                <div class="col-xs-6 text-right">' + message.data.message.phone + '</div>\n' +
+                                '                                <div class="col-xs-6">' + transDate(message.data.message.time) + '</div>\n' +
+                                '                            </div>\n' +
+                                '                            <div class="row">\n' +
+                                '                                <div class="col-xs-12 col-right">\n' +
+                                '                                        <p class="text-style">' + message.data.message.content + '</p>\n' +
+                                '                                    </div>\n' +
+                                '                                </div>\n' +
+                                '                        </div>')
+                        }
+                        scroll();
+                    } else if (message.data.type === 2) {//状态改变
+                        $('#status').html('已结束');
+                        $('#send').unbind('click');
+                        $('#img').unbind('click');
+                        $('#idEdit').attr('disabled', true);
+                    } else if (message.data.type === 3) {//比分修改
+                        $('#scoreA').html(message.data.scoreA);
+                        $('#scoreB').html(message.data.scoreB);
+                    }
+                }
+            }
+            socket.onclose = function (ev) {
+                msg('连接关闭');
+                $('#status').html('连接关闭');
+            }
+            socket.onerror = function (ev) {
+                msg('连接中断，刷新重连')
+                $('#status').html('连接中断');
+            }
+        }
+    }
+
+
+    function getSch() {
+        var regex = new RegExp('live/([1-9]+[0-9]*)/');
+        return parseInt(regex.exec(location.pathname)[1]);
+    }
+
+})
+

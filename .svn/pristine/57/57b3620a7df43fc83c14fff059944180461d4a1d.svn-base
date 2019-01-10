@@ -1,0 +1,30 @@
+
+#all {
+    padding: 20px 20px 60px 20px;
+}
+
+#xuanxiang {
+    float: right;
+    margin-right: 2%;
+}
+
+h3 {
+    text-align: center !important;
+}
+
+select {
+    padding: 0 !important;
+}
+
+.modalimg {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 120px;
+    height: 140px;
+}
+

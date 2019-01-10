@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--此处放配置文件引入会无法注入properties属性-->
+
+
+    <!--可以通过更换秘钥，更换加密方式-->
+    <!--<bean id="aes" class="cn.nsu.edu.web.four.utils.encrypt.AESEncryptUtil">-->
+    <!--<constructor-arg name="key" value="abcdef0123452121"/>-->
+    <!--<constructor-arg name="parameter" value="0125556780abcdef"/>-->
+    <!--</bean>-->
+
+    <bean id="aes" class="cn.nsu.edu.web.four.utils.encrypt.AESEncryptUtil">
+        <!--秘钥，不可轻易更换，更换需要将jdbc、redis密码使用新秘钥重新加密-->
+        <constructor-arg name="key" value="football_1234"/>
+    </bean>
+
+
+    <bean class="cn.nsu.edu.web.four.handler.spring.PropertiesPlaceholder">
+        <!--将对password字段进行解密-->
+        <constructor-arg ref="aes"/>
+
+        <property name="fileEncoding" value="UTF-8"/>
+        <!--<property name="locations">-->
+        <!--<list>-->
+        <!--<value>classpath:properties/jdbc.properties</value>-->
+        <!--<value>classpath:properties/redis.properties</value>-->
+        <!--<value>classpath:properties/upload.properties</value>-->
+        <!--</list>-->
+        <!--</property>-->
+        <property name="locations" value="classpath:properties/*.properties"/>
+    </bean>
+
+
+    <!--全局异常处理器-->
+    <bean class="cn.nsu.edu.web.four.handler.spring.ExceptionHandler"/>
+
+
+    <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
+
+    <context:component-scan base-package="cn.nsu.edu.web.four.daos.redis"/>
+
+    <context:component-scan base-package="cn.nsu.edu.web.four.services"/>
+</beans>

@@ -1,0 +1,110 @@
+package cn.nsu.edu.web.four.services.schedule.impl;
+
+
+import cn.nsu.edu.web.four.beans.schedule.CurrentTeam;
+import cn.nsu.edu.web.four.beans.schedule.Memchanism;
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+import cn.nsu.edu.web.four.daos.jdbc.schedule.CurrentTeamMapper;
+import cn.nsu.edu.web.four.daos.jdbc.schedule.MechanismMapper;
+import cn.nsu.edu.web.four.services.schedule.ScheduleBaseService;
+import org.springframework.stereotype.Service;
+import cn.nsu.edu.web.four.daos.jdbc.schedule.ScheduleMapper;
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by 灵魂都在冒香气的神 on 2018/3/20.
+ */
+@Service(value = "schedule")
+public class ScheduleServiceImpl implements ScheduleBaseService
+{
+    @Resource
+    private ScheduleMapper schMapper;
+    @Resource
+    private MechanismMapper mechMapper;
+    @Resource
+    private CurrentTeamMapper teamMapper;
+
+
+    @Override
+    public Boolean createSchedule(Schedule schedule)    //创建赛程
+    {
+        try
+        {
+            return schMapper.insertSelective(schedule)!=0;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
+    @Override
+    public ArrayList<Memchanism> getMemchanism()    //获取机构列表
+    {
+        try
+        {
+            ArrayList<Memchanism> list= mechMapper.getMechanismList();
+            return list.size()!=0?list:null;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+
+    @Override
+    public List<CurrentTeam> getTeam(Integer org_id)    //获取机构所在队伍列表
+    {
+        List list=teamMapper.getTeamByOrg(org_id);
+        return list.size()!=0?list:null;
+    }
+
+    @Override
+    public Boolean modifySchedule(Schedule schedule)     //修改赛程
+    {
+        try
+        {
+            return schMapper.updateByIdSelective(schedule)!=0;
+        }
+        catch (Exception se)
+        {
+            return false;
+        }
+    }
+    @Override
+    public Boolean deleteSchedule(Integer idSchedule)   //删除赛程
+    {
+        try
+        {
+            return schMapper.deleteById(idSchedule)!=0;
+        }
+        catch (Exception se)
+        {
+            return false;
+        }
+    }
+    @Override
+    public ArrayList<Schedule> getScheduleByMatchID(Integer idMatch)    //根据赛事ID获取赛程列表
+    {
+        try
+        {
+            ArrayList<Schedule> list= schMapper.selectByMatchID(idMatch);
+            return list.size()!=0?list:null;
+        }
+        catch (Exception se)
+        {
+            return null;
+        }
+    }
+
+    @Override
+    public Schedule selectScheduleInfoById(Integer schId) {
+        try {
+            return  schMapper.selectById(schId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+}

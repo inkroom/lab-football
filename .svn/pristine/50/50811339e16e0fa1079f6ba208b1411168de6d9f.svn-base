@@ -1,0 +1,46 @@
+package cn.nsu.edu.web.four.controllers.match;
+
+import cn.nsu.edu.web.four.beans.match.Match;
+import cn.nsu.edu.web.four.dto.ctv.MessageDto;
+import cn.nsu.edu.web.four.enums.Result;
+import cn.nsu.edu.web.four.services.match.MatchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author 痞老板
+ * @Project: four
+ * @Package:cn.nsu.edu.web.four.controllers.match
+ * @date 2018/3/20 11:25
+ * @description
+ **/
+@Controller
+public class MatchListController {
+    @Autowired
+    MatchService service;
+
+    @ResponseBody
+    @RequestMapping("")
+    public MessageDto listMatch(@PathVariable("index") int index, Map<String,Object> map){
+        List<Match> list;
+        switch (index){
+            case 1:   list=service.selectByStaffOther(1);break;
+            case 2:   list=service.selectByIdWithOrg(1);break;
+            case 3:   list=service.selectByStaff(1);
+            default: list=null;
+        }
+        MessageDto dto;
+        if (list==null&&list.isEmpty()){
+            return  new MessageDto(Result.FAIL);
+        }
+        dto=new MessageDto(Result.SUCCESS);
+        dto.put("matchList",list);
+        return dto;
+    }
+}

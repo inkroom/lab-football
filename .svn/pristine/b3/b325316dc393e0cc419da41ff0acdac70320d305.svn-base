@@ -1,0 +1,192 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <link rel="stylesheet" type="text/css" href="${path}/resources/css/match/style.1.0.css"/>
+        <link rel="stylesheet" type="text/css" href="${path}/resources/css/common/style.css"/>
+        <link rel="stylesheet" type="text/css" href="${path}/resources/css/match/tab.css">
+        <style>
+            #container {
+                margin: 15px 15px 15px 30px;
+                float: left;
+                height: 670px;
+                width: 800px;
+                /*border: 2px solid green;*/
+            }
+
+            #div_select {
+                height: 40%;
+                width: 100%;
+                margin-bottom: 20px;
+                /*border: 2px solid red;*/
+            }
+
+            #select_head {
+                width: 100%;
+                height: 17%;
+            }
+
+            #submit {
+                display: inline-block;
+                width: 80px;
+                float: right;
+                /*消除按下按钮之后的边框*/
+                outline: none;
+            }
+
+            #select_player {
+                overflow-y: auto;
+                width: 100%;
+                height: 83%;
+                border: 1px solid rgb(197, 197, 197);
+                border-radius: 12px;
+            }
+
+            #real_player {
+                width: 95%;
+                height: 80%;
+                margin: 20px;
+            }
+
+            #real_wait {
+                width: 95%;
+                height: 85%;
+                margin: 20px;
+            }
+
+            #div_wait {
+                height: 60%;
+                width: 100%;
+                /*border: 2px solid red;*/
+            }
+
+            #wait_head {
+                width: 100%;
+                height: 10%;
+            }
+
+            #select_all {
+                margin-left: 15px;
+                /*消除按下按钮之后的边框*/
+                outline: none;
+            }
+
+            #wait_player {
+                margin-top: 10px;
+                overflow-y: auto;
+                width: 100%;
+                height: 83%;
+                border: 1px solid rgb(197, 197, 197);
+                border-radius: 12px;
+            }
+
+            #teamNameList div:link {
+                background-color: rgb(56, 50, 72);
+            }
+
+            #teamNameList div:visited {
+                background-color: rgb(56, 50, 72);
+            }
+
+            #teamNameList div:hover {
+                background-color: rgb(141, 144, 149);
+            }
+
+            #teamNameList div:active {
+                background-color: rgb(141, 144, 149);
+            }
+        </style>
+        <script>
+            var teamList = '${teamList}';
+            var matchId = Number(${matchid});
+        </script>
+    </head>
+    <body>
+        <input hidden id="matchid" value=${matchid}>
+        <input hidden id="token" value="${token}">
+        <nav class="nav-bg navbar">
+            <div class="container">
+                <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-11">
+                    <img src="img/logo足球项目组.png"/>
+                    <span><a href="home-page.html">四川省青少年校园足球信息网</a></span>
+                </div>
+                <div class="nav-b hidden-lg hidden-md col-sm-1 hidden-xs">
+                    <button type="button" class="glyphicon glyphicon-th-list"></button>
+                </div>
+                <div class="nav-w col-lg-8 col-md-7 hidden-sm hidden-xs">
+                    <ul>
+                        <li><a href="match-list.html">赛事赛程</a></li>
+                        <li><a href="#">教练管理</a></li>
+                        <li><a href="#">球员管理</a></li>
+                        <li><a href="#">球队管理</a></li>
+                        <li><a href="#">个人中心</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container" style="font-size: 16px;margin-top: 10px;">
+            <a href="match-list.html" style="color: #666;text-decoration: none;">赛事列表</a>>>
+            <a href="sign-up2.html" style="color: #666;text-decoration: none;">报名</a>
+        </div>
+        <div class="container si-bo">
+            <div class="t-h" id="teamNameList" style="overflow-y: auto">
+                <!--<div onclick="selectTeam(this)">-->
+                <!--<div class="t-h-n">-->
+                <!--1队-->
+                <!--</div>-->
+                <!--</div>-->
+
+            </div>
+            <div id="container">
+                <div id="div_select">
+                    <!--已选人员-->
+                    <div id="select_head">
+                        <span style="font-size: 25px">已选人员</span>
+                        <button id="submit" class="btn btn-success">提交</button>
+                    </div>
+                    <div id="select_player">
+                        <div class="plus-tag tagbtn clearfix" id="real_player">
+
+                        </div>
+                    </div>
+                </div>
+                <div id="div_wait">
+                    <!--待选人员-->
+                    <div id="wait_head">
+                        <table>
+                            <tr>
+                                <td>
+                                    <span style="font-size: 25px">待选人员</span>
+                                </td>
+                                <td>
+                                    <!--s是标志位-->
+                                    <button class="btn btn-success" id="select_all" s="1">全选
+                                        <span id="select_all_flag" style="margin-left: 4px"
+                                              class="glyphicon glyphicon-triangle-top"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="wait_player" class="default-tag tagbtn">
+                        <div class="clearfix nowtips" id="real_wait">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--框架--%>
+        <script src="${path}/resources/lib/respond.js"></script>
+        <script src="${path}/resources/lib/layer/layer.js"></script>
+        <script src="${path}/resources/js/index.js"></script>
+        <script src="${path}/resources/lib/bootstrap/bootstrap.min.js"></script>
+        <script src="${path}/resources/js/match/utils.js"></script>
+        <%--框架--%>
+
+        <script src="${path}/resources/js/match/tab-jq.js"></script>
+        <script src="${path}/resources/js/match/matchSign.js"></script>
+        <script src="${path}/resources/js/match/tab.js"></script>
+    </body>
+</html>
+

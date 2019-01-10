@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+" >
+
+    <bean id="factory" class="cn.nsu.edu.web.four.handler.sms.ProfileFactory">
+        <constructor-arg name="accessKey" value="${sms.aliyun.access.key}"/>
+        <constructor-arg name="accessKeySecret" value="${sms.aliyun.access.key}"/>
+        <constructor-arg name="readTimeout" value="${sms.aliyun.read.timeout}"/>
+        <constructor-arg name="connectTimeout" value="${sms.aliyun.connect.timeout}"/>
+    </bean>
+
+    <bean id="profile" factory-bean="factory" factory-method="create"/>
+
+    <bean class="com.aliyuncs.DefaultAcsClient" id="client" >
+        <constructor-arg ref="profile"/>
+    </bean>
+
+    <bean class="com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest">
+        <property name="method" value="POST"/>
+        <property name="signName" value="${sms.aliyun.template.sign.name}"/>
+        <property name="templateCode" value="${sms.aliyun.template.code}"/>
+    </bean>
+
+
+    <bean class="cn.nsu.edu.web.four.services.common.SMSService">
+        <!--<property name="message">-->
+            <!--<map>-->
+                <!--<entry key="OK" value="短信发送成功"/>-->
+                <!--<entry key="isp.SYSTEM_ERROR" value="系统错误"/>-->
+                <!--<entry key="isv.AMOUNT_NOT_ENOUGH" value="系统错误"/>-->
+                <!--<entry key="isv.BUSINESS_LIMIT_CONTROL" value="您的操作过于频繁，请稍后再试"/>-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--<property name="defaultMessage" value="系统错误"/>-->
+     </bean>
+
+
+</beans>

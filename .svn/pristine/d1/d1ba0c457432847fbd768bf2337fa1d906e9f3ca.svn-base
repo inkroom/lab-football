@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace需要填写dao层全路径-->
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.referee.ReportDao">
+
+
+    <insert id="insertReport" statementType="PREPARED" useGeneratedKeys="true" keyProperty="r.id" keyColumn="id">
+        insert into Report (id_sch, id_ref, result, red_des, point_des, miss_des, create_time, status)
+        values (#{r.schId},#{r.refId},
+        <choose>
+            <when test="r.result == -1">
+                null,
+            </when>
+            <otherwise>
+                #{r.result},
+            </otherwise>
+        </choose>
+        #{r.redDes},#{r.pointDes},#{r.missDes},now(),1);
+    </insert>
+
+    <insert id="insertPlayer" statementType="PREPARED" >
+        insert into Judgement (id_report,id_team, player_name,player_positon,player_number,type,other,create_time)
+         values
+         <foreach collection="list" separator="," item="p" >
+             ( #{reportId},#{p.teamId},#{p.name},#{p.position},#{p.number},#{p.type},#{p.other},#{p.date} )
+         </foreach>
+    </insert>
+
+    <select id="selectPlayer" statementType="PREPARED" resultType="cn.nsu.edu.web.four.beans.referee.PlayerDescription">
+        select m.player_id AS playerId,m.team_id AS teamId, p.name from M_Sch_Staff m
+         JOIN Player p ON m.player_id = p.id_player
+         WHERE sch_id = #{schId} ORDER BY m.team_id DESC;
+    </select>
+
+    <select id="selectSchedule" statementType="PREPARED" resultType="cn.nsu.edu.web.four.beans.referee.Schedule">
+       select id_schedule AS schId ,team_A AS teamAId,team_B AS teamBId,begin_time AS startTime
+       (select name from Team,Schedule where Team.id_team = Schedule.team_A and Schedule.id_schedule = #{schId} limit 1) AS teamAName,
+       (select name from Team,Schedule where Team.id_team = Schedule.team_B and Schedule.id_schedule = #{schId} limit 1 )  AS teamBName
+       from Schedule s where id_schedule   =#{schId} limit 1 ;
+    </select>
+</mapper>

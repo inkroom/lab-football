@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    height: auto;
+}
+
+h2 {
+    text-align: center;
+}
+.wrapper {
+    width: 600px;
+    padding:50px 0;
+    background:#f5f5f5;
+    margin: 100px auto;
+}
+
+
+#city {
+    width: 100px;
+}
+
+#county {
+    width: 95px;
+    outline: none;
+    margin-left: 10px;
+
+}
+
+#grade {
+    width: 100px;
+    outline: none;
+}
+
+#grade_ {
+    width: 100px;
+    outline: none;
+}
+
+#cla {
+    width: 205px;
+    outline: none;
+}
+
+#school {
+    outline: none;
+    width:205px;
+}
+
+.sex {
+    margin: 0 5px;
+    vertical-align: text-top;
+}
+
+.sex_ {
+    height: 13px;
+    vertical-align: text-top;
+    margin-top: 0;
+}
+
+.warn {
+    color: red;
+    opacity: 0;
+}
+.nav-bg .container{
+    width:1170px;
+}
+.btn{
+    background:#24b146;
+    color:#fff;
+    transition:all 0.5s all ease;
+}
+.btn:hover{
+    background:#31ea5f;
+    color:#fff;
+}
+.select2{
+    width:101px;
+}

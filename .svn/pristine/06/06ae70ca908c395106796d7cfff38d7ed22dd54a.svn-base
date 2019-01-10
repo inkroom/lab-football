@@ -1,0 +1,74 @@
+package cn.nsu.edu.web.four.services.referee;
+
+import cn.nsu.edu.web.four.beans.referee.PlayerDescription;
+import cn.nsu.edu.web.four.beans.referee.Report;
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+import cn.nsu.edu.web.four.daos.jdbc.referee.ReportDao;
+import cn.nsu.edu.web.four.exception.RollbackException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+public class ReportService {
+
+    @Autowired
+    private ReportDao dao;
+
+    private Logger log = LoggerFactory.getLogger(getClass());
+
+    @Transactional
+    public boolean addReport(Report report, List<PlayerDescription> list, Schedule schedule) {
+        try {
+
+            if (schedule.getGoalA().equals(schedule.getGoalB())) {
+//                report.setRefId(-1);
+                report.setResult(-1);
+            } else if (schedule.getGoalA() > schedule.getGoalB()) {
+                report.setResult(schedule.getTeamA());
+            } else {
+                report.setResult(schedule.getTeamB());
+            }
+            if (dao.insertReport(report) >= 1) {
+//                list.forEach(description -> description.setReportId(report.getId()));
+
+                int result = dao.insertPlayer(list, report.getId());
+                if (result != list.size()) {
+                    log.error("插入数量不对，数据回滚，数据report=" + report + "，list=" + list);
+                    throw new RollbackException("批量插入数量不对");
+                }
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            log.error("发生异常，数据回滚，数据report=" + report + "，list=" + list);
+            throw new RollbackException(e);
+        }
+    }
+
+    public List<PlayerDescription> getPlayers(Integer schId) {
+        try {
+            return dao.selectPlayer(schId);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+//    public Schedule getSchedule(Integer schId) {
+//        try {
+//            return dao.selectSchedule(schId);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+
+
+}

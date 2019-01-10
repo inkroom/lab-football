@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace需要填写dao层全路径-->
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.live.LiveDao">
+
+    <select id="getAllMessage" statementType="PREPARED" resultType="cn.nsu.edu.web.four.beans.live.LiveMessageBean">
+      select phone,content,send_time AS 'time',img AS imgPath from Live
+      WHERE status = 1  AND id_sch = #{id_sch} ORDER BY send_time
+      <if test="desc != null">
+          DESC
+      </if>
+      ;
+    </select>
+
+    <insert id="addMessage" statementType="PREPARED">
+        insert into Live (id_sch,phone,content,send_time,img,status)
+         values (#{m.schId},#{m.phone},#{m.content},#{m.time,typeHandler=cn.nsu.edu.web.four.handler.mybatis.DateHandler},
+         #{m.imgPath},
+         1);
+    </insert>
+
+</mapper>

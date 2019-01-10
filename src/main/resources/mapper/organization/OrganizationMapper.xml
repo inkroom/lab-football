@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.organization.OrganizationDao">
+
+    <!--添加球员信息：注册使用-->
+    <!--<insert id="insertOrganization" parameterType="cn.nsu.edu.web.four.beans.organization.Organization" >-->
+        <!--insert into Organization (`name`, password,-->
+         <!--province_code,country_code, village_code,-->
+        <!--school_code, `type`,salt)-->
+        <!--values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},-->
+        <!--jdbcType=INTEGER}, #{provinceCode,jdbcType=INTEGER}, #{countryCode,jdbcType=INTEGER}, #{villageCode,jdbcType=INTEGER},-->
+        <!--#{schoolCode,jdbcType=INTEGER}, #{type,jdbcType=INTEGER},-->
+        <!--#{salt,jdbcType=VARCHAR})-->
+    <!--</insert>-->
+
+    <!--更新单个球员信息-->
+    <update id="updateOrganizationBySc" parameterType="cn.nsu.edu.web.four.beans.organization.Organization">
+        update Organization SET
+                password=#{password},
+                salt=#{salt},
+                `type`=#{type},
+                status=#{status},
+                phone=#{phone}
+        where school_code = #{schoolCode}
+    </update>
+
+    <!--通过省市县查询机构名称-->
+    <!--<resultMap id="OrgNameAndCode" type="java.lang.String">-->
+        <!--<result column="name" property="name" jdbcType="VARCHAR" />-->
+        <!--<result column="school_code" property="schoolCode" jdbcType="INTEGER" />-->
+    <!--</resultMap>-->
+    <select id="selectOrganizationByPCV" parameterType="cn.nsu.edu.web.four.beans.organization.Organization"  resultType="cn.nsu.edu.web.four.beans.organization.Organization"  >
+        select name,school_code from Organization
+        <where>
+            <if test="provinceCode != null and provinceCode!='' ">
+                and province_code=#{provinceCode}
+            </if>
+            <if test="countryCode != null and countryCode!='' ">
+                and country_code=#{countryCode}
+            </if>
+            <if test="villageCode != null and villageCode!=''  ">
+                and village_code=#{villageCode}
+            </if>
+        </where>
+    </select>
+
+    <!--通过主键ID查询机构信息：登录使用-->
+    <select id="selectOrganizationById" parameterType="Integer" resultType="cn.nsu.edu.web.four.beans.organization.Organization" >
+        select * from Organization where id_org=#{idOrg,jdbcType=BIGINT}
+    </select>
+
+    <!--通过机构代码查询球员信息：登录使用-->
+    <select id="selectOrganizationBySc" parameterType="Integer" resultType="cn.nsu.edu.web.four.beans.organization.Organization" >
+        select * from Organization where school_code=#{schoolCode,jdbcType=BIGINT}
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,19 @@
+package cn.nsu.edu.web.four.services.referee;
+
+import cn.nsu.edu.web.four.dto.stc.referee.PlayerInformationDto;
+import cn.nsu.edu.web.four.dto.stc.referee.ScheduleInformationDto;
+
+public interface RefereeService {
+
+    //通过裁判员登陆后的赛程id查询赛事名称，比赛开始时间，主队名，客队名
+   ScheduleInformationDto getScheduleInformation(Integer scheduleId) throws Exception;
+
+    //通过赛程id获取球员的姓名和照片
+    PlayerInformationDto getPlayerInformation(Integer teamId ) throws Exception;
+
+    //向赛程出场人员表插入球员信息
+    boolean insertPlayerInformation(Integer playerId, Integer scheduleId, String time) throws Exception;
+
+
+
+}

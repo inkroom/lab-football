@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.schedule.CurrentTeamMapper">
+    <resultMap id="TeamMap" type="cn.nsu.edu.web.four.beans.schedule.CurrentTeam">
+        <id column="id_team" jdbcType="INTEGER" property="idTeam" />
+        <result column="name" jdbcType="INTEGER" property="name" />
+    </resultMap>
+
+    <select id="getTeamByOrg" parameterType="java.lang.Integer" resultMap="TeamMap">
+        SELECT id_team,name
+        FROM Team
+        WHERE org_id=#{id,jdbcType=INTEGER}
+    </select>
+</mapper>

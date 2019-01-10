@@ -1,0 +1,61 @@
+/*手机验证*/
+#skip {
+    color: #31b0d5;
+    font-size: 1.2em;
+}
+.text-distance{
+	margin-top: 10px;
+}
+.panel-distance{
+	margin-top: 15px;
+}
+.font-size1{
+	font-size: 16px;
+}
+.font-size2{
+	font-size: 20px;
+}
+.font-size3{
+	font-size: 15px;
+}
+.font-size4{
+	font-size: 18px;
+}
+.color1{
+	color: #333;
+}
+.color2{
+	color: #aaa;
+}
+.bor-bottom{
+	border-bottom:#eee 1px solid;
+}
+.head-style{
+	height:55px;
+	margin: 0; 
+	position: relative;
+}
+.div-style{
+	position: absolute;
+	top: 50%; transform: 
+	translateY(-50%);
+}
+.img-style{
+	height: 20px;
+	width: 20px; 
+	float: left; 
+	margin-top: 5px;
+}
+.input-style{
+	width:100%;
+	outline: none;
+	text-align: left;
+}
+.btn-style{
+	background: transparent;
+	margin-top: -6px;
+}
+.sub-style{
+	width: 40%; 
+	margin-top: 20px; 
+}

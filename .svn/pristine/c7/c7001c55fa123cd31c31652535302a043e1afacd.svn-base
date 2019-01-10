@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.team.FindInfoDao">
+    <select id="findSameOrgAllPlayer"  resultType="cn.nsu.edu.web.four.beans.player.Player">
+        SELECT * FROM Player
+        WHERE org_id = #{idOrg} AND status = #{status}
+    </select>
+
+    <select id="findSameOrgAllCoach"  resultType="cn.nsu.edu.web.four.beans.coach.Coach">
+        SELECT * FROM Coach
+        WHERE org_id = #{idOrg} AND status = #{status}
+    </select>
+
+    <select id="findSameOrgAllTeam"  resultType="cn.nsu.edu.web.four.beans.teams.Team">
+        SELECT * FROM Team
+        WHERE org_id = #{idOrg} AND status = #{status}
+    </select>
+
+    <select id="findTeamInfo"  resultType="cn.nsu.edu.web.four.beans.teams.Team">
+        SELECT * FROM Team
+        WHERE id_team = #{idTeam}
+    </select>
+
+    <select id="findTeamByCoachid" resultType="java.lang.Integer">
+        SELECT  team_id
+        FROM M_Team_Coach
+        WHERE  coach_id = #{idCoach}
+        AND status = #{status}
+    </select>
+
+    <select id="findCoachJoinTeamTime" resultType="java.util.Date">
+        SELECT join_time
+        FROM M_Team_Coach
+        WHERE coach_id = #{idCoach}
+        AND status = #{status}
+    </select>
+
+    <select id="findCoachOutTeamTime" resultType="java.util.Date">
+        SELECT out_time
+        FROM M_Team_Coach
+        WHERE coach_id = #{idCoach}
+        AND status = #{status}
+    </select>
+
+
+
+    <select id="findTeamByPlayerid" resultType="java.lang.Integer">
+        SELECT  team_id
+        FROM M_Team_Player
+        WHERE  player_id = #{idPlayer}
+        AND status = #{status}
+    </select>
+
+    <select id="findPlayerJoinTeamTime" resultType="java.util.Date">
+        SELECT join_time
+        FROM M_Team_Player
+        WHERE player_id = #{idPlayer}
+        AND status = #{status}
+    </select>
+
+    <select id="findPlayerOutTeamTime" resultType="java.util.Date">
+        SELECT out_time
+        FROM M_Team_Player
+        WHERE player_id = #{idPlayer}
+        AND status = #{status}
+    </select>
+
+    <select id="findCoachIdByIdTeam" resultType="java.lang.Integer">
+        SELECT coach_id
+        FROM M_Team_Coach
+        WHERE team_id = #{idTeam}
+        AND  status = #{status}
+    </select>
+
+    <select id="findPlayerIdByIdTeam" resultType="java.lang.Integer">
+        SELECT player_id
+        FROM M_Team_Player
+        WHERE team_id = #{idTeam}
+        AND  status = #{status}
+    </select>
+
+
+</mapper>

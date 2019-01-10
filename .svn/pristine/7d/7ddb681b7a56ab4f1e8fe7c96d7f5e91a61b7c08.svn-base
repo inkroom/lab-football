@@ -1,0 +1,240 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: inkbox
+  Date: 18-3-21
+  Time: 下午3:43
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+          name="viewport">
+    <title>直播</title>
+    <link rel="stylesheet" href="${path}/resources/lib/bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/referee/public.css">
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/live/livePC.css">
+</head>
+
+<body>
+<!--导航-->
+<nav class="nav-bg navbar">
+    <div class="container">
+        <div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+            <img src="${path}/resources/img/logo.png"/>
+            <span>四川省青少年校园足球信息网</span>
+        </div>
+    </div>
+</nav>
+
+<!--内容-->
+<div class="container-fluid">
+    <div class="row"></div>
+    <div class="row-fluid y-alla">
+        <div class="span6 ytitle text-center col-xs-6">
+            正文
+        </div>
+        <div class="span6 ytitle text-center col-xs-6">
+            列表
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="row-fluid">
+                <div class="span5 col-xs-5 col-xs-offset-1 y-allbc">
+                    <!--顶部-->
+                    <%--<div class="row text-center y-allb">--%>
+                    <div class="row y-allb">
+                        <div class="col-xs-5 font-size1 text-right">比赛进程</div>
+                        <div class="col-xs-2 font-size1  text-center">:</div>
+                        <div class="col-xs-5 font-size1" id="status">${(schedule.scheduleInformation.status eq 2)?'比赛已结束':'正在比赛'}</div>
+                    </div>
+                    <div class="row text-center y-allb">
+                        <div class="col-xs-5 font-size1">${schedule.teamA.name}</div>
+                        <div class="col-xs-2 "><img class="img-size" src="${path}/resources/img/PK.png"/></div>
+                        <div class="col-xs-5 img-right font-size1">${schedule.teamB.name}</div>
+                    </div>
+                    <div class="row text-center  y-allb">
+                        <div class="col-xs-5 font-size1" id="scoreA">${schedule.scheduleInformation.goalA}</div>
+                        <div class="col-xs-2 font-size1">：</div>
+                        <div class="col-xs-5 font-size1" id="scoreB">${schedule.scheduleInformation.goalB}</div>
+                    </div>
+                    <!--左边-->
+                    <div id="message">
+                        <div class="row yimg">
+                            <fmt:bundle basename="properties.upload">
+                                <c:if test="${!empty(message.imgPath)}">
+                                    <img src="${path}/<fmt:message key="upload.image.url.prefix"/>/${message.imgPath}">
+                                </c:if>
+                                <div class="font-top">${message.content}</div>
+                            </fmt:bundle>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12"><span
+                                    class="ytitleb font-right">来自${message.phone}的消息 <fmt:formatDate
+                                    value="${message.time}" pattern="HH:mm:ss"/></span></div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--右边-->
+                <div class="span5 col-xs-5">
+                    <div class="row" >
+                        <div class="col-xs-1 ytitlec"></div>
+                        <div class="col-xs-10 ytitlef div-over" id="messages">
+                            <!--右边消息-->
+                            <fmt:bundle basename="properties.upload">
+                                <c:forEach var="item" items="${messages}" varStatus="status">
+                                    <%--没有图片--%>
+                                    <c:if test="${empty(item.imgPath)}">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="font-top">${item.content}</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6"><span class="font-right"><fmt:formatDate
+                                                    value="${item.time}" pattern="HH:mm:ss"/></span></div>
+                                            <div class="col-xs-6"><span>来自${item.phone}</span></div>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${!empty(item.imgPath)}">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="row"><img
+                                                        src="${path}/<fmt:message key="upload.image.url.prefix"/>/${item.imgPath}">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-7">
+                                                <div class="font-top">${item.content}</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6"><span class="font-right"><fmt:formatDate
+                                                    value="${item.time}" pattern="HH:mm:ss"/></span></div>
+                                            <div class="col-xs-6"><span>来自${item.phone}</span></div>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${!status.last}">
+                                        <hr class="hr-border"/>
+                                    </c:if>
+                                </c:forEach>
+                            </fmt:bundle>
+                        </div>
+                    </div>
+                    <div class="row text-center font-top">
+                        <input type="checkbox"/>是否需要最新资讯
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="${path}/resources/lib/jquery/jquery-3.1.1.min.js"></script>
+<script src="${path}/resources/lib/bootstrap/bootstrap.min.js"></script>
+<script src="${path}/resources/lib/layer/layer.js"></script>
+<script src="${path}/resources/js/index.js"></script>
+<c:if test="${!(schedule.scheduleInformation.status eq 2)}">
+    <script type="text/javascript">
+        $(function () {
+            function getSch() {
+                var regex = new RegExp('live/([1-9]+[0-9]*)/');
+                return parseInt(regex.exec(location.pathname)[1]);
+            }
+            function transDate(value) {
+                var date = new Date(value);
+                return date.getHours() + ':' + (date.getMinutes() + 1) + ':' + date.getMinutes();
+            }
+
+            //创建web socket
+            if (!("WebSocket" in window)) {
+                msg('您的浏览器版本过低，暂不支持观看直播')
+            } else {
+                var $messages = $('#messages');
+                var $message = $('#message');
+                var socket = new WebSocket('ws://' + location.host + getRootPath() + '/test');
+                socket.onmessage = function (evt) {
+                    // alert(evt);
+                    var message = JSON.parse(evt.data);
+                    if (message.status === 0 && message.data.schId === getSch()) {
+                        if (message.data.type === 1) {//消息
+                            <fmt:bundle basename="properties.upload">
+                            if (message.data.message.imgPath !== null && message.data.message.imgPath !== '') {//图文
+                                $message.html('<div class="row yimg">\n' +
+                                    '<img src="${path}/<fmt:message key="upload.image.url.prefix"/>/' + message.data.message.imgPath + '">' +
+                                    '                            <div class="font-top">' + message.data.message.content + '</div>\n' +
+                                    '                        </div>\n' +
+                                    '                        <div class="row">\n' +
+                                    '                            <div class="col-xs-12"><span class="ytitleb font-right">来自' + message.data.message.phone + ' ' + transDate(message.data.message.time) + '</span></div>\n' +
+                                    '                        </div>');
+
+                                $messages.prepend('<hr class="hr-border"/>');
+                                $messages.prepend('<div class="row">\n' +
+                                    '                                            <div class="col-xs-6"><span class="font-right">'+transDate(message.data.message.time)+'</span></div>\n' +
+                                    '                                            <div class="col-xs-6"><span>来自'+ message.data.message.phone +'</span></div>\n' +
+                                    '                                        </div>')
+                                $messages.prepend('<div class="row">\n' +
+                                    '                                            <div class="col-xs-3">\n' +
+                                    '                                                <div class="row"><img src="${path}/<fmt:message key="upload.image.url.prefix"/>/'+ message.data.message.imgPath + '">\n' +
+                                    '                                                </div>\n' +
+                                    '                                            </div>\n' +
+                                    '                                            <div class="col-xs-7">\n' +
+                                    '                                                <div class="font-top">'+ message.data.message.content +'</div>\n' +
+                                    '                                            </div>\n' +
+                                    '                                        </div>');
+
+                            } else {//纯文本
+
+                                $message.html('<div class="row yimg">\n' +
+                                    '                            <div class="font-top">' + message.data.message.content + '</div>\n' +
+                                    '                        </div>\n' +
+                                    '                        <div class="row">\n' +
+                                    '                            <div class="col-xs-12"><span class="ytitleb font-right">来自' + message.data.message.phone + ' ' + transDate(message.data.message.time) + '</span></div>\n' +
+                                    '                        </div>');
+
+                                $messages.prepend('<hr class="hr-border"/>');
+                                $messages.prepend('<div class="row">\n' +
+                                    '                                        <div class="col-xs-6"><span class="font-right">'+transDate(message.data.message.time)+'</span></div>\n' +
+                                    '                                        <div class="row">\n' +
+                                    '                                            <div class="col-xs-6"><span>来自' + message.data.message.phone + '</span></div>\n' +
+                                    '                                        </div>\n' +
+                                    '                                    </div>')
+
+                                $messages.prepend('<div class="row">' +
+                                    '<div class="col-xs-12">\n' +
+                                    '                                                <div class="font-top">' + message.data.message.content + '</div>\n' +
+                                    '                                            </div>' +
+                                    '</div>');
+                            }
+                            </fmt:bundle>
+                            // scroll();
+                        } else if (message.data.type === 2) {//状态改变
+                            $('#status').html('已结束');
+                        } else if (message.data.type === 3) {//比分修改
+                            $('#scoreA').html(message.data.scoreA);
+                            $('#scoreB').html(message.data.scoreB);
+                        }
+
+                    }
+                }
+                socket.onclose = function (ev) {
+                    msg('连接关闭');
+                    $('#status').html('连接关闭');
+                }
+                socket.onerror = function (ev) {
+                    msg('连接中断，刷新重连')
+                    $('#status').html('连接中断');
+                }
+            }
+        })
+    </script>
+</c:if>
+</body>
+
+</html>

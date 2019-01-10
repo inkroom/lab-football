@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.team.CreateTeamDao">
+    <insert id="createTeam">
+    INSERT  INTO  Team(
+        name,
+        type,
+        orgId,
+        createTime,
+        status
+        )VALUES (
+        #{team.name},#{team.type},#{team.orgId},#{team.createTime},#{team.status}
+        )
+
+    </insert>
+
+    <insert id="addCoach" >
+        INSERT  INTO  M_Team_Coach
+        (team_id,
+        coach_id,
+        join_time,
+        status)
+        VALUES
+        (
+        #{idTeam},#{idCoach},#{time},#{status}
+        )
+    </insert>
+
+    <insert id="addPlayer" >
+        INSERT  INTO  M_Team_Player(
+        player_id,
+        team_id,
+        join_time,
+        status
+        )VALUES
+        <foreach collection="list" item="idPlayer" index="index" separator=",">
+            ( #{idPlayer},#{idTeam},#{time},#{status} )
+        </foreach>
+
+
+    </insert>
+</mapper>

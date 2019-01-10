@@ -1,0 +1,126 @@
+package cn.nsu.edu.web.four.filters;
+
+import cn.nsu.edu.web.four.config.BaseStatic;
+import cn.nsu.edu.web.four.enums.Role;
+import cn.nsu.edu.web.four.utils.http.RequestUtil;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.http.MediaType;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.ServletWebRequest;
+import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsFileUploadSupport;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.support.DefaultMultipartHttpServletRequest;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.util.*;
+
+public class XssFilter extends OncePerRequestFilter {
+    private XSSRequestWrapper xssRequestWrapper;
+
+    @Override
+    protected void initFilterBean() throws ServletException {
+        XSSRequestWrapper.compile();
+        log.info("开始初始化过滤器");
+    }
+
+    private final Log log = LogFactory.getLog(getClass());
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+
+        if (ServletFileUpload.isMultipartContent(request)) {
+            XSSFormRequest xssRequestWrapper = new XSSFormRequest(request);
+            filterChain.doFilter(xssRequestWrapper, response);
+        } else {
+            XSSRequestWrapper xssRequestWrapper = new XSSRequestWrapper(request);
+            filterChain.doFilter(xssRequestWrapper, response);
+        }
+
+
+//        ServletWebRequest webRequest = new ServletWebRequest(request, response);
+//        Map<String, String[]> tm = webRequest.getParameterMap();
+//
+//
+//        Iterator<String> keys = tm.keySet().iterator();
+//        while (keys.hasNext()) {
+//            String key = keys.next();
+//            String[] ss = tm.get(key);
+//            for (String s :
+//                    ss) {
+//                log.info(key + "---" + s);
+//            }
+//        }
+//        log.info("封装的=" + webRequest.getParameterMap());
+//
+        Map<String, Object> map = new HashMap<>();
+//		map.put(BaseStatic.KEY_SCHEDULE_ID,1);
+//		map.put(BaseStatic.KEY_MATCH_ID,1);
+//		map.put(BaseStatic.KEY_REFEREE_ID,1);
+//		map.put("match","测试杯");
+//		map.put("name","裁判员");
+//		map.put("phone","18161202826");
+//		map.put("idcard","510322199926024587");
+        map.put(BaseStatic.KEY_ORGANIZATION_ID, "1");
+//
+        RequestUtil.login(request, map, Role.ORGANIZATION);
+
+        log.info("开始执行" + request.getRequestURL().toString());
+//		request.getSession().setAttribute(BaseStatic.KEY_SESSION_LIVE_PHONE,"18161202825");
+
+//        ServletFileUpload.isMultipartContent()
+
+//        Enumeration<String> name = request.getParameterNames();
+//        Map<String, String> map1 = new Hashtable<>();
+//        while (name.hasMoreElements()) {
+//            String temp = name.nextElement();
+//            map1.put(temp, request.getParameter(temp));
+//        }
+//
+//        log.info("p = " + map1.toString());
+//
+//        name = request.getHeaderNames();
+//        map1.clear();
+//        while (name.hasMoreElements()) {
+//            String temp = name.nextElement();
+//            map1.put(temp, request.getHeader(temp));
+//        }
+//
+//        log.info(" h =" + map1.toString());
+
+//        try {
+//            XSSRequestWrapper xssRequestWrapper = new XSSRequestWrapper(request);
+//            filterChain.doFilter(xssRequestWrapper, response);
+//            log.info("开始执行----doFilter" + request.getRequestURL().toString());
+//        } catch (Exception e) {
+//            log.error(e.getMessage());
+//        }
+
+    }
+
+    private String determineEncoding(String contentTypeHeader, String defaultEncoding) {
+        if (!StringUtils.hasText(contentTypeHeader)) {
+            return defaultEncoding;
+        } else {
+            MediaType contentType = MediaType.parseMediaType(contentTypeHeader);
+            Charset charset = contentType.getCharset();
+            return charset != null ? charset.name() : defaultEncoding;
+        }
+    }
+
+}

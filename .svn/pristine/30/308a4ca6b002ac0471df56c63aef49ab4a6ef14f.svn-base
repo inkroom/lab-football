@@ -1,0 +1,34 @@
+/*bottom*/
+
+.bottom_box{
+	width: 100%;
+	height: 0.9rem;
+	position: fixed;
+	bottom: 0px;
+	border-top: 1px solid #E7E7E7;
+	display: flex;
+	background: #FFFFFF;
+}
+
+.tab_bar{
+	flex: 1;
+	text-align: center;
+}
+
+.tab_bar img{
+	width: 0.4rem;
+	height: 0.4rem;
+	margin-top: 0.1rem;
+}
+
+.tab_bar p{
+	color: #323232;
+	font-size: 0.15rem;
+	margin-top: 0.08rem;
+}
+
+#index img{height: 0.38rem;width: 0.38rem;margin-top: 0.11rem;}
+#identity img{height: 0.34rem;width: 0.43rem;margin-top: 0.15rem;}
+#QRcode img{height: 0.36rem;margin-top: 0.14rem;}
+#revisel img{height: 0.38rem;width: 0.38rem;margin-top: 0.11rem;}
+

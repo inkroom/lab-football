@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace需要填写dao层全路径-->
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.referee.ConsummateDao">
+
+    <update id="consummate" statementType="PREPARED">
+        UPDATE Referee SET phone = #{phone},idcard = #{idCard},name = #{name} WHERE id_sch = #{sch};
+    </update>
+</mapper>

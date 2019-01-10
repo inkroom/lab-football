@@ -1,0 +1,25 @@
+
+
+#\u6570\u636E\u5E93
+
+
+jdbc.driver=com.mysql.cj.jdbc.Driver
+ 数据库ip地址
+jdbc.ip=10.14.4.4
+# 数据库端口
+jdbc.port=3306
+# 数据库名称
+jdbc.basename=football4th
+# 数据库账号
+jdbc.username=4th
+#密码已加密
+jdbc.password=EA8CF5C1660E07D7F8159A09DEC8494D
+
+
+###阿里云配置
+#jdbc.ip=localhost
+#jdbc.port=3306
+#jdbc.basename=football4th
+#jdbc.username=root
+##密码已加密
+#jdbc.password=AFA87BD6D71C8F1E4E9E0B944B7B61A8341F5B2463252FA5D82E3931AC4F63C1

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.schedule.ScheduleDao">
+  <resultMap id="BaseResultMap" type="cn.nsu.edu.web.four.beans.schedule.Schedule">
+    <id column="id_schedule" jdbcType="INTEGER" property="idSchedule" />
+    <result column="match_id" jdbcType="INTEGER" property="matchId" />
+    <result column="team_A" jdbcType="INTEGER" property="teamA" />
+    <result column="team_B" jdbcType="INTEGER" property="teamB" />
+    <result column="goal_A" jdbcType="INTEGER" property="goalA" />
+    <result column="goal_B" jdbcType="INTEGER" property="goalB" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="place" jdbcType="VARCHAR" property="place" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id_schedule, match_id, team_A, team_B, goal_A, goal_B, begin_time, place, status
+  </sql>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from `Schedule`
+    where id_schedule = #{idSchedule,jdbcType=INTEGER}
+  </select>
+  <select id="selectByMatchID" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from `Schedule`
+    WHERE match_id=#{matchId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from `Schedule`
+    where id_schedule = #{idSchedule,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.nsu.edu.web.four.beans.schedule.Schedule">
+    insert into `Schedule` (id_schedule, match_id, team_A,
+      team_B, goal_A, goal_B, 
+      begin_time, place, status
+      )
+    values (#{idSchedule,jdbcType=INTEGER}, #{matchId,jdbcType=INTEGER}, #{teamA,jdbcType=INTEGER}, 
+      #{teamB,jdbcType=INTEGER}, #{goalA,jdbcType=INTEGER}, #{goalB,jdbcType=INTEGER}, 
+      #{beginTime,jdbcType=TIMESTAMP}, #{place,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.nsu.edu.web.four.beans.schedule.Schedule">
+    insert into `Schedule`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idSchedule != null">
+        id_schedule,
+      </if>
+      <if test="matchId != null">
+        match_id,
+      </if>
+      <if test="teamA != null">
+        team_A,
+      </if>
+      <if test="teamB != null">
+        team_B,
+      </if>
+      <if test="goalA != null">
+        goal_A,
+      </if>
+      <if test="goalB != null">
+        goal_B,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="place != null">
+        place,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idSchedule != null">
+        #{idSchedule,jdbcType=INTEGER},
+      </if>
+      <if test="matchId != null">
+        #{matchId,jdbcType=INTEGER},
+      </if>
+      <if test="teamA != null">
+        #{teamA,jdbcType=INTEGER},
+      </if>
+      <if test="teamB != null">
+        #{teamB,jdbcType=INTEGER},
+      </if>
+      <if test="goalA != null">
+        #{goalA,jdbcType=INTEGER},
+      </if>
+      <if test="goalB != null">
+        #{goalB,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="place != null">
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByIdSelective" parameterType="cn.nsu.edu.web.four.beans.schedule.Schedule">
+    update `Schedule`
+    <set>
+      <if test="matchId != null">
+        match_id = #{matchId,jdbcType=INTEGER},
+      </if>
+      <if test="teamA != null">
+        team_A = #{teamA,jdbcType=INTEGER},
+      </if>
+      <if test="teamB != null">
+        team_B = #{teamB,jdbcType=INTEGER},
+      </if>
+      <if test="goalA != null">
+        goal_A = #{goalA,jdbcType=INTEGER},
+      </if>
+      <if test="goalB != null">
+        goal_B = #{goalB,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="place != null">
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id_schedule = #{idSchedule,jdbcType=INTEGER}
+  </update>
+  <update id="updateById" parameterType="cn.nsu.edu.web.four.beans.schedule.Schedule">
+    update `Schedule`
+    set match_id = #{matchId,jdbcType=INTEGER},
+      team_A = #{teamA,jdbcType=INTEGER},
+      team_B = #{teamB,jdbcType=INTEGER},
+      goal_A = #{goalA,jdbcType=INTEGER},
+      goal_B = #{goalB,jdbcType=INTEGER},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      place = #{place,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where id_schedule = #{idSchedule,jdbcType=INTEGER}
+  </update>
+
+    <insert id="insertReferee" parameterType="cn.nsu.edu.web.four.beans.referee.Referee">
+        INSERT INTO `Referee`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id_sch,
+            username,
+            password,
+            status,
+            <if test="expireTime != null">
+                expire_time,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="idcard != null">
+                idcard,
+            </if>
+            <if test="salt != null">
+                salt,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{idSch,jdbcType=INTEGER},
+            #{username,jdbcType=INTEGER},
+            #{password,jdbcType=INTEGER},
+            #{status,jdbcType=INTEGER},
+            <if test="expireTime != null">
+                #{expireTime,jdbcType=INTEGER},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=TIMESTAMP},
+            </if>
+            <if test="idcard != null">
+                #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+                #{salt,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+</mapper>

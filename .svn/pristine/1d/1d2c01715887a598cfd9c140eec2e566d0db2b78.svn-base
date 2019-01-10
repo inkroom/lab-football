@@ -1,0 +1,108 @@
+package cn.nsu.edu.web.four.controllers.referee;
+
+import cn.nsu.edu.web.four.annotation.Security;
+import cn.nsu.edu.web.four.beans.player.Player;
+import cn.nsu.edu.web.four.beans.schedule.Schedule;
+import cn.nsu.edu.web.four.beans.teams.Team;
+import cn.nsu.edu.web.four.dto.stc.referee.ScheduleInformationDto;
+import cn.nsu.edu.web.four.enums.Role;
+import cn.nsu.edu.web.four.services.referee.RefereeService;
+import cn.nsu.edu.web.four.utils.http.RequestUtil;
+import cn.nsu.edu.web.four.utils.string.ParseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+
+/**
+ *@author 杨康
+ * @Description:裁判员端的页面跳转控制器
+ */
+@Controller
+@RequestMapping("/referee")
+public class RefereeController {
+    private Logger log = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    RefereeService refereeService;
+
+    @Autowired
+    HttpServletRequest request;
+
+    //赛程信息
+    //@Security(createToken = true, roles = Role.REFEREE)
+    @RequestMapping(value = "/viewScheduleInformation", method = RequestMethod.GET)
+    public String getScheduleInfomation(Model model) throws Exception {
+        Map<String,Object> loginMap = RequestUtil.getLogin(request);
+        ScheduleInformationDto dto;
+        dto = refereeService.getScheduleInformation(1);
+        model.addAttribute("dto",dto);
+        request.setAttribute("dto",dto);
+        return "index";
+    }
+
+    //入场验证
+    @Security(createToken = true, roles = Role.REFEREE)
+    @RequestMapping(value = "/viewPlayerInformation", method = RequestMethod.GET)
+    public String getPlayerInformation() throws Exception {
+        Map<String,Object> loginMap = RequestUtil.getLogin(request);
+        List<Player> playerInformation = new ArrayList<>();
+        Map<String,Object> map = new HashMap<>();
+        //是否取得信息
+        if(loginMap != null){
+            if(loginMap.containsKey("teamId")){
+            List teamId = (List) loginMap.get("teamId");
+            if(teamId == null){
+                return "";
+            }
+            for (Object i:teamId
+                 ) {
+                playerInformation = refereeService.getPlayerInformation((Integer) i);
+            }
+            //将查询到的入场验证信息封装成list返回到页面
+            map.put("playerInformation",playerInformation);
+        }
+        }
+        return "";
+    }
+    //插入球员信息
+    @Security(createToken = true, roles = Role.REFEREE)
+    @RequestMapping(value = "/insertPlayerInformation",method = RequestMethod.POST)
+    public boolean insertPlayerInformation() throws Exception {
+        boolean b = false;
+        Map<String,Object> loginMap = RequestUtil.getLogin(request);
+        //是否取得信息
+        if(loginMap != null){
+            Integer scheduleId = (Integer) loginMap.get("scheduleId");
+            Integer playerId = (Integer) loginMap.get("playerId");
+            Integer teamId = (Integer) loginMap.get("teamId");
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            if(scheduleId == null && playerId == null && teamId == null){
+                return b;
+            }
+             b = refereeService.insertPlayerInformation(scheduleId,playerId,teamId,sdf.format(date));
+        }
+        return b;
+    }
+
+    //显示手机端和pc端的二维码信息
+    @Security(createToken = true, roles = Role.REFEREE)
+    @RequestMapping(value = "/QRcode/id",method = RequestMethod.GET)
+    public String getQRcode(@RequestParam(value = "id") String id){
+        return ""+ id;
+    }
+
+
+}

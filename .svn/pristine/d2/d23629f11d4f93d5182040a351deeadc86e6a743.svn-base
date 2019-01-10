@@ -1,0 +1,15 @@
+body{
+	background: url(../../img/endbg1.png) no-repeat;
+	background-size: 100% 100%;
+}
+.font-size1{
+	color: white;
+	font-size: 150px;
+}
+.font-place{
+	position: absolute; 
+	top: 50%; 
+	left: 50%; 
+	transform: translate(-50%,-50%);
+}
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace需要填写dao层全路径-->
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.coach.MTeamCoachDao">
+    <!--查询全部单个教练的全部信息-->
+    <!--<select id="getAllTeamByCoach" statementType="PREPARED" resultType="cn.nsu.edu.web.four.beans.coach.MTeamCoach">-->
+        <!--select t.type,m.status,m.coach_id AS 'coachIdM',m.team_id AS 'teamId',m.out_time AS 'outTime',m.join_time AS 'joinTime',t.name AS 'teamName'-->
+        <!--from Team t,M_Team_Coach m-->
+        <!--WHERE m.coach_id = #{coach_id} and m.team_id=t.id_team;-->
+    <!--</select>-->
+
+</mapper>

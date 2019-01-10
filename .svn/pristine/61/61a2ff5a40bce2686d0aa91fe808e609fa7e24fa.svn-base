@@ -1,0 +1,595 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    padding: 0;
+}
+
+/*首页
+ 2018/03/18*/
+
+.hp-bg {
+    background-image: url(../../img/match/background2.png);
+    height: 3000px;
+}
+
+.head {
+    height: 60px;
+}
+
+.head-w-1 {
+    line-height: 60px;
+    float: left;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.head-w-2 {
+    line-height: 60px;
+    float: left;
+    font-size: 16px;
+    color: #ccc;
+}
+
+.body {
+    height: 415px;
+    margin-top: 60px;
+}
+
+.body-l {
+    float: left;
+    background-color: #0d1604;
+    height: 415px;
+}
+
+.body-r {
+    float: right;
+    height: 415px;
+}
+
+.body-r-1 {
+    background: rgba(5, 7, 4, 0.6);
+    border-radius: 5px 5px;
+    box-shadow: 10px 10px 150px #070c02;
+    height: 190px;
+}
+
+.body-r-1 a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.body-r-1 ul {
+    list-style: none;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.body-r-1 ul li {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #ccc;
+}
+
+.body-2 {
+    margin-top: 60px;
+    height: 190px;
+}
+
+.body-2-p {
+    float: left;
+    height: 190px;
+    background: rgba(5, 7, 4, 0.6);
+    border-radius: 5px 5px;
+    box-shadow: 10px 10px 150px #070c02;
+    margin-top: 10px;
+}
+
+.body-2-p p {
+    display: block;
+    font-size: 16px;
+    color: #fff;
+}
+
+.body-2-p a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.body-3 {
+    margin-top: 60px;
+    height: 610px;
+    background-color: rgba(17, 12, 27, 0.62);
+    color: #fff;
+    text-align: center;
+    font-size: 17px;
+}
+
+.body-3 input {
+    width: 23%;
+    float: left;
+    margin-top: 42px;
+    margin-left: 41.2%;
+    margin-right: 3%;
+}
+
+.body-3 button {
+    float: left;
+    margin-top: 42px;
+}
+
+.body-3 table {
+    margin-top: 100px;
+}
+
+.body-3 table th {
+    text-align: center;
+}
+
+.body-3 .pag a {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
+
+.body-4 {
+    margin-top: 60px;
+    height: 350px;
+    background-color: rgba(17, 12, 27, 0.62);
+    color: #fff;
+    font-size: 17px;
+}
+
+.body-4-k {
+    height: 30px;
+}
+
+.body-4-w {
+    margin: 0 4%;
+}
+
+/*视频 2018/03/20 */
+.body-l video {
+    padding: 0;
+    height: 100%;
+}
+/*赛事列表
+ 2018/03/20 */
+
+#createMatch {
+    margin-top: 20px;
+}
+
+.ml-h {
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+.ml-tab {
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+}
+/*标签页*/
+.tab-1 {
+    color: #444;
+}
+
+.tab-1 table th {
+    width: 25%;
+    text-align: center;
+}
+
+.tab-1 table td {
+    text-align: center;
+}
+
+.tab-1 table a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.tab-1 table a:hover {
+    color: #000000;
+}
+/*赛程
+ 2018/03/21*/
+.sch-w {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 16px;
+
+}
+.tab-2 {
+    color: #444;
+}
+
+.tab-2 table th {
+    width: 16%;
+    text-align: center;
+}
+
+.tab-2 table td {
+    text-align: center;
+}
+
+.tab-2 table a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.tab-2 table a:hover {
+    color: #000000;
+}
+/*审核*/
+.sc-bo {
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+}
+
+.t-h-bo ul li {
+    list-style: none;
+    text-align: center;
+    font-size: 16px;
+}
+/*标签页下的分页*/
+.pag {
+    margin-left: 50%;
+}
+
+/*主办方sch
+ 2018/03/21*/
+
+.tab-4 {
+    color: #444;
+}
+
+.tab-4 table th {
+    width: 14%;
+    text-align: center;
+}
+
+.tab-4 table td {
+    text-align: center;
+}
+
+.tab-4 table a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.tab-4 table a:hover {
+    color: #000000;
+}
+
+.tab-4 button a {
+    color: #fff;
+}
+/*打开队员详情
+ 2018/03/21*/
+.hpn-1 {
+    position: relative;
+}
+
+.hpn-2 {
+    display: none;
+    background-color: #fff;
+    position: absolute;
+    top: 220px;
+    left: 47%;
+    width: 70px;
+    text-align: center;
+    border: 1px solid #dddddd;
+
+}
+
+/*修改页面
+ 2018/03/21*/
+.mo-h {
+    margin-top: 30px;
+    font-size: 24px;
+    padding-left: 200px;
+!important;
+    margin-bottom: 10px;
+}
+
+/*报名表tip标签
+ 2018/38/27*/
+.si-bo {
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+}
+
+.t-h {
+    float: left;
+    width: 25%;
+    height: 700px;
+    background-color: #e5f4f9;
+    border: 1px solid #E5F4F9;
+    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+}
+
+.t-h-a a {
+    text-decoration: none;
+}
+
+.t-h-a a:hover div {
+    background-color: #edf8fb;
+}
+
+.t-h-a a:hover span {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+}
+.t-c {
+    float: left;
+    width: 75%;
+    height: 700px;
+    /*background-color: #EEEEEE;*/
+}
+
+.t-c div {
+    display: none;
+}
+
+/*.t-c .selected {
+    background-color: #007DDB;
+}            */
+.t-c .show {
+    display: block;
+    width: 85%;
+    margin-left: 8%;
+    margin-top: 45px;
+    /*background-color: #007ddb;*/
+    /*border: 1px solid #FFFFFF;
+    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02); margin-top: 20px;*/
+}
+
+.t-h-n {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    padding-left: 15%;
+    color: #3c6a77;
+    background-color: #d6ecf3;
+}
+
+.t-h-bo {
+    background-color: #c6dde4;
+}
+
+.t-h-bo a {
+    color: #6997a5;
+    text-decoration: none;
+}
+
+.t-h-bo ul li {
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    padding-left: 15%;
+    cursor: hand;
+}
+
+.t-h-bo a:hover li {
+    background-color: #edf8fb;
+    cursor: hand;
+}
+.t-c {
+    color: #444;
+    /*border-left: #D4D4D4 solid 1px;*/
+}
+
+.t-c table td {
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.t-c table th {
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+/*.t-c table a{
+	color: #fff;
+	text-decoration: none;
+}
+.t-c table a:hover{
+	color: #000000;
+}*/
+.t-c button a {
+    color: #fff;
+}
+
+.pag-2 {
+    float: right;
+    margin-top: -53px;
+    margin-right: 2%;
+}
+/*详情幻灯片
+ 2018/3/08*/
+.pic {
+    width: 700px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+}
+
+.tit {
+    height: 15px;
+    position: relative;
+    top: -25px;
+}
+
+.tit a {
+    /*padding:0 30px;*/
+    width: 15px;
+    border-radius: 15px;
+    height: 100%;
+    float: left;
+    text-align: center;
+    line-height: 15px;
+    font-size: 5px;
+    color: #d3a268;
+    text-decoration: none;
+    position: relative;
+    left: 45%;
+    z-index: 1;
+}
+
+.tit .float {
+    width: 15px;
+    border-radius: 15px;
+    height: 100%;
+    background: #d3a268;
+    position: absolute;
+    left: 45%;
+}
+
+.box-1 {
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
+.box-1 div {
+    width: 100%;
+    height: 100%;
+    left: 100%;
+    position: absolute;
+    font-size: 16px;
+    top: 0;
+}
+
+.rightB {
+    width: 50px;
+    height: 70px;
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    top: 40%;
+    line-height: 70px;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+}
+
+.leftB {
+    width: 50px;
+    height: 70px;
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 40%;
+    line-height: 70px;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+}
+.color1 {
+    background: url(../../img/match/slide1.png);
+    background-size: cover;
+}
+
+.color2 {
+    background: url(../../img/match/slide2.png);
+    background-size: cover;
+}
+
+.color3 {
+    background: url(../../img/match/slide3.png);
+    background-size: cover;
+}
+
+.color4 {
+    background: url(../../img/match/slide4.png);
+    background-size: cover;
+}
+
+.color5 {
+    background: url(../../img/match/slide5.png);
+    background-size: cover;
+}
+
+.deta {
+    float: right;
+    height: 300px;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+}
+
+.d-h {
+    margin-top: 30px;
+    font-size: 27px;
+    text-align: center;
+}
+
+.deta-w {
+    font-size: 16px;
+    margin: 10px 21%;
+}
+
+/*主办方里的操作列表
+2018/04/03*/
+
+.nav-1 li {
+    list-style: none;
+    height: 18px;
+    line-height: 18px;
+}
+
+.nav-1 li a {
+    text-decoration: none;
+}
+
+.nav-1 li ul {
+}
+
+.nav-1 li ul li {
+    display: none;
+    height: 25px;
+    width: 90px;
+    position: relative;
+    /*text-align: left;*/
+    left: 155px;
+    top: -20px;
+}
+
+.nav-1 li ul li a {
+    color: #09f;
+}
+
+.nav-1 li:hover ul li {
+    display: block;
+}
+
+/*详情表*/
+.detail-tab {
+    margin-top: 20px;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 0px 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+    margin-top: 20px;
+}
+
+.detail-tab table th {
+    text-align: center;
+}
+
+.detail-tab table td {
+    text-align: center;
+}

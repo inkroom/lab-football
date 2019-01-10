@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.nsu.edu.web.four.daos.jdbc.team.TeamInfosToCoachMapper">
+
+    <insert id="insertCoachInfo" parameterType="cn.nsu.edu.web.four.beans.teams.TeamInfos">
+        INSERT INTO M_Team_Coach(team_id,coach_id,join_time,status)
+        VALUES(#{teamId},#{teamCoachId},NOW(),0)
+    </insert>
+
+</mapper>

@@ -1,0 +1,117 @@
+package cn.nsu.edu.web.four.beans.organization;
+
+/**
+ * @author :王新璋
+ * @Description: 机构的实体类
+ * @date :18.01 2018/3/16
+ */
+
+public class Organization {
+
+    private Integer id_org;//机构id
+    private String name;//机构姓名
+    private String password;//密码
+    private String salt;//加密
+    private Integer school_code;//学校代码
+    private Integer province_code;//省代码
+    private Integer country_code;//城市代码
+    private Integer village_code;//乡村代码
+    private Integer type;//机构类型
+    private String phone;//机构手机号
+
+    public Integer getId_org() {
+        return id_org;
+    }
+
+    public void setId_org(Integer id_org) {
+        this.id_org = id_org;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public Integer getSchool_code() {
+        return school_code;
+    }
+
+    public void setSchool_code(Integer school_code) {
+        this.school_code = school_code;
+    }
+
+    public Integer getProvince_code() {
+        return province_code;
+    }
+
+    public void setProvince_code(Integer province_code) {
+        this.province_code = province_code;
+    }
+
+    public Integer getCountry_code() {
+        return country_code;
+    }
+
+    public void setCountry_code(Integer country_code) {
+        this.country_code = country_code;
+    }
+
+    public Integer getVillage_code() {
+        return village_code;
+    }
+
+    public void setVillage_code(Integer village_code) {
+        this.village_code = village_code;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Organization{" +
+                "id_org=" + id_org +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", school_code=" + school_code +
+                ", province_code=" + province_code +
+                ", country_code=" + country_code +
+                ", village_code=" + village_code +
+                ", type=" + type +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
+}

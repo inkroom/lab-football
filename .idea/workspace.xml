@@ -1,0 +1,2252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="football4th:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="7943a74f-2e0c-4452-9a12-e51b59f44471" name="Default" comment="修改导航栏">
+      <change beforePath="$PROJECT_DIR$/four.iml" afterPath="$PROJECT_DIR$/four.iml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/common/zookeeper" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/common/zookeeper/ZooKeeperConfigWatch.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/DemoController.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/daos/jdbc/DemoDao.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/services/DemoService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/demo.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/referee/refereeMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/referee/refereeMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-zookeeper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/EncryptTest.java" afterPath="$PROJECT_DIR$/src/test/java/EncryptTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/zookeeper.java" afterPath="$PROJECT_DIR$/src/test/java/zookeeper.java" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="football4th@10.14.4.4" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="football4th@10.14.4.4" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="football4th@10.14.4.4" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="football4th: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="spring-websocket.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-websocket.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spring-session.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-session.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2025">
+              <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jdbc.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/properties/jdbc.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="33" column="15" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LiveController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/live/LiveController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="588">
+              <caret line="110" column="43" lean-forward="false" selection-start-line="110" selection-start-column="43" selection-end-line="110" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="refereeMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/referee/refereeMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+              <folding>
+                <marker date="1526450811138" expanded="true" signature="1678:1804" ph="select team_... Schedule" />
+                <marker date="1526450811138" expanded="true" signature="1893:1944" ph="select name Team" />
+                <marker date="1526450811138" expanded="true" signature="2045:2112" ph="select team_... M_Match_Staff" />
+                <marker date="1526450811138" expanded="true" signature="2212:2335" ph="select name,... Player" />
+                <marker date="1526450811138" expanded="true" signature="2395:2501" ph="insert into M_Sch_Staff... " />
+                <marker date="1526450811138" expanded="true" signature="2575:2684" ph="update Schedule... " />
+                <marker date="1526450811138" expanded="true" signature="2760:2835" ph="UPDATE Referee... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EncryptTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/EncryptTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="redis.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/properties/redis.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="15" lean-forward="false" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zookeeper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/zookeeper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="JavaScript File" />
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>${page</find>
+      <find>${pageContext.request.contextPath}</find>
+      <find>&lt;c:set</find>
+      <find>&lt;input type=&quot;hidden</find>
+      <find>&lt;/p&gt;v</find>
+      <find>&lt;p id=&quot;token&quot; style=&quot;display: none&quot;&gt;${token}&lt;/p&gt;</find>
+      <find>inpb</find>
+      <find>$('#token').val()</find>
+      <find>return null;</find>
+      <find>return context.removeAttribute(s);;</find>
+      <find>createRefereeForm</find>
+      <find>messages</find>
+      <find>比赛详情</find>
+      <find>addP</find>
+      <find>Init</find>
+      <find>enableRedisKeyspaceNotificationsInitializer</find>
+      <find>init</find>
+      <find>T</find>
+      <find>onNew</find>
+      <find>delegate</find>
+      <find>httpSessionStrategy</find>
+      <find>SessionRepository</find>
+      <find>Session</find>
+      <find>session</find>
+      <find>request.setAttr</find>
+      <find>annotation-config</find>
+      <find>convert</find>
+      <find>$('#token').html();</find>
+      <find>$(&quot;#token&quot;).html()</find>
+      <find>$('#token').html</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>0</replace>
+      <replace>$msg</replace>
+      <replace>center-block tr-add&quot; value=&quot;添加&quot;</replace>
+      <replace>html().trim()</replace>
+      <replace>\$tr\.attr</replace>
+      <replace>path</replace>
+      <replace>scriptPattern[i++]</replace>
+      <replace>littlePattern[i++]</replace>
+      <replace>log.info(</replace>
+      <replace>layer.msg</replace>
+      <replace>${path}/</replace>
+      <replace>teamB</replace>
+      <replace>msg</replace>
+      <replace>href=&quot;javascript:;&quot;</replace>
+      <replace>${schedule.teamA.name}</replace>
+      <replace>${schedule.teamB.name}</replace>
+      <replace>m</replace>
+      <replace>${path}</replace>
+      <replace>$('#token').html()</replace>
+      <replace>return context.removeAttribute(s);;</replace>
+      <replace>return context.removeAttribute(s);</replace>
+    </replaceStrings>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/services/common/SMSService.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/view/referee/consummate.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/referee/ConsummateController.java" />
+        <option value="$PROJECT_DIR$/web/resources/js/referee/consummate.js" />
+        <option value="$PROJECT_DIR$/web/resources/js/live/verification.js" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/referee/VerificationController.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/view/live/liveMobile.jsp" />
+        <option value="$PROJECT_DIR$/web/resources/css/live/liveMobile.css" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/services/referee/LoginService.java" />
+        <option value="$PROJECT_DIR$/web/resources/js/referee/login.js" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/view/live/end.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/view/live/endMobile.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/view/referee/report.jsp" />
+        <option value="$PROJECT_DIR$/web/resources/css/referee/report.css" />
+        <option value="$PROJECT_DIR$/web/resources/css/referee/login.css" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/organization/OrganizationController.java" />
+        <option value="$PROJECT_DIR$/web/resources/css/common/style.css" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/view/organization/index.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/view/common/head.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-dao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/services/match/impl/MatchServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/aop/ControllerAop.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/referee/LoginController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/interceptors/SecurityInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/properties/jdbc.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/utils/http/RequestUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/filters/XSSRequestWrapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/filters/XSSFormRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/dto/stc/referee/ScheduleInformationDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/handler/SessionSerializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/services/live/LiveService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/websocket.xml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/session.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-session.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-redis.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/properties/redis.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-util.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/services/common/PropertiesService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/springMVC-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/live/LiveController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/filters/XssFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/session/serializer/SessionSerializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/handler/socket/SocketListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/daos/redis/common/SmsDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/annotation/FileRename.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-websocket.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/referee/refereeMapper.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/EncryptTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/zookeeper.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="$PROJECT_DIR$/../../../后端/resource/jars" />
+        <option name="mavenHome" value="E:/../software/software/java/apache-maven-3.3.9-bin/apache-maven-3.3.9" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="four" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="four" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="four" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1920" />
+    <option name="height" value="1026" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness</id>
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Performance</id>
+          </State>
+          <State>
+            <id>Android Lint for Kotlin</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Java language level migration aidsJava</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages ProjectPane="true" />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="four" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="four" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="four" type="462c0819:PsiDirectoryNode" />
+              <item name="daos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="four" type="462c0819:PsiDirectoryNode" />
+              <item name="daos" type="462c0819:PsiDirectoryNode" />
+              <item name="jdbc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="properties" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4th" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4th" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
+    <property name="Repository.Attach.Sources" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.3951613" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="redis.pro&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/4th/src/main/resources/properties/redis.properties&#10;XSSF&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/java/cn/nsu/edu/web/four/filters/XssFilter.java&#10;LiveC&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/java/cn/nsu/edu/web/four/controllers/live/LiveController.java&#10;spring-s&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/resources/spring/springMVC-servlet.xml&#10;util.&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/resources/spring/spring-util.xml&#10;redis&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/resources/properties/redis.properties&#10;Se&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/java/cn/nsu/edu/web/four/services/common/SMSService.java&#10;SmsSer&#9;PSI&#9;JAVA://cn.nsu.edu.web.four.services.common.SMSService&#10;redis.p&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/resources/properties/redis.properties&#10;web.&#9;FILE&#9;file://E:/study/项目组/workplace/4th/web/WEB-INF/web.xml&#10;spring-dao&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/resources/spring/spring-dao.xml&#10;spring-redis&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/resources/spring/spring-redis.xml&#10;web.xml&#9;FILE&#9;file://E:/study/项目组/workplace/4th/web/WEB-INF/web.xml&#10;live&#9;PSI&#9;JAVA://cn.nsu.edu.web.four.controllers.live.LiveController&#10;Socket&#9;PSI&#9;JAVA://cn.nsu.edu.web.four.handler.socket.LiveWebSocket&#10;spring-web&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/resources/spring/spring-websocket.xml&#10;sms.pr&#9;FILE&#9;file://E:/study/项目组/workplace/4th/src/main/resources/properties/sms.properties&#10;spring-red&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/resources/spring/spring-redis.xml&#10;Xss&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/java/cn/nsu/edu/web/four/filters/XSSFormRequest.java&#10;Sch&#9;PSI&#9;JAVA://cn.nsu.edu.web.four.dto.stc.referee.ScheduleInformationDto&#10;Secu&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/java/cn/nsu/edu/web/four/interceptors/SecurityInterceptor.java&#10;En&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/test/java/EncryptTest.java&#10;reids&#9;PSI&#9;JAVA://com.sun.org.omg.CORBA.RepositoryIdSeqHelper&#10;jd&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/resources/properties/jdbc.properties&#10;util&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/resources/spring/spring-util.xml&#10;springdao&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/resources/spring/spring-dao.xml&#10;pom&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/pom.xml&#10;WebApplicationContextUtils&#9;FILE&#9;jar:///media/inkbox/study/study/后端/resource/jars/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/context/support/WebApplicationContextUtils.class&#10;XSSf&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/java/cn/nsu/edu/web/four/filters/XssFilter.java&#10;Log&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/java/cn/nsu/edu/web/four/controllers/referee/LoginController.java&#10;ControllerAo&#9;PSI&#9;JAVA://cn.nsu.edu.web.four.aop.ControllerAop&#10;matchSi&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/web/resources/js/match/matchSign.js&#10;MatchCo&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/java/cn/nsu/edu/web/four/controllers/match/MatchController.java&#10;spring-da&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/resources/spring/spring-dao.xml&#10;head.jsp&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/web/WEB-INF/view/common/head.jsp&#10;Or&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/java/cn/nsu/edu/web/four/controllers/organization/OrganizationController.java&#10;login.css&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/web/resources/css/referee/login.css&#10;repor&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/web/WEB-INF/view/referee/report.jsp&#10;endMobile&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/web/WEB-INF/view/live/endMobile.jsp&#10;end.jsp&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/web/WEB-INF/view/live/end.jsp&#10;login.jsp&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/web/WEB-INF/view/referee/login.jsp&#10;Login.&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/java/cn/nsu/edu/web/four/controllers/referee/LoginController.java&#10;test.js&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/web/WEB-INF/view/referee/test.jsp&#10;report.jsp&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/web/WEB-INF/view/referee/report.jsp&#10;jdbc&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/resources/properties/jdbc.properties&#10;XSS&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/java/cn/nsu/edu/web/four/filters/XssFilter.java&#10;publ&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/web/resources/css/referee/public.css&#10;jdbcp&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/resources/properties/jdbc.properties&#10;consu&#9;PSI&#9;JAVA://cn.nsu.edu.web.four.controllers.referee.ConsummateController&#10;Ver&#9;FILE&#9;file:///media/inkbox/study/study/项目组/workplace/football4th/src/main/java/cn/nsu/edu/web/four/controllers/referee/VerificationController.java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../output/gate/directory" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/spring" />
+      <recent name="$PROJECT_DIR$/web/resources/img/referee" />
+      <recent name="$PROJECT_DIR$/web/resources/css/referee" />
+      <recent name="$PROJECT_DIR$/web/resources/lib/bootstrap" />
+      <recent name="$PROJECT_DIR$/web/resources/img/live" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.nsu.edu.web.four.interceptors" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/resources/lib/bootstrap" />
+      <recent name="$PROJECT_DIR$/web/resources/img/referee" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF/view/live" />
+      <recent name="$PROJECT_DIR$/web/resources/js/live" />
+      <recent name="$PROJECT_DIR$/web/resources/lib" />
+    </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/pom.xml</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/index.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/match/matchDetails.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/match/matchList.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/match/matchDetailsAdmin.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/player/playerlist.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/coach/coach_info.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/coach/coach_list.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/live/live.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/live/liveMobile.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/organization/index.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/team/displayTeam.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/team/update.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/team/createTeam.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/WEB-INF/view/common/head.jsp</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/css/match/style.1.0.css</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/css/team/createTeam-style.css</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/css/common/style.css</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/js/match/matchSign.js</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/js/match/matchList.js</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/js/live/liveMobile.js</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/js/index.js</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/utils/encrypt/AESEncryptUtil.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/config/BaseStatic.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/match/MatchController.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/player/PlayerController.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/coath/CoachController.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/live/LiveController.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/organization/OrganizationController.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/team/UpdateTeamController.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/team/DisplayTeamController.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/listeners/RedisSessionListener.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/handler/spring/PropertiesPlaceholder.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/interceptors/SecurityInterceptor.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/services/match/impl/MatchServiceImpl.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/session/serializer/SessionSerializer.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/daos/redis/RedisPool.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/daos/redis/SingleRedisPoolImpl.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/daos/redis/common/SmsDao.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/enums/Result.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/beans/match/MatchPlayer.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/beans/match/Match.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/resources/properties/redis.properties</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/resources/properties/jdbc.properties</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/resources/spring/spring-dao.xml</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/resources/spring/spring-encrypt.xml</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/resources/spring/spring-redis.xml</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/resources/spring/spring-util.xml</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/resources/spring/interceptor.xml</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/resources/mapper/match/MatchMapper.xml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/lib/webuploader</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/lib/webuploader/webuploader.css</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/lib/webuploader/webuploader.nolog.min.js</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/lib/webuploader/webuploader.fis.js</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/lib/webuploader/webuploader.min.js</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/lib/webuploader/Uploader.swf</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/lib/webuploader/webuploader.withoutimage.min.js</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/css/team/bootstrap-responsive.css</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/css/team/bootstrap.css</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/img/coach/uploaded.png</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/项目文档/文档目录.docx</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/common</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/common/zookeeper</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/common/zookeeper/ZooKeeperConfigWatch.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/interceptors/TokenInterceptor.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/main/resources/spring/spring-zookeeper.xml</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/test/java/zookeeper.java</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/src/test/java/redis</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/lib/ajaxFileUpload.js</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/css/team/bootstrap-responsive.min.css</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/css/team/bootstrap.min.css</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/css/team/bootstrap-responsive.css</PATH>
+          <PATH vcs="svn" revision="430">$PROJECT_DIR$/web/resources/css/team/bootstrap.css</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.EncryptTest.testEncrypt">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration name="Md5EncryptUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cn.nsu.edu.web.four.utils.encrypt.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="cn.nsu.edu.web.four.utils.encrypt.Md5EncryptUtil" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="football4th" />
+      <envs />
+    </configuration>
+    <configuration name="SuffixInterceptor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cn.nsu.edu.web.four.interceptors.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="cn.nsu.edu.web.four.interceptors.SuffixInterceptor" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="football4th" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration name="EncryptTest.testEncrypt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="football4th" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="EncryptTest" />
+      <option name="METHOD_NAME" value="testEncrypt" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="Other.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="football4th" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Other" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="SmsService.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="sms.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="football4th" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="sms" />
+      <option name="MAIN_CLASS_NAME" value="sms.SmsService" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="8081" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M19" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/4th/" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="update-resources" />
+      <deployment>
+        <artifact name="football4th:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/4th" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_football4th" />
+        <option name="HTTP_PORT" value="8081" />
+        <option name="JNDI_PORT" value="1111" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="34133" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.8081" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Md5EncryptUtil" />
+      <item index="2" class="java.lang.String" itemvalue="Application.SuffixInterceptor" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.SmsService.test" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.EncryptTest.testEncrypt" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.Other.test" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.EncryptTest.testEncrypt" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Md5EncryptUtil" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.SmsService.test" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.Other.test" />
+        <item index="4" class="java.lang.String" itemvalue="Application.SuffixInterceptor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7943a74f-2e0c-4452-9a12-e51b59f44471" name="Default" comment="" />
+      <created>1520931801957</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1520931801957</updated>
+      <workItem from="1520931807645" duration="691000" />
+      <workItem from="1521007831015" duration="7936000" />
+      <workItem from="1521083374730" duration="394000" />
+      <workItem from="1521096174818" duration="6085000" />
+      <workItem from="1521160920688" duration="19727000" />
+      <workItem from="1521352619020" duration="3087000" />
+      <workItem from="1521420161763" duration="13554000" />
+      <workItem from="1521536127853" duration="1754000" />
+      <workItem from="1521593153039" duration="19819000" />
+      <workItem from="1521679351341" duration="22455000" />
+      <workItem from="1521766971648" duration="34606000" />
+      <workItem from="1521897437516" duration="4408000" />
+      <workItem from="1521954768299" duration="19444000" />
+      <workItem from="1522025269846" duration="25297000" />
+      <workItem from="1522111772162" duration="23446000" />
+      <workItem from="1522198350647" duration="20885000" />
+      <workItem from="1522237000209" duration="3673000" />
+      <workItem from="1522284601267" duration="24838000" />
+      <workItem from="1522370788325" duration="16535000" />
+      <workItem from="1522630257154" duration="7777000" />
+      <workItem from="1522716586952" duration="19049000" />
+      <workItem from="1522803839890" duration="299000" />
+      <workItem from="1522804218294" duration="360000" />
+      <workItem from="1522804894333" duration="18107000" />
+      <workItem from="1523150183952" duration="14508000" />
+      <workItem from="1523234960369" duration="22024000" />
+      <workItem from="1523321496652" duration="10938000" />
+      <workItem from="1523409034362" duration="15595000" />
+      <workItem from="1523493327625" duration="39823000" />
+      <workItem from="1523840214018" duration="23849000" />
+      <workItem from="1523928053603" duration="1801000" />
+      <workItem from="1523929986857" duration="12176000" />
+      <workItem from="1524015461750" duration="17104000" />
+      <workItem from="1524103786993" duration="17459000" />
+      <workItem from="1524185695063" duration="24914000" />
+      <workItem from="1524287854586" duration="14584000" />
+      <workItem from="1524319747442" duration="7466000" />
+      <workItem from="1524533136272" duration="65000" />
+      <workItem from="1524533422525" duration="1623000" />
+      <workItem from="1524535054259" duration="1610000" />
+      <workItem from="1525583555801" duration="48000" />
+      <workItem from="1526440612631" duration="1365000" />
+    </task>
+    <task id="LOCAL-00036" summary="上传服务类添加删除文件方法">
+      <created>1522224532427</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1522224532427</updated>
+    </task>
+    <task id="LOCAL-00037" summary="添加pc端公用导航栏">
+      <created>1522225087293</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1522225087293</updated>
+    </task>
+    <task id="LOCAL-00038" summary="完成手机认证功能，待测试手机验证码">
+      <created>1522229657368</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1522229657368</updated>
+    </task>
+    <task id="LOCAL-00039" summary="初步完成登录功能">
+      <created>1522285547628</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1522285547628</updated>
+    </task>
+    <task id="LOCAL-00040" summary="修改bug">
+      <created>1522316625971</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1522316625971</updated>
+    </task>
+    <task id="LOCAL-00041" summary="pc端直播消息时间倒序，移动端时间正序">
+      <created>1522317516742</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1522317516742</updated>
+    </task>
+    <task id="LOCAL-00042" summary="添加修改分数不能低于0限制">
+      <created>1522318017505</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1522318017505</updated>
+    </task>
+    <task id="LOCAL-00043" summary="添加ajax方法自动更新token">
+      <created>1522631372609</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1522631372609</updated>
+    </task>
+    <task id="LOCAL-00044" summary="添加比赛结束页面，修改bug">
+      <created>1522632006016</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1522632006016</updated>
+    </task>
+    <task id="LOCAL-00045" summary="修改入场验证选中效果">
+      <created>1522640003429</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1522640003429</updated>
+    </task>
+    <task id="LOCAL-00046" summary="修改登录bug">
+      <created>1522640862678</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1522640862678</updated>
+    </task>
+    <task id="LOCAL-00047" summary="删除无用文件，整合导航栏">
+      <created>1522736840281</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1522736840281</updated>
+    </task>
+    <task id="LOCAL-00048" summary="修改拦截器配置，配置404.500.401 Controller">
+      <created>1522739353379</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1522739353379</updated>
+    </task>
+    <task id="LOCAL-00049" summary="优化xss过滤器">
+      <created>1522740654748</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1522740654748</updated>
+    </task>
+    <task id="LOCAL-00050" summary="优化报告书、裁判员登录js">
+      <created>1522747384899</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1522747384901</updated>
+    </task>
+    <task id="LOCAL-00051" summary="修改导航栏">
+      <created>1522747722986</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1522747722986</updated>
+    </task>
+    <task id="LOCAL-00052" summary="删除重复图片文件，中文命名文件">
+      <created>1522748193072</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1522748193072</updated>
+    </task>
+    <task id="LOCAL-00053" summary="修改xss漏洞，修改bug">
+      <created>1523150622730</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1523150622731</updated>
+    </task>
+    <task id="LOCAL-00054" summary="修改bug">
+      <created>1523156068170</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1523156068170</updated>
+    </task>
+    <task id="LOCAL-00055" summary="修改登录bug">
+      <created>1523157635898</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1523157635898</updated>
+    </task>
+    <task id="LOCAL-00056" summary="修改验证码显示个数">
+      <created>1523170671965</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1523170671965</updated>
+    </task>
+    <task id="LOCAL-00057" summary="完善Xss过滤，将空字符串返回null">
+      <created>1523176184122</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1523176184122</updated>
+    </task>
+    <task id="LOCAL-00058" summary="提取导航栏公用css样式">
+      <created>1523177895015</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1523177895015</updated>
+    </task>
+    <task id="LOCAL-00059" summary="修改导航栏效果、错误页面路径">
+      <created>1523241435086</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1523241435087</updated>
+    </task>
+    <task id="LOCAL-00060" summary="修改教练导航栏路径，修改提示方式">
+      <created>1523242394773</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1523242394774</updated>
+    </task>
+    <task id="LOCAL-00061" summary="完善完善信息、裁判员登录消息提示，修改手机验证码检验bug，重构裁判员登录页面">
+      <created>1523265419724</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1523265419725</updated>
+    </task>
+    <task id="LOCAL-00062" summary="修正比赛结束后图片删除定时器不能启动的问题；修正报告书页面球员选择漏洞">
+      <created>1523351520158</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1523351520159</updated>
+    </task>
+    <task id="LOCAL-00063" summary="裁判员后台管理首页、完善信息、手机认证页面改版">
+      <created>1523499059312</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1523499059314</updated>
+    </task>
+    <task id="LOCAL-00064" summary="修改导航栏样式">
+      <created>1523514062941</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1523514062941</updated>
+    </task>
+    <task id="LOCAL-00065" summary="完善部分页面可能使用iframe导致页面显示错误">
+      <created>1523515574898</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1523515574898</updated>
+    </task>
+    <task id="LOCAL-00066" summary="裁判员后台管理首页、完善信息、手机认证页面改版">
+      <created>1523518667975</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1523518667976</updated>
+    </task>
+    <task id="LOCAL-00067" summary="添加导航栏登出按钮">
+      <created>1523520547811</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1523520547811</updated>
+    </task>
+    <task id="LOCAL-00068" summary="完成移动端直播发送功能改版">
+      <created>1523585189086</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1523585189087</updated>
+    </task>
+    <task id="LOCAL-00069" summary="pc直播页面改版">
+      <created>1523608772966</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1523608772966</updated>
+    </task>
+    <task id="LOCAL-00070" summary="修改导航栏样式，">
+      <created>1523847099932</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1523847099933</updated>
+    </task>
+    <task id="LOCAL-00071" summary="修改导航栏样式，">
+      <created>1523859231983</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1523859231983</updated>
+    </task>
+    <task id="LOCAL-00072" summary="修改导航栏样式，">
+      <created>1523864642349</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1523864642350</updated>
+    </task>
+    <task id="LOCAL-00073" summary="修改500.404.401页面导航栏错位">
+      <created>1523868768930</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1523868768930</updated>
+    </task>
+    <task id="LOCAL-00074" summary="修改contextPath使用规则，使兼容nginx反向代理">
+      <created>1523930311772</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1523930311772</updated>
+    </task>
+    <task id="LOCAL-00075" summary="修改500.404.401页面导航栏错位，修改裁判员登录cookie解析">
+      <created>1524017103180</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1524017103181</updated>
+    </task>
+    <task id="LOCAL-00076" summary="解决部分情况下token无法获取">
+      <created>1524031743372</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1524031743372</updated>
+    </task>
+    <task id="LOCAL-00077" summary="完善自定义contextPath功能，修正裁判员登录未获取裁判员id漏洞，修改页面">
+      <created>1524122242605</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1524122242606</updated>
+    </task>
+    <task id="LOCAL-00078" summary="修改裁判员修改密码功能，修正页面缺陷，修改裁判员修改比分功能，修改裁判员入场验证功能">
+      <created>1524127581784</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1524127581784</updated>
+    </task>
+    <task id="LOCAL-00079" summary="修改验证码发送规则，完善前台验证码提示">
+      <created>1524128497339</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1524128497339</updated>
+    </task>
+    <task id="LOCAL-00080" summary="修改裁判员登录提示，完善机构登录判断">
+      <created>1524203969312</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1524203969313</updated>
+    </task>
+    <task id="LOCAL-00081" summary="修改导航栏">
+      <created>1524204679974</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1524204679975</updated>
+    </task>
+    <task id="LOCAL-00082" summary="修改导航栏">
+      <created>1524204968913</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1524204968913</updated>
+    </task>
+    <task id="LOCAL-00083" summary="利用redis实现分布式session">
+      <created>1524301766136</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1524301766137</updated>
+    </task>
+    <task id="LOCAL-00084" summary="修改redis-session到期时间为半小时">
+      <created>1524302533089</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1524302533089</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="EncryptTest_testEncrypt - 2018.04.20 at 16h 38m 46s.xml">
+      <configuration name="EncryptTest.testEncrypt" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EncryptTest_testEncrypt - 2018.04.20 at 17h 31m 11s.xml">
+      <configuration name="EncryptTest.testEncrypt" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EncryptTest_testEncrypt - 2018.04.20 at 18h 31m 22s.xml">
+      <configuration name="EncryptTest.testEncrypt" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EncryptTest_testEncrypt - 2018.04.20 at 19h 21m 00s.xml">
+      <configuration name="EncryptTest.testEncrypt" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SmsService_test - 2018.04.09 at 15h 09m 59s.xml">
+      <configuration name="SmsService.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SmsService_test - 2018.04.09 at 15h 10m 23s.xml">
+      <configuration name="SmsService.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SmsService_test - 2018.04.09 at 15h 10m 56s.xml">
+      <configuration name="SmsService.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SmsService_test - 2018.04.09 at 15h 11m 59s.xml">
+      <configuration name="SmsService.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SmsService_test - 2018.04.09 at 15h 13m 21s.xml">
+      <configuration name="SmsService.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SmsService_test - 2018.04.09 at 15h 13m 41s.xml">
+      <configuration name="SmsService.test" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="541178000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32741398" sideWeight="0.51067233" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24012807" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22038421" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19156884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30634278" sideWeight="0.48879403" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871014" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30994764" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32565445" sideWeight="0.48932764" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27302995" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49389568" sideWeight="0.494852" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26627535" sideWeight="0.49358973" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24172892" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23052295" sideWeight="0.50641024" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="SQL Generator" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871014" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="修改验证码显示个数" />
+    <MESSAGE value="完善Xss过滤，将空字符串返回null" />
+    <MESSAGE value="提取导航栏公用css样式" />
+    <MESSAGE value="修改导航栏效果、错误页面路径" />
+    <MESSAGE value="修改教练导航栏路径，修改提示方式" />
+    <MESSAGE value="完善完善信息、裁判员登录消息提示，修改手机验证码检验bug，重构裁判员登录页面" />
+    <MESSAGE value="修正比赛结束后图片删除定时器不能启动的问题；修正报告书页面球员选择漏洞" />
+    <MESSAGE value="修改导航栏样式" />
+    <MESSAGE value="完善部分页面可能使用iframe导致页面显示错误" />
+    <MESSAGE value="裁判员后台管理首页、完善信息、手机认证页面改版" />
+    <MESSAGE value="添加导航栏登出按钮" />
+    <MESSAGE value="完成移动端直播发送功能改版" />
+    <MESSAGE value="pc直播页面改版" />
+    <MESSAGE value="修改导航栏样式，" />
+    <MESSAGE value="修改500.404.401页面导航栏错位" />
+    <MESSAGE value="修改contextPath使用规则，使兼容nginx反向代理" />
+    <MESSAGE value="修改500.404.401页面导航栏错位，修改裁判员登录cookie解析" />
+    <MESSAGE value="解决部分情况下token无法获取" />
+    <MESSAGE value="完善自定义contextPath功能，修正裁判员登录未获取裁判员id漏洞，修改页面" />
+    <MESSAGE value="修改裁判员修改密码功能，修正页面缺陷，修改裁判员修改比分功能，修改裁判员入场验证功能" />
+    <MESSAGE value="修改验证码发送规则，完善前台验证码提示" />
+    <MESSAGE value="修改裁判员登录提示，完善机构登录判断" />
+    <MESSAGE value="修改导航栏" />
+    <MESSAGE value="利用redis实现分布式session" />
+    <MESSAGE value="修改redis-session到期时间为半小时" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改redis-session到期时间为半小时" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/data/spring-data-redis/1.8.4.RELEASE/spring-data-redis-1.8.4.RELEASE.jar!/org/springframework/data/redis/serializer/GenericJackson2JsonRedisSerializer.class</url>
+          <line>67</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="41" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/data/spring-data-redis/1.8.4.RELEASE/spring-data-redis-1.8.4.RELEASE.jar!/org/springframework/data/redis/connection/jedis/JedisClusterConnection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="93" column="13" lean-forward="false" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/session/spring-session/1.3.0.RELEASE/spring-session-1.3.0.RELEASE.jar!/org/springframework/session/web/socket/handler/WebSocketConnectHandlerDecoratorFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/filter/DelegatingFilterProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/session/spring-session/1.3.0.RELEASE/spring-session-1.3.0.RELEASE.jar!/org/springframework/session/Session.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/session/spring-session/1.3.0.RELEASE/spring-session-1.3.0.RELEASE.jar!/org/springframework/session/ExpiringSession.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/session/spring-session/1.3.0.RELEASE/spring-session-1.3.0.RELEASE.jar!/org/springframework/session/web/http/ExpiringSessionHttpSession.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-599">
+          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/session/spring-session/1.3.0.RELEASE/spring-session-1.3.0.RELEASE.jar!/org/springframework/session/web/http/SessionRepositoryFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="277" column="29" lean-forward="false" selection-start-line="277" selection-start-column="22" selection-end-line="277" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/session/spring-session/1.3.0.RELEASE/spring-session-1.3.0.RELEASE.jar!/org/springframework/session/config/annotation/web/http/SpringHttpSessionConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/session/spring-session/1.3.0.RELEASE/spring-session-1.3.0.RELEASE.jar!/org/springframework/session/data/redis/config/ConfigureNotifyKeyspaceEventsAction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/util/concurrent/Executor.class" />
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/session/spring-session/1.3.0.RELEASE/spring-session-1.3.0.RELEASE.jar!/org/springframework/session/data/redis/config/annotation/web/http/RedisHttpSessionConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="89" column="24" lean-forward="false" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/session/Seriseair.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/DemoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/data/spring-data-redis/1.8.4.RELEASE/spring-data-redis-1.8.4.RELEASE.jar!/org/springframework/data/redis/core/RedisAccessor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="28" column="39" lean-forward="true" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/data/spring-data-redis/1.8.4.RELEASE/spring-data-redis-1.8.4.RELEASE.jar!/org/springframework/data/redis/connection/jedis/JedisConnectionFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/properties/sms.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/data/spring-data-redis/1.8.4.RELEASE/spring-data-redis-1.8.4.RELEASE.jar!/org/springframework/data/redis/connection/RedisConnectionFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/handler/socket/LiveWebSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-600">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/services/live/LiveService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="75" column="20" lean-forward="false" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-dao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1353">
+          <caret line="15" column="35" lean-forward="true" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/session/spring-session/1.3.2.RELEASE/spring-session-1.3.2.RELEASE.jar!/org/springframework/session/data/redis/config/annotation/web/http/RedisHttpSessionConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-813">
+          <caret line="40" column="14" lean-forward="true" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/data/spring-data-redis/1.8.4.RELEASE/spring-data-redis-1.8.4.RELEASE.jar!/org/springframework/data/redis/serializer/StringRedisSerializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-util.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="22" column="68" lean-forward="true" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/spring-beans/4.3.10.RELEASE/spring-beans-4.3.10.RELEASE.jar!/org/springframework/beans/factory/config/PropertyPlaceholderConfigurer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2203">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/handler/spring/PropertiesPlaceholder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/services/common/PropertiesService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/springMVC-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/filters/XssFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/data/spring-data-redis/1.8.4.RELEASE/spring-data-redis-1.8.4.RELEASE.jar!/org/springframework/data/redis/core/StringRedisTemplate.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/session/serializer/SessionSerializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/services/common/SMSService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="58" column="16" lean-forward="false" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/daos/redis/common/SmsDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/data/spring-data-redis/1.8.4.RELEASE/spring-data-redis-1.8.4.RELEASE.jar!/org/springframework/data/redis/listener/RedisMessageListenerContainer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2150">
+          <caret line="48" column="26" lean-forward="true" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../后端/resource/jars/org/springframework/data/spring-data-redis/1.8.4.RELEASE/spring-data-redis-1.8.4.RELEASE.jar!/org/springframework/data/redis/core/RedisTemplate.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4545">
+          <caret line="378" column="25" lean-forward="false" selection-start-line="378" selection-start-column="25" selection-end-line="378" selection-end-column="25" />
+          <folding>
+            <marker date="1499916808380" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1499916808380" expanded="false" signature="159:1965" ph="..." />
+            <marker date="1499916808380" expanded="true" signature="2985:2992" ph="{}" />
+            <marker date="1499916808380" expanded="true" signature="3031:4371" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="4422:4433" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="4488:4494" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="4572:4641" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="4737:6158" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="6213:6746" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="6817:6893" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="7013:8718" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="7423:7561" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="8579:8598" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="8786:8861" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="8978:10103" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="9014:9148" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="10080:10095" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="10183:10254" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="10406:10511" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="10603:11058" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="11121:11132" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="11161:11167" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="11246:11502" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="11611:11645" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="11744:11755" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="11769:11775" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="11816:11827" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="11856:11862" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="11925:11936" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="11977:11983" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="12031:12042" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="12078:12084" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="12162:12233" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="12287:12298" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="12328:12334" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="12403:12414" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="12450:12456" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="12521:12532" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="12564:12570" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="12620:12631" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="12657:12663" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="12730:12741" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="12775:12781" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="12833:12844" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="12872:12878" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="12932:12943" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="12973:12979" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="13056:13115" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="13171:13182" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="13214:13220" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="13301:13364" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="13422:13433" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="13462:13468" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="13548:13605" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="13674:13685" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="13722:13728" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="13768:13957" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="13999:14010" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="14054:14060" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="14104:14249" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="14300:14561" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="14606:14704" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="14884:16180" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="16261:16708" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="16815:17313" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="17346:17599" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="17666:17785" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="17824:18068" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="17860:18011" ph="doInRedis(connection) → { " />
+            <marker date="1499916808380" expanded="false" signature="18036:18060" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="18100:18387" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="18171:18266" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="18358:18373" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="18432:18795" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="18562:18661" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="18752:18771" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="18830:19102" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="18917:19014" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="19073:19088" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="19178:19713" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="19335:19432" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="19684:19699" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="19767:20225" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="19854:19951" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="20196:20211" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="20290:20720" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="20498:20593" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="20691:20706" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="20755:21015" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="20839:20947" ph="doInRedis(connection) → { " />
+            <marker date="1499916808380" expanded="false" signature="20977:21001" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="21075:21494" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="21159:21250" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="21465:21480" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="21530:21938" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="21632:21737" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="21794:21809" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="21974:22247" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="22061:22158" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="22218:22233" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="22299:22578" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="22386:22483" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="22549:22564" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="22605:22876" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="22652:22747" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="22803:22818" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="22921:23271" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="23052:23147" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="23242:23257" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="23327:23675" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="23474:23571" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="23646:23661" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="23709:23982" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="23797:23896" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="23953:23968" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="24014:24281" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="24100:24212" ph="doInRedis(connection) → { " />
+            <marker date="1499916808380" expanded="false" signature="24243:24267" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="24366:24736" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="24510:24606" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="24707:24722" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="24762:25010" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="24785:24907" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="24981:24996" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="25038:25288" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="25061:25183" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="25259:25274" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="25319:25608" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="25390:25485" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="25579:25594" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="25652:25933" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="25728:25823" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="25904:25919" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="25961:26211" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="25984:26106" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="26182:26197" ph="}" />
+            <marker date="1499916808380" expanded="false" signature="26256:26267" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="26313:26319" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="26406:26906" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="26607:26741" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="26806:26821" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="26985:27059" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="27178:27946" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="28001:28472" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="28247:28365" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="28443:28458" ph="}" />
+            <marker date="1499916808380" expanded="false" signature="28532:28543" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="28593:28599" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="28648:28795" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="28842:28985" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="29043:29054" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="29103:29109" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="29165:29176" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="29224:29230" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="29275:29414" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="29472:29483" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="29532:29538" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="29585:29728" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="29773:29912" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="29968:29979" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="30027:30033" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="30094:30241" ph="{...}" />
+            <marker date="1499916808380" expanded="true" signature="30314:30379" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="30439:30450" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="30489:30495" ph=" }" />
+            <marker date="1499916808380" expanded="false" signature="30547:30558" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="30600:30606" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="30670:30923" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="30693:30811" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="30900:30915" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="30974:31245" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="31010:31179" ph="doInRedis(connection) → { " />
+            <marker date="1499916808380" expanded="false" signature="31213:31237" ph=" }" />
+            <marker date="1499916808380" expanded="true" signature="31306:31556" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="31329:31447" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="31533:31548" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="31589:31834" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="31612:31730" ph="doInRedis(connection) → {" />
+            <marker date="1499916808380" expanded="false" signature="31811:31826" ph="}" />
+            <marker date="1499916808380" expanded="true" signature="31914:31987" ph="{...}" />
+            <marker date="1499916808380" expanded="false" signature="32048:32059" ph=" { " />
+            <marker date="1499916808380" expanded="false" signature="32090:32096" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-redis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/view/team/createTeam.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7785">
+          <caret line="519" column="21" lean-forward="false" selection-start-line="519" selection-start-column="21" selection-end-line="519" selection-end-column="21" />
+          <folding>
+            <marker date="1526450575796" expanded="true" signature="13299:13306" ph="«" />
+            <marker date="1526450575796" expanded="true" signature="14008:14015" ph="»" />
+            <marker date="1526450575796" expanded="true" signature="16358:16370" ph="..." />
+            <marker date="1526450575796" expanded="true" signature="16732:16755" ph="..." />
+            <marker date="1526450575796" expanded="true" signature="16800:16806" ph="&amp;nbsp;" />
+            <marker date="1526450575796" expanded="true" signature="16806:16812" ph="&amp;nbsp;" />
+            <marker date="1526450575796" expanded="true" signature="16812:16818" ph="&amp;nbsp;" />
+            <marker date="1526450575796" expanded="true" signature="20225:20248" ph="..." />
+            <marker date="1526450575796" expanded="true" signature="22457:22480" ph="..." />
+            <marker date="1526450575796" expanded="true" signature="24050:24057" ph="«" />
+            <marker date="1526450575796" expanded="true" signature="24740:24747" ph="»" />
+            <marker date="1526450575796" expanded="true" signature="27368:27391" ph="..." />
+            <marker date="1526450575796" expanded="true" signature="27461:27467" ph="&amp;nbsp;" />
+            <marker date="1526450575796" expanded="true" signature="27467:27473" ph="&amp;nbsp;" />
+            <marker date="1526450575796" expanded="true" signature="27473:27479" ph="&amp;nbsp;" />
+            <marker date="1526450575796" expanded="true" signature="31225:31248" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/annotation/FileRename.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/handler/socket/SocketListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/resources/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-websocket.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-session.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2025">
+          <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/properties/jdbc.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="15" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/four/controllers/live/LiveController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="110" column="43" lean-forward="false" selection-start-line="110" selection-start-column="43" selection-end-line="110" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/referee/refereeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+          <folding>
+            <marker date="1526450811138" expanded="true" signature="1678:1804" ph="select team_... Schedule" />
+            <marker date="1526450811138" expanded="true" signature="1893:1944" ph="select name Team" />
+            <marker date="1526450811138" expanded="true" signature="2045:2112" ph="select team_... M_Match_Staff" />
+            <marker date="1526450811138" expanded="true" signature="2212:2335" ph="select name,... Player" />
+            <marker date="1526450811138" expanded="true" signature="2395:2501" ph="insert into M_Sch_Staff... " />
+            <marker date="1526450811138" expanded="true" signature="2575:2684" ph="update Schedule... " />
+            <marker date="1526450811138" expanded="true" signature="2760:2835" ph="UPDATE Referee... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/nsu/edu/web/common/zookeeper/ZooKeeperConfigWatch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/properties/redis.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="15" lean-forward="false" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-zookeeper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/zookeeper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/EncryptTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>four:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.3951613" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.3951613" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web|four</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.3951613" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>open1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: org.springframework:spring-aop:4.3.10.RELEASE</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.3951613" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

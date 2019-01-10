@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title>登录页面</title>
+		<link rel="stylesheet" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.1.0.css"/>
+		<link rel="stylesheet" type="text/css" href="css/public.css">
+	</head>
+	
+	<style>
+			[class *= col-]{
+			  background-color: #eee;
+			  border: 1px solid #ccc;
+			}
+			/*[class *= col-] [class *= col-] {
+			  background-color: #f36;
+			  border:1px dashed #fff;
+			  color: #fff;
+			}*/
+	</style>
+	
+	<body>
+		<!--导航-->
+		<nav class="nav-bg navbar">
+			<div class="container">
+				<div class="logo-w col-lg-4 col-md-5 col-sm-11 col-xs-12">
+					<img src="img/logo.png"/>
+					<span>四川省青少年校园足球信息网</span>
+				</div>
+			</div>
+		</nav>
+		<!--内容-->
+		<!--比赛成绩-->
+		<div class="container" style="margin-top: 5px;">
+			<div class="row text-center">
+				<div class="col-xs-5">
+					<p style="font-weight: bolder;font-size: 20px;">川农一队</p>
+				</div>
+				<div class="col-xs-2">
+					<img style="height: 28px; margin: 5px auto;" src="img/PK.png" />
+				</div>
+				<div class="col-xs-5">
+					<p style="font-weight: bolder;font-size: 20px;">工商一队</p>
+				</div>
+			</div>
+			
+			<div class="row text-center">
+				<div class="col-xs-5 text-height">
+					<p style="font-weight: bolder;font-size: 20px;">4</p>
+				</div>
+				<div class="col-xs-2 img-height">
+					<p style="font-weight: bolder;font-size: 20px;">:</p>
+				</div>
+				<div class="col-xs-5">
+					<p style="font-weight: bolder;font-size: 20px;">3</p>
+				</div>
+			</div>
+			
+		</div>
+		<!--发送内容-->
+		<div class="panel panel-default" >
+			<div class="panel-heading text-center" style="background: yellow;">
+				<h3 class="panel-title">实时直播</h3>
+			</div>
+			<div class="panel-body" style="background: gray; overflow:scroll;height: 150px;">
+				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />nihao <br /><br /><br /><br /><br />
+			</div>
+		</div>
+		<!--底部 禁止评论-->
+		<!--<div style="height: 0.5rem;width:100%;position: fixed;bottom: 0px;border-top: 1px solid #E7E7E7;display: flex;">
+			<input style="width: 80%;" type="text" disabled="disabled" placeholder="只有手机认证的用户,才可以参与评论" />
+			<input style="margin-top: 0px;" class="btn btn-success btn-md radius center-block panel-distance" type="button" value="认证">		
+		</div>-->
+		<!--底部 可以评论-->
+	
+			<div style="height: 0.9rem;width:100%;position: fixed;bottom: 0px;border-top: 1px solid #E7E7E7;display: flex;">
+				<form role="form" style="width: 100%;">
+					<div class="form-group" style="width: 95%; margin-top:8px;margin-right:5px;">
+						<textarea style="resize: none;border: 1px solid #797979;border-color: transparent;border-color: rgba(0,0,0,.2);" class="form-control" rows="3" placeholder="可以参与评论"></textarea>
+					</div>
+				</form>
+				<div>
+					<input style="margin-top:8px;margin-right:10px;height: 34px;" class="btn btn-info btn-xs radius center-block panel-distance" type="button" value="图片">
+					<input style="margin-top:8px;margin-right:10px;height: 34px;" class="btn btn-success btn-xs radius center-block panel-distance" type="button" value="发送">
+				</div>
+			</div>
+		
+		
+		
+        
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/public.js"></script>
+        <script>
+        	$(function(){
+        		$('.img-height').height($('.text-height').height());
+        	})
+        </script>
+	</body>
+</html>

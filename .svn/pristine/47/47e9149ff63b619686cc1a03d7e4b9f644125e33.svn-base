@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="base_path" value="${pageContext.request.contextPath}"></c:set>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>球队管理</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--为了让 Bootstrap 开发的网站对移动设备友好，确保适当的绘制和触屏缩放，需要在网页的 head 之中添加 viewport meta 标签，-->
+  <link href="${base_path}/resources/css/team/bootstrap.min.css" rel="stylesheet">
+  <link href="${base_path}/resources/lib/layer/theme/default/layer.css" rel="stylesheet">
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" type="text/css" href="${base_path}/resources/css/team/style.1.0.css" />
+</head>
+
+
+<div class="container" style="width:1002px;">
+  <ul class="breadcrumb">
+    <li><a href="${pageContext.request.contextPath}/display/index">球队预览</a><span class="divider">/</span></li>
+    <li class="active">球队创建</li>
+  </ul>
+  <!--导航结束-->
+  <div class="row">
+    <div class="span6">
+      <table class="table table-bordered table-hover messageCard">
+        <tr class="success">
+          <td>球队基本信息</td>
+        </tr>
+        <tr>
+          <td>
+            <p><span class="muted">队&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</span>
+              <input id="teamName" type="text" style="height:20px;width:190px;"></p>
+            <p><span class="muted">球队类型:</span>
+              <select id="teamClazz" style="width:204px;" name="type">
+                <option value="1">小学一年级</option>
+                <option value="2">小学二年级</option>
+                <option value="3">小学三年级</option>
+                <option value="4">小学四年级</option>
+                <option value="5">小学五年级</option>
+                <option value="6">小学六年级</option>
+                <option value="7">初中一年级</option>
+                <option value="8">小学二年级</option>
+                <option value="9">小学三年级</option>
+                <option value="10">混合(年级)</option>
+                <option value="11">混合(校级)</option>
+              </select></p>
+            <p><span class="muted">球队状态:</span>
+              <input type="radio" name="teamStatus" checked="checked" value="0"> 在役
+              <input type="radio" name="teamStatus" value="1"> 退役
+            </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="span6">
+      <table class="table table-bordered table-hover messageCard" style="margin-left:60px;">
+        <tr class="success">
+          <td>教练信息</td>
+        </tr>
+        <tr>
+          <td>
+            <p style="margin-top:6px;"><span class="muted">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名: <span id="coach_name"></span></span></p>
+            <p style="margin-top:32px;"><span class="muted">教练编号:<span id="coach_id" class="muted"></span></span></p>
+            <hr style="margin:0 0 9px 0;">
+
+
+            <a id="add_coach" href="#myModal1" role="button" class="btn btn-info" data-toggle="modal">添加教练</a>
+            <!-- <button type="button" class="btn btn-default btn-info ">添加教练</button> -->
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="pull-right" style="width:98%;">
+      <table class="table table-bordered table-hover messageCard" >
+        <tr class="success">
+          <td>球员信息</td>
+        </tr>
+        <tr>
+          <td class="rowPlayer">
+            <div id="chooesPlayerInfos">
+
+           </div >
+            <hr style="clear:both;margin-left:38px;">
+            <a href="#myModal2" role="button" class="btn btn-info" data-toggle="modal" style="margin-left:38px;">添加球员</a>
+            <!-- <button type="button" class="btn btn-default btn-info" style="margin-left:38px;">添加球员</button> -->
+          </td>
+        </tr>
+      </table>
+
+      <center>
+        <button type="button" class="btn btn-default btn-info " id="button_team">提交</button>
+        <button type="button" class="btn btn-default ">取消</button>
+      </center>
+    </div>
+  </div>
+
+
+
+</div>
+<!-- first Modal -->
+<div id="myModal1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">添加教练</h3>
+  </div>
+  <div class="modal-body"><!--模态中部开始-->
+    <div class="row">
+      <div class="span2">
+        <div class="input-group">
+          <input id="coachName" name="coachName" type="text" class="form-control" style="width:142px;border-radius: 5px;" placeholder="请输入教练姓名">
+          <span id="coachName_alert" style="color: red;visibility: hidden">请输入教练的名字</span>
+        </div>
+        <!-- /input-group -->
+      </div>
+      <div class="span2">
+									<span class="input-group-btn">
+																<button id="button_coach" class="btn btn-default" type="button" style="border-radius: 5px;">搜索</button>
+														</span>
+        <!-- /input-group -->
+      </div>
+      <!-- /.col-lg-6 -->
+    </div>
+
+    <table   class="table table-striped table-hover" style="margin-top:15px;">
+      <tr class="info">
+        <th>姓名</th>
+        <th>编号</th>
+        <th>性别</th>
+        <th style="padding-left:28px;">操作</th>
+      </tr>
+      <table id="coach_table" class="table table-striped table-hover" style="margin-top:15px;"></table>
+      <tr style="padding-top:5px;">
+
+        <td><span class="hidden-xs coachInfo_name"></span></td>
+        <td><span id="coachInfoIdCoach" class="hidden-xs coachInfo_idCoach"></span></td>
+        <td><span class="hidden-xs coachInfo_sex"></span></td>
+
+      </tr>
+    </table>
+  </div><!--模态中部结束-->
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <button id="sure_coach" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">确定</button>
+  </div>
+</div>
+<!-- first model end -->
+<!-- 模态框2Modal -->
+<div id="myModal2" class="modal hide fade"style="width:1002px;margin-left:-500px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">添加球员</h3>
+  </div>
+  <div class="modal-body"><!--模态框中部开始-->
+    <div class="row">
+      <div class="span2">
+        <div class="input-group">
+          <select id="selectGrade" class="form-control" style="width:142px;border-radius: 5px;">
+            <option value="">--请选择--</option>
+            <option value="1">小学一年级</option>
+            <option value="2">小学二年级</option>
+            <option value="3">小学三年级</option>
+            <option value="4">小学四年级</option>
+            <option value="5">小学五年级</option>
+            <option value="6">小学六年级</option>
+            <option value="7">初中一年级</option>
+            <option value="8">小学二年级</option>
+            <option value="9">小学三年级</option>
+            <option value="10">混合(年级)</option>
+            <option value="11">混合(校级)</option>
+          </select>
+        </div>
+        <!-- /input-group -->
+      </div>
+      <div class="span2">
+        <div class="input-group">
+          <!--<input type="text" placeholder="Text input">-->
+          <input id="playerClazz" type="text" class="form-control" style="width:142px;border-radius: 5px;" placeholder="请输入球员班级">
+        </div>
+        <!-- /input-group -->
+      </div>
+      <div class="span2">
+        <div class="input-group">
+          <input id="playerName" type="text" class="form-control" style="width:142px;border-radius: 5px;" placeholder="请输入球员姓名">
+        </div>
+        <!-- /input-group -->
+      </div>
+      <div class="span2">
+        <span class="input-group-btn">
+          <button id="player_btn" class="btn btn-default" type="button" style="border-radius: 5px;">搜索</button>
+        </span>
+        <!-- /input-group -->
+      </div>
+      <div class="span2">
+        <div class="input-group">
+          <input id="playerId" type="text" class="form-control" style="width:142px;border-radius: 5px;" placeholder="请输入球员ID">
+          <span id="playerId_alert" style="color: red;visibility: hidden">请输入球员的ID</span>
+        </div>
+        <!-- /input-group -->
+      </div>
+      <div class="span2">
+										<span class="input-group-btn">
+											        		<button id="playerName_btn" class="btn btn-default" type="button" style="border-radius: 5px;">搜索</button>
+											      	</span>
+        <!-- /input-group -->
+      </div>
+      <!-- /.col-lg-6 -->
+    </div>
+
+    <table class="table table-striped table-hover" style="margin-top:15px;text-align: center;">
+      <tr class="info">
+        <th>姓名</th>
+        <th>编号</th>
+        <th>性别</th>
+        <th>身份证号</th>
+        <th><input type="checkbox" id="all" style="margin-bottom:-2px;">&nbsp;全选</th>
+      </tr>
+      <table id="player_table" class="table table-striped table-hover" style="margin-top:15px;text-align: center;">
+      </table>
+
+    </table>
+  </div><!--模态框中部结束-->
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <%--id="addPlayer_btn"--%>
+    <button onclick="add()"  class="btn btn-primary" data-dismiss="modal" aria-hidden="true">确定</button>
+  </div>
+</div>
+<!-- 模态框2Modal结束 -->
+<!--container end-->
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="${base_path}/resources/lib/jquery/jquery-3.1.1.min.js "></script>
+<script src="${base_path}/resources/lib/jquery/jquery-1.11.3.js "></script>
+<script src="${base_path}/resources/lib/layer/layer.js "></script>
+<!-- <script src="js/jquery-3.1.1.min.js"></script> -->
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="${base_path}/resources/js/team/bootstrap.min.js"></script>
+<!-- 提交按钮触发 -->
+<%--<script src="../../../resources/js/createTeam.js"/>--%>
+
+<script>
+    $(function(){
+
+        $("#add_coach").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "${base_path}/coach/findAllCoaches",
+                dataType: "json",
+                success: function (data) {
+                    $("#coach_table").html("");
+                    jQuery.each(data, function(i,item){
+                       var coach_sex = item.sex;
+                       if (coach_sex==0){
+                           coach_sex='男';
+                       }else{
+                           coach_sex='女';
+                       }
+                        $("#coach_table").append("<tr>" +
+                            "<td>"+item.coachName+"</td>" +
+                            "<td>"+item.idCoach+"</td>" +
+                            "<td>"+coach_sex+"</td>" +
+                            "<td><input id='select_coachid' name='select_coach' type='radio' value='"+item.idCoach+"'/>添加</td>" +
+                            "</tr>");
+                    });
+                }
+
+            })
+        });
+
+        $("#playerName_btn").click(function () {
+            var playerId = $("#playerId").val();//球员ID
+            var veryfiy=true;
+            if(playerId.length == 0){
+                veryfiy=false;
+                $("#playerId_alert").css("visibility","visible");
+                veryfiy=false;
+            }else {
+                $("#playerId_alert").css("visibility","hidden");
+            }
+            if (veryfiy){
+                $.ajax({
+                    type: "POST",
+                    url: "${base_path}/coach/findPlayerByPlayerId",
+                    dataType: "json",
+                    data: {"idPlayer": playerId},
+                    success: function (data) {
+                        $("#player_table").html("");
+//                        alert(data);
+                        var player_sex = data.sex;
+                        if (player_sex==0){
+                            player_sex='男';
+                        }else{
+                            player_sex='女';
+                        }
+//                        当通过ID来搜索球员的时候
+                        if(player_sex!=""){
+                            $("#selectGrade").val("");//设置年级信息为空
+                            $("#playerClazz").val("");//设置班级为空
+                            $("#playerName").val("");//设置球员姓名为空
+                        }
+                        $("#player_table").append("<tr>" +
+                            "<td>"+data.name+"</td>" +
+                            "<td>"+data.idPlayer+"</td>" +
+                            "<td>"+player_sex+"</td>" +
+                            "<td>"+data.idCard+"</td>" +
+                            "<td><input id='select_playerid' name='select_player' type='checkbox' value='"+data.idPlayer+"'/>添加</td>" +
+                            "</tr>");
+                    }
+
+                })
+            }
+
+        });
+        $("#player_btn").click(function () {
+            var selectGrade = $("#selectGrade").val();//年级信息
+            var playerClazz = $("#playerClazz").val();//班级
+            var playerName = $("#playerName").val();//球员姓名
+            $.ajax({
+                type: "POST",
+                url: "${base_path}/coach/findPlayersByconditions",
+                dataType: "json",
+                data: {"grade": selectGrade,"classes":playerClazz,"name":playerName},
+                success: function (data) {
+
+                    $("#player_table").html("");
+                    $("#playerId").val("");
+
+                    jQuery.each(data, function(i,item){
+
+                        $("#player_table").append("<tr>" +
+                            "<td>"+item.name+"</td>" +
+                            "<td>"+item.idPlayer+"</td>" +
+                            "<td>"+item.sex+"</td>" +
+                            "<td>"+item.idCard+"</td>" +
+                            "<td><input id='select_playerid' name='select_player' type='checkbox' value='"+item.idPlayer+"'/>添加</td>" +
+                            "</tr>");
+                    });
+                }
+
+            })
+        });
+
+        $("#sure_coach").click(function () {
+            var select_coachId=$('input:radio[name="select_coach"]:checked').val();
+            var  coachInfo_idCoach = select_coachId;
+            $.ajax({
+                type: "POST",
+                url: "${base_path}/coach/findCoachById",
+                dataType: "json",
+                data: {"idCoach": coachInfo_idCoach},
+                success: function (data) {
+                    $("#coach_name").html(data.coachName);
+                    $("#coach_id").html(data.idCoach);
+                }
+
+            })
+        })
+
+
+        $("#button_coach").click(function () {
+            //获得输入的数据
+           var coachName  = $("#coachName").val();
+            var veryfiy=true;
+            if(coachName.length==0){
+                $("#coachName_alert").css("visibility","visible");
+                veryfiy=false;
+            }else {
+                $("#coachName_alert").css("visibility","hidden");
+            }
+            if(veryfiy){
+                $.ajax({
+                    type:"POST",
+                    url:"${base_path}/coach/findCoachByName",
+                    dataType:"json",
+                    contentType:"application/json",
+                    data:{"coachName":coachName},
+                    success:function (data) {
+                        $("#coach_table").html("");
+                        jQuery.each(data, function(i,item){
+                            var coach_sex = item.sex;
+                            if (coach_sex==0){
+                                coach_sex='男';
+                            }else{
+                                coach_sex='女';
+                            }
+                            $("#coach_table").append("<tr>" +
+                                "<td>"+item.coachName+"</td>" +
+                                "<td>"+item.idCoach+"</td>" +
+                                "<td>"+coach_sex+"</td>" +
+                                "<td><input id='select_coachid' name='select_coach' type='radio' value='"+item.idCoach+"'/>添加</td>" +
+                                "</tr>");
+                        });
+
+                    }
+                });
+            }
+
+        });
+
+        $("#button_team").click(function () {
+            //获得所有关于球队的信息，队名，教练，球员等...
+            layer.confirm('确认提交？',{ btn: ['确定', '取消']},
+             function (index) {
+
+              var  idTeam = ${sessionScope.idTeam};
+            var  name = $("#teamName").val();
+            $("#teamClazz>option").each(function (index,element) {
+                if ($(element).attr("selected") != null){
+                    teamTyp = $(element).val();
+                }
+            });
+            var  preId = coachids;
+            var  newId =$("#coach_id").html();
+            var  lenght = $("#chooesPlayerInfos").children().length;
+           var  arrPlayer =[];
+            for (var i = 0;i<lenght;i++){
+                var di  =$("#chooesPlayerInfos").children().eq(i).children().eq(2).children().eq(2).html();
+                arrPlayer[i] = di;
+           }
+            $.ajax({
+                type:"POST",
+                url:"${base_path}/updateTeam/insert",
+                dataType:"json",
+                data:{"idTeam":idTeam,"name":name,"type":teamTyp,"preId":preId,"newId":newId,"arrPlayer":arrPlayer.toString()},
+                success:function (result) {
+                   if (result.status ==0){
+                       layer.alert("修改成功");
+                       layer.close(index);
+                       $("#chooesPlayerInfos").empty();
+                       loadInfo();
+                   }else(result.status ==5)
+                    {
+                       layer.alert("修改失败，服务器错误");
+
+                   }
+
+                }
+            });
+
+           },
+            function () {
+                layer.alert("取消成功");
+            }
+
+            );
+
+        });
+
+
+
+    });
+</script>
+<script>
+    $(function(){
+        $("#all").change(function(){
+            var flage =$(this).is(":checked");
+            $("input[type=checkbox]").each(function(){
+                $(this).prop("checked",flage);
+            })
+        })
+    })
+</script>
+<script>
+    function add() {
+        var flag = window.checkFlash;
+        console.log(typeof(flag));
+        var arr = [];
+        $("input[type='checkbox']:checked").each(function () {
+            arr.push($(this).val());
+            typeof (toString(arr));
+        });
+        var  row = $("#chooesPlayerInfos");
+            $.ajax({
+                type: "POST",
+                url: "${base_path}/coach/getAllPlayersByIds",
+                dataType: "json",
+                data: {"playerids": JSON.stringify(arr),"flag":flag},
+                success: function (data) {
+                    jQuery.each(data, function(i,item) {
+                        var div = $("<div id=\"playerInfos\" class=\"zhazhazha\" ></div>");
+                        var img = $("<img class=\"clo\" src=\"../../../resources/img/22.png\" style=\"width:100%;\">");
+                        var  a = $("<a onclick=\"deleteRow($(this),"+item.idPlayer+");\"></a>");
+                        var b = $("<b></b>");
+                        b.append("x");
+                        a.append(b);
+                        var nameSpan = $("<span></span>");
+                        nameSpan.text(item.name);
+                        var playerIdSpan = $("<span id=\"idPlayer\" class='playerId'></span>");
+                        //playerIdSpan.text(result.data.players[i].idPlayer);
+                        var p = $("<p class=\"muted zhazhahui father\" ></p>");
+                        var br = $("<br>");
+                        playerIdSpan.text(item.idPlayer);
+                        p.append(nameSpan);
+                        p.append(br);
+                        p.append(playerIdSpan);
+                        div.append(img);
+                        div.append(a);
+                        div.append(p);
+                        row.append(div);
+                    });
+                    window.checkFlash = 0;
+                }
+            })
+
+    }
+</script>
+<script>
+  //删除指定的球员的信息
+    function deleteRow(obj,id){
+        var playerid = id;
+        $.ajax({
+            type: "POST",
+            url: "${base_path}/coach/deletePlayerById",
+            data: {"playerid": id},
+        })
+        obj.parent().remove();
+    }
+
+</script>
+<script>
+  //判断页面是否刷新
+    if(window.checkFlash){
+        window.checkFlash = 0;
+    }else{
+        window.checkFlash = 1;
+    }
+</script>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        loadInfo();
+    });
+
+
+
+    function loadInfo() {
+        $.ajax({
+            url:"${base_path}/updateTeam/findInfo?idTeam="+"${sessionScope.idTeam}",
+            type:"post",
+            success:function (result) {
+                if (result.status == 0) {
+                    var  realType = "";
+                    $("#teamName").val(result.data.team.name);
+                    var ss = result.data.team.type;
+                    $("#teamClazz").children().eq(ss-1).attr("selected","selected");
+                    //教练
+                    if (result.data.coach != null) {
+                        $("#coach_name").text(result.data.coach.name);
+                        $("#coachAge").text(result.data.coach.age);
+                        $("#coachSex").text(result.data.sex);
+                        $("#coach_id").text(result.data.coach.idCoach);
+                        coachids = result.data.coach.idCoach;
+                    }else {
+                        $("#coachName").text("未添加教练");
+                    }
+                    //球员
+                    var row = $("#chooesPlayerInfos");
+                    if (result.data.players.length != 0){
+                        for (var i = 0; i < result.data.players.length; i++) {
+                            var div = $("<div class=\"zhazhazha\" ></div>");
+                            var img = $("<img class=\"clo\" src=\"../../../resources/img/22.png\" style=\"width:100%;\">");
+                            var  a = $("<a class='a'></a>");
+                            var b = $("<b></b>");
+                            b.append("x");
+                            a.append(b);
+                            var nameSpan = $("<span></span>");
+                            nameSpan.text(result.data.players[i].name);
+                            var playerIdSpan = $("<span id=\"idPlayer\" class='playerId'></span>");
+                            playerIdSpan.text(result.data.players[i].idPlayer);
+                            var p = $("<p class=\"muted zhazhahui father\" ></p>");
+                            var br = $("<br>");
+                            //playerIdSpan.text(result.data.players[i].idPlayer);
+                            p.append(nameSpan);
+                            p.append(br);
+                            p.append(playerIdSpan);
+                            div.append(img);
+                            div.append(a);
+                            div.append(p);
+                            row.append(div);
+                        }
+                    }else {
+                        row.append("<p style='color: red'>未添加球员</p>");
+
+                    }
+
+                }
+            }
+        });
+    }
+
+    $("#chooesPlayerInfos").on('click','.a',function(){
+        var playerId = $(this).parent().children().eq(2).children().eq(2).text();
+        layer.confirm('确认删除球员吗？',{ btn: ['确定', '取消']},
+            function (index) {
+                $.ajax({
+                    url:"${base_path}/updateTeam/deletePlayer?idTeam="+"${sessionScope.idTeam}"+"&playerId="+playerId,
+                    type:"post",
+                    success:function (result) {
+                        if (result.status ==0) {
+                            $(this).parent().remove();
+                            $(".rowPlayer").empty();
+                            loadInfo();
+                            layer.alert("删除成功！");
+                        }
+                    },
+                    error:function () {
+                        console.log("");
+                    }
+                })
+            }),
+            function () {
+                layer.alert("取消成功");
+            }
+
+
+    });
+
+
+</script>
+
+
+
+
+
+
+</body>
+
+</html>
